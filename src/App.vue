@@ -1,5 +1,5 @@
 <template>
-  <the-aside></the-aside>
+  <the-aside><Navgation/></the-aside>
   <div class="router">
     <router-view />
   </div>
@@ -7,9 +7,11 @@
 
 <script>
 import TheAside from './components/layout/TheAside.vue'
+import Navgation from './components/layout/Navgation.vue'
 export default {
   components: {
-    TheAside
+    TheAside,
+    Navgation,
   }
 }
 </script>
