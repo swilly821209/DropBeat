@@ -1,4 +1,5 @@
 <template>
+  <the-header></the-header>
   <navgation/>
   <the-aside></the-aside>
   <div class="router">
@@ -9,10 +10,12 @@
 <script>
 import TheAside from './components/layout/TheAside.vue'
 import Navgation from './components/layout/Navgation.vue'
+import TheHeader from './components/layout/TheHeader.vue'
 export default {
   components: {
     TheAside,
-    Navgation
+    Navgation,
+    TheHeader
   }
 }
 </script>
