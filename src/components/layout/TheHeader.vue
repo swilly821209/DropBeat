@@ -1,5 +1,12 @@
 <template>
-    <div>
-        <input type="search" name="" id="">
-    </div>
+  <span>
+    <input type="search" name="" id="" />
+  </span>
 </template>
+
+<style scoped>
+  span{
+    position: fixed;
+    right: 0
+  }
+</style>

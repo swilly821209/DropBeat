@@ -1,4 +1,4 @@
 <template>
-<h1>fff</h1>
-<div>Find</div>
+<h1>Find</h1>
+<div>This is a Find page...</div>
 </template>
