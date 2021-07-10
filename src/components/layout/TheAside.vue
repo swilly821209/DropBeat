@@ -112,6 +112,7 @@ export default {
     padding-top: 20px;
     width: 250px;
     left: 0;
+    height: 100vh;
   }
   /* logo */
   .img_logo{

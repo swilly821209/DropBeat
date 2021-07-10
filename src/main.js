@@ -6,6 +6,8 @@ import store from './store'
 // 全域 components
 import BaseButton from './components/ui/BaseButton.vue'
 
+import './assets/tailwind.css'
+
 const app = createApp(App)
 
 app.component('base-button', BaseButton)
