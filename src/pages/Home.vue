@@ -3,6 +3,7 @@
   <div>This is a Home page...</div>
   <base-button>試試看</base-button>
   <the-carousel></the-carousel>
+  <base-badge></base-badge>
 </template>
 
 <script>
