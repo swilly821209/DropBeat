@@ -108,11 +108,11 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: absolute;
     padding-top: 20px;
-    width: 250px;
+    width: 230px;
     left: 0;
     height: 100vh;
+    position: fixed;
   }
   /* logo */
   .img_logo{

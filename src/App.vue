@@ -36,6 +36,6 @@ h1 {
   margin-top: 0;
 }
 .router{
-  margin-left: 250px;
+  margin-left: 230px;
 }
 </style>

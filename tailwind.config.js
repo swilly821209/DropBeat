@@ -12,7 +12,8 @@ module.exports = {
       transparent: 'transparent',
       gray: {
         dark: '#7b7b7b',
-        light: '#B5b5b5'
+        light: '#B5b5b5',
+        lightest: '#D6d6d6'
       },
       black: {
         backdrop: '#383838'
