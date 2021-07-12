@@ -137,10 +137,11 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    position:absolute;
     padding-top: 20px;
-    width: 200px;
+    width: 230px;
     left: 0;
+    height: 100vh;
+    position: fixed;
   }
   /* logo */
   .div_logo{
