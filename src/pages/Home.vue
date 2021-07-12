@@ -3,7 +3,8 @@
   <div>This is a Home page...</div>
   <base-button>試試看</base-button>
   <the-carousel></the-carousel>
-  <div class="flex w-11/12 mt-32 m-auto">
+  <base-title title="Showcase 演出活動" link to="/Find"></base-title>
+  <div class="flex w-11/12 m-auto">
     <fund-item
       v-for="item in fundItems"
       :title="item.title"
@@ -15,6 +16,7 @@
       :key="item.title">
     </fund-item>
   </div>
+  <base-card>ddddd</base-card>
   <div class="aa"></div>
 </template>
 
