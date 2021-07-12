@@ -1,15 +1,15 @@
 <template>
-  <h1>Home</h1>
-  <div>This is a Home page...</div>
-  <base-button>試試看</base-button>
+  <hot-music></hot-music>
   <the-carousel></the-carousel>
 </template>
 
 <script>
+import HotMusic from '../components/HotMusic.vue'
 import TheCarousel from '../components/TheCarousel.vue'
 
 export default {
   components: {
+    HotMusic,
     TheCarousel
   }
 }
