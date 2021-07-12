@@ -1,7 +1,5 @@
 <template>
-  <h1>Home</h1>
-  <div>This is a Home page...</div>
-  <base-button>試試看</base-button>
+  <hot-music></hot-music>
   <the-carousel></the-carousel>
   <base-title title="Showcase 演出活動" link to="/Find"></base-title>
   <div class="flex w-11/12 m-auto">
@@ -21,11 +19,13 @@
 </template>
 
 <script>
+import HotMusic from '../components/HotMusic.vue'
 import TheCarousel from '../components/TheCarousel.vue'
 import FundItem from '../components/FundItem.vue'
 
 export default {
   components: {
+    HotMusic,
     TheCarousel,
     FundItem
   },

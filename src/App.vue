@@ -37,5 +37,6 @@ h1 {
 }
 .router{
   margin-left: 230px;
+  width: calc(100%-230px);
 }
 </style>
