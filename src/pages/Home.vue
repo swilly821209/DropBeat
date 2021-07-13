@@ -1,5 +1,22 @@
 <template>
-  <base-button mode="outline" :active="{active: num === index}" @click="num = index" v-for="(type, index) in types" :key="type">{{ type }}</base-button>
+  <base-button
+    mode="outline"
+    :active="{active: num === index}"
+    @click="num = index"
+    v-for="(type, index) in types"
+    :key="type">
+    {{ type }}
+  </base-button>
+  <div class="space-x-4">
+  <base-button
+    mode="under-line"
+    :active="{active: num === index}"
+    @click="num = index"
+    v-for="(type, index) in types"
+    :key="type">
+    {{ type }}
+  </base-button>
+  </div>
   <hot-music></hot-music>
   <the-carousel></the-carousel>
   <base-title title="Showcase 演出活動" link to="/Find"></base-title>
