@@ -1,4 +1,5 @@
 <template>
+  <base-button mode="outline" :active="{active: num === index}" @click="num = index" v-for="(type, index) in types" :key="type">{{ type }}</base-button>
   <hot-music></hot-music>
   <div class="div_day_artist">
     <div class="div_day">
@@ -15,7 +16,8 @@
     </div>
   </div>
   <the-carousel></the-carousel>
-  <div class="flex w-11/12 mt-32 m-auto">
+  <base-title title="Showcase 演出活動" link to="/Find"></base-title>
+  <div class="flex w-11/12 justify-evenly m-auto">
     <fund-item
       v-for="item in fundItems"
       :title="item.title"
@@ -27,6 +29,7 @@
       :key="item.title">
     </fund-item>
   </div>
+  <base-card>ddddd</base-card>
   <div class="aa"></div>
 </template>
 
@@ -47,6 +50,8 @@ export default {
   },
   data () {
     return {
+      types: ['全部類型', 'jezzddd', 'bossdddd', 'youddd'],
+      num: 0,
       fundItems: [
         {
           title: '【 運氣來的若有似無 】專輯募資',
@@ -91,6 +96,11 @@ export default {
         { img: 'https://picsum.photos/700', author: '告五人', more: '#' },
         { img: 'https://picsum.photos/800', author: '告五人', more: '#' }
       ]
+    }
+  },
+  methods: {
+    change (num) {
+      this.num = num
     }
   }
 }

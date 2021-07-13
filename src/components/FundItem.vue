@@ -1,6 +1,6 @@
 <template>
-  <div class=" w-96 flex items-center flex-col space-y-5">
-    <img :src="img" alt="" class="w-10/12 h-64 rounded-3xl shadow-sm">
+  <div class=" w-80 flex items-center flex-col space-y-5">
+    <img :src="img" alt="" class="w-10/12 h-60 rounded-3xl shadow-sm">
     <div class="w-11/12 space-y-2">
       <h4 class=" text-lg">{{ title }}</h4>
       <p class=" mx-3">{{singer}}</p>
