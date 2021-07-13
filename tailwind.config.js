@@ -12,6 +12,7 @@ module.exports = {
       transparent: 'transparent',
       gray: {
         dark: '#7b7b7b',
+        default: '#EDEDED',
         light: '#B5b5b5',
         lightest: '#D6d6d6'
       },
@@ -20,6 +21,9 @@ module.exports = {
       },
       green: {
         light: '#A6ff00'
+      },
+      blue: {
+        light: '#31BDC5'
       },
       orange: '#FF9D83',
       white: '#FFF',

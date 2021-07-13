@@ -1,8 +1,9 @@
 <template>
+  <base-button mode="outline" :active="{active: num === index}" @click="num = index" v-for="(type, index) in types" :key="type">{{ type }}</base-button>
   <hot-music></hot-music>
   <the-carousel></the-carousel>
   <base-title title="Showcase 演出活動" link to="/Find"></base-title>
-  <div class="flex w-11/12 m-auto">
+  <div class="flex w-11/12 justify-evenly m-auto">
     <fund-item
       v-for="item in fundItems"
       :title="item.title"
@@ -31,6 +32,8 @@ export default {
   },
   data () {
     return {
+      types: ['全部類型', 'jezzddd', 'bossdddd', 'youddd'],
+      num: 0,
       fundItems: [
         {
           title: '【 運氣來的若有似無 】專輯募資',
@@ -65,6 +68,11 @@ export default {
           date: 22
         }
       ]
+    }
+  },
+  methods: {
+    change (num) {
+      this.num = num
     }
   }
 }
