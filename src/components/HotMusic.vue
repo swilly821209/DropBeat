@@ -2,43 +2,47 @@
     <div class="div_hotMusic">
       <div class="div_music_container">
         <div class="div_one_four">
-          <div class="div_music_info" v-for="(item,index) in 4" :key="item">
+          <div class="div_music_info" v-for="(item,index) in hotMusicListLeft" :key="item">
             <span class="span_num">{{index+1}}</span>
-            <span class="span_status">{{statusUp}}</span>
+            <span class="span_status">{{item.status}}</span>
             <div class="div_cover">
-              <img class="img_album" src="https://picsum.photos/900">
-              <div class="div_curtain"></div>
+              <img class="img_album" :src="item.img">
+              <div class="div_certain_container">
+                <div class="div_curtain"></div>
+              </div>
             </div>
             <div class="div_info_fun">
               <div class="div_name_info">
-                <span class="span_title">在這座城市遺失了你</span>
-                <span class="span_author">告五人</span>
+                <span class="span_title">{{item.title}}</span>
+                <span class="span_author">{{item.author}}</span>
               </div>
               <div class="div_fun">
                 <span class="share"></span>
                 <span class="add"></span>
-                <span class="like">789</span>
+                <span class="like">{{item.likes}}</span>
               </div>
             </div>
           </div>
         </div>
         <div class="div_five_nine">
-          <div class="div_music_info" v-for="(item,index) in 5" :key="item">
+          <div class="div_music_info" v-for="(item,index) in hotMusicListRight" :key="item">
             <span class="span_num">{{index+5}}</span>
-            <span class="span_status">{{statusDown}}</span>
+            <span class="span_status">{{item.status}}</span>
             <div class="div_cover">
-              <img class="img_album" src="https://picsum.photos/200">
-              <div class="div_curtain"></div>
+              <img class="img_album" :src="item.img">
+              <div class="div_certain_container">
+                <div class="div_curtain"></div>
+              </div>
             </div>
             <div class="div_info_fun">
               <div class="div_name_info">
-                <span class="span_title">在這座城市遺失了你</span>
-                <span class="span_author">告五人</span>
+                <span class="span_title">{{item.title}}</span>
+                <span class="span_author">{{item.author}}</span>
               </div>
               <div class="div_fun">
                 <span class="share"></span>
                 <span class="add"></span>
-                <span class="like">789</span>
+                <span class="like">{{item.likes}}</span>
               </div>
             </div>
           </div>
@@ -51,9 +55,19 @@
 export default {
   data () {
     return {
-      hot: 'hot',
-      statusUp: '▲',
-      statusDown: '▼'
+      hotMusicListLeft: [
+        { status: '－', img: 'https://picsum.photos/100', title: '在這座城市遺失了你', author: '告五人', likes: '877' },
+        { status: '▲', img: 'https://picsum.photos/200', title: '在這座城市遺失了你', author: '告五人', likes: '877' },
+        { status: '▲', img: 'https://picsum.photos/300', title: '在這座城市遺失了你', author: '告五人', likes: '877' },
+        { status: '▲', img: 'https://picsum.photos/400', title: '在這座城市遺失了你', author: '告五人', likes: '877' }
+      ],
+      hotMusicListRight: [
+        { status: '▼', img: 'https://picsum.photos/500', title: '在這座城市遺失了你', author: '告五人', likes: '877' },
+        { status: '▼', img: 'https://picsum.photos/600', title: '在這座城市遺失了你', author: '告五人', likes: '877' },
+        { status: '▼', img: 'https://picsum.photos/700', title: '在這座城市遺失了你', author: '告五人', likes: '877' },
+        { status: '▼', img: 'https://picsum.photos/800', title: '在這座城市遺失了你', author: '告五人', likes: '877' },
+        { status: '▼', img: 'https://picsum.photos/900', title: '在這座城市遺失了你', author: '告五人', likes: '877' }
+      ]
     }
   },
   methods: {
@@ -67,7 +81,7 @@ export default {
     display: flex;
     justify-content: center;
     width: 100%;
-    padding: 80px 20px;
+    padding: 80px 30px;
     color: #222222;
   }
   /* 音樂清單 */
@@ -78,7 +92,7 @@ export default {
   .div_one_four{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     margin-right: 20px;
     width: 50%;
   }
@@ -88,6 +102,8 @@ export default {
     justify-content:flex-start;
     margin: 10px 0;
     cursor: pointer;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #EDEDED;
   }
   /* hover */
   /* .img_album 變化 */
@@ -123,19 +139,27 @@ export default {
   /* ablum圖大小 */
   .div_cover{
     position: relative;
+    justify-content: center;
+    align-items: center;
     display: flex;
-    width: 150px;
   }
   .img_album{
     position: relative;
-    width: 80px;
+    width: 110px;
     height: 80px;
     border-radius: 10px;
   }
-  .div_curtain{
+  .div_certain_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position:absolute;
-    top: 20%;
-    left: 15%;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+  }
+  .div_curtain{
     width: 50px;
     height: 50px;
     background-image: url("../assets/icon/play.svg");
@@ -146,6 +170,7 @@ export default {
     opacity: 0;
   }
   .div_info_fun{
+    margin-left: 10px;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -211,17 +236,13 @@ export default {
     color: #999999;
   }
   /* 控制第一個album */
-  .div_one_four .div_music_info:nth-child(1) .div_cover{
-    width: 350px;
-  }
   .div_one_four .div_music_info:nth-child(1) .img_album{
-    width: 150px;
+    width: 250px;
     height: 150px;
   }
   .div_one_four .div_music_info:nth-child(1) .div_curtain{
-    left: 18%;
-    width: 90px;
-    height: 90px;
+    width: 80px;
+    height: 80px;
   }
   .div_one_four .div_music_info:nth-child(1) .div_info_fun{
     flex-direction: column;
@@ -232,5 +253,9 @@ export default {
   .div_one_four .div_music_info:nth-child(1) .like{
     background-image: url("../assets/icon/like_red.svg");
     color: #FF9D83;
+  }
+  /*  */
+  .div_music_info:last-child{
+    border-bottom: none;
   }
 </style>
