@@ -1,4 +1,5 @@
 <template>
+  <base-date></base-date>
   <base-button
     mode="outline"
     :active="{active: num === index}"

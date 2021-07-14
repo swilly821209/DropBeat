@@ -13,7 +13,7 @@ export default {
       default: null
     },
     active: {
-      type: String,
+      type: Object,
       required: false,
       default: null
     }
@@ -29,6 +29,9 @@ export default {
     @apply bg-blue-light text-white border-0
   }
   .under-line{
-    @apply border-b-4 border-gray-default py-1 px-2 transition-all
+    @apply bg-origin-border bg-border-bottom-5px bg-no-repeat bg-bottom py-1 px-2 border-b-4 border-gray-default hover:text-blue-light
+  }
+  .under-line.active{
+    @apply bg-gradient-to-r from-blue-light to-green-light border-transparent
   }
 </style>
