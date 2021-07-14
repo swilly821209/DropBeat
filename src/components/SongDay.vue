@@ -26,6 +26,7 @@
           <ellipse id="cd-2" data-name="cd" cx="183.5" cy="184" rx="183.5" ry="184" transform="translate(9 6)" fill="url(#pattern)"/>
         </g>
       </svg>
+      <span>{{daySong[0].title}} {{daySong[0].author}}</span>
     </div>
     <div class="div_song_info">
       <p><sup>10</sup>/<sub>10</sub></p>
@@ -35,9 +36,6 @@
         <span class="share"></span>
       </div>
     </div>
-  </div>
-  <div class="div_title_author">
-    <span>{{daySong[0].title}}</span><span>{{daySong[0].author}}</span>
   </div>
 </template>
 
@@ -74,7 +72,7 @@ export default {
   .div_song_day{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
     padding: 0 10px;
   }
@@ -132,15 +130,23 @@ export default {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    margin-left: 100px;
     height: 200px;
   }
   .div_song_info p {
     font-size: 24px;
     color: #7B7B7B;
   }
+  .div_the_song span {
+    position: absolute;
+    left: 0;
+    bottom: -30px;
+    color: #7B7B7B;
+  }
   .div_fun{
     display: flex;
     flex-direction: column;
+    color: #7B7B7B;
   }
   .div_fun span{
     margin: 3px;
@@ -148,8 +154,9 @@ export default {
     border: 1px solid #7B7B7B;
     border-radius: 20px;
     background-repeat: no-repeat;
-    background-size: 10px;
-    background-position: center;
+    background-size: 12px;
+    background-position-y: center;
+    background-position-x: 3px;
     cursor: pointer;
   }
   .share{
@@ -166,14 +173,5 @@ export default {
     background-image: url("../assets/icon/like.svg");
     width: 20px;
     height: 20px;
-  }
-  .div_title_author{
-    display: flex;
-    width: 100%;
-  }
-  .div_title_author span{
-    margin: 10px;
-    color: #7B7B7B;
-    font-size: 10px;
   }
 </style>
