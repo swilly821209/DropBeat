@@ -660,6 +660,16 @@ video {
   margin-right: 0.75rem;
 }
 
+.my-20 {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+.my-12 {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
 .my-8 {
   margin-top: 2rem;
   margin-bottom: 2rem;
@@ -670,36 +680,12 @@ video {
   margin-right: auto;
 }
 
-.my-14 {
-  margin-top: 3.5rem;
-  margin-bottom: 3.5rem;
-}
-
-.my-32 {
-  margin-top: 8rem;
-  margin-bottom: 8rem;
-}
-
-.my-12 {
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-}
-
-.my-20 {
-  margin-top: 5rem;
-  margin-bottom: 5rem;
-}
-
 .mt-48 {
   margin-top: 12rem;
 }
 
 .mt-2 {
   margin-top: 0.5rem;
-}
-
-.mt-8 {
-  margin-top: 2rem;
 }
 
 .mt-3 {
@@ -738,10 +724,6 @@ video {
   height: 0.75rem;
 }
 
-.h-5 {
-  height: 1.25rem;
-}
-
 .h-screen {
   height: 100vh;
 }
@@ -750,28 +732,12 @@ video {
   height: 24rem;
 }
 
-.h-64 {
-  height: 16rem;
-}
-
-.h-72 {
-  height: 18rem;
-}
-
-.h-\[800px\] {
-  height: 800px;
-}
-
-.h-3\/4 {
-  height: 75%;
-}
-
-.h-\[600px\] {
-  height: 600px;
-}
-
 .h-\[500px\] {
   height: 500px;
+}
+
+.h-5 {
+  height: 1.25rem;
 }
 
 .w-80 {
@@ -802,26 +768,6 @@ video {
   width: 60%;
 }
 
-.w-4\/5 {
-  width: 80%;
-}
-
-.w-5 {
-  width: 1.25rem;
-}
-
-.w-5\/6 {
-  width: 83.333333%;
-}
-
-.w-7\/12 {
-  width: 58.333333%;
-}
-
-.w-9\/12 {
-  width: 75%;
-}
-
 .w-5\/12 {
   width: 41.666667%;
 }
@@ -832,6 +778,10 @@ video {
 
 .w-8\/12 {
   width: 66.666667%;
+}
+
+.w-5 {
+  width: 1.25rem;
 }
 
 .max-w-2xl {
@@ -890,20 +840,8 @@ video {
   flex-wrap: wrap;
 }
 
-.content-center {
-  align-content: center;
-}
-
-.content-between {
-  align-content: space-between;
-}
-
 .content-around {
   align-content: space-around;
-}
-
-.content-evenly {
-  align-content: space-evenly;
 }
 
 .items-center {
@@ -924,10 +862,6 @@ video {
 
 .justify-evenly {
   justify-content: space-evenly;
-}
-
-.justify-items-center {
-  justify-items: center;
 }
 
 .space-y-5 > :not([hidden]) ~ :not([hidden]) {
@@ -1120,22 +1054,6 @@ video {
 .px-3 {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
-}
-
-.pt-\[30px\] {
-  padding-top: 30px;
-}
-
-.pt-14 {
-  padding-top: 3.5rem;
-}
-
-.pt-12 {
-  padding-top: 3rem;
-}
-
-.pt-10 {
-  padding-top: 2.5rem;
 }
 
 .pt-9 {
