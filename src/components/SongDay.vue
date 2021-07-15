@@ -72,9 +72,7 @@ export default {
   .div_song_day{
     display: flex;
     align-items: center;
-    justify-content: center;
     width: 100%;
-    padding: 0 10px;
   }
   .div_the_song{
     position: relative;

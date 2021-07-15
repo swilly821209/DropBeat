@@ -4,11 +4,11 @@
 
 @tailwind utilities;
 
-@layer base {
+/* @layer base {
   img {
     @apply inline-block;
   },
   svg {
     @apply inline-block;
   }
-}
+} */

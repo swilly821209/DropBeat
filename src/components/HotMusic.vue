@@ -150,7 +150,6 @@ export default {
     display: flex;
     justify-content: center;
     width: 100%;
-    padding: 0 30px;
     color: #222222;
   }
   /* 音樂清單 */

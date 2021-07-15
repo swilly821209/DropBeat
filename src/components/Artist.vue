@@ -21,8 +21,6 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0 6px;
-    margin-bottom: 10px;
   }
   .div_head{
     width: 80px;

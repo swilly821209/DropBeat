@@ -1,57 +1,47 @@
 <template>
-  <base-date></base-date>
-  <base-button
-    mode="outline"
-    :active="{active: num === index}"
-    @click="num = index"
-    v-for="(type, index) in types"
-    :key="type">
-    {{ type }}
-  </base-button>
-  <div class="space-x-4">
-  <base-button
-    mode="under-line"
-    :active="{active: num === index}"
-    @click="num = index"
-    v-for="(type, index) in types"
-    :key="type">
-    {{ type }}
-  </base-button>
+  <div class=" w-11/12 h-screen flex flex-col justify-center m-auto">
+    <base-title title="HOT 即時熱門" link to="/Charts"></base-title>
+    <hot-music></hot-music>
   </div>
-  <base-title title="HOT 即時熱門" link to="/Charts"></base-title>
-  <hot-music></hot-music>
-  <div class="div_day_artist">
-    <div class="div_day">
+  <div class="w-11/12 flex m-auto justify-between">
+    <div class="w-5/12 h-96 flex flex-col justify-evenly">
       <base-title title="Song of the Day 每日一曲"></base-title>
       <song-day></song-day>
     </div>
-    <div class="div_artist">
+    <div class="w-6/12 h-96 flex flex-col justify-between pt-9">
       <base-title title="Artist 大家都在聽" link to="/Find"></base-title>
-      <artist
-        v-for="item in artistList"
-        :img="item.img"
-        :author="item.author"
-        :more="item.more"
-        :key="item.author">
-      </artist>
+      <div class="w-8/12 flex flex-wrap justify-between h-80 content-around mt-3">
+        <artist
+          v-for="item in artistList"
+          :img="item.img"
+          :author="item.author"
+          :more="item.more"
+          :key="item.author">
+        </artist>
+      </div>
     </div>
   </div>
-  <the-carousel></the-carousel>
-  <base-title title="Showcase 演出活動" link to="/Find"></base-title>
-  <div class="flex w-11/12 justify-evenly m-auto">
-    <fund-item
-      v-for="item in fundItems"
-      :title="item.title"
-      :img="item.img"
-      :singer="item.singer"
-      :progress="item.progress"
-      :date="item.date"
-      :money="item.money"
-      :key="item.title">
-    </fund-item>
+  <div class="w-11/12 my-20 m-auto">
+    <div class="my-12">
+      <base-title title="Showcase 演出活動" link to="/Find"></base-title>
+    </div>
+    <the-carousel></the-carousel>
   </div>
-  <base-card>ddddd</base-card>
-  <div class="aa"></div>
+  <div class="w-11/12 m-auto flex flex-col h-[500px] justify-around">
+    <base-title title="Crowdfunding募資計畫" link to="/Funds"></base-title>
+    <div class="flex justify-evenly">
+      <fund-item
+        v-for="item in fundItems"
+        :title="item.title"
+        :img="item.img"
+        :singer="item.singer"
+        :progress="item.progress"
+        :date="item.date"
+        :money="item.money"
+        :key="item.title">
+      </fund-item>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -71,8 +61,6 @@ export default {
   },
   data () {
     return {
-      types: ['全部類型', 'jezzddd', 'bossdddd', 'youddd'],
-      num: 0,
       fundItems: [
         {
           title: '【 運氣來的若有似無 】專輯募資',
@@ -147,8 +135,5 @@ export default {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-  }
-  .aa{
-    height: 300vh;
   }
 </style>
