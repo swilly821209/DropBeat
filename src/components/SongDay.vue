@@ -45,7 +45,7 @@ export default {
     return {
       dd: 'songoftheday',
       daySong: [
-        { img: 'https://picsum.photos/100', title: '遺失了他在那城市裡', author: '他被告' }
+        { img: 'https://picsum.photos/100', title: '遺失了他在那城市裡', author: '告五人' }
       ],
       turnOn: 'off',
       playPause: require('../assets/icon/play.svg')

@@ -18,12 +18,15 @@
     {{ type }}
   </base-button>
   </div>
+  <base-title title="HOT 即時熱門" link to="/Charts"></base-title>
   <hot-music></hot-music>
   <div class="div_day_artist">
     <div class="div_day">
+      <base-title title="Song of the Day 每日一曲"></base-title>
       <song-day></song-day>
     </div>
     <div class="div_artist">
+      <base-title title="Artist 大家都在聽" link to="/Find"></base-title>
       <artist
         v-for="item in artistList"
         :img="item.img"
@@ -127,24 +130,23 @@ export default {
 <style scoped>
   .div_day_artist{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     width: 100%;
-    padding: 80px 30px;
+    padding: 40px 20px;
   }
   .div_day{
-    width: 50%;
+    width: 450px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
   }
   .div_artist{
+    width: 450px;
     display: flex;
-    /* flex-direction: column; */
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 50%;
   }
   .aa{
     height: 300vh;
