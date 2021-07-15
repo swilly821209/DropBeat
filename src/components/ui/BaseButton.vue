@@ -1,10 +1,7 @@
 <template>
-  <button v-if="!link" :class="mode">
+  <button  :class="[mode, active]" >
     <slot></slot>
   </button>
-  <router-link v-else :to="to" :class="mode">
-    <slot></slot>
-  </router-link>
 </template>
 
 <script>
@@ -15,59 +12,26 @@ export default {
       required: false,
       default: null
     },
-    link: {
-      type: Boolean,
+    active: {
+      type: Object,
       required: false,
-      default: false
-    },
-    to: {
-      type: String,
-      required: false,
-      default: '/'
+      default: null
     }
   }
 }
 </script>
 
-<style scoped>
-button,
-a {
-  text-decoration: none;
-  padding: 0.75rem 1.5rem;
-  font: inherit;
-  background-color: #3a0061;
-  border: 1px solid #3a0061;
-  color: white;
-  cursor: pointer;
-  border-radius: 30px;
-  margin-right: 0.5rem;
-  display: inline-block;
-}
-
-a:hover,
-a:active,
-button:hover,
-button:active {
-  background-color: #270041;
-  border-color: #270041;
-}
-
-.flat {
-  background-color: transparent;
-  color: #3a0061;
-  border: none;
-}
-
-.outline {
-  background-color: transparent;
-  border-color: #270041;
-  color: #270041;
-}
-
-.flat:hover,
-.flat:active,
-.outline:hover,
-.outline:active {
-  background-color: #edd2ff;
-}
+<style lang="postcss" scoped>
+  .outline{
+    @apply border-gray-default text-gray-dark border-2 py-1 px-3 rounded-2xl hover:border-blue-light
+  }
+  .outline.active{
+    @apply bg-blue-light text-white border-0
+  }
+  .under-line{
+    @apply bg-origin-border bg-border-bottom-5px bg-no-repeat bg-bottom py-1 px-2 border-b-4 border-gray-default hover:text-blue-light
+  }
+  .under-line.active{
+    @apply bg-gradient-to-r from-blue-light to-green-light border-transparent
+  }
 </style>

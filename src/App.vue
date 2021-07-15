@@ -23,15 +23,16 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/earlyaccess/notosanstc.css');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 * {
   box-sizing: border-box;
   text-decoration: none;
   list-style: none;
+  font-family: "Roboto", 'Noto Sans TC';
 }
 html, body {
   margin: 0;
-  font-family: "Roboto", sans-serif;
 }
 ul {
   padding-left: 0;
