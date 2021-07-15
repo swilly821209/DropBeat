@@ -1,5 +1,5 @@
 <template>
-<div @mouseleave="autoCarousel" @mouseenter="cancelCarousel" class="w-11/12 m-auto">
+<div @mousleave="autoCarousel" @mouseenter="cancelCarousel" class="w-11/12 m-auto">
       <div class="relative flex justify-center h-80">
          <div class="carousel-item" :class="classItems[0]" @click="changeCarousel(3)" :style="`background-image: url(${carouselActivity[0].Image})`">
             <div class="p-2.5 px-10 h-1/3 bg-black-backdrop mt-48 bg-opacity-80">
@@ -196,7 +196,7 @@ export default {
     @apply  w-3/5 max-w-2xl h-80 absolute rounded-3xl overflow-hidden transition-all duration-1000 cursor-pointer
   }
   .item1 {
-    @apply transform -translate-x-2/4 scale-50 z-20 filter blur-sm
+    @apply transform -translate-x-3/4 scale-50 z-20 filter blur-sm
   }
   .item2 {
     @apply transform -translate-x-1/4 scale-75 z-30 filter blur-xs
@@ -208,6 +208,6 @@ export default {
     @apply transform translate-x-1/4 scale-75 z-30 filter blur-xs
   }
   .item5{
-    @apply transform translate-x-2/4 scale-50 z-20 filter blur-sm
+    @apply transform translate-x-3/4 scale-50 z-20 filter blur-sm
   }
 </style>

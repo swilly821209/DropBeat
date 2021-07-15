@@ -10,7 +10,7 @@ import BaseCard from './components/ui/BaseCard.vue'
 import BaseTitle from './components/ui/BaseTitle.vue'
 import BaseDate from './components/ui/BaseDate.vue'
 
-import './assets/tailwind.css'
+import 'virtual:windi.css'
 
 const app = createApp(App)
 
