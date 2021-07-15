@@ -3,17 +3,21 @@
   <the-aside></the-aside>
   <div class="router">
     <router-view />
+      <singleMusic></singleMusic>
   </div>
+
 </template>
 
 <script>
 import TheAside from './components/layout/TheAside.vue'
 import TheHeader from './components/layout/TheHeader.vue'
+import singleMusic from './components/singleMusic'
 
 export default {
   components: {
     TheAside,
-    TheHeader
+    TheHeader,
+    singleMusic
   }
 }
 </script>
