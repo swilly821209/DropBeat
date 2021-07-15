@@ -23,7 +23,16 @@
   <div class="div_day_artist">
     <div class="div_day">
       <base-title title="Song of the Day 每日一曲"></base-title>
-      <song-day></song-day>
+      <cd-player
+        likes date asong
+        :songimg="theCDsong.img"
+        :titles="theCDsong.title"
+        :author="theCDsong.author"
+        :albumname="theCDalbum.name"
+        :years="theCDalbum.years"
+        :songnum="theCDalbum.songnum"
+        :times="theCDalbum.times"
+      ></cd-player>
     </div>
     <div class="div_artist">
       <base-title title="Artist 大家都在聽" link to="/Find"></base-title>
@@ -56,7 +65,7 @@
 
 <script>
 import HotMusic from '../components/HotMusic.vue'
-import SongDay from '../components/SongDay.vue'
+import CdPlayer from '../components/CdPlayer.vue'
 import Artist from '../components/Artist.vue'
 import TheCarousel from '../components/TheCarousel.vue'
 import FundItem from '../components/FundItem.vue'
@@ -64,7 +73,7 @@ import FundItem from '../components/FundItem.vue'
 export default {
   components: {
     HotMusic,
-    SongDay,
+    CdPlayer,
     Artist,
     TheCarousel,
     FundItem
@@ -116,7 +125,18 @@ export default {
         { img: 'https://picsum.photos/600', author: '告五人', more: '#' },
         { img: 'https://picsum.photos/700', author: '告五人', more: '#' },
         { img: 'https://picsum.photos/800', author: '告五人', more: '#' }
-      ]
+      ],
+      theCDsong: {
+        img: 'https://picsum.photos/900',
+        title: '披星戴月的想你',
+        author: '告五人'
+      },
+      theCDalbum: {
+        name: '你要不要吃哈密瓜',
+        years: 2021,
+        songnum: 12,
+        times: '00:51:03'
+      }
     }
   },
   methods: {
