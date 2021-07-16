@@ -2,7 +2,7 @@
   <div>
     <div class="block">
       <img src="../assets/images/singlemusic/s_001.jpg" />
-      <h4>在這座城市遺失了你</h4>
+      <h4>{{singleTitle}}</h4>
       <div class="total">
         <div class="playtotal">
           <img src="../assets/icon/play_total.svg" />
@@ -12,7 +12,6 @@
           class="liketotal"
           :class="{ clicklike: active }"
           @click="active = !active"
-          :aria-pressed="active ? 'true' : 'false'"
         >
           <span class="likeicon"></span>
           <p>{{ account }}</p>
@@ -27,8 +26,9 @@ export default {
   data () {
     return {
       active: false,
-      account: 789,
-      playaccount: 9101987
+      singleTitle: '在這座城市遺失了你',
+      playaccount: 9101987,
+      account: 789
     }
   }
 }
