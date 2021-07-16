@@ -182,7 +182,7 @@ export default {
   }
   .div_song_info{
     position: relative;
-    margin-left: 100px;
+    margin-left: 120px;
     height: 220px;
   }
   .p_date {

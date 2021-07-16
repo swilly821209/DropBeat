@@ -58,12 +58,11 @@ export default {
     margin-bottom: 10px;
   }
   .div_head{
-    width: 80px;
     position: relative;
   }
   .div_head img{
-    width: 80px;
-    border-radius: 50px;
+    width: 6vw;
+    border-radius: 50%;
   }
   /* curtain */
   .div_certain_container{
