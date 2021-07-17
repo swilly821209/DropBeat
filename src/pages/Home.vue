@@ -1,13 +1,17 @@
 <template>
+<<<<<<< HEAD
 <div class="range">
   <div class="flex flex-col justify-center m-auto">
+=======
+  <div class=" w-11/12 flex flex-col justify-center m-auto pt-20">
+>>>>>>> 06d022416a9e70ea6e124ef68d41d98909b602da
     <base-title title="HOT 即時熱門" link to="/Charts"></base-title>
     <hot-music></hot-music>
   </div>
-  <div class="w-11/12 flex m-auto justify-between">
-    <div class="w-5/12 h-96 flex flex-col justify-evenly">
+  <div class="w-11/12 flex m-auto justify-between mt-20">
+    <div class="w-6/12 flex flex-col">
       <base-title title="Song of the Day 每日一曲"></base-title>
-      <cd-player
+      <cd-player class="h-72"
         likes date asong
         :songimg="theCDsong.img"
         :titles="theCDsong.title"
@@ -18,11 +22,13 @@
         :times="theCDalbum.times"
       ></cd-player>
     </div>
-    <div class="w-6/12 h-96 flex flex-col justify-between pt-9">
+    <div class="w-6/12 flex flex-col">
       <base-title title="Artist 大家都在聽" link to="/Find"></base-title>
-      <div class="w-8/12 flex flex-wrap justify-between h-80 content-around mt-3">
+      <div class="w-10/12 flex flex-wrap justify-around h-96 content-around">
         <artist
-          v-for="item in artistList"
+          v-for="(item, index) in artistList"
+          @click="playFun(index)"
+          :play="item.play"
           :img="item.img"
           :author="item.author"
           :more="item.more"
@@ -107,14 +113,14 @@ export default {
         }
       ],
       artistList: [
-        { img: 'https://picsum.photos/100', author: '告五人', more: '#' },
-        { img: 'https://picsum.photos/200', author: '告五人', more: '#' },
-        { img: 'https://picsum.photos/300', author: '告五人', more: '#' },
-        { img: 'https://picsum.photos/400', author: '告五人', more: '#' },
-        { img: 'https://picsum.photos/500', author: '告五人', more: '#' },
-        { img: 'https://picsum.photos/600', author: '告五人', more: '#' },
-        { img: 'https://picsum.photos/700', author: '告五人', more: '#' },
-        { img: 'https://picsum.photos/800', author: '告五人', more: '#' }
+        { play: false, img: 'https://picsum.photos/100', author: '告五人', more: '#' },
+        { play: false, img: 'https://picsum.photos/200', author: '告五人', more: '#' },
+        { play: false, img: 'https://picsum.photos/300', author: '告五人', more: '#' },
+        { play: false, img: 'https://picsum.photos/400', author: '告五人', more: '#' },
+        { play: false, img: 'https://picsum.photos/500', author: '告五人', more: '#' },
+        { play: false, img: 'https://picsum.photos/600', author: '告五人', more: '#' },
+        { play: false, img: 'https://picsum.photos/700', author: '告五人', more: '#' },
+        { play: false, img: 'https://picsum.photos/800', author: '告五人', more: '#' }
       ],
       theCDsong: {
         img: 'https://picsum.photos/900',
@@ -132,12 +138,19 @@ export default {
   methods: {
     change (num) {
       this.num = num
+    },
+    playFun (index) {
+      if (this.artistList[index].play === false) {
+        this.artistList.forEach(item => { item.play = false })
+      }
+      this.artistList[index].play = !this.artistList[index].play
     }
   }
 }
 </script>
 
 <style scoped>
+<<<<<<< HEAD
 .range{
   /* border: 1px solid red; */
   padding: 60px 40px 150px 40px;
@@ -162,4 +175,6 @@ export default {
     justify-content: center;
     align-items: center;
   }
+=======
+>>>>>>> 06d022416a9e70ea6e124ef68d41d98909b602da
 </style>
