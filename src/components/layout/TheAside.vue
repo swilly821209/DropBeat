@@ -202,7 +202,8 @@ export default {
   }
   /* logo */
   .div_logo{
-    margin-right: 20px;
+    /* margin-right: 20px; */
+    margin-right: 0px;
     margin-bottom: 20px;
   }
   .img_logo{

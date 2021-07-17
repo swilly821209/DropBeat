@@ -1,5 +1,6 @@
 <template>
-  <div class=" w-11/12 h-screen flex flex-col justify-center m-auto">
+<div class="range">
+  <div class="flex flex-col justify-center m-auto">
     <base-title title="HOT 即時熱門" link to="/Charts"></base-title>
     <hot-music></hot-music>
   </div>
@@ -37,7 +38,7 @@
     <the-carousel></the-carousel>
   </div>
   <div class="w-11/12 m-auto flex flex-col h-[500px] justify-around">
-    <base-title title="Crowdfunding募資計畫" link to="/Funds"></base-title>
+    <base-title title="Crowdfunding 募資計畫" link to="/Funds"></base-title>
     <div class="flex justify-evenly">
       <fund-item
         v-for="item in fundItems"
@@ -50,6 +51,7 @@
         :key="item.title">
       </fund-item>
     </div>
+  </div>
   </div>
 </template>
 
@@ -136,6 +138,10 @@ export default {
 </script>
 
 <style scoped>
+.range{
+  /* border: 1px solid red; */
+  padding: 60px 40px 150px 40px;
+}
   .div_day_artist{
     display: flex;
     justify-content: space-around;

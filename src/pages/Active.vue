@@ -53,8 +53,8 @@ export default {
 
 <style scoped>
 .range {
-  /* border: 1px solid red; */
-  padding: 75px 40px 150px 40px;
+  border: 1px solid red;
+  padding: 60px 40px 150px 40px;
 }
 .pre {
   /* border: 1px solid red; */

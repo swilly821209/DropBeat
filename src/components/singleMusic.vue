@@ -93,9 +93,6 @@ p {
 .liketotal:hover .likeicon {
   background-image: url("../assets/icon/like_white.svg");
 }
-.clicklike {
-  border: 2px solid #ff9d83;
-}
 .clicklike > p {
   color: #ff9d83;
 }
