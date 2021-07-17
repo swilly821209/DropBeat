@@ -3,7 +3,9 @@
     <div class="flex items-center w-96 justify-evenly">
       <audio-icon v-if="playing"></audio-icon>
       <p v-else class="text-3xl text-gray-dark tracking-wider font-medium w-10">{{ num }}</p>
-      <img :src="imgSrc" :alt="imgSrc" class="h-36 w-36 rounded-2xl before:cursor-pointer before:w-36 before:h-36 before:absolute before:top-0 before:bg-blue-defult before:block" @click="playing = !playing">
+      <div class>
+        <img :src="imgSrc" :alt="imgSrc" class="h-36 w-36 rounded-2xl" @click="playing = !playing">
+      </div>
       <div class=" space-y-2 text-black-backdrop">
         <h4 class="text-lg transition-all hover:text-blue-light" :class="{'text-blue-light': playing}">{{ musicName }}</h4>
         <p class=" text-gray-dark">{{ singer }}</p>

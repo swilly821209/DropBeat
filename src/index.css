@@ -1149,8 +1149,14 @@ video {
   padding-right: 4rem;
 }
 
-.pt-20 {
-  padding-top: 5rem;
+.px-12 {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+.px-14 {
+  padding-left: 3.5rem;
+  padding-right: 3.5rem;
 }
 
 .text-lg {
@@ -1199,6 +1205,11 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgba(255, 255, 255, var(--tw-text-opacity));
+}
+
+.text-gray-medium {
+  --tw-text-opacity: 1;
+  color: rgba(150, 150, 150, var(--tw-text-opacity));
 }
 
 .placeholder-gray-dark::-moz-placeholder {
