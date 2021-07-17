@@ -10,8 +10,8 @@
                   <span class=" rounded-full border border-white text-white hover:text-gray-dark px-2 py-1 hover:bg-white" v-for="singer in carouselActivity[0].singers" :key="singer">{{ singer }}</span>
                 </div>
                 <div class="flex space-x-2">
-                  <span class="border border-white hover:border-green-light rounded-full flex justify-center items-center text-white hover:text-green-light">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"/></svg>
+                  <span class="border border-white hover:border-green-light rounded-full flex justify-center items-center text-white hover:text-green-light w-6 h-6">
+                    <svg height='17px' width='17px'  fill="currentColor" xmlns="http://www.w3.org/2000/svg" version="1.1" data-icon="share" data-container-transform="translate(0 1)" viewBox="0 0 16 16" x="0px" y="0px"><path d="M11 0v3h-1c-8 0-10 4.1-10 10 1-4 4-5 8-5h3v3l5-5.313-5-5.688z" transform="translate(0 1)"></path></svg>
                   </span>
                   <button class="rounded-full text-white hover:border-green-light hover:text-green-light border border-white px-2">想參加</button>
                 </div>
@@ -27,8 +27,8 @@
                   <span class=" rounded-full border border-white text-white hover:text-gray-dark px-2 py-1 hover:bg-white" v-for="singer in carouselActivity[1].singers" :key="singer">{{ singer }}</span>
                 </div>
                 <div class="flex space-x-2">
-                  <span class="border border-white hover:border-green-light rounded-full flex justify-center items-center text-white hover:text-green-light">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"/></svg>
+                  <span class="border border-white hover:border-green-light rounded-full flex justify-center items-center text-white hover:text-green-light w-6 h-6">
+                    <svg height='17px' width='17px'  fill="currentColor" xmlns="http://www.w3.org/2000/svg" version="1.1" data-icon="share" data-container-transform="translate(0 1)" viewBox="0 0 16 16" x="0px" y="0px"><path d="M11 0v3h-1c-8 0-10 4.1-10 10 1-4 4-5 8-5h3v3l5-5.313-5-5.688z" transform="translate(0 1)"></path></svg>
                   </span>
                   <button class="rounded-full text-white hover:border-green-light hover:text-green-light border border-white px-2">想參加</button>
                 </div>
@@ -44,8 +44,8 @@
                   <span class=" rounded-full border border-white text-white hover:text-gray-dark px-2 py-1 hover:bg-white" v-for="singer in carouselActivity[2].singers" :key="singer">{{ singer }}</span>
                 </div>
                 <div class="flex space-x-2">
-                  <span class="border border-white hover:border-green-light rounded-full flex justify-center items-center text-white hover:text-green-light">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"/></svg>
+                  <span class="border border-white hover:border-green-light rounded-full flex justify-center items-center text-white hover:text-green-light w-6 h-6">
+                    <svg height='17px' width='17px'  fill="currentColor" xmlns="http://www.w3.org/2000/svg" version="1.1" data-icon="share" data-container-transform="translate(0 1)" viewBox="0 0 16 16" x="0px" y="0px"><path d="M11 0v3h-1c-8 0-10 4.1-10 10 1-4 4-5 8-5h3v3l5-5.313-5-5.688z" transform="translate(0 1)"></path></svg>
                   </span>
                   <button class="rounded-full text-white hover:border-green-light hover:text-green-light border border-white px-2">想參加</button>
                 </div>
@@ -61,8 +61,8 @@
                   <span class=" rounded-full border border-white text-white hover:text-gray-dark px-2 py-1 hover:bg-white" v-for="singer in carouselActivity[3].singers" :key="singer">{{ singer }}</span>
                 </div>
                 <div class="flex space-x-2">
-                  <span class="border border-white hover:border-green-light rounded-full flex justify-center items-center text-white hover:text-green-light">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"/></svg>
+                  <span class="border border-white hover:border-green-light rounded-full flex justify-center items-center text-white hover:text-green-light w-6 h-6">
+                    <svg height='17px' width='17px'  fill="currentColor" xmlns="http://www.w3.org/2000/svg" version="1.1" data-icon="share" data-container-transform="translate(0 1)" viewBox="0 0 16 16" x="0px" y="0px"><path d="M11 0v3h-1c-8 0-10 4.1-10 10 1-4 4-5 8-5h3v3l5-5.313-5-5.688z" transform="translate(0 1)"></path></svg>
                   </span>
                   <button class="rounded-full text-white hover:border-green-light hover:text-green-light border border-white px-2">想參加</button>
                 </div>
@@ -78,8 +78,8 @@
                   <span class=" rounded-full border border-white text-white hover:text-gray-dark px-2 py-1 hover:bg-white" v-for="singer in carouselActivity[4].singers" :key="singer">{{ singer }}</span>
                 </div>
                 <div class="flex space-x-2">
-                  <span class="border border-white hover:border-green-light rounded-full flex justify-center items-center text-white hover:text-green-light">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"/></svg>
+                  <span class="border border-white hover:border-green-light rounded-full flex justify-center items-center text-white hover:text-green-light w-6 h-6">
+                    <svg height='17px' width='17px'  fill="currentColor" xmlns="http://www.w3.org/2000/svg" version="1.1" data-icon="share" data-container-transform="translate(0 1)" viewBox="0 0 16 16" x="0px" y="0px"><path d="M11 0v3h-1c-8 0-10 4.1-10 10 1-4 4-5 8-5h3v3l5-5.313-5-5.688z" transform="translate(0 1)"></path></svg>
                   </span>
                   <button class="rounded-full text-white hover:border-green-light hover:text-green-light border border-white px-2">想參加</button>
                 </div>

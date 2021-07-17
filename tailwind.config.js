@@ -1,4 +1,5 @@
 module.exports = {
+  applyComplexClasses: true,
   purge: ['./public/**/*.html', './src/**/*.vue'],
   darkMode: false, // or 'media' or 'class'
   mode: 'jit',
@@ -25,10 +26,12 @@ module.exports = {
           backdrop: '#383838'
         },
         green: {
-          light: '#A6ff00'
+          light: '#A6ff00',
+          default: '#73E356'
         },
         blue: {
-          light: '#31BDC5'
+          light: '#31BDC5',
+          defult: '#49CB9D'
         },
         orange: '#FF9D83',
         leightGray: '#ededed'
