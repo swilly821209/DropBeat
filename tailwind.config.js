@@ -15,12 +15,13 @@ module.exports = {
         xs: '1px',
       },
       textColor: theme => theme('colors'),
-      colors:{
+      colors: {
         gray: {
           dark: '#7b7b7b',
           default: '#EDEDED',
           light: '#B5b5b5',
-          lightest: '#D6d6d6'
+          lightest: '#D6d6d6',
+          medium: '#969696'
         },
         black: {
           backdrop: '#383838'

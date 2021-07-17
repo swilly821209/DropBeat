@@ -4,6 +4,7 @@
   <div class="router">
     <router-view />
       <singleMusic></singleMusic>
+      <the-footer></the-footer>
   </div>
 
 </template>
@@ -12,12 +13,14 @@
 import TheAside from './components/layout/TheAside.vue'
 import TheHeader from './components/layout/TheHeader.vue'
 import singleMusic from './components/singleMusic'
+import TheFooter from './components/layout/TheFooter.vue'
 
 export default {
   components: {
     TheAside,
     TheHeader,
-    singleMusic
+    singleMusic,
+    TheFooter
   }
 }
 </script>

@@ -44,7 +44,7 @@
         </div>
         <div class="div_five_nine">
           <div class="div_music_info" v-for="(item,index) in hotMusicListRight" :key="item">
-            <span class="span_num">
+            <span class="span_num" style="fontSize:30px;color:#7b7b7b">
               <span v-if="item.play === false">{{index+5}}</span>
               <svg v-else xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15" height="28.571" viewBox="0 0 25 28.571">
                 <defs>
@@ -73,11 +73,11 @@
               <div class="div_fun">
                 <span class="share"></span>
                 <span class="add"></span>
-                <span class="like" @click="toggleHearts(index)" :style="item.numColor">
+                <span class="like" @click="toggleHearts(index)" :style="item.numColor" >
                   <svg xmlns="http://www.w3.org/2000/svg" width="14.627" height="12.799" viewBox="0 0 14.627 12.799">
-                    <path id="Icon_awesome-heart" data-name="Icon awesome-heart" d="M13.206,3.123a3.907,3.907,0,0,0-5.331.389l-.563.58-.563-.58a3.906,3.906,0,0,0-5.331-.389,4.1,4.1,0,0,0-.283,5.939L6.664,14.77a.9.9,0,0,0,1.294,0l5.528-5.708a4.1,4.1,0,0,0-.28-5.939Z" transform="translate(0.001 -2.248)" :fill="item.heart"/>
+                    <path id="Icon_awesome-heart" data-name="Icon awesome-heart" d="M13.206,3.123a3.907,3.907,0,0,0-5.331.389l-.563.58-.563-.58a3.906,3.906,0,0,0-5.331-.389,4.1,4.1,0,0,0-.283,5.939L6.664,14.77a.9.9,0,0,0,1.294,0l5.528-5.708a4.1,4.1,0,0,0-.28-5.939Z" transform="translate(0.001 -2.248)" :fill="item.heart" />
                   </svg>
-                  {{item.likes}}
+                  <p>{{item.likes}}</p>
                 </span>
               </div>
             </div>
@@ -161,7 +161,7 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    margin-right: 20px;
+    margin-right: 60px;
     width: 50%;
   }
   .div_music_info{
@@ -173,18 +173,24 @@ export default {
     padding-bottom: 20px;
     border-bottom: 1px solid #EDEDED;
   }
+  .span_num{
+    width:35px;
+    font-size: 30px;
+    font-weight: 600;
+    color: #7b7b7b;
+  }
+  .span_title{
+    font-size: 16px;
+    color:#383838;
+  }
+  .span_author{
+    font-size: 14px;
+    color:#7b7b7b;
+  }
   /* hover */
   /* .img_album 變化 */
   .div_music_info:hover .span_title{
     color: #31BDC5;
-  }
-  .div_music_info:hover .div_fun span.share{
-    background-color: #999999;
-    color: white;
-  }
-  .div_music_info:hover .div_fun span.add{
-    background-color: #999999;
-    color: white;
   }
   .div_music_info:hover .div_curtain{
     width: 60px;
@@ -196,18 +202,7 @@ export default {
     height: 60px;
     opacity: .9;
   }
-  /* 三個icon */
-  .div_music_info:hover .share{
-    background-image: url("../assets/icon/share_white.svg");
-  }
-  .div_music_info:hover .add{
-    background-image: url("../assets/icon/add_white.svg");
-  }
-  .span_num{
-    font-size: 20px;
-    font-weight: bolder;
-    color: #222222;
-  }
+
   /* 控制播放符號動畫 */
   .span_num svg{
     animation: songmove 2s linear infinite backwards;
@@ -229,13 +224,14 @@ export default {
       transform: translateY(0);
     }
   }
+
   /* 上昇下降情況 */
   .gray{
-    margin: 0 5px;
+    margin: 5px 12px 0 5px;
     color: #B5B5B5;
   }
   .blue{
-    margin: 0 5px;
+    margin: 5px 12px 0 5px;
     color: #31BDC5;
   }
   /* ablum圖大小 */
@@ -277,7 +273,7 @@ export default {
   .div_curtain{
     width: 40px;
     height: 40px;
-    background-image: url("../assets/icon/play.svg");
+    background-image: url("../assets/icon/play_fff.svg");
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 10px;
@@ -287,7 +283,7 @@ export default {
   .div_curtains{
     width: 50px;
     height: 50px;
-    background-image: url("../assets/icon/pause.svg");
+    background-image: url("../assets/icon/pause_fff.svg");
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 10px;
@@ -308,44 +304,50 @@ export default {
     align-items: center;
     justify-content: center;
   }
-  .div_fun span{
-    margin: 3px;
-    color: #999999;
-    padding-right: 4px;
-    border: 1px solid #999999;
-    border-radius: 20px;
-    font-size: 12px;
-  }
   /* icon設定 */
-  .share{
-    background-image: url("../assets/icon/share.svg");
-    background-position-y: center;
-    background-position-x: 3px;
+  .share, .add{
+    border: 2px solid #ededed;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    margin-right: 8px;
     background-repeat: no-repeat;
-    background-size: 12px;
-    width: 20px;
-    height: 20px;
+    cursor: pointer;
+  }
+  .share{
+    background-image: url("../assets/icon/share_b5.svg");
   }
   .add{
-    background-image: url("../assets/icon/add.svg");
-    background-position-y: center;
-    background-position-x: 3px;
-    background-repeat: no-repeat;
-    background-size: 12px;
-    width: 20px;
-    height: 20px;
+    background-image: url("../assets/icon/add_b5.svg");
+  }
+  .share:hover{
+    border: 2px solid #b5b5b5;
+    background-color: #b5b5b5;
+    background-image: url("../assets/icon/share_fff.svg");
+  }
+  .add:hover{
+    border: 2px solid #b5b5b5;
+    background-color: #b5b5b5;
+    background-image: url("../assets/icon/add_fff.svg");
   }
   .like{
     display: flex;
-    width: 50px;
-    height: 20px;
-    text-align: end;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    font-size: 12px;
+    border: 2px solid #ededed;
+    border-radius: 20px;
+    height: 25px;
   }
-  /* 小icon */
-  .div_fun span img{
-    width: 12px;
-    height: 12px;
+  /* 調整like位置 */
+  svg{
+    margin: 1px 3px 0 0;
   }
+  /* #numColor{
+    color: #FF9D83;
+  } */
+
   /* 右半邊 */
   .div_five_nine{
     display: flex;
@@ -354,8 +356,8 @@ export default {
   }
   /* 控制第一個album */
   .div_one_four .div_music_info:nth-child(1) .img_album{
-    width: 250px;
-    height: 150px;
+    width: 320px;
+    height: 180px;
   }
   .div_one_four .div_music_info:nth-child(1) .div_curtain {
     width: 70px;
@@ -373,17 +375,11 @@ export default {
     flex-direction: column;
   }
   .div_one_four .div_music_info:nth-child(1) .div_info_fun .div_fun{
+    margin-top: 20px;
     align-self: flex-end;
   }
   /* 底線 */
   .div_music_info:last-child{
     border-bottom: none;
-  }
-  /* 調整like位置 */
-  svg{
-    margin: 3px;
-  }
-  #numColor{
-    color: #FF9D83;
   }
 </style>
