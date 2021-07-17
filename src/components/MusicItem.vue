@@ -3,9 +3,10 @@
     <div class="flex items-center w-96 justify-evenly">
       <audio-icon v-if="playing"></audio-icon>
       <p v-else class="text-3xl text-gray-dark tracking-wider font-medium w-10">{{ num }}</p>
-      <div class=" relative">
-        <img :src="imgSrc" :alt="imgSrc" class="h-36 w-36 rounded-2xl" @click="playing = !playing">
-        <div class="absolute bg-black-backdrop bg-opacity-60"></div>
+      <div class=" relative group " @click="playing = !playing">
+        <img :src="imgSrc" :alt="imgSrc" class="h-36 w-36 rounded-2xl" >
+        <div class="absolute bg-black-backdrop bg-opacity-60 h-36 w-36 rounded-2xl top-0 invisible group-hover:visible bg-50% bg-no-repeat bg-center"
+             :style="`background-image: url(${backdropImg})`"></div>
       </div>
       <div class=" space-y-2 text-black-backdrop">
         <h4 class="text-lg transition-all hover:text-blue-light" :class="{'text-blue-light': playing}">{{ musicName }}</h4>
@@ -19,9 +20,9 @@
           <img src="../assets/icon/play_total.svg" />
           <span>{{ playAccountString }}</span>
         </div>
-        <div class="rounded-2xl border-gray-light border text-gray-light flex items-center justify-center px-3 hover:text-white hover:bg-gray-light space-x-1">
+        <div @click="toggleLike" :class="{'text-orange': like}" class="rounded-2xl border-gray-light border text-gray-light flex items-center justify-center px-3 hover:text-white hover:bg-gray-light space-x-1">
           <svg class="" xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-          <span>{{ likeAccount }}</span>
+          <span>{{ likeNum }}</span>
         </div>
         <span class="border border-gray-light hover:border-gray-light rounded-3xl flex justify-center items-center text-gray-light hover:text-white hover:bg-gray-light w-6 h-6">
           <svg height='17px' width='17px'  fill="currentColor" xmlns="http://www.w3.org/2000/svg" version="1.1" data-icon="share" data-container-transform="translate(0 1)" viewBox="0 0 16 16" x="0px" y="0px"><path d="M11 0v3h-1c-8 0-10 4.1-10 10 1-4 4-5 8-5h3v3l5-5.313-5-5.688z" transform="translate(0 1)"></path></svg>
@@ -43,7 +44,9 @@ export default {
   },
   data () {
     return {
-      playing: false
+      playing: false,
+      like: false,
+      likeNum: this.likeAccount
     }
   },
   computed: {
@@ -54,6 +57,23 @@ export default {
     },
     playAccountString () {
       return this.playAccount.toLocaleString()
+    },
+    backdropImg () {
+      if (this.playing) {
+        return require('../assets/icon/pause.svg')
+      } else {
+        return require('../assets/icon/play.svg')
+      }
+    }
+  },
+  methods: {
+    toggleLike () {
+      if (this.like === false) {
+        this.likeNum++
+      } else {
+        this.likeNum--
+      }
+      this.like = !this.like
     }
   }
 }

@@ -615,12 +615,20 @@ video {
   --tw-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
 }
 
+.invisible {
+  visibility: hidden;
+}
+
 .absolute {
   position: absolute;
 }
 
 .relative {
   position: relative;
+}
+
+.top-0 {
+  top: 0px;
 }
 
 .right-10 {
@@ -633,10 +641,6 @@ video {
 
 .right-3 {
   right: 0.75rem;
-}
-
-.top-0 {
-  top: 0px;
 }
 
 .z-20 {
@@ -790,8 +794,8 @@ video {
   width: 0.25rem;
 }
 
-.w-80 {
-  width: 20rem;
+.w-72 {
+  width: 18rem;
 }
 
 .w-10\/12 {
@@ -822,10 +826,6 @@ video {
   width: 450px;
 }
 
-.w-72 {
-  width: 18rem;
-}
-
 .w-6 {
   width: 1.5rem;
 }
@@ -846,16 +846,20 @@ video {
   width: 50%;
 }
 
-.w-5 {
-  width: 1.25rem;
-}
-
 .w-52 {
   width: 13rem;
 }
 
-.w-44 {
-  width: 11rem;
+.w-5 {
+  width: 1.25rem;
+}
+
+.min-w-\[288px\] {
+  min-width: 288px;
+}
+
+.min-w-\[1000px\] {
+  min-width: 1000px;
 }
 
 .max-w-2xl {
@@ -1103,8 +1107,16 @@ video {
   background-size: 100% 5px;
 }
 
+.bg-50\% {
+  background-size: 50% 50%;
+}
+
 .bg-bottom {
   background-position: bottom;
+}
+
+.bg-center {
+  background-position: center;
 }
 
 .bg-no-repeat {
@@ -1149,21 +1161,6 @@ video {
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
-}
-
-.px-14 {
-  padding-left: 3.5rem;
-  padding-right: 3.5rem;
-}
-
-.px-1 {
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
-}
-
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
 }
 
 .text-lg {
@@ -1212,6 +1209,11 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgba(255, 255, 255, var(--tw-text-opacity));
+}
+
+.text-orange {
+  --tw-text-opacity: 1;
+  color: rgba(255, 157, 131, var(--tw-text-opacity));
 }
 
 .placeholder-gray-dark::-moz-placeholder {
@@ -1363,4 +1365,8 @@ img, svg {
 
 .focus\:placeholder-opacity-0:focus::placeholder {
   --tw-placeholder-opacity: 0;
+}
+
+.group:hover .group-hover\:visible {
+  visibility: visible;
 }
