@@ -1,6 +1,6 @@
 <template>
 <div class="range">
-  <div class="flex flex-col justify-center m-auto w-11/12">
+  <div class="flex flex-col justify-center m-auto">
     <base-title title="HOT 即時熱門" link to="/Charts"></base-title>
     <hot-music></hot-music>
   </div>
@@ -36,13 +36,13 @@
       </div>
     </div>
   </div>
-  <div class="w-11/12 my-20 m-auto">
+  <div class="w-full my-20 m-auto">
     <div class="my-12">
       <base-title title="Showcase 演出活動" link to="/Find"></base-title>
     </div>
     <the-carousel></the-carousel>
   </div>
-  <div class="w-11/12 m-auto flex flex-col h-[500px] justify-around">
+  <div class="w-full m-auto flex flex-col h-[500px] justify-around">
     <base-title title="Crowdfunding 募資計畫" link to="/Funds"></base-title>
     <div class="flex justify-evenly">
       <fund-item
