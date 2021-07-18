@@ -1,6 +1,6 @@
 <template>
 <div class="range">
-  <div class="flex flex-col justify-center m-auto">
+  <div class="flex flex-col justify-center m-auto w-11/12">
     <base-title title="HOT 即時熱門" link to="/Charts"></base-title>
     <hot-music></hot-music>
   </div>
@@ -20,7 +20,7 @@
     </div>
     <div class="w-6/12 flex flex-col">
       <base-title title="Artist 大家都在聽" link to="/Find"></base-title>
-      <div class="w-11/12 flex flex-wrap justify-evenly h-96 content-around">
+      <div class="w-full flex flex-wrap justify-evenly h-96 content-around">
         <artist class="mx-4"
           :width="'w-24'"
           v-for="(item, index) in artistList"
