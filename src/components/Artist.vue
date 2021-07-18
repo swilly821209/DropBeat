@@ -7,11 +7,6 @@
         <div v-if="play === false" class="div_curtain"></div>
         <div v-else class="div_curtains"></div>
       </div>
-<<<<<<< HEAD
-      <span class="span_author">{{ author }}</span>
-      <a class="a_more" :href="more">more</a>
-=======
->>>>>>> fe2e6472e169adca1e90fd7b89d4cc8da541b105
     </div>
     <span class="span_author">{{ author }}</span>
     <a class="a_more" :href="more">More</a>
@@ -55,32 +50,18 @@ export default {
 }
 </script>
 <style scoped>
-<<<<<<< HEAD
-  /* .div_artist_container{
-    display: flex;
-  } */
-=======
->>>>>>> fe2e6472e169adca1e90fd7b89d4cc8da541b105
   .div_artist_list{
     /* border:1px solid red; */
     display: flex;
     flex-direction: column;
     align-items: center;
-<<<<<<< HEAD
-    margin: 25px 0 0 0;
-=======
     justify-content: center;
     margin-bottom: 10px;
->>>>>>> fe2e6472e169adca1e90fd7b89d4cc8da541b105
   }
   /* .div_head{
     position: relative;
   } */
   .div_head img{
-<<<<<<< HEAD
-    width: 108px;
-=======
->>>>>>> fe2e6472e169adca1e90fd7b89d4cc8da541b105
     border-radius: 50%;
     box-shadow:  0px 4px 4px rgba(0, 0, 0, 0.25);
   }
