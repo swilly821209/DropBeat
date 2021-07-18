@@ -19,7 +19,7 @@
       <div class=" w-72 flex justify-evenly">
         <div class=" space-x-1 text-gray-light border border-gray-light px-3 rounded-2xl flex items-center">
           <img src="../assets/icon/play_total.svg" />
-          <span>{{ playAccountString }}</span>
+          <span>{{ playCounterString }}</span>
         </div>
         <div @click="toggleLike" :class="{'text-orange': like}" class="rounded-2xl border-gray-light border text-gray-light flex items-center justify-center px-3 hover:text-white hover:bg-gray-light space-x-1">
           <svg class="" xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
@@ -39,7 +39,7 @@
 <script>
 import AudioIcon from './AudioIcon.vue'
 export default {
-  props: ['num', 'imgSrc', 'musicName', 'singer', 'totalSecond', 'playAccount', 'likeAccount'],
+  props: ['num', 'imgSrc', 'musicName', 'singer', 'totalSecond', 'playCounter', 'likeCounter'],
   components: {
     AudioIcon
   },
@@ -47,7 +47,7 @@ export default {
     return {
       playing: false,
       like: false,
-      likeNum: this.likeAccount
+      likeNum: this.likeCounter
     }
   },
   computed: {
@@ -56,8 +56,8 @@ export default {
       const seconds = this.totalSecond % 60
       return `${minute} : ${seconds}`
     },
-    playAccountString () {
-      return this.playAccount.toLocaleString()
+    playCounterString () {
+      return this.playCounter.toLocaleString()
     },
     backdropImg () {
       if (this.playing) {

@@ -7,7 +7,7 @@
   <div class="w-11/12 flex m-auto justify-between mt-20">
     <div class="w-6/12 flex flex-col">
       <base-title title="Song of the Day 每日一曲"></base-title>
-      <cd-player class="h-72"
+      <cd-player class="h-80"
         likes date asong
         :songimg="theCDsong.img"
         :titles="theCDsong.title"
@@ -20,8 +20,9 @@
     </div>
     <div class="w-6/12 flex flex-col">
       <base-title title="Artist 大家都在聽" link to="/Find"></base-title>
-      <div class="w-10/12 flex flex-wrap justify-around h-96 content-around">
-        <artist
+      <div class="w-11/12 flex flex-wrap justify-evenly h-96 content-around">
+        <artist class="mx-4"
+          :width="'w-24'"
           v-for="(item, index) in artistList"
           @click="playFun(index)"
           :play="item.play"

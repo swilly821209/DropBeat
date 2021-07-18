@@ -615,6 +615,40 @@ video {
   --tw-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
 }
 
+.container {
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}
+
 .invisible {
   visibility: hidden;
 }
@@ -685,6 +719,16 @@ video {
   margin-right: 0.25rem;
 }
 
+.my-12 {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.mx-4 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
 .mx-3 {
   margin-left: 0.75rem;
   margin-right: 0.75rem;
@@ -695,11 +739,6 @@ video {
   margin-bottom: 5rem;
 }
 
-.my-12 {
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-}
-
 .my-8 {
   margin-top: 2rem;
   margin-bottom: 2rem;
@@ -708,6 +747,10 @@ video {
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
+}
+
+.ml-6 {
+  margin-left: 1.5rem;
 }
 
 .mt-48 {
@@ -786,10 +829,6 @@ video {
   height: 0.75rem;
 }
 
-.h-72 {
-  height: 18rem;
-}
-
 .h-96 {
   height: 24rem;
 }
@@ -816,6 +855,10 @@ video {
 
 .w-1 {
   width: 0.25rem;
+}
+
+.w-40 {
+  width: 10rem;
 }
 
 .w-72 {
@@ -868,6 +911,10 @@ video {
 
 .w-6\/12 {
   width: 50%;
+}
+
+.w-24 {
+  width: 6rem;
 }
 
 .w-52 {
@@ -1201,6 +1248,10 @@ video {
   padding-bottom: 0.25rem;
 }
 
+.pt-20 {
+  padding-top: 5rem;
+}
+
 .text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;
@@ -1328,6 +1379,26 @@ img, svg {
 .focus-within\:text-orange:focus-within {
   --tw-text-opacity: 1;
   color: rgba(255, 157, 131, var(--tw-text-opacity));
+}
+
+.hover\:-translate-x-0\.5:hover {
+  --tw-translate-x: -0.125rem;
+  transform: var(--tw-transform);
+}
+
+.hover\:-translate-x-0:hover {
+  --tw-translate-x: 0px;
+  transform: var(--tw-transform);
+}
+
+.hover\:translate-x-0\.5:hover {
+  --tw-translate-x: 0.125rem;
+  transform: var(--tw-transform);
+}
+
+.hover\:translate-x-0:hover {
+  --tw-translate-x: 0px;
+  transform: var(--tw-transform);
 }
 
 .hover\:border-gray-light:hover {

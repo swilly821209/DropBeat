@@ -30,16 +30,19 @@
   :musicName="item.name"
   :singer="item.singer"
   :totalSecond="item.musicTime"
-  :playAccount="item.playAccount"
-  :likeAccount="item.likeAccount">
+  :playCounter="item.playCounter"
+  :likeCounter="item.likeCounter">
 </music-item>
+<find-carousel></find-carousel>
 </template>
 
 <script>
 import MusicItem from '../components/MusicItem.vue'
+import FindCarousel from '../components/FindCarousel.vue'
 export default {
   components: {
-    MusicItem
+    MusicItem,
+    FindCarousel
   },
   data () {
     return {
@@ -54,8 +57,8 @@ export default {
           name: '在這座城市遺失了你',
           singer: '告五人',
           musicTime: 287,
-          playAccount: 8888888,
-          likeAccount: 744
+          playCounter: 8888888,
+          likeCounter: 744
         },
         {
           num: '02',
@@ -63,8 +66,8 @@ export default {
           name: '在這座城市遺失了你',
           singer: '告五人',
           musicTime: 2837,
-          playAccount: 88388888,
-          likeAccount: 7344
+          playCounter: 88388888,
+          likeCounter: 7344
         },
         {
           num: '03',
@@ -72,8 +75,8 @@ export default {
           name: '在這座城市遺失了你',
           singer: '告五人',
           musicTime: 2227,
-          playAccount: 883388888,
-          likeAccount: 7434
+          playCounter: 883388888,
+          likeCounter: 7434
         },
         {
           num: '04',
@@ -81,8 +84,8 @@ export default {
           name: '在這座城市遺失了你',
           singer: '告五人',
           musicTime: 2827,
-          playAccount: 883388888,
-          likeAccount: 7434
+          playCounter: 883388888,
+          likeCounter: 7434
         },
         {
           num: '05',
@@ -90,8 +93,8 @@ export default {
           name: '在這座城市遺失了你',
           singer: '告五人',
           musicTime: 2837,
-          playAccount: 888833888,
-          likeAccount: 724
+          playCounter: 888833888,
+          likeCounter: 724
         }
       ]
     }
