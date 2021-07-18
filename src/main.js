@@ -18,6 +18,6 @@ app.component('base-button', BaseButton)
 app.component('base-badge', BaseBadge)
 app.component('base-card', BaseCard)
 app.component('base-title', BaseTitle)
-app.component('base-Date', BaseDate)
+app.component('base-date', BaseDate)
 
 app.use(store).use(router).mount('#app')

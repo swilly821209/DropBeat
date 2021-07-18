@@ -5,7 +5,8 @@
       <p v-else class="text-3xl text-gray-dark tracking-wider font-medium w-10">{{ num }}</p>
       <div class=" relative group " @click="playing = !playing">
         <img :src="imgSrc" :alt="imgSrc" class="h-36 w-36 rounded-2xl" >
-        <div class="absolute bg-black-backdrop bg-opacity-60 h-36 w-36 rounded-2xl top-0 invisible group-hover:visible bg-50% bg-no-repeat bg-center"
+        <div class="absolute bg-black-backdrop bg-opacity-60 h-36 w-36 rounded-2xl top-0  group-hover:visible bg-50% bg-no-repeat bg-center"
+             :class="{'invisible' : !playing}"
              :style="`background-image: url(${backdropImg})`"></div>
       </div>
       <div class=" space-y-2 text-black-backdrop">
