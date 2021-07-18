@@ -1,17 +1,20 @@
 <template>
-  <div class="div_artist_container">
-    <div class="div_artist_list">
-      <div class="div_head">
-        <img :src="img">
-        <div v-if="listen" class="div_certain_container">
-          <div class="div_black"></div>
-          <div v-if="play === false" class="div_curtain"></div>
-          <div v-else class="div_curtains"></div>
-        </div>
+  <div class="div_artist_list">
+    <div class="div_head">
+      <img :src="img" :class="width">
+      <div v-if="listen" class="div_certain_container">
+        <div class="div_black"></div>
+        <div v-if="play === false" class="div_curtain"></div>
+        <div v-else class="div_curtains"></div>
       </div>
+<<<<<<< HEAD
       <span class="span_author">{{ author }}</span>
       <a class="a_more" :href="more">more</a>
+=======
+>>>>>>> fe2e6472e169adca1e90fd7b89d4cc8da541b105
     </div>
+    <span class="span_author">{{ author }}</span>
+    <a class="a_more" :href="more">More</a>
   </div>
 </template>
 
@@ -42,26 +45,42 @@ export default {
       type: Boolean,
       required: true,
       default: false
+    },
+    width: {
+      type: String,
+      required: true,
+      default: ''
     }
   }
 }
 </script>
 <style scoped>
+<<<<<<< HEAD
   /* .div_artist_container{
     display: flex;
   } */
+=======
+>>>>>>> fe2e6472e169adca1e90fd7b89d4cc8da541b105
   .div_artist_list{
     /* border:1px solid red; */
     display: flex;
     flex-direction: column;
     align-items: center;
+<<<<<<< HEAD
     margin: 25px 0 0 0;
+=======
+    justify-content: center;
+    margin-bottom: 10px;
+>>>>>>> fe2e6472e169adca1e90fd7b89d4cc8da541b105
   }
   /* .div_head{
     position: relative;
   } */
   .div_head img{
+<<<<<<< HEAD
     width: 108px;
+=======
+>>>>>>> fe2e6472e169adca1e90fd7b89d4cc8da541b105
     border-radius: 50%;
     box-shadow:  0px 4px 4px rgba(0, 0, 0, 0.25);
   }
@@ -84,7 +103,7 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: 50px;
+    border-radius: 50%;
     opacity: 0;
   }
   .div_certain_container:hover .div_black{
@@ -138,4 +157,11 @@ export default {
     color: white;
     border: 2px solid #ffffff;
   }
+  /* 圖片大小控制 */
+  .vw-5{width: 5vw;}
+  .vw-6{width: 6vw;}
+  .vw-7{width: 7vw;}
+  .vw-8{width: 8vw;}
+  .vw-9{width: 9vw;}
+  .vw-10{width: 10vw;}
 </style>

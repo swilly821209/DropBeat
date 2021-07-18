@@ -1,5 +1,5 @@
 <template>
-  <div class=" w-80 flex items-center flex-col space-y-5 text-black-backdrop">
+  <div class="min-w-[288px] w-72 flex items-center flex-col space-y-5 text-black-backdrop">
     <img :src="img" alt="" class="w-10/12 h-60 rounded-3xl shadow-sm">
     <div class="w-11/12 space-y-2">
       <h4 class=" text-lg">{{ title }}</h4>

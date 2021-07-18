@@ -9,6 +9,7 @@ module.exports = {
       'cover': 'cover',
       'contain': 'contain',
       'border-bottom-5px': '100% 5px',
+      '50%': '50% 50%'
     },
     extend: {
       blur: {

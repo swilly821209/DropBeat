@@ -19,7 +19,7 @@ export default {
     setInterval(function () {
       const lastItem = that.items.pop()
       that.items.unshift(lastItem)
-    }, 100)
+    }, 150)
   }
 }
 </script>
