@@ -7,6 +7,11 @@
         <div v-if="play === false" class="div_curtain"></div>
         <div v-else class="div_curtains"></div>
       </div>
+<<<<<<< HEAD
+      <span class="span_author">{{ author }}</span>
+      <a class="a_more" :href="more">more</a>
+=======
+>>>>>>> fe2e6472e169adca1e90fd7b89d4cc8da541b105
     </div>
     <span class="span_author">{{ author }}</span>
     <a class="a_more" :href="more">More</a>
@@ -50,18 +55,34 @@ export default {
 }
 </script>
 <style scoped>
+<<<<<<< HEAD
+  /* .div_artist_container{
+    display: flex;
+  } */
+=======
+>>>>>>> fe2e6472e169adca1e90fd7b89d4cc8da541b105
   .div_artist_list{
+    /* border:1px solid red; */
     display: flex;
     flex-direction: column;
     align-items: center;
+<<<<<<< HEAD
+    margin: 25px 0 0 0;
+=======
     justify-content: center;
     margin-bottom: 10px;
+>>>>>>> fe2e6472e169adca1e90fd7b89d4cc8da541b105
   }
-  .div_head{
+  /* .div_head{
     position: relative;
-  }
+  } */
   .div_head img{
+<<<<<<< HEAD
+    width: 108px;
+=======
+>>>>>>> fe2e6472e169adca1e90fd7b89d4cc8da541b105
     border-radius: 50%;
+    box-shadow:  0px 4px 4px rgba(0, 0, 0, 0.25);
   }
   /* curtain */
   .div_certain_container{
@@ -118,22 +139,23 @@ export default {
     opacity: .9;
   }
   .span_author{
-    font-size: 12px;
-    margin: 5px 0;
+    font-size: 16px;
+    color:#383838;
+    margin: 8px 0 2px 0;
   }
   .a_more{
-    color: #7B7B7B;
-    font-size: 10px;
-    font-weight: bold;
-    border: 1px solid #B5B5B5;
-    border-radius: 10px;
-    width: 50px;
+    border: 2px solid #ededed;
+    border-radius: 20px;
+    color: #7b7b7b;
+    font-size: 14px;
+    font-weight: 500;
+    width: 60px;
     text-align: center;
   }
   .a_more:hover{
     background: linear-gradient(0.25turn, #31BDC5, #A6FF00);
     color: white;
-    border: 1px solid #00000000;
+    border: 2px solid #ffffff;
   }
   /* 圖片大小控制 */
   .vw-5{width: 5vw;}
