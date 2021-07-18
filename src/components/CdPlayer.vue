@@ -30,7 +30,7 @@
       <p class="p_album_letters" v-else>{{albumname}}・{{years}}・{{songnum}}首歌・{{times}}</p>
     </div>
     <div class="div_song_info">
-      <p v-if="date" class="p_date"><sup>10</sup>/<sub>10</sub></p>
+      <base-date v-if="date" :time="now"></base-date>
       <div class="div_fun">
         <span v-if="likes" class="like" :id="likeRed" @click="actionFun"></span>
         <span class="add"></span>
@@ -101,7 +101,8 @@ export default {
     return {
       turnOn: 'off',
       playPause: require('../assets/icon/play.svg'),
-      likeRed: false
+      likeRed: false,
+      now: new Date()
     }
   },
   methods: {
