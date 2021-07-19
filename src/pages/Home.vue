@@ -1,11 +1,13 @@
 <template>
 <div class="range">
-  <div class="flex flex-col justify-center m-auto w-11/12">
+  <div class="flex flex-col justify-center m-auto">
     <base-title title="HOT 即時熱門" link to="/Charts"></base-title>
     <hot-music></hot-music>
   </div>
-  <div class="w-11/12 flex m-auto justify-between mt-20">
-    <div class="w-6/12 flex flex-col">
+  <div class="day_N_artist">
+  <!-- <div class="w-11/12 flex m-auto justify-between mt-20"> -->
+    <div class="day">
+    <!-- <div class="w-6/12 flex flex-col"> -->
       <base-title title="Song of the Day 每日一曲"></base-title>
       <cd-player class="h-80"
         likes date asong
@@ -18,9 +20,9 @@
         :times="theCDalbum.times"
       ></cd-player>
     </div>
-    <div class="w-6/12 flex flex-col">
+    <div class="artist">
       <base-title title="Artist 大家都在聽" link to="/Find"></base-title>
-      <div class="w-full flex flex-wrap justify-evenly h-96 content-around">
+      <div class=" flex flex-wrap justify-between">
         <artist class="mx-4"
           :width="'w-24'"
           v-for="(item, index) in artistList"
@@ -34,13 +36,13 @@
       </div>
     </div>
   </div>
-  <div class="w-11/12 my-20 m-auto">
+  <div class="w-full my-20 m-auto">
     <div class="my-12">
       <base-title title="Showcase 演出活動" link to="/Find"></base-title>
     </div>
     <the-carousel></the-carousel>
   </div>
-  <div class="w-11/12 m-auto flex flex-col h-[500px] justify-around">
+  <div class="w-full m-auto flex flex-col h-[500px] justify-around">
     <base-title title="Crowdfunding 募資計畫" link to="/Funds"></base-title>
     <div class="flex justify-evenly">
       <fund-item
@@ -121,7 +123,7 @@ export default {
       ],
       theCDsong: {
         img: 'https://picsum.photos/900',
-        title: '披星戴月的想你',
+        title: '在這座城市遺失了你',
         author: '告五人'
       },
       theCDalbum: {
@@ -151,7 +153,7 @@ export default {
   /* border: 1px solid red; */
   padding: 60px 40px 150px 40px;
 }
-  .div_day_artist{
+  /* .div_day_artist{
     display: flex;
     justify-content: space-around;
     width: 100%;
@@ -170,5 +172,19 @@ export default {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+  } */
+  .day_N_artist{
+    /* border: 1px solid red; */
+    display: flex;
+    margin-top: 60px;
+  }
+  .day{
+    /* border: 1px solid blue; */
+    margin-right: 60px;
+    width: calc((100% - 60px)/2);
+  }
+  .artist{
+    /* border: 1px solid green; */
+    width: calc((100% - 60px)/2);
   }
 </style>
