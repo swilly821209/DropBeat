@@ -773,6 +773,10 @@ video {
   margin-top: 12rem;
 }
 
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
 .mt-20 {
   margin-top: 5rem;
 }
@@ -1082,6 +1086,10 @@ video {
   margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
+.self-end {
+  align-self: flex-end;
+}
+
 .overflow-hidden {
   overflow: hidden;
 }
@@ -1278,6 +1286,11 @@ video {
   padding-bottom: 0.25rem;
 }
 
+.px-\[40px\] {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
 .pt-20 {
   padding-top: 5rem;
 }
@@ -1290,9 +1303,9 @@ video {
   text-align: center;
 }
 
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 .text-lg {
@@ -1303,6 +1316,11 @@ video {
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .text-sm {
@@ -1454,6 +1472,11 @@ img, svg {
   border-color: rgba(166, 255, 0, var(--tw-border-opacity));
 }
 
+.hover\:border-orange:hover {
+  --tw-border-opacity: 1;
+  border-color: rgba(255, 157, 131, var(--tw-border-opacity));
+}
+
 .hover\:border-white:hover {
   --tw-border-opacity: 1;
   border-color: rgba(255, 255, 255, var(--tw-border-opacity));
@@ -1501,6 +1524,11 @@ img, svg {
 .hover\:text-green-light:hover {
   --tw-text-opacity: 1;
   color: rgba(166, 255, 0, var(--tw-text-opacity));
+}
+
+.hover\:text-orange:hover {
+  --tw-text-opacity: 1;
+  color: rgba(255, 157, 131, var(--tw-text-opacity));
 }
 
 .hover\:underline:hover {
