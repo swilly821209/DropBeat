@@ -34,6 +34,7 @@
   :likeCounter="item.likeCounter">
 </music-item>
 <find-carousel></find-carousel>
+<router-link to="ArtistHome">音樂人主頁(點more進入暫放)</router-link>
 </template>
 
 <script>
@@ -101,3 +102,12 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  a{
+    background: blue;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    margin: 200px;
+  }
+</style>

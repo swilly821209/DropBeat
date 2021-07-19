@@ -3,9 +3,8 @@
   <the-aside></the-aside>
   <div class="router">
     <router-view />
-      <the-footer></the-footer>
+    <the-footer></the-footer>
   </div>
-
 </template>
 
 <script>

@@ -157,6 +157,7 @@ export default {
       document.querySelectorAll('.span_nav').forEach(item => {
         item.style.color = 'white'
       })
+
       switch (this.$route.path) {
         case '/Find' :
           this.$refs.find.querySelector('path').style.fill = '#A6FF00'
