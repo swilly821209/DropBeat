@@ -2,6 +2,7 @@
     <div class="mt-36">
         <h1>This is ArtistHome Pagge!</h1>
         <div class="flex justify-center">
+          <router-link to="/Find"><span class="span_nav">←發現</span></router-link>
           <router-link to="ArtistHome">主頁</router-link>
           <router-link to="ArtistMusic">音樂</router-link>
         </div>

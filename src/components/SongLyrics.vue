@@ -81,13 +81,13 @@ export default {
     up () {
       const heightEnd = document.querySelector('.lyricsH').scrollHeight / 1.3
       if (this.height > 0) {
-        this.height -= 40
+        this.height -= 50
         document.querySelector('.lyricsH').scrollTop = this.height
         this.upColor = '#b5b5b5'
         if (this.height < heightEnd) {
           this.downColor = '#b5b5b5'
         }
-      } else {
+      } else if (this.height < 50) {
         this.upColor = '#ededed'
       }
     },

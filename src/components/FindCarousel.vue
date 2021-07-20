@@ -7,8 +7,9 @@
         </span>
             <div class="carousel_outer">
                 <div class="carousel_inner">
-                    <artist class="w-40 my-12 mx-4 ml-6"
+                    <artist class="w-40 my-12 mx-4 ml-2"
                         listen
+                        :relative='"relative"'
                         :width="'vw-10'"
                         v-for="(item, index) in artistList"
                         @click="playFun(index)"
@@ -88,9 +89,9 @@ export default {
     },
     leftFun () {
       if (this.position < 0) {
-        this.position += 200
+        this.position += 160
         document.querySelector('.carousel_inner').style.transform = `translateX(${this.position}px)`
-        const turnRight = -((this.artistList.length - 6) * 200)
+        const turnRight = -((this.artistList.length - 6) * 160)
         if (this.position !== 0) {
           this.arrLeftColor = '#b5b5b5'
           if (this.position === turnRight) {
@@ -104,9 +105,9 @@ export default {
       }
     },
     rightFun () {
-      const turnRight = -((this.artistList.length - 6) * 200)
+      const turnRight = -((this.artistList.length - 6) * 160)
       if (this.position > turnRight) {
-        this.position -= 200
+        this.position -= 160
         document.querySelector('.carousel_inner').style.transform = `translateX(${this.position}px)`
         if (this.position !== 0) {
           this.arrLeftColor = '#b5b5b5'
@@ -123,7 +124,7 @@ export default {
   },
   mounted () {
     const indexLength = this.artistList.length
-    const carouselWidth = 200 * indexLength
+    const carouselWidth = 160 * indexLength
     document.querySelector('.carousel_inner').style.width = `calc(100% + ${carouselWidth}px)`
   }
 }
@@ -137,8 +138,7 @@ export default {
     }
     .carousel_outer{
         position: relative;
-        margin: 0 10px;
-        width: 1200px;
+        width: 960px;
         height: 250px;
         overflow: hidden;
     }
