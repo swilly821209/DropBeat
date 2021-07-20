@@ -1,6 +1,6 @@
 <template>
   <div class="div_artist_list">
-    <div class="div_head">
+    <div :class="relative">
       <img :src="img" :class="width">
       <div v-if="listen" class="div_certain_container">
         <div class="div_black"></div>
@@ -45,22 +45,24 @@ export default {
       type: String,
       required: true,
       default: ''
+    },
+    relative: {
+      type: String,
+      required: true,
+      default: ''
     }
   }
 }
 </script>
 <style scoped>
   .div_artist_list{
-    /* border:1px solid red; */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 30px 0 0 0;
+    border-radius: 50%;
   }
-  /* .div_head{
-    position: relative;
-  } */
   .div_head img{
     width:108px;
     border-radius: 50%;
@@ -85,7 +87,7 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: 50%;
+    /* border-radius: 50%; */
     opacity: 0;
   }
   .div_certain_container:hover .div_black{
@@ -100,6 +102,7 @@ export default {
     border-radius: 10px;
     transition: all .5s;
     opacity: 0;
+    padding: 20px;
   }
   .div_certain_container:hover .div_curtain{
     width: 50px;
@@ -114,6 +117,7 @@ export default {
     background-repeat: no-repeat;
     border-radius: 10px;
     transition: all .5s;
+    padding: 20px;
   }
   .div_certain_container:hover .div_curtains{
     width: 50px;
@@ -146,4 +150,8 @@ export default {
   .vw-8{width: 8vw;}
   .vw-9{width: 9vw;}
   .vw-10{width: 10vw;}
+  /* 判斷是否給position */
+  .relative {
+    position: relative;
+  }
 </style>
