@@ -42,9 +42,11 @@
     </div>
     <the-carousel></the-carousel>
   </div>
-  <div class="w-full m-auto flex flex-col h-[500px] justify-around">
+  <!-- <div class="w-full m-auto flex flex-col h-[500px] justify-around"> -->
+  <div>
     <base-title title="Crowdfunding 募資計畫" link to="/Funds"></base-title>
-    <div class="flex justify-evenly">
+    <!-- <div class="flex justify-evenly"> -->
+    <div class="flex justify-between">
       <fund-item
         v-for="item in fundItems"
         :title="item.title"
@@ -79,7 +81,7 @@ export default {
     return {
       fundItems: [
         {
-          title: '【 運氣來的若有似無 】專輯募資',
+          title: '運氣來的若有似無 專輯募資',
           img: 'https://akstatic.streetvoice.com/audition/2021/06/16/6c24a3f3d1794ce896a1e0a56ba9597d.jpg?x-oss-process=image/resize,m_fill,h_396,w_396,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
           singer: '告五人',
           progress: '50%',
@@ -87,7 +89,7 @@ export default {
           date: 29
         },
         {
-          title: '【 運氣來的若有似無 】專輯募資',
+          title: '運氣來的若有似無 專輯募資',
           img: 'https://akstatic.streetvoice.com/audition/2021/06/16/6c24a3f3d1794ce896a1e0a56ba9597d.jpg?x-oss-process=image/resize,m_fill,h_396,w_396,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
           singer: '告五人',
           progress: '50%',
@@ -95,7 +97,7 @@ export default {
           date: 29
         },
         {
-          title: '【 運氣來的若有似無 】專輯募資',
+          title: '運氣來的若有似無 專輯募資',
           img: 'https://akstatic.streetvoice.com/audition/2021/06/16/6c24a3f3d1794ce896a1e0a56ba9597d.jpg?x-oss-process=image/resize,m_fill,h_396,w_396,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
           singer: '告五人',
           progress: '80%',
@@ -103,7 +105,7 @@ export default {
           date: 25
         },
         {
-          title: '【 運氣來的若有似無 】專輯募資',
+          title: '運氣來的若有似無 專輯募資',
           img: 'https://akstatic.streetvoice.com/audition/2021/06/16/6c24a3f3d1794ce896a1e0a56ba9597d.jpg?x-oss-process=image/resize,m_fill,h_396,w_396,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
           singer: '告五人',
           progress: '30%',
@@ -151,7 +153,7 @@ export default {
 <style scoped>
 .range{
   /* border: 1px solid red; */
-  padding: 60px 40px 150px 40px;
+  padding: 60px 40px 0px 40px;
 }
   /* .div_day_artist{
     display: flex;
