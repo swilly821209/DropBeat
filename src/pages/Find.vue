@@ -1,8 +1,9 @@
 <template>
-<div class="space-y-2 w-11/12 m-auto">
-  <base-title title="發現音樂"></base-title>
+<div class="range">
+  <base-title title="發現音樂人"></base-title>
   <div class="space-x-3">
     <base-button
+      class="my-8"
       v-for="item in musicRange"
       :key="item"
       :active="{active: selectMusicRange === item}"
@@ -21,8 +22,31 @@
       {{ item }}
     </base-button>
   </div>
-</div>
-<music-item
+  <find-carousel class="my-8"></find-carousel>
+  <base-title title="發現音樂"></base-title>
+  <div class="space-x-3">
+    <base-button
+      class="my-8"
+      v-for="item in musicRange"
+      :key="item"
+      :active="{active: selectMusicRange === item}"
+      @click="selectMusicRange = item"
+      mode="under-line">
+      {{ item }}
+    </base-button>
+  </div>
+  <div class="space-x-3">
+    <base-button
+      v-for="item in musicType"
+      :key="item"
+      :active="{active: selectMusicType === item}"
+      @click="selectMusicType = item"
+      mode="outline">
+      {{ item }}
+    </base-button>
+  </div>
+  <music-item
+  class="my-8"
   v-for="item in musicItems"
   :key="item.num"
   :num="item.num"
@@ -32,24 +56,26 @@
   :totalSecond="item.musicTime"
   :playCounter="item.playCounter"
   :likeCounter="item.likeCounter">
-</music-item>
-<find-carousel></find-carousel>
-<router-link to="ArtistHome">音樂人主頁(點more進入暫放)</router-link>
+  </music-item>
+  <router-link to="ArtistHome">音樂人主頁(點more進入暫放)</router-link>
+</div>
 </template>
 
 <script>
 import MusicItem from '../components/MusicItem.vue'
 import FindCarousel from '../components/FindCarousel.vue'
+import BaseButton from '../components/ui/BaseButton.vue'
 export default {
   components: {
     MusicItem,
-    FindCarousel
+    FindCarousel,
+    BaseButton
   },
   data () {
     return {
-      musicRange: ['最新歌曲', '最多播放', '最多喜歡'],
-      selectMusicRange: '最新歌曲',
-      musicType: ['全部類型', 'Rock', 'Hip hop / Rap', 'Electronic', 'Classical', 'Jazz', 'Rock'],
+      musicRange: ['全部地區', '最多播放', '最多喜歡'],
+      selectMusicRange: '全部地區',
+      musicType: ['全部類型', 'Rock', 'Hip hop / Rap', 'Electronic', 'Classical', 'Jazz'],
       selectMusicType: '全部類型',
       musicItems: [
         {
@@ -104,6 +130,9 @@ export default {
 </script>
 
 <style scoped>
+  .range{
+    padding: 60px 40px 150px 40px;
+  }
   a{
     background: blue;
     color: rgb(255, 255, 255);

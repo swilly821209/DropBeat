@@ -1,9 +1,9 @@
 <template>
   <div class="div_artist_list">
     <div :class="relative">
-      <img :src="img" :class="width">
+      <img :src="img" :class="width" class="rounded-full">
       <div v-if="listen" class="div_certain_container">
-        <div class="div_black"></div>
+        <div class="div_black rounded-full"></div>
         <div v-if="play === false" class="div_curtain"></div>
         <div v-else class="div_curtains"></div>
       </div>
@@ -48,7 +48,7 @@ export default {
     },
     relative: {
       type: String,
-      required: true,
+      required: false,
       default: ''
     }
   }
@@ -60,7 +60,7 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 30px 0 0 0;
+    margin-top: 30px 0 0 0;
     border-radius: 50%;
   }
   .div_head img{
@@ -150,6 +150,9 @@ export default {
   .vw-8{width: 8vw;}
   .vw-9{width: 9vw;}
   .vw-10{width: 10vw;}
+  .vw-11{width: 11vw;}
+  .vw-12{width: 12vw;}
+  .vw-13{width: 13vw;}
   /* 判斷是否給position */
   .relative {
     position: relative;
