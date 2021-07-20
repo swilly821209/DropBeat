@@ -20,6 +20,7 @@
               <img class="img_album" :src="item.img">
               <div class="div_certain_container">
                 <div class="div_black"></div>
+                <div v-if="item.play === true" class="div_black02"></div>
                 <div v-if="item.play === false" class="div_curtain"></div>
                 <div v-else class="div_curtains"></div>
               </div>
@@ -61,6 +62,7 @@
               <img class="img_album" :src="item.img">
               <div class="div_certain_container">
                 <div class="div_black"></div>
+                <div v-if="item.play === true" class="div_black02"></div>
                 <div v-if="item.play === false" class="div_curtain"></div>
                 <div v-else class="div_curtains"></div>
               </div>
@@ -192,16 +194,6 @@ export default {
   .div_music_info:hover .span_title{
     color: #31BDC5;
   }
-  .div_music_info:hover .div_curtain{
-    width: 60px;
-    height: 60px;
-    opacity: .9;
-  }
-  .div_music_info:hover .div_curtains{
-    width: 60px;
-    height: 60px;
-    opacity: .9;
-  }
 
   /* 控制播放符號動畫 */
   .span_num svg{
@@ -268,7 +260,17 @@ export default {
     opacity: 0;
   }
   .div_music_info:hover .div_black{
-    opacity: .4;
+    opacity: .65;
+  }
+  .div_black02{
+    background: #383838;
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.65;
   }
   .div_curtain{
     width: 40px;
@@ -288,7 +290,22 @@ export default {
     background-repeat: no-repeat;
     border-radius: 10px;
     transition: all .5s;
+    position: relative;
+    z-index: 10;
   }
+  /* hover */
+  /* .img_album 變化 */
+  .div_music_info:hover .div_curtain{
+    width: 60px;
+    height: 60px;
+    opacity: .9;
+  }
+  .div_music_info:hover .div_curtains{
+    width: 60px;
+    height: 60px;
+    opacity: .9;
+  }
+
   .div_info_fun{
     margin-left: 10px;
     width: 100%;
@@ -360,16 +377,20 @@ export default {
     height: 180px;
   }
   .div_one_four .div_music_info:nth-child(1) .div_curtain {
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
+  }
+  .div_one_four .div_music_info:nth-child(1) .div_curtains {
+    width: 80px;
+    height: 80px;
   }
   .div_one_four .div_music_info:nth-child(1):hover .div_curtain {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
   }
   .div_one_four .div_music_info:nth-child(1):hover .div_curtains {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
   }
   .div_one_four .div_music_info:nth-child(1) .div_info_fun{
     flex-direction: column;
