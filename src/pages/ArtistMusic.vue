@@ -2,6 +2,7 @@
     <base-dialog show>
       <report-message></report-message>
     </base-dialog>
+  <div class="range">
     <div class="flex flex-col items-center w-full">
         <div class="py-24">
           <div>
@@ -17,7 +18,8 @@
           <song-lyrics class="lyrics"></song-lyrics>
         </div>
     </div>
-     <message-board></message-board>
+    <message-board></message-board>
+  </div>
 </template>
 
 <script>
@@ -40,24 +42,27 @@ export default {
 </script>
 
 <style scoped>
-    a{
-      background: black;
-      color: white;
-      margin: 30px;
-    }
-    .margin{
-      display: flex;
-      justify-content: center;
-      align-items: center ;
-      padding: 10px;
-      margin: 20px 0;
-    }
-    .info{
-      width: 55%;
-      border-right: 1px solid #B5B5B5;
-      margin-right: 10px;
-    }
-    .lyrics{
-      width: 45%;
-    }
+  .range{
+    padding: 60px 40px 150px 40px;
+  }
+  a{
+    background: black;
+    color: white;
+    margin: 30px;
+  }
+  .margin{
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+    padding: 10px;
+    margin: 20px 0;
+  }
+  .info{
+    width: 55%;
+    border-right: 1px solid #B5B5B5;
+    margin-right: 10px;
+  }
+  .lyrics{
+    width: 45%;
+  }
 </style>

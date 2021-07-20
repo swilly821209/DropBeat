@@ -5,7 +5,7 @@
         <p>請選擇檢舉內容。其他人不會看到您的姓名</p>
       </div>
       <div>
-        <input type="checkbox" class="rounded-full">
+        <input type="checkbox">
       </div>
     </div>
 </template>
