@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-36">
+    <div class="range">
         <h1>This is ArtistHome Pagge!</h1>
         <div class="flex justify-center">
           <router-link to="/Find"><span class="span_nav">←發現</span></router-link>
@@ -21,12 +21,15 @@ export default {
 </script>
 
 <style scoped>
-    div{
-        background: skyblue;
-    }
-    a{
-        background: whitesmoke;
-        color: balck;
-        margin: 30px;
-    }
+  .range{
+    padding: 60px 40px 150px 40px;
+  }
+  div{
+      background: skyblue;
+  }
+  a{
+      background: whitesmoke;
+      color: balck;
+      margin: 30px;
+  }
 </style>
