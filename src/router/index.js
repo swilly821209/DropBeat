@@ -7,6 +7,8 @@ import ActiveDetail from '../pages/ActiveDetail.vue'
 import Funds from '../pages/Funds.vue'
 import Member from '../pages/Member.vue'
 import Musician from '../pages/Musician.vue'
+import ArtistHome from '../pages/ArtistHome.vue'
+import ArtistMusic from '../pages/ArtistMusic.vue'
 
 const routes = [
   {
@@ -47,6 +49,16 @@ const routes = [
     path: '/Musician',
     name: 'Musician',
     component: Musician
+  },
+  {
+    path: '/ArtistHome',
+    name: 'ArtistHome',
+    component: ArtistHome
+  },
+  {
+    path: '/ArtistMusic',
+    name: 'ArtistMusic',
+    component: ArtistMusic
   }
 ]
 

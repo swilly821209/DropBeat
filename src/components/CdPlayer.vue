@@ -133,7 +133,7 @@ export default {
     /* border:1px solid rgb(212, 170, 30); */
     display: flex;
     /* justify-content: space-between; */
-    margin: 25px 0 0 0;
+    margin: 30px 0 0 0;
     height: 325px;
   }
   .div_the_song{
@@ -143,7 +143,7 @@ export default {
   }
   .div_song_whole{
     /* border:1px solid rgb(33, 81, 143); */
-    width: 310px;
+    width: 320px;
     position: relative;
   }
   .div_song_whole img:first-child{
@@ -161,11 +161,11 @@ export default {
     transition: all .5s;
     opacity: .6;
     cursor: pointer;
-    transform: scale(0.6);
+    transform: scale(0.5);
   }
   .div_cartain:hover{
     opacity: 1;
-    transform: scale(1.2);
+    transform: scale(1);
   }
   .cd {
     position: absolute;
@@ -232,7 +232,7 @@ export default {
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-end;
-    margin:0 0 0 90px;
+    margin:0 0 0 95px;
   }
   .p_date {
     font-size: 36px;

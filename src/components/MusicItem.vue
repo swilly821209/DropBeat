@@ -14,9 +14,9 @@
         <p class=" text-gray-dark">{{ singer }}</p>
       </div>
     </div>
-    <div class="w-[450px] flex justify-between">
+    <div class="w-[380px] flex justify-between">
       <p class="text-gray-light">{{ time }}</p>
-      <div class=" w-72 flex justify-evenly">
+      <div class=" space-x-2 flex">
         <div class=" space-x-1 text-gray-light border border-gray-light px-3 rounded-2xl flex items-center">
           <img src="../assets/icon/play_total.svg" />
           <span>{{ playCounterString }}</span>

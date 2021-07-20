@@ -9,7 +9,7 @@
       </div>
     </div>
     <span class="span_author">{{ author }}</span>
-    <a class="a_more" :href="more">More</a>
+    <a class="a_more" :href="more">more</a>
   </div>
 </template>
 
@@ -56,12 +56,13 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-bottom: 10px;
+    margin: 30px 0 0 0;
   }
   /* .div_head{
     position: relative;
   } */
   .div_head img{
+    width:108px;
     border-radius: 50%;
     box-shadow:  0px 4px 4px rgba(0, 0, 0, 0.25);
   }

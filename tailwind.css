@@ -7,3 +7,7 @@
 img, svg {
   @apply inline-block;
 }
+
+textarea {
+  @apply outline-none
+}

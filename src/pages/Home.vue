@@ -22,7 +22,7 @@
     </div>
     <div class="artist">
       <base-title title="Artist 大家都在聽" link to="/Find"></base-title>
-      <div class="w-full flex flex-wrap justify-evenly h-96 content-around">
+      <div class=" flex flex-wrap justify-between">
         <artist class="mx-4"
           :width="'w-24'"
           v-for="(item, index) in artistList"

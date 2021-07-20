@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="relative w-16 h-16 ">
-        <span class="absolute top-1 left-1 font-medium tracking-wider text-2xl">{{ month }}</span>
-        <span class="absolute w-[1px] h-12 top-2 right-8  transform rotate-45 bg-black-backdrop inline-block"></span>
-        <span class="absolute right-1 bottom-1 font-medium tracking-wider text-2xl">{{ date }}</span>
+    <div class=" relative w-16 h-16">
+        <span class="absolute top-0 left-0 font-medium tracking-wider text-3xl text-gray-dark" >{{ month }}</span>
+        <span class="absolute w-[1px] h-12 top-2 right-8  transform rotate-45 bg-gray-dark inline-block "></span>
+        <span class="absolute bottom-1 right-1 font-medium tracking-wider text-3xl text-gray-dark day">{{ date }}</span>
     </div>
     <div class="w-16 text-center text-sm" v-if="week">星期{{ day }}</div>
   </div>
@@ -65,3 +65,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .day{
+    top:34px;
+    right: 0;
+  }
+</style>

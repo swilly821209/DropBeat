@@ -34,6 +34,7 @@
   :likeCounter="item.likeCounter">
 </music-item>
 <find-carousel></find-carousel>
+<router-link to="ArtistHome">音樂人主頁(點more進入暫放)</router-link>
 </template>
 
 <script>
@@ -57,7 +58,7 @@ export default {
           name: '在這座城市遺失了你',
           singer: '告五人',
           musicTime: 287,
-          playCounter: 8888888,
+          playCounter: 88888,
           likeCounter: 744
         },
         {
@@ -66,7 +67,7 @@ export default {
           name: '在這座城市遺失了你',
           singer: '告五人',
           musicTime: 2837,
-          playCounter: 88388888,
+          playCounter: 883888,
           likeCounter: 7344
         },
         {
@@ -75,7 +76,7 @@ export default {
           name: '在這座城市遺失了你',
           singer: '告五人',
           musicTime: 2227,
-          playCounter: 883388888,
+          playCounter: 883388,
           likeCounter: 7434
         },
         {
@@ -84,7 +85,7 @@ export default {
           name: '在這座城市遺失了你',
           singer: '告五人',
           musicTime: 2827,
-          playCounter: 883388888,
+          playCounter: 8833888,
           likeCounter: 7434
         },
         {
@@ -93,7 +94,7 @@ export default {
           name: '在這座城市遺失了你',
           singer: '告五人',
           musicTime: 2837,
-          playCounter: 888833888,
+          playCounter: 888888,
           likeCounter: 724
         }
       ]
@@ -101,3 +102,12 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  a{
+    background: blue;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    margin: 200px;
+  }
+</style>
