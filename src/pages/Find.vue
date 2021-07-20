@@ -1,4 +1,7 @@
 <template>
+<base-dialog :show="showDialog">
+  <share-social-media @close-social="closeSocialDialog" :imgSrc="shareImg" :music="shareMusic" :singer="shareSinger"></share-social-media>
+</base-dialog>
 <div class="space-y-2 w-11/12 m-auto">
   <base-title title="發現音樂"></base-title>
   <div class="space-x-3">
@@ -24,6 +27,7 @@
 </div>
 <music-item
   v-for="item in musicItems"
+  @share-social="shareSocial(item.img, item.name, item.singer)"
   :key="item.num"
   :num="item.num"
   :imgSrc="item.img"
@@ -47,6 +51,10 @@ export default {
   },
   data () {
     return {
+      shareImg: '',
+      shareMusic: '',
+      shareSinger: '',
+      showDialog: false,
       musicRange: ['最新歌曲', '最多播放', '最多喜歡'],
       selectMusicRange: '最新歌曲',
       musicType: ['全部類型', 'Rock', 'Hip hop / Rap', 'Electronic', 'Classical', 'Jazz', 'Rock'],
@@ -82,7 +90,7 @@ export default {
         {
           num: '04',
           img: 'https://akstatic.streetvoice.com/song_covers/ju/ne/junepan/EKEn4VgY8S9H38jumNiVLA.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
-          name: '在這座城市遺失了你',
+          name: '在這座城市找尋你',
           singer: '告五人',
           musicTime: 2827,
           playCounter: 8833888,
@@ -91,13 +99,24 @@ export default {
         {
           num: '05',
           img: 'https://akstatic.streetvoice.com/song_covers/ju/ne/junepan/EKEn4VgY8S9H38jumNiVLA.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
-          name: '在這座城市遺失了你',
-          singer: '告五人',
+          name: '在這座城市遺失了我',
+          singer: '告很多人',
           musicTime: 2837,
           playCounter: 888888,
           likeCounter: 724
         }
       ]
+    }
+  },
+  methods: {
+    shareSocial (img, music, singer) {
+      this.showDialog = true
+      this.shareImg = img
+      this.shareMusic = music
+      this.shareSinger = singer
+    },
+    closeSocialDialog () {
+      this.showDialog = false
     }
   }
 }

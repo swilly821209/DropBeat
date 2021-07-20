@@ -1,4 +1,7 @@
 <template>
+<base-dialog>
+  <share-social-media></share-social-media>
+</base-dialog>
 <div class="range">
   <div class="flex flex-col justify-center m-auto">
     <base-title title="HOT 即時熱門" link to="/Charts"></base-title>
@@ -22,7 +25,7 @@
     </div>
     <div class="artist">
       <base-title title="Artist 大家都在聽" link to="/Find"></base-title>
-      <div class=" flex flex-wrap justify-between">
+      <div class=" flex flex-wrap justify-between w-[530px]">
         <artist class="mx-4"
           :width="'w-24'"
           v-for="(item, index) in artistList"

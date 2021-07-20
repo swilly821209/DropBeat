@@ -1,4 +1,7 @@
 <template>
+    <base-dialog show>
+      <report-message></report-message>
+    </base-dialog>
     <div class="flex flex-col items-center w-full">
         <div class="py-24">
           <div>
@@ -21,11 +24,13 @@
 import SongInfo from '../components/SongInfo.vue'
 import SongLyrics from '../components/SongLyrics.vue'
 import MessageBoard from '../components/MessageBoard.vue'
+import ReportMessage from '../components/ReportMessage.vue'
 export default {
   components: {
     SongInfo,
     SongLyrics,
-    MessageBoard
+    MessageBoard,
+    ReportMessage
   },
   data () {
     return {
