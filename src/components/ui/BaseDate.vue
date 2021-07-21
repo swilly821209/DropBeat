@@ -5,7 +5,7 @@
         <span class="absolute w-[1px] h-12 top-2 right-8  transform rotate-45 bg-gray-dark inline-block "></span>
         <span class="absolute bottom-1 right-1 font-medium tracking-wider text-3xl text-gray-dark day">{{ date }}</span>
     </div>
-    <div class="w-16 text-center text-sm" v-if="week">星期{{ day }}</div>
+    <div class=" w-16 text-center text-sm text-gray-dark mt-2" v-if="week">星期{{ day }}</div>
   </div>
 </template>
 

@@ -10,6 +10,7 @@
             :src="playPause"
           >
           <div class="hover_b"></div>
+          <div v-if="turnOn === 'on'" class="hover_b02"></div>
         </div>
         <svg class="cd" :id="turnOn" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="290" height="290" viewBox="0 0 385 386">
           <defs>
@@ -140,6 +141,7 @@ export default {
     position: relative;
     display: flex;
     align-items: center;
+    cursor: pointer;
   }
   .div_song_whole{
     /* border:1px solid rgb(33, 81, 143); */
@@ -162,10 +164,29 @@ export default {
     opacity: .6;
     cursor: pointer;
     transform: scale(0.5);
+    z-index: 10;
   }
-  .div_cartain:hover{
+  .div_the_song:hover .div_cartain{
     opacity: 1;
-    transform: scale(1);
+    transform: scale(0.7);
+  }
+  .div_the_song:hover .hover_b{
+    background: #383838;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .65;
+  }
+  .hover_b02{
+    background: #383838;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .65;
   }
   .cd {
     position: absolute;

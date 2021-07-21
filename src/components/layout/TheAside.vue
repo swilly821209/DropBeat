@@ -203,9 +203,7 @@ export default {
   }
   /* logo */
   .div_logo{
-    /* margin-right: 20px; */
-    margin-right: 0px;
-    margin-bottom: 20px;
+    margin:10px 0 20px 0;
   }
   .img_logo{
     width: 130px;
