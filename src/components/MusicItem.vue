@@ -19,6 +19,10 @@
       <div class=" text-black-backdrop">
         <h4 class="text-base transition-all cursor-pointer hover:text-blue-light " :class="{'text-blue-light': playing}">{{ musicName }}</h4>
         <p class=" text-sm text-gray-dark cursor-pointer hover:underline">{{ singer }}</p>
+      <!-- <div class=" space-y-2 text-black-backdrop w-44">
+        <h4 class="text-lg transition-all hover:text-blue-light" :class="{'text-blue-light': playing}">{{ musicName }}</h4>
+        <p class=" text-gray-dark">{{ singer }}</p>
+      </div> -->
       </div>
     </div>
     <div class="w-[380px] flex justify-between">
@@ -33,6 +37,7 @@
           <span>{{ likeNum }}</span>
         </div>
         <!-- <span class="border-2 border-gray-default hover:border-gray-light rounded-3xl flex justify-center items-center text-gray-light hover:text-white hover:bg-gray-light w-6 h-6">
+        <span @click="shareSocial" class="border border-gray-light hover:border-gray-light rounded-3xl flex justify-center items-center text-gray-light hover:text-white hover:bg-gray-light w-6 h-6">
           <svg height='17px' width='17px'  fill="currentColor" xmlns="http://www.w3.org/2000/svg" version="1.1" data-icon="share" data-container-transform="translate(0 1)" viewBox="0 0 16 16" x="0px" y="0px"><path d="M11 0v3h-1c-8 0-10 4.1-10 10 1-4 4-5 8-5h3v3l5-5.313-5-5.688z" transform="translate(0 1)"></path></svg>
         </span> -->
         <!-- <span class="border border-gray-light w-6 h-6 flex justify-center items-center rounded-3xl text-gray-light hover:text-white hover:bg-gray-light">
@@ -48,6 +53,7 @@
 <script>
 import AudioIcon from './AudioIcon.vue'
 export default {
+  emits: ['share-social'],
   props: ['num', 'imgSrc', 'musicName', 'singer', 'totalSecond', 'playCounter', 'likeCounter'],
   components: {
     AudioIcon
@@ -84,6 +90,9 @@ export default {
         this.likeNum--
       }
       this.like = !this.like
+    },
+    shareSocial () {
+      this.$emit('share-social')
     }
   }
 }

@@ -1,13 +1,14 @@
 <template>
+<base-dialog>
+  <share-social-media></share-social-media>
+</base-dialog>
 <div class="range">
   <div class="flex flex-col justify-center m-auto">
     <base-title title="HOT 即時熱門" link to="/Charts"></base-title>
     <hot-music></hot-music>
   </div>
   <div class="day_N_artist">
-  <!-- <div class="w-11/12 flex m-auto justify-between mt-20"> -->
     <div class="day">
-    <!-- <div class="w-6/12 flex flex-col"> -->
       <base-title title="Song of the Day 每日一曲"></base-title>
       <cd-player class="h-80"
         likes date asong
@@ -22,8 +23,8 @@
     </div>
     <div class="artist">
       <base-title title="Artist 大家都在聽" link to="/Find"></base-title>
-      <div class=" flex flex-wrap justify-between">
-        <artist class="mx-4"
+      <div class="flex flex-wrap justify-between artcontain">
+        <artist class="mx-4 aartist"
           :width="'w-24'"
           v-for="(item, index) in artistList"
           @click="playFun(index)"
@@ -59,7 +60,7 @@
       </fund-item>
     </div>
   </div>
-  </div>
+</div>
 </template>
 
 <script>
@@ -188,5 +189,11 @@ export default {
   .artist{
     /* border: 1px solid green; */
     width: calc((100% - 60px)/2);
+  }
+  .artcontain{
+    margin-top: 10px;
+  }
+  .aartist{
+    margin-top: 20px;
   }
 </style>
