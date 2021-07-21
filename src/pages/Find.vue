@@ -153,9 +153,6 @@ export default {
 </script>
 
 <style scoped>
-  .range{
-    padding: 60px 40px 150px 40px;
-  }
   a{
     background: blue;
     color: rgb(255, 255, 255);

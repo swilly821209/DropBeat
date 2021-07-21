@@ -3,6 +3,7 @@
     <div class="flex items-center w-96 justify-evenly">
       <audio-icon v-if="playing"></audio-icon>
       <p v-else class="text-3xl text-gray-dark tracking-wider font-medium w-10">{{ num }}</p>
+      <span :class="color">{{status}}</span>
       <div class=" relative group " @click="playing = !playing">
         <img :src="imgSrc" :alt="imgSrc" class="h-36 w-36 rounded-2xl" >
         <div class="absolute bg-black-backdrop bg-opacity-60 h-36 w-36 rounded-2xl top-0  group-hover:visible bg-50% bg-no-repeat bg-center"
@@ -40,7 +41,7 @@
 import AudioIcon from './AudioIcon.vue'
 export default {
   emits: ['share-social'],
-  props: ['num', 'imgSrc', 'musicName', 'singer', 'totalSecond', 'playCounter', 'likeCounter'],
+  props: ['num', 'imgSrc', 'musicName', 'singer', 'totalSecond', 'playCounter', 'likeCounter', 'status', 'color'],
   components: {
     AudioIcon
   },
@@ -83,3 +84,14 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .gray{
+    margin: 0 5px;
+    color: #B5B5B5;
+  }
+  .blue{
+    margin: 0 5px;
+    color: #31BDC5;
+  }
+</style>

@@ -100,7 +100,4 @@ export default {
 </script>
 
 <style scoped>
-  .range{
-    padding: 60px 40px 150px 40px;
-  }
 </style>

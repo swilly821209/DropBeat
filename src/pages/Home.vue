@@ -152,30 +152,6 @@ export default {
 </script>
 
 <style scoped>
-.range{
-  /* border: 1px solid red; */
-  padding: 60px 40px 0px 40px;
-}
-  /* .div_day_artist{
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    padding: 40px 20px;
-  }
-  .div_day{
-    width: 450px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-  }
-  .div_artist{
-    width: 450px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-  } */
   .day_N_artist{
     /* border: 1px solid red; */
     display: flex;

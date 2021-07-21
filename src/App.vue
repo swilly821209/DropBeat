@@ -43,4 +43,7 @@ h1 {
   margin-left: 230px;
   width: calc(100%-230px);
 }
+.range{
+  padding: 60px 40px 150px 40px;
+}
 </style>
