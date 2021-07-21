@@ -154,7 +154,7 @@ export default {
 
 <style scoped>
   a{
-    background: blue;
+    background: rgb(113, 227, 241);
     color: rgb(255, 255, 255);
     font-size: 20px;
     margin: 200px;

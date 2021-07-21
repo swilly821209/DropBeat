@@ -144,6 +144,12 @@ export default {
     border: 2px solid #ffffff;
   }
   /* 圖片大小控制 */
+  .w150{width:150px;}
+  .w160{width:160px;}
+  .w170{width:170px;}
+  .w180{width:180px;}
+  .w190{width:190px;}
+  .w200{width:200px;}
   .vw-5{width: 5vw;}
   .vw-6{width: 6vw;}
   .vw-7{width: 7vw;}
