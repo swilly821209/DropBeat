@@ -129,4 +129,12 @@ export default {
     .child {
         width: 20%;
     }
+    @media screen and (max-width: 1080px){
+      .parent {
+        margin-left: 10%;
+      }
+      .child {
+        width: 19%;
+      }
+    }
 </style>
