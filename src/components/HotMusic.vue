@@ -236,7 +236,6 @@ export default {
   .img_album{
     position: relative;
     width: 110px;
-    height: 80px;
     border-radius: 10px;
   }
   .div_certain_container{
@@ -374,7 +373,6 @@ export default {
   /* 控制第一個album */
   .div_one_four .div_music_info:nth-child(1) .img_album{
     width: 320px;
-    height: 180px;
   }
   .div_one_four .div_music_info:nth-child(1) .div_curtain {
     width: 50px;
@@ -402,5 +400,21 @@ export default {
   /* 底線 */
   .div_music_info:last-child{
     border-bottom: none;
+  }
+  /* RWD */
+  /* 小原圖 + cover */
+  /* .img_album{
+    position: relative;
+    width: 110px;
+    border-radius: 10px;
+  } */
+  /* 大原圖 + cover */
+  /* .div_one_four .div_music_info:nth-child(1) .img_album{
+    width: 320px;
+  } */
+  @media screen and (max-width: 1420px) {
+    .div_one_four .div_music_info:nth-child(1) .img_album{
+      width: 380px;
+    }
   }
 </style>

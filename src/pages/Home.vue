@@ -10,7 +10,7 @@
   <div class="day_N_artist">
     <div class="day">
       <base-title title="Song of the Day 每日一曲"></base-title>
-      <cd-player class="h-80"
+      <cd-player style="width:200px"
         likes date asong
         :songimg="theCDsong.img"
         :titles="theCDsong.title"
@@ -22,7 +22,7 @@
       ></cd-player>
     </div>
     <div class="artist">
-      <base-title title="Artist 大家都在聽" link to="/Find"></base-title>
+      <base-title title="Artist 大家都在聽" link to="/Find" style="width:390px"></base-title>
       <div class="flex flex-wrap justify-between artcontain">
         <artist class=" aartist"
           :width="'w-24'"
@@ -171,5 +171,21 @@ export default {
   }
   .aartist{
     margin-top: 20px;
+  }
+  /* RWD */
+  @media screen and (max-width: 1420px) {
+    .aartist{
+      width: 80px;
+    }
+  }
+  @media screen and (max-width: 1290px) {
+    .aartist{
+      margin: 8px;
+    }
+  }
+  @media screen and (max-width: 1160px) {
+    .aartist{
+      margin: 2px;
+    }
   }
 </style>
