@@ -1,5 +1,5 @@
 <template>
-    <base-dialog show>
+    <base-dialog :show="toggleDialog">
       <report-message></report-message>
     </base-dialog>
   <div class="range">
@@ -36,6 +36,11 @@ export default {
   },
   data () {
     return {
+    }
+  },
+  computed: {
+    toggleDialog () {
+      return this.$store.getters.reportDialogState
     }
   }
 }
