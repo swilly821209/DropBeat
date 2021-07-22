@@ -50,7 +50,7 @@
         <!-- <span class="border border-gray-light w-6 h-6 flex justify-center items-center rounded-3xl text-gray-light hover:text-white hover:bg-gray-light">
           <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><g><rect fill="none" height="24" width="24"/></g><g><g><path d="M19,13h-6v6h-2v-6H5v-2h6V5h2v6h6V13z"/></g></g></svg>
         </span> -->
-        <span class="share"></span>
+        <span class="share" @click="shareSocial"></span>
         <span class="add"></span>
       </div>
     </div>

@@ -98,11 +98,11 @@
         </div>
       </div>
       <div class=" w-1/6 m-auto flex justify-around mt-2 pointAll">
-        <div class="point" :class="{active: currentItem == 1}" @click="changeCarousel(1)"></div>
-        <div class="point" :class="{active: currentItem == 2}" @click="changeCarousel(2)"></div>
-        <div class="point" :class="{active: currentItem == 3}" @click="changeCarousel(3)"></div>
-        <div class="point" :class="{active: currentItem == 4}" @click="changeCarousel(4)"></div>
-        <div class="point" :class="{active: currentItem == 5}" @click="changeCarousel(5)"></div>
+        <div class="point" :class="{activeing: currentItem == 1}" @click="changeCarousel(1)"></div>
+        <div class="point" :class="{activeing: currentItem == 2}" @click="changeCarousel(2)"></div>
+        <div class="point" :class="{activeing: currentItem == 3}" @click="changeCarousel(3)"></div>
+        <div class="point" :class="{activeing: currentItem == 4}" @click="changeCarousel(4)"></div>
+        <div class="point" :class="{activeing: currentItem == 5}" @click="changeCarousel(5)"></div>
       </div>
 </div>
 </template>
@@ -246,28 +246,4 @@ h3{
 .pointAll{
   margin-top: 20px;
 }
-  .point{
-    @apply w-3 h-3 bg-gray-light rounded-full transition-all cursor-pointer
-  }
-  .active{
-    @apply bg-gray-dark
-  }
-  .carousel-item {
-    @apply  w-3/5 max-w-2xl h-80 absolute rounded-3xl overflow-hidden transition-all duration-1000 cursor-pointer shadow-xl
-  }
-  .item1 {
-    @apply transform -translate-x-2/4 scale-50 z-20 filter blur-sm
-  }
-  .item2 {
-    @apply transform -translate-x-1/4 scale-75 z-30 filter blur-xs
-  }
-  .item3 {
-    @apply z-50
-  }
-  .item4{
-    @apply transform translate-x-1/4 scale-75 z-30 filter blur-xs
-  }
-  .item5{
-    @apply transform translate-x-2/4 scale-50 z-20 filter blur-sm
-  }
 </style>

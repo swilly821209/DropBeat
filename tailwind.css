@@ -11,3 +11,41 @@ img, svg {
 textarea {
   @apply outline-none
 }
+
+.point{
+  @apply w-3 h-3 bg-gray-light rounded-full transition-all cursor-pointer
+}
+.activeing{
+  @apply bg-gray-dark
+}
+.carousel-item {
+  @apply  w-3/5 max-w-2xl h-80 absolute rounded-3xl overflow-hidden transition-all duration-1000 cursor-pointer shadow-xl
+}
+.item1 {
+  @apply transform -translate-x-2/4 scale-50 z-20 filter blur-sm
+}
+.item2 {
+  @apply transform -translate-x-1/4 scale-75 z-30 filter blur-xs
+}
+.item3 {
+  @apply z-50
+}
+.item4{
+  @apply transform translate-x-1/4 scale-75 z-30 filter blur-xs
+}
+.item5{
+  @apply transform translate-x-2/4 scale-50 z-20 filter blur-sm
+}
+
+.outline{
+  @apply border-gray-default text-gray-dark text-sm border-2 py-1 px-3 rounded-2xl hover:border-blue-light
+}
+.outline.active{
+  @apply bg-blue-light text-white border-2 border-blue-light
+}
+.under-line{
+  @apply bg-origin-border bg-border-bottom-5px bg-no-repeat bg-bottom py-0 px-2 border-b-4 border-gray-default text-base text-gray-dark hover:text-blue-light
+}
+.under-line.active{
+  @apply bg-gradient-to-r from-blue-light to-green-light border-transparent
+}
