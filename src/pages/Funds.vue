@@ -3,7 +3,7 @@
         <base-title title="募資計畫"></base-title>
         <div class="space-x-3">
             <base-button
-            class="my-8"
+            class="my-8 selectBtn"
             v-for="item in fundsProgress"
             :key="item"
             :active="{active: selectFundsProgress === item}"
@@ -33,7 +33,7 @@
                     :money="item.money"
                     :key="item.title">
                 </fund-item>
-            </div>
+        </div>
     </div>
 </template>
 
@@ -121,12 +121,20 @@ export default {
 </script>
 
 <style scoped>
-    .parent {
-        display: flex;
-        flex-wrap: wrap;
-        margin-left: 6%;
-    }
-    .child {
-        width: 20%;
-    }
+.selectBtn{
+    margin: 20px 0 12px 0;
+}
+.parent {
+    /* border:1px solid red; */
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+::v-deep .fundBlock{
+  /* border:1px solid blue; */
+  width: 22%;
+}
+::v-deep .fundBlock:nth-child(4n){
+    margin: 35px 0 0 0;
+}
 </style>

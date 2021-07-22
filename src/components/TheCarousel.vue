@@ -227,6 +227,7 @@ h3{
   height: 25px;
   font-size:14px;
   color:#ffffff;
+  padding: 1px 0 0 0;
 }
 .join:hover{
   border:2px solid #A6FF00;

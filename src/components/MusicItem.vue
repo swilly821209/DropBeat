@@ -8,7 +8,7 @@
       <!-- <p v-else class="text-3xl text-gray-dark tracking-wider font-medium w-10">{{ num }}</p> -->
       <p v-else class="music_num">{{ num }}</p>
       </div>
-      <span :class="color">{{status}}</span>
+      <span :class="color" class="up_down">{{status}}</span>
       <!-- <div class="musicImage relative  " @click="playing = !playing">
         <img :src="imgSrc" :alt="imgSrc" class=" rounded-2xl" >
         <div class="absolute bg-black-backdrop bg-opacity-60 h-36 w-36 rounded-2xl top-0  group-hover:visible bg-50% bg-no-repeat bg-center"
@@ -207,12 +207,17 @@ export default {
     background-color: #b5b5b5;
     background-image: url("../assets/icon/add_fff.svg");
   }
-  /* .gray{
+  /* 上升下降 */
+  .up_down{
+    /* border:1px solid red; */
+    height: 18px;
+  }
+  .gray{
     margin: 0 5px;
     color: #B5B5B5;
   }
   .blue{
     margin: 0 5px;
     color: #31BDC5;
-  } */
+  }
 </style>

@@ -61,7 +61,7 @@ export default {
       position: 0,
       arrLeftColor: '#ededed',
       arrRightColor: '#b5b5b5',
-      itemWidth: 'width:190px;'
+      itemWidth: 'width:150px;'
     }
   },
   methods: {
@@ -73,9 +73,9 @@ export default {
     },
     leftFun () {
       if (this.position < 0) {
-        this.position += 190
+        this.position += 150
         this.$refs.inner.style.transform = `translateX(${this.position}px)`
-        const turnRight = -((this.artistList.length - 6) * 190)
+        const turnRight = -((this.artistList.length - 6) * 150)
         if (this.position !== 0) {
           this.arrLeftColor = '#b5b5b5'
           if (this.position === turnRight) {
@@ -89,9 +89,9 @@ export default {
       }
     },
     rightFun () {
-      const turnRight = -((this.artistList.length - 6) * 190)
+      const turnRight = -((this.artistList.length - 6) * 150)
       if (this.position > turnRight) {
-        this.position -= 190
+        this.position -= 150
         this.$refs.inner.style.transform = `translateX(${this.position}px)`
         if (this.position !== 0) {
           this.arrLeftColor = '#b5b5b5'
@@ -114,6 +114,7 @@ export default {
         display: flex;
         align-items: center;
         justify-content: center;
+        margin: -5px 0 40px 0;
     }
     .carousel_outer{
         position: relative;

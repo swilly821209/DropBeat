@@ -44,6 +44,7 @@ h1 {
   width: calc(100%-230px);
 }
 .range{
-  padding: 60px 40px 150px 40px;
+  /* padding: 60px 40px 150px 40px; */
+  padding: 60px 40px 10px 40px;
 }
 </style>
