@@ -4,6 +4,7 @@
       <img :src="img" :class="width" class="rounded-full">
       <div v-if="listen" class="div_certain_container">
         <div class="div_black rounded-full"></div>
+        <div v-if="play === true" class="div_black02"></div>
         <div v-if="play === false" class="div_curtain"></div>
         <div v-else class="div_curtains"></div>
       </div>
@@ -119,11 +120,24 @@ export default {
     border-radius: 10px;
     transition: all .5s;
     padding: 20px;
+    position: relative;
+    z-index: 10;
   }
   .div_certain_container:hover .div_curtains{
     width: 60px;
     height: 60px;
     opacity: .9;
+  }
+  .div_black02{
+    background: #383838;
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.65;
+    border-radius: 50%;
   }
   .span_author{
     font-size: 16px;
