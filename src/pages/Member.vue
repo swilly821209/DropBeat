@@ -1,4 +1,5 @@
 <template>
+    <div class="ring-2">ddd</div>
     <div class="range">
         <h1>Member</h1>
         <div>This is a Member page...</div>

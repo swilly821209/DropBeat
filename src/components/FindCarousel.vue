@@ -8,12 +8,13 @@
           <div class="carousel_outer" ref="outer">
               <div class="carousel_inner" ref="inner">
                   <artist
+                      class="art"
                       :style="itemWidth"
                       listen
                       :relative='"relative"'
                       v-for="(item, index) in artistList"
                       @click="playFun(index)"
-                      :width="'vw-9'"
+                      :width="'w160'"
                       :play="item.play"
                       :img="item.img"
                       :author="item.author"
@@ -61,7 +62,13 @@ export default {
       position: 0,
       arrLeftColor: '#ededed',
       arrRightColor: '#b5b5b5',
-      itemWidth: 'width:150px;'
+      itemWidth: 'width:150px;',
+      marginWidth: 170,
+      item: 6,
+      window: {
+        width: 0,
+        height: 0
+      }
     }
   },
   methods: {
@@ -73,9 +80,9 @@ export default {
     },
     leftFun () {
       if (this.position < 0) {
-        this.position += 150
+        this.position += this.marginWidth
         this.$refs.inner.style.transform = `translateX(${this.position}px)`
-        const turnRight = -((this.artistList.length - 6) * 150)
+        const turnRight = -((this.artistList.length - this.item) * this.marginWidth)
         if (this.position !== 0) {
           this.arrLeftColor = '#b5b5b5'
           if (this.position === turnRight) {
@@ -89,9 +96,9 @@ export default {
       }
     },
     rightFun () {
-      const turnRight = -((this.artistList.length - 6) * 150)
+      const turnRight = -((this.artistList.length - this.item) * this.marginWidth)
       if (this.position > turnRight) {
-        this.position -= 150
+        this.position -= this.marginWidth
         this.$refs.inner.style.transform = `translateX(${this.position}px)`
         if (this.position !== 0) {
           this.arrLeftColor = '#b5b5b5'
@@ -104,6 +111,28 @@ export default {
           this.arrLeftColor = '#ededed'
         }
       }
+    },
+    handleResize () {
+      this.window.width = window.innerWidth
+    }
+  },
+  created () {
+    window.addEventListener('resize', this.handleResize)
+    this.handleResize()
+  },
+  unmounted () {
+    window.removeEventListener('resize', this.handleResize)
+  },
+  updated () {
+    const screenWidth = this.window.width
+    if (screenWidth > 1421) {
+      this.item = 6
+    } else if (screenWidth < 1420 && screenWidth > 1249) {
+      this.item = 5
+    } else if (screenWidth < 1249 && screenWidth > 1070) {
+      this.item = 4
+    } else if (screenWidth < 1070 && screenWidth > 900) {
+      this.item = 3
     }
   }
 }
@@ -118,7 +147,7 @@ export default {
     }
     .carousel_outer{
         position: relative;
-        width: 1200px;
+        width: 1020px;
         height: 250px;
         margin: 0 10px;
         overflow: hidden;
@@ -129,5 +158,23 @@ export default {
         position: absolute;
         transition: all .5s;
         height: 240px;
+    }
+    .art{
+      margin: 0 10px;
+    }
+    @media screen and (max-width: 1420px) {
+      .carousel_outer{
+        width: 850px;
+      }
+    }
+    @media screen and (max-width: 1250px) {
+      .carousel_outer{
+        width: 680px;
+      }
+    }
+    @media screen and (max-width: 1070px) {
+      .carousel_outer{
+        width: 510px;
+      }
     }
 </style>
