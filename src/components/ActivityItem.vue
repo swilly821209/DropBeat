@@ -1,10 +1,10 @@
 <template>
-  <div class="flex space-x-5">
-    <img :src="img" class="w-[350px] h-[200] rounded-3xl">
-    <div class="h-[200] flex flex-col justify-center text-black-backdrop">
-      <h3 class=" text-xl">{{ title }}</h3>
-      <div class="px-6">{{ inputTime }}.{{ city }}.{{ location }}</div>
-      <base-badge class="px-6 mt-2" :image="singerImg" :singer="singer"></base-badge>
+  <div class="item flex space-x-5">
+    <img :src="img" class="w-[350px] h-[200] rounded-3xl cursor-pointer">
+    <div class="h-[200] flex flex-col justify-center ">
+      <h3 class=" text-lg text-black-backdrop hover:underline cursor-pointer">{{ title }}</h3>
+      <div class="time_location text-sm text-gray-dark">{{ inputTime }}・{{ city }}・{{ location }}</div>
+      <base-badge class=" mt-2" :image="singerImg" :singer="singer"></base-badge>
     </div>
   </div>
 </template>
@@ -26,3 +26,11 @@ export default {
   }
 }
 </script>
+<style scoped>
+  .item{
+    /* border:1px solid red; */
+  }
+  .time_location{
+    margin: 0 0 3px 0;
+  }
+</style>

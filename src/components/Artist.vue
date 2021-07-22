@@ -4,6 +4,7 @@
       <img :src="img" :class="width" class="rounded-full">
       <div v-if="listen" class="div_certain_container">
         <div class="div_black rounded-full"></div>
+        <div v-if="play === true" class="div_black02"></div>
         <div v-if="play === false" class="div_curtain"></div>
         <div v-else class="div_curtains"></div>
       </div>
@@ -56,14 +57,15 @@ export default {
 </script>
 <style scoped>
   .div_artist_list{
+    /* border:1px solid red; */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin-top: 30px 0 0 0;
-    border-radius: 50%;
+    /* border-radius: 50%; */
   }
-  .div_head img{
+  img{
     width:108px;
     border-radius: 50%;
     box-shadow:  0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -91,12 +93,12 @@ export default {
     opacity: 0;
   }
   .div_certain_container:hover .div_black{
-    opacity: .4;
+    opacity: .65;
   }
   .div_curtain{
     width: 40px;
     height: 40px;
-    background-image: url("../assets/icon/play.svg");
+    background-image: url("../assets/icon/play_fff.svg");
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 10px;
@@ -105,24 +107,37 @@ export default {
     padding: 20px;
   }
   .div_certain_container:hover .div_curtain{
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     opacity: .9;
   }
   .div_curtains{
-    width: 40px;
-    height: 40px;
-    background-image: url("../assets/icon/pause.svg");
+    width: 50px;
+    height: 50px;
+    background-image: url("../assets/icon/pause_fff.svg");
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 10px;
     transition: all .5s;
     padding: 20px;
+    position: relative;
+    z-index: 10;
   }
   .div_certain_container:hover .div_curtains{
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     opacity: .9;
+  }
+  .div_black02{
+    background: #383838;
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.65;
+    border-radius: 50%;
   }
   .span_author{
     font-size: 16px;
@@ -163,4 +178,24 @@ export default {
   .relative {
     position: relative;
   }
+  /* RWD */
+  @media screen and (max-width: 1420px) {
+    .span_author{
+      font-size: 14px;
+    }
+    .a_more{
+      font-size: 12px;
+      width: 50px;
+    }
+  }
+  @media screen and (max-width: 1290px) {
+    .span_author{
+      font-size: 12px;
+    }
+    .a_more{
+      font-size: 10px;
+      width: 40px;
+    }
+  }
+
 </style>

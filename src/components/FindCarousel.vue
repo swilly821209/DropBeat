@@ -143,6 +143,7 @@ export default {
         display: flex;
         align-items: center;
         justify-content: center;
+        margin: -5px 0 40px 0;
     }
     .carousel_outer{
         position: relative;
@@ -166,12 +167,12 @@ export default {
         width: 850px;
       }
     }
-    @media screen and (max-width: 1250px) {
+    @media screen and (max-width: 1290px) {
       .carousel_outer{
         width: 680px;
       }
     }
-    @media screen and (max-width: 1070px) {
+    @media screen and (max-width: 1080px) {
       .carousel_outer{
         width: 510px;
       }

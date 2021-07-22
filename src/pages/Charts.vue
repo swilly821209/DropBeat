@@ -3,7 +3,7 @@
         <base-title title="排行榜"></base-title>
         <div class="space-x-3">
           <base-button
-            class="my-8"
+            class="my-8 selectBtn"
             v-for="item in singerRange"
             :key="item"
             :active="{active: selectSingerRange === item}"
@@ -22,21 +22,22 @@
             {{ item }}
           </base-button>
         </div>
-        <music-item
-          class="my-8"
-          v-for="item in musicItems"
-          @share-social="shareSocial(item.img, item.name, item.singer)"
-          :status="item.status"
-          :color="item.color"
-          :key="item.num"
-          :num="item.num"
-          :imgSrc="item.img"
-          :musicName="item.name"
-          :singer="item.singer"
-          :totalSecond="item.musicTime"
-          :playCounter="item.playCounter"
-          :likeCounter="item.likeCounter">
-        </music-item>
+        <div class="musicItemALL">
+          <music-item class="musicItem"
+            v-for="item in musicItems"
+            @share-social="shareSocial(item.img, item.name, item.singer)"
+            :status="item.status"
+            :color="item.color"
+            :key="item.num"
+            :num="item.num"
+            :imgSrc="item.img"
+            :musicName="item.name"
+            :singer="item.singer"
+            :totalSecond="item.musicTime"
+            :playCounter="item.playCounter"
+            :likeCounter="item.likeCounter">
+          </music-item>
+        </div>
     </div>
 </template>
 
@@ -119,4 +120,36 @@ export default {
 </script>
 
 <style scoped>
+.range{
+  padding: 60px 40px 0 40px;
+}
+.selectBtn{
+    margin: 20px 0 12px 0;
+}
+.musicItemALL{
+      margin: 20px 0 0 0;
+}
+.musicItem:nth-child(1) ::v-deep .musicImage, .musicItem:nth-child(2) ::v-deep .musicImage, .musicItem:nth-child(3) ::v-deep .musicImage{
+    /* border:1px solid red; */
+    width: 140px;
+    height: 140px;
+}
+.musicItem:nth-child(1) ::v-deep .musicImage > img, .musicItem:nth-child(2) ::v-deep .musicImage > img, .musicItem:nth-child(3) ::v-deep .musicImage > img{
+    width: 140px;
+    height: 140px;
+}
+.musicItem:nth-child(1) ::v-deep .playPauseIcon01, .musicItem:nth-child(2) ::v-deep .playPauseIcon01, .musicItem:nth-child(3) ::v-deep .playPauseIcon01{
+  width: 140px;
+  height: 140px;
+  background-size: 60%;
+}
+.musicItem:nth-child(1) ::v-deep .playPauseIcon02, .musicItem:nth-child(2) ::v-deep .playPauseIcon02, .musicItem:nth-child(3) ::v-deep .playPauseIcon02{
+  width: 140px;
+  height: 140px;
+}
+.musicItem:nth-child(1) ::v-deep .hover_bg, .musicItem:nth-child(2) ::v-deep .hover_bg, .musicItem:nth-child(3) ::v-deep .hover_bg{
+  width: 140px;
+  height: 140px;
+}
+
 </style>
