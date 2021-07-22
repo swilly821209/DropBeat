@@ -137,4 +137,20 @@ export default {
 ::v-deep .fundBlock:nth-child(4n){
     margin: 35px 0 0 0;
 }
+    .parent {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: 6%;
+    }
+    .child {
+        width: 20%;
+    }
+    @media screen and (max-width: 1080px){
+      .parent {
+        margin-left: 10%;
+      }
+      .child {
+        width: 19%;
+      }
+    }
 </style>
