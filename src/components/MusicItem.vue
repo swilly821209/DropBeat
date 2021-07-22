@@ -207,12 +207,12 @@ export default {
     background-color: #b5b5b5;
     background-image: url("../assets/icon/add_fff.svg");
   }
-  /* .gray{
+  .gray{
     margin: 0 5px;
     color: #B5B5B5;
   }
   .blue{
     margin: 0 5px;
     color: #31BDC5;
-  } */
+  }
 </style>

@@ -163,4 +163,24 @@ export default {
   .relative {
     position: relative;
   }
+  /* RWD */
+  @media screen and (max-width: 1420px) {
+    .span_author{
+      font-size: 14px;
+    }
+    .a_more{
+      font-size: 12px;
+      width: 50px;
+    }
+  }
+  @media screen and (max-width: 1290px) {
+    .span_author{
+      font-size: 12px;
+    }
+    .a_more{
+      font-size: 10px;
+      width: 40px;
+    }
+  }
+
 </style>
