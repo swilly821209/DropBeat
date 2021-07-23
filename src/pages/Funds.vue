@@ -121,36 +121,23 @@ export default {
 </script>
 
 <style scoped>
-.selectBtn{
-    margin: 20px 0 12px 0;
-}
-.parent {
-    /* border:1px solid red; */
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-::v-deep .fundBlock{
-  /* border:1px solid blue; */
-  width: 22%;
-}
-::v-deep .fundBlock:nth-child(4n){
-    margin: 35px 0 0 0;
-}
+    .selectBtn{
+        margin: 20px 0 12px 0;
+    }
     .parent {
+        /* border:1px solid red; */
         display: flex;
+        justify-content: space-between;
         flex-wrap: wrap;
-        margin-left: 6%;
+    }
+    ::v-deep .fundBlock{
+      /* border:1px solid blue; */
+      width: 22%;
+    }
+    ::v-deep .fundBlock:nth-child(4n){
+        margin: 35px 0 0 0;
     }
     .child {
         width: 20%;
-    }
-    @media screen and (max-width: 1080px){
-      .parent {
-        margin-left: 10%;
-      }
-      .child {
-        width: 19%;
-      }
     }
 </style>
