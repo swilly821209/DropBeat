@@ -4,7 +4,7 @@
     <div class="h-[200] flex flex-col justify-center ">
       <h3 class=" text-lg text-black-backdrop hover:underline cursor-pointer">{{ title }}</h3>
       <div class="time_location text-sm text-gray-dark">{{ inputTime }}・{{ city }}・{{ location }}</div>
-      <base-badge class=" mt-2" :image="singerImg" :singer="singer"></base-badge>
+      <base-badge v-if="singer" class=" mt-2" :image="singerImg" :singer="singer"></base-badge>
     </div>
   </div>
 </template>

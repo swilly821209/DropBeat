@@ -63,7 +63,6 @@
     </music-item>
   </div>
   <!-- <find-carousel></find-carousel> -->
-  <router-link to="ArtistHome">音樂人主頁(點more進入暫放)</router-link>
   <!-- </div> -->
   <!-- <div class="musicItemALL">
     <music-item
@@ -80,7 +79,6 @@
       :likeCounter="item.likeCounter">
     </music-item>
   </div> -->
-  <router-link to="ArtistHome">音樂人主頁(點more進入暫放)</router-link>
   </div>
 </template>
 
@@ -147,6 +145,33 @@ export default {
         },
         {
           num: '05',
+          img: 'https://akstatic.streetvoice.com/song_covers/ju/ne/junepan/EKEn4VgY8S9H38jumNiVLA.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
+          name: '在這座城市遺失了我',
+          singer: '告很多人',
+          musicTime: 2837,
+          playCounter: 888888,
+          likeCounter: 724
+        },
+        {
+          num: '06',
+          img: 'https://akstatic.streetvoice.com/song_covers/ju/ne/junepan/EKEn4VgY8S9H38jumNiVLA.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
+          name: '在這座城市遺失了我',
+          singer: '告很多人',
+          musicTime: 2837,
+          playCounter: 888888,
+          likeCounter: 724
+        },
+        {
+          num: '07',
+          img: 'https://akstatic.streetvoice.com/song_covers/ju/ne/junepan/EKEn4VgY8S9H38jumNiVLA.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
+          name: '在這座城市遺失了我',
+          singer: '告很多人',
+          musicTime: 2837,
+          playCounter: 888888,
+          likeCounter: 724
+        },
+        {
+          num: '08',
           img: 'https://akstatic.streetvoice.com/song_covers/ju/ne/junepan/EKEn4VgY8S9H38jumNiVLA.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
           name: '在這座城市遺失了我',
           singer: '告很多人',

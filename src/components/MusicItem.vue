@@ -15,8 +15,8 @@
             :class="{'invisible' : !playing}"
             :style="`background-image: url(${backdropImg})`"></div>
       </div> -->
-      <div class="musicImage relative " @click="playing = !playing">
-        <img :src="imgSrc" :alt="imgSrc" class=" rounded-2xl" >
+      <div class="musicImage relative " @click="playing = !playing" v-if="imgSrc">
+        <img :src="imgSrc" :alt="imgSrc"  class=" rounded-2xl" >
         <div v-if="playing" class="playPauseIcon01 absolute bg-black-backdrop bg-opacity-60 rounded-2xl top-0  group-hover:visible bg-no-repeat bg-center z-10"
             :style="`background-image: url(${backdropImg})`"></div>
         <div v-if="!playing" class="playPauseIcon02 absolute  rounded-2xl top-0 bg-50% bg-no-repeat bg-center z-10"

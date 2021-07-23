@@ -10,7 +10,7 @@
       </div>
     </div>
     <span class="span_author">{{ author }}</span>
-    <a class="a_more" :href="more">more</a>
+    <router-link class="a_more" to="/Artist/:id">more</router-link>
   </div>
 </template>
 
@@ -34,7 +34,7 @@ export default {
     },
     more: {
       type: String,
-      required: true,
+      required: false, // 之後要改路徑
       default: ''
     },
     play: {

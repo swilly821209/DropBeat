@@ -7,6 +7,8 @@ import ActiveDetail from '../pages/ActiveDetail.vue'
 import Funds from '../pages/Funds.vue'
 import Member from '../pages/Member.vue'
 import Musician from '../pages/Musician.vue'
+// Artis 頁面
+import Artist from '../pages/Artist.vue'
 import ArtistHome from '../pages/ArtistHome.vue'
 import ArtistMusic from '../pages/ArtistMusic.vue'
 
@@ -51,14 +53,14 @@ const routes = [
     component: Musician
   },
   {
-    path: '/ArtistHome',
-    name: 'ArtistHome',
-    component: ArtistHome
-  },
-  {
-    path: '/ArtistMusic',
-    name: 'ArtistMusic',
-    component: ArtistMusic
+    path: '/Artist/:id',
+    redirect: '/Artist/:id/ArtistHome',
+    name: 'Artist',
+    component: Artist,
+    children: [
+      { path: 'ArtistHome', component: ArtistHome }, // Artist/:id/ArtistHome
+      { path: 'ArtistMusic', component: ArtistMusic } // Artist/:id/ArtistMusic
+    ]
   }
 ]
 

@@ -1,54 +1,142 @@
 <template>
-  <div class="h-[500px] bg-50% bg-top bg-gradient-to-t to-gray-light from-black-backdrop bg-no-repeat px-10 pt-[60px]">
-    <div>
-      <router-link to="/Find">pre-arrow</router-link>
-    </div>
-    <div class="flex space-x-10 items-center">
-      <div class="flex flex-col justify-center items-center space-y-4">
-        <img class="rounded-full w-96 h-96 min-w-[386px]" src="https://akstatic.streetvoice.com/profile_images/er/ic/eric198853/Y3w4tbHRLXMLzFxUmW9bb7.jpg?x-oss-process=image/resize,m_fill,h_380,w_380,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg">
-        <div>
-          <p>已認證藝人</p>
-        </div>
-      </div>
-      <div class=" space-y-14">
-        <h1 class="text-5xl text-white font-medium min-w-[400px]">告五人 Accusefive</h1>
-        <div class="space-y-5">
-          <div class="flex items-center w-full justify-between">
-            <div class="flex w-80 justify-between">
-              <div>
-                <p class="text-xl text-black-backdrop">音樂</p>
-                <div class="text-5xl font-medium tracking-wider">16</div>
-              </div>
-              <div>
-                <p class="text-xl text-black-backdrop">粉絲</p>
-                <div class="text-5xl font-medium tracking-wider">68,250</div>
-              </div>
-            </div>
-            <div>
-              <button class="w-16 h-9 rounded-2xl bg-orange text-white">關注</button>
-            </div>
-          </div>
-          <p class=" text-sm text-gray-light">告五人成立於2011年，2017年重新成團，2018年以首張EP《迷霧之子》獲得金音獎最佳新人。目前為主唱潘雲安、犬青及鼓手哲謙的三人編制， 男女雙主唱的迷人交錯聲線，帶給聽眾強烈的吸引力。</p>
-        </div>
-      </div>
-    </div>
-  </div>
     <div class="range">
-        <h1>This is ArtistHome Pagge!</h1>
-        <div class="flex justify-center">
-          <router-link to="/Find"><span class="span_nav">←發現</span></router-link>
-          <router-link to="ArtistHome">主頁</router-link>
-          <router-link to="ArtistMusic">音樂</router-link>
-        </div>
+      <h3 class="text-2xl text-black-backdrop mb-5">最熱門作品</h3>
+        <music-item
+          v-for="item in musicItems"
+          @share-social="shareSocial(item.img, item.name, item.singer)"
+          :status="item.status"
+          :color="item.color"
+          :key="item.num"
+          :num="item.num"
+          :imgSrc="item.img"
+          :musicName="item.name"
+          :singer="item.singer"
+          :totalSecond="item.musicTime"
+          :playCounter="item.playCounter"
+          :likeCounter="item.likeCounter">
+        </music-item>
+      <h3 class="text-2xl text-black-backdrop mb-5 mt-[60px]">最熱門作品</h3>
+        <dynimic-news
+          v-for="item in newsDatas"
+          :key="item.img"
+          :mode="item.mode"
+          :img="item.img"
+          :name="item.name"
+          :singer="item.singer"
+          :musicTime="item.musicTime"
+          :playCounter="item.playCounter"
+          :likeCounter="item.likeCounter"
+          :date="item.time"
+          :title="item.title"
+          :city="item.city"
+          :location="item.location">
+        </dynimic-news>
     </div>
 </template>
 
 <script>
+import MusicItem from '../components/MusicItem.vue'
+import DynimicNews from '../components/DynimicNews.vue'
 export default {
   components: {
+    MusicItem,
+    DynimicNews
   },
   data () {
     return {
+      newsDatas: [
+        {
+          mode: 'newsong',
+          img: 'https://akstatic.streetvoice.com/song_covers/ju/ne/junepan/EKEn4VgY8S9H38jumNiVLA.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
+          name: '走建國路回家但後座少ㄌ你',
+          singer: '多多',
+          musicTime: '230',
+          playCounter: '12312',
+          likeCounter: '273'
+        },
+        {
+          mode: 'newactivity',
+          img: require('../assets/images/active/ac001.jpg'),
+          title: '2021 新歌巡迴《 穿過夜晚 Go Through the Night 》',
+          time: '2021-7-19 20:00',
+          city: '台北市',
+          location: '海邊的卡夫卡 Kafka by the Sea'
+        },
+        {
+          mode: 'newsong',
+          img: 'https://akstatic.streetvoice.com/song_covers/ju/ne/junepan/EKEn4VgY8S9H38jumNiVLA.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
+          name: '走建國路回家但後座少ㄌ你',
+          singer: '多多',
+          musicTime: '230',
+          playCounter: '12312',
+          likeCounter: '273'
+        },
+        {
+          mode: 'newactivity',
+          img: require('../assets/images/active/ac001.jpg'),
+          title: '2021 新歌巡迴《 穿過夜晚 Go Through the Night 》',
+          time: '2021-7-19 20:00',
+          city: '台北市',
+          location: '海邊的卡夫卡 Kafka by the Sea'
+        }
+      ],
+      musicItems: [
+        {
+          num: '01',
+          img: 'https://akstatic.streetvoice.com/song_covers/ju/ne/junepan/EKEn4VgY8S9H38jumNiVLA.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
+          name: '在這座城市遺失了你',
+          singer: '告五人',
+          musicTime: 287,
+          playCounter: 88888,
+          likeCounter: 744,
+          status: '▲',
+          color: 'blue'
+        },
+        {
+          num: '02',
+          img: 'https://akstatic.streetvoice.com/song_covers/ju/ne/junepan/EKEn4VgY8S9H38jumNiVLA.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
+          name: '在這座城市遺失了你',
+          singer: '告五人',
+          musicTime: 2837,
+          playCounter: 883888,
+          likeCounter: 7344,
+          status: '－',
+          color: 'gray'
+        },
+        {
+          num: '03',
+          img: 'https://akstatic.streetvoice.com/song_covers/ju/ne/junepan/EKEn4VgY8S9H38jumNiVLA.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
+          name: '在這座城市遺失了你',
+          singer: '告五人',
+          musicTime: 2227,
+          playCounter: 883388,
+          likeCounter: 7434,
+          status: '▲',
+          color: 'blue'
+        },
+        {
+          num: '04',
+          img: 'https://akstatic.streetvoice.com/song_covers/ju/ne/junepan/EKEn4VgY8S9H38jumNiVLA.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
+          name: '在這座城市找尋你',
+          singer: '告五人',
+          musicTime: 2827,
+          playCounter: 8833888,
+          likeCounter: 7434,
+          status: '－',
+          color: 'gray'
+        },
+        {
+          num: '05',
+          img: 'https://akstatic.streetvoice.com/song_covers/ju/ne/junepan/EKEn4VgY8S9H38jumNiVLA.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
+          name: '在這座城市遺失了我',
+          singer: '告很多人',
+          musicTime: 2837,
+          playCounter: 888888,
+          likeCounter: 724,
+          status: '▼',
+          color: 'gray'
+        }
+      ]
     }
   }
 }

@@ -24,7 +24,7 @@
     <div class="artist">
       <base-title title="Artist 大家都在聽" link to="/Find" style="width:390px"></base-title>
       <div class="flex flex-wrap justify-between artcontain">
-        <artist class=" aartist"
+        <artist-item class=" aartist"
           :width="'w-24'"
           v-for="(item, index) in artistList"
           @click="playFun(index)"
@@ -33,7 +33,7 @@
           :author="item.author"
           :more="item.more"
           :key="item.author">
-        </artist>
+        </artist-item>
       </div>
     </div>
   </div>
@@ -66,7 +66,7 @@
 <script>
 import HotMusic from '../components/HotMusic.vue'
 import CdPlayer from '../components/CdPlayer.vue'
-import Artist from '../components/Artist.vue'
+import ArtistItem from '../components/ArtistItem.vue'
 import TheCarousel from '../components/TheCarousel.vue'
 import FundItem from '../components/FundItem.vue'
 
@@ -74,7 +74,7 @@ export default {
   components: {
     HotMusic,
     CdPlayer,
-    Artist,
+    ArtistItem,
     TheCarousel,
     FundItem
   },
