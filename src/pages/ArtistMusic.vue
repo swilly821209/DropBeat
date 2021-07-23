@@ -1,7 +1,7 @@
 <template>
     <base-dialog :show="toggleDialog">
       <report-message></report-message>
-    </base-dialog>
+    </base-dialog> -->
   <div class="range">
     <h3 class="text-2xl text-black-backdrop mb-5">最熱門作品</h3>
     <div class="flex w-full justify-between">

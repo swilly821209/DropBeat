@@ -98,11 +98,11 @@
         </div>
       </div>
       <div class=" w-1/6 m-auto flex justify-around mt-2 pointAll">
-        <div class="point" :class="{activeing: currentItem == 1}" @click="changeCarousel(1)"></div>
-        <div class="point" :class="{activeing: currentItem == 2}" @click="changeCarousel(2)"></div>
-        <div class="point" :class="{activeing: currentItem == 3}" @click="changeCarousel(3)"></div>
-        <div class="point" :class="{activeing: currentItem == 4}" @click="changeCarousel(4)"></div>
-        <div class="point" :class="{activeing: currentItem == 5}" @click="changeCarousel(5)"></div>
+        <div class="point" :class="{active: currentItem == 1}" @click="changeCarousel(1)"></div>
+        <div class="point" :class="{active: currentItem == 2}" @click="changeCarousel(2)"></div>
+        <div class="point" :class="{active: currentItem == 3}" @click="changeCarousel(3)"></div>
+        <div class="point" :class="{active: currentItem == 4}" @click="changeCarousel(4)"></div>
+        <div class="point" :class="{active: currentItem == 5}" @click="changeCarousel(5)"></div>
       </div>
 </div>
 </template>

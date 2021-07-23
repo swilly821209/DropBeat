@@ -1,10 +1,11 @@
 <template>
 <div class="title00">
   <div class="titleNline">
-  <h2>{{ title }}</h2>
+  <h2 :class="second">{{ title }}</h2>
   <div class="under"></div>
   </div>
   <router-link class="more" v-if="link" :to="to">more >></router-link>
+  <button v-else-if="admin" class="btn">聯絡管理員</button>
 </div>
 </template>
 
@@ -25,6 +26,16 @@ export default {
       type: String,
       required: false,
       default: '/'
+    },
+    admin: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    second: {
+      type: String,
+      required: false,
+      default: ''
     }
   }
 }
@@ -61,5 +72,23 @@ h2{
 }
 .title00:hover .under{
     background-color: #7b7b7b;
+}
+/* 修改募資管理-修改刪除btn */
+.btn{
+  border: 2px solid #FE9F8A;
+  color: #FE9F8A;
+  border-radius: 20px;
+  margin-left: 20px;
+  padding: 2px 20px;
+  align-self: center;
+  justify-self: center;
+}
+.btn:hover{
+  color: white;
+  background-color: #FE9F8A;
+}
+/* 次title(此size暫定) */
+.second{
+  font-size: 24px;
 }
 </style>

@@ -9,6 +9,7 @@ import Member from '../pages/Member.vue'
 import Musician from '../pages/Musician.vue'
 // Artis 頁面
 import Artist from '../pages/Artist.vue'
+import MusicianFunds from '../pages/MusicianFunds.vue'
 import ArtistHome from '../pages/ArtistHome.vue'
 import ArtistMusic from '../pages/ArtistMusic.vue'
 
@@ -61,6 +62,11 @@ const routes = [
       { path: 'ArtistHome', component: ArtistHome }, // Artist/:id/ArtistHome
       { path: 'ArtistMusic', component: ArtistMusic } // Artist/:id/ArtistMusic
     ]
+  },
+  {
+    path: '/MusicianFunds',
+    name: 'MusicianFunds',
+    component: MusicianFunds
   }
 ]
 

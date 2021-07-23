@@ -173,19 +173,34 @@ export default {
     margin-top: 20px;
   }
   /* RWD */
-  @media screen and (max-width: 1420px) {
+  @media screen and (max-width: 1920px) {
+    .aartist{
+      width: 170px;
+    }
+  }
+  @media screen and (max-width: 1750px) {
+    .aartist{
+      width: 150px;
+    }
+  }
+  @media screen and (max-width: 1590px) {
+    .aartist{
+      width: 130px;
+    }
+  }
+  @media screen and (max-width: 1430px) {
+    .aartist{
+      width: 110px;
+    }
+  }
+  @media screen and (max-width: 1270px) {
+    .aartist{
+      width: 90px;
+    }
+  }
+  @media screen and (max-width: 1110px) {
     .aartist{
       width: 80px;
-    }
-  }
-  @media screen and (max-width: 1290px) {
-    .aartist{
-      margin: 8px;
-    }
-  }
-  @media screen and (max-width: 1160px) {
-    .aartist{
-      margin: 2px;
     }
   }
 </style>

@@ -121,11 +121,12 @@ export default {
     height: 250px;
   }
   .title{
+    text-align: center;
     width: 50px;
-    margin-right: 10px;
+    margin-left: 10px;
   }
   .lyricsContainer{
-    width: 350px;
+    width: 280px;
     height: 250px;
   }
   .lyricsH{
@@ -140,6 +141,7 @@ export default {
   .self{
     align-self: center;
     margin-left: 10px;
+    width: 20px;
   }
   ::-webkit-scrollbar {
     display: none;
