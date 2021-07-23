@@ -302,7 +302,16 @@ export default {
     background-color: transparent;
   }
   /* RWD */
-  @media screen and (max-width: 1420px) {
+  @media screen and (max-width: 1590px) {
+    .div_song_whole{
+      width: 300px;
+    }
+    .cd{
+      width: 270px;
+      height: 270px;
+    }
+  }
+  @media screen and (max-width: 1270px) {
     .div_song_whole{
       width: 270px;
     }
@@ -310,18 +319,18 @@ export default {
       width: 240px;
       height: 240px;
     }
-  }
-  @media screen and (max-width: 1290px) {
-    .div_song_whole{
-      width: 230px;
-    }
-    .cd{
-      width: 200px;
-      height: 200px;
-    }
     .div_song_info{
       margin:0 0 0 55px;
       padding-bottom: 20px;
+    }
+  }
+  @media screen and (max-width: 1110px) {
+    .div_song_whole{
+      width: 240px;
+    }
+    .cd{
+      width: 210px;
+      height: 210px;
     }
   }
 </style>
