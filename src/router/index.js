@@ -16,6 +16,7 @@ import FundForm from '../pages/FundForm.vue'
 
 import Member from '../pages/Member.vue'
 import Musician from '../pages/Musician.vue'
+import MusicianActive from '../pages/MusicianActive.vue'
 import MusicianFunds from '../pages/MusicianFunds.vue'
 // Artis 頁面
 import Artist from '../pages/Artist.vue'
@@ -91,6 +92,11 @@ const routes = [
       { path: 'ArtistHome', component: ArtistHome }, // Artist/:id/ArtistHome
       { path: 'ArtistMusic', component: ArtistMusic } // Artist/:id/ArtistMusic
     ]
+  },
+  {
+    path: '/MusicianActive',
+    name: 'MusicianActive',
+    component: MusicianActive
   },
   {
     path: '/MusicianFunds',

@@ -104,7 +104,7 @@
               <router-link to="/Musician" class="r_li"><span class="span_hyphen">-</span>音樂管理</router-link>
             </li>
             <li class="li_inside_title">
-              <router-link to="/Musician" class="r_li"><span class="span_hyphen">-</span>活動管理</router-link>
+              <router-link to="/MusicianActive" class="r_li"><span class="span_hyphen">-</span>活動管理</router-link>
             </li>
             <li class="li_inside_title">
               <router-link to="/MusicianFunds" class="r_li"><span class="span_hyphen">-</span>募資管理</router-link>

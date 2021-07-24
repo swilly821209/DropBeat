@@ -88,7 +88,7 @@
     </div>
     <div class="flex justify-end mt-5">
       <div class="flex">
-        <button class="border border-gray-light text-gray-light px-4 mr-5 rounded-xl">取消</button>
+        <button class="border-2 border-gray-light text-gray-light px-4 mr-5 rounded-xl hover:border-orange">取消</button>
         <button class="border border-orange bg-orange text-white px-4 rounded-xl">提交審核</button>
       </div>
     </div>
