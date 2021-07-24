@@ -1,6 +1,8 @@
 <template>
   <div class="fundBlock">
-    <img :src="img">
+    <router-link to="/Funds/:id">
+      <img :src="img">
+    </router-link>
     <div class="content">
       <h4 class=" text-base text-black">{{ title }}</h4>
       <p class="text-sm text-gray-dark">{{singer}}</p>

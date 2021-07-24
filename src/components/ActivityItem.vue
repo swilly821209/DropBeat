@@ -1,6 +1,8 @@
 <template>
   <div class="item flex space-x-5">
-    <img :src="img" class="w-[350px] h-[200] rounded-3xl cursor-pointer">
+    <router-link to="/Active/:id">
+      <img :src="img" class="w-[350px] h-[200] rounded-3xl cursor-pointer">
+    </router-link>
     <div class="h-[200] flex flex-col justify-center ">
       <h3 class=" text-lg text-black-backdrop hover:underline cursor-pointer">{{ title }}</h3>
       <div class="time_location text-sm text-gray-dark">{{ inputTime }}・{{ city }}・{{ location }}</div>
