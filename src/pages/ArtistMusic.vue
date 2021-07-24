@@ -1,7 +1,7 @@
 <template>
     <base-dialog :show="toggleDialog">
       <report-message></report-message>
-    </base-dialog> -->
+    </base-dialog>
   <div class="range">
     <h3 class="text-2xl text-black-backdrop mb-5">最熱門作品</h3>
     <div class="flex w-full justify-between">
@@ -14,18 +14,29 @@
           :songnum="theCDalbum.songnum"
           :times="theCDalbum.times"
       ></cd-player>
-      <div class="w-1/2">
-        <music-item
-          v-for="item in musicItems"
-          @share-social="shareSocial(item.img, item.name, item.singer)"
-          :key="item.num"
-          :num="item.num"
-          :musicName="item.name"
-          :singer="item.singer"
-          :totalSecond="item.musicTime"
-          :playCounter="item.playCounter"
-          :likeCounter="item.likeCounter">
-        </music-item>
+      <div class="w-1/2 h-96">
+        <swiper :slidesPerView="5" :direction="'vertical'" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}">
+          <div class="parallax-slider-navigation">
+            <div class="nav-indicator prevArrow">
+              prev
+            </div>
+            <div class="nav-indicator nextArrow">
+              next
+            </div>
+         </div>
+          <!-- <svg xmlns="http://www.w3.org/2000/svg" class="preArrow" width="20" height="17" viewBox="0 0 20 17"><path id="up" d="M9.138,1.465a1,1,0,0,1,1.724,0l8.252,14.028A1,1,0,0,1,18.252,17H1.748a1,1,0,0,1-.862-1.507Z" transform="translate(20 17) rotate(180)" fill="#b5b5b5"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="nextArrow" width="20" height="17" viewBox="0 0 20 17"><path id="up" d="M9.138,1.465a1,1,0,0,1,1.724,0l8.252,14.028A1,1,0,0,1,18.252,17H1.748a1,1,0,0,1-.862-1.507Z" transform="translate(20 17) rotate(180)" fill="#b5b5b5"/></svg> -->
+          <swiper-slide  v-for="item in musicItems" :key="item.num" class="flrx items-center object-cover">
+            <music-item
+              :num="item.num"
+              :musicName="item.name"
+              :singer="item.singer"
+              :totalSecond="item.musicTime"
+              :playCounter="item.playCounter"
+              :likeCounter="item.likeCounter">
+            </music-item>
+          </swiper-slide>
+        </swiper>
       </div>
     </div>
     <h3 class="text-2xl text-black-backdrop my-10">所有專輯</h3>
@@ -53,6 +64,10 @@
 </template>
 
 <script>
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import SwiperCore, { Navigation } from 'swiper/core'
+import 'swiper/swiper-bundle.min.css'
+
 import SongInfo from '../components/SongInfo.vue'
 import SongLyrics from '../components/SongLyrics.vue'
 import MessageBoard from '../components/MessageBoard.vue'
@@ -61,6 +76,8 @@ import CdPlayer from '../components/CdPlayer.vue'
 import MusicItem from '../components/MusicItem.vue'
 import AlbumItem from '../components/AlbumItem.vue'
 import singleMusic from '../components/singleMusic.vue'
+
+SwiperCore.use([Navigation])
 export default {
   components: {
     SongInfo,
@@ -70,7 +87,9 @@ export default {
     MusicItem,
     CdPlayer,
     AlbumItem,
-    singleMusic
+    singleMusic,
+    Swiper,
+    SwiperSlide
   },
   data () {
     return {
@@ -149,6 +168,42 @@ export default {
           musicTime: 2837,
           playCounter: 888888,
           likeCounter: 724
+        },
+        {
+          num: '05',
+          img: 'https://akstatic.streetvoice.com/song_covers/ju/ne/junepan/EKEn4VgY8S9H38jumNiVLA.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
+          name: '在這座城市遺失了我',
+          singer: '告很多人',
+          musicTime: 2837,
+          playCounter: 888888,
+          likeCounter: 724
+        },
+        {
+          num: '05',
+          img: 'https://akstatic.streetvoice.com/song_covers/ju/ne/junepan/EKEn4VgY8S9H38jumNiVLA.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
+          name: '在這座城市遺失了我',
+          singer: '告很多人',
+          musicTime: 2837,
+          playCounter: 888888,
+          likeCounter: 724
+        },
+        {
+          num: '05',
+          img: 'https://akstatic.streetvoice.com/song_covers/ju/ne/junepan/EKEn4VgY8S9H38jumNiVLA.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
+          name: '在這座城市遺失了我',
+          singer: '告很多人',
+          musicTime: 2837,
+          playCounter: 888888,
+          likeCounter: 724
+        },
+        {
+          num: '05',
+          img: 'https://akstatic.streetvoice.com/song_covers/ju/ne/junepan/EKEn4VgY8S9H38jumNiVLA.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
+          name: '在這座城市遺失了我',
+          singer: '告很多人',
+          musicTime: 2837,
+          playCounter: 888888,
+          likeCounter: 724
         }
       ],
       theCDsong: {
@@ -181,4 +236,17 @@ export default {
     color: white;
     margin: 30px;
   }
+.swiper-container {
+  width: 600px;
+  height: 500px;
+}
+.parallax-slider-navigation {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  right: -100;
+  margin: auto;
+  display: flex;
+  height: 0;
+}
 </style>
