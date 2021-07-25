@@ -251,6 +251,7 @@ export default {
     position: relative;
     width: 80px;
     height: 80px;
+    /* width: 110px; */
     border-radius: 10px;
   }
   .div_certain_container{
@@ -393,6 +394,7 @@ export default {
   .div_one_four .div_music_info:nth-child(1) .img_album{
     width: 180px;
     height: 180px;
+    /* width: 320px; */
   }
   .div_one_four .div_music_info:nth-child(1) .div_curtain {
     width: 50px;
@@ -421,4 +423,20 @@ export default {
   .div_music_info:last-child{
     border-bottom: none;
   }
+  /* RWD */
+  /* 小原圖 + cover */
+  /* .img_album{
+    position: relative;
+    width: 110px;
+    border-radius: 10px;
+  } */
+  /* 大原圖 + cover */
+  /* .div_one_four .div_music_info:nth-child(1) .img_album{
+    width: 320px;
+  } */
+  /* @media screen and (max-width: 1420px) {
+    .div_one_four .div_music_info:nth-child(1) .img_album{
+      width: 380px;
+    }
+  } */
 </style>

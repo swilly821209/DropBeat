@@ -10,7 +10,7 @@
       </div>
     </div>
     <span class="span_author">{{ author }}</span>
-    <a class="a_more" :href="more">more</a>
+    <router-link class="a_more" to="/Artist/:id">more</router-link>
   </div>
 </template>
 
@@ -34,7 +34,7 @@ export default {
     },
     more: {
       type: String,
-      required: true,
+      required: false, // 之後要改路徑
       default: ''
     },
     play: {
@@ -177,5 +177,24 @@ export default {
   /* 判斷是否給position */
   .relative {
     position: relative;
+  }
+  /* RWD */
+  @media screen and (max-width: 1430px) {
+    .span_author{
+      font-size: 14px;
+    }
+    .a_more{
+      font-size: 12px;
+      width: 50px;
+    }
+  }
+  @media screen and (max-width: 1270px) {
+    .span_author{
+      font-size: 12px;
+    }
+    .a_more{
+      font-size: 10px;
+      width: 40px;
+    }
   }
 </style>

@@ -7,7 +7,7 @@
       </span>
           <div class="carousel_outer" ref="outer">
               <div class="carousel_inner" ref="inner">
-                  <artist
+                  <artist-item
                       class="art"
                       :style="itemWidth"
                       listen
@@ -20,7 +20,7 @@
                       :author="item.author"
                       :more="item.more"
                       :key="item.author">
-                  </artist>
+                  </artist-item>
               </div>
           </div>
       <span class="cursor-pointer transition translate hover:translate-x-0.5" @click="rightFun">
@@ -32,10 +32,10 @@
 </template>
 
 <script>
-import Artist from '../components/Artist.vue'
+import ArtistItem from '../components/ArtistItem.vue'
 export default {
   components: {
-    Artist
+    ArtistItem
   },
   data () {
     return {
@@ -167,12 +167,12 @@ export default {
         width: 850px;
       }
     }
-    @media screen and (max-width: 1250px) {
+    @media screen and (max-width: 1290px) {
       .carousel_outer{
         width: 680px;
       }
     }
-    @media screen and (max-width: 1070px) {
+    @media screen and (max-width: 1080px) {
       .carousel_outer{
         width: 510px;
       }

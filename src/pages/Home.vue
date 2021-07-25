@@ -10,7 +10,7 @@
   <div class="day_N_artist">
     <div class="day">
       <base-title title="Song of the Day 每日一曲"></base-title>
-      <cd-player class="h-80"
+      <cd-player style="width:200px"
         likes date asong
         :songimg="theCDsong.img"
         :titles="theCDsong.title"
@@ -22,9 +22,9 @@
       ></cd-player>
     </div>
     <div class="artist">
-      <base-title title="Artist 大家都在聽" link to="/Find"></base-title>
+      <base-title title="Artist 大家都在聽" link to="/Find" style="width:390px"></base-title>
       <div class="flex flex-wrap justify-between artcontain">
-        <artist class=" aartist"
+        <artist-item class=" aartist"
           :width="'w-24'"
           v-for="(item, index) in artistList"
           @click="playFun(index)"
@@ -33,7 +33,7 @@
           :author="item.author"
           :more="item.more"
           :key="item.author">
-        </artist>
+        </artist-item>
       </div>
     </div>
   </div>
@@ -66,7 +66,7 @@
 <script>
 import HotMusic from '../components/HotMusic.vue'
 import CdPlayer from '../components/CdPlayer.vue'
-import Artist from '../components/Artist.vue'
+import ArtistItem from '../components/ArtistItem.vue'
 import TheCarousel from '../components/TheCarousel.vue'
 import FundItem from '../components/FundItem.vue'
 
@@ -74,7 +74,7 @@ export default {
   components: {
     HotMusic,
     CdPlayer,
-    Artist,
+    ArtistItem,
     TheCarousel,
     FundItem
   },
@@ -171,5 +171,36 @@ export default {
   }
   .aartist{
     margin-top: 20px;
+  }
+  /* RWD */
+  @media screen and (max-width: 1920px) {
+    .aartist{
+      width: 170px;
+    }
+  }
+  @media screen and (max-width: 1750px) {
+    .aartist{
+      width: 150px;
+    }
+  }
+  @media screen and (max-width: 1590px) {
+    .aartist{
+      width: 130px;
+    }
+  }
+  @media screen and (max-width: 1430px) {
+    .aartist{
+      width: 110px;
+    }
+  }
+  @media screen and (max-width: 1270px) {
+    .aartist{
+      width: 90px;
+    }
+  }
+  @media screen and (max-width: 1110px) {
+    .aartist{
+      width: 80px;
+    }
   }
 </style>

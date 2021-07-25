@@ -71,7 +71,7 @@ export default {
     align-items: center;
     justify-content: center;
     display: flex;
-    width: 65%;
+    width: 80%;
   }
   .div_song_whole{
     position: relative;
@@ -172,25 +172,48 @@ export default {
     font-size: 14px;
   }
   /* div_count */
+  .div_playCount{
+    margin-bottom: 10px;
+  }
   .div_count{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    margin-left: 10px;
+    margin-left: 30px;
     color: #7B7B7B;
-    width: 35%;
+    width: 250px;
   }
   .div_count span{
-    font-size: 1.2vw;
+    font-size: 20px;
     align-self: flex-start;
   }
   .div_count h3{
-    font-size: 2.5vw;
+    font-size: 32px;
     align-self: flex-start;
   }
   .div_count div{
     display: flex;
     flex-direction: column;
+  }
+  @media screen and (max-width: 1270px) {
+    .div_count span{
+      font-size: 16px;
+      align-self: flex-start;
+    }
+    .div_count h3{
+      font-size: 28px;
+      align-self: flex-start;
+    }
+  }
+  @media screen and (max-width: 1110px) {
+    .div_count span{
+      font-size: 14px;
+      align-self: flex-start;
+    }
+    .div_count h3{
+      font-size: 24px;
+      align-self: flex-start;
+    }
   }
 </style>
