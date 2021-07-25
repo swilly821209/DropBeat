@@ -3,16 +3,16 @@
     <div class="flex justify-between mt-5">
       <base-title title="募資管理" admin></base-title>
       <div class="arrow cursor-pointer" >
-        <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" width="25" height="40" viewBox="0 0 25 40">
-          <path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="#ededed"/>
+        <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" width="25" height="40" viewBox="0 0 25 40" @click="leftFunds">
+          <path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" :fill="fundsL"/>
         </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="40" viewBox="0 0 25 40">
-          <path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="#b5b5b5"/>
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="40" viewBox="0 0 25 40" @click="rightFunds">
+          <path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" :fill="fundsR"/>
         </svg>
       </div>
     </div>
-    <div class="flex outersMeneger">
-      <div class="flex innersMeneger">
+    <div class="outersMeneger">
+      <div class="innersMeneger">
         <fund-item class="theItemMeneger"
           edit
           v-for="item in fundItems"
@@ -111,39 +111,7 @@ export default {
           img: 'https://akstatic.streetvoice.com/audition/2021/06/16/6c24a3f3d1794ce896a1e0a56ba9597d.jpg?x-oss-process=image/resize,m_fill,h_396,w_396,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
           singer: '告五人',
           progress: '50%',
-          money: 888888,
-          date: 29
-        },
-        {
-          title: '運氣來的若有似無 專輯募資',
-          img: 'https://akstatic.streetvoice.com/audition/2021/06/16/6c24a3f3d1794ce896a1e0a56ba9597d.jpg?x-oss-process=image/resize,m_fill,h_396,w_396,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
-          singer: '告五人',
-          progress: '50%',
-          money: 882288,
-          date: 29
-        },
-        {
-          title: '運氣來的若有似無 專輯募資',
-          img: 'https://akstatic.streetvoice.com/audition/2021/06/16/6c24a3f3d1794ce896a1e0a56ba9597d.jpg?x-oss-process=image/resize,m_fill,h_396,w_396,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
-          singer: '告五人',
-          progress: '80%',
-          money: 888888,
-          date: 25
-        },
-        {
-          title: '運氣來的若有似無 專輯募資',
-          img: 'https://akstatic.streetvoice.com/audition/2021/06/16/6c24a3f3d1794ce896a1e0a56ba9597d.jpg?x-oss-process=image/resize,m_fill,h_396,w_396,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
-          singer: '告五人',
-          progress: '30%',
-          money: 8888338,
-          date: 22
-        },
-        {
-          title: '運氣來的若有似無 專輯募資',
-          img: 'https://akstatic.streetvoice.com/audition/2021/06/16/6c24a3f3d1794ce896a1e0a56ba9597d.jpg?x-oss-process=image/resize,m_fill,h_396,w_396,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
-          singer: '告五人',
-          progress: '50%',
-          money: 888888,
+          money: 666666,
           date: 29
         },
         {
@@ -233,6 +201,9 @@ export default {
           quantity: 800
         }
       ],
+      fundsPosition: 0,
+      fundsL: '#ededed',
+      fundsR: '#b5b5b5',
       planPosition: 0,
       planL: '#ededed',
       planR: '#b5b5b5'
@@ -242,6 +213,18 @@ export default {
     changeColor (e) {
       e.target.classList.remove('text-transparent')
       e.target.classList.add('text-gray-light')
+    },
+    leftFunds () {
+      this.fundsPosition = 0
+      document.querySelector('.innersMeneger').style.transform = `translateX(${this.fundsPosition}px)`
+      this.fundsL = '#ededed'
+      this.fundsR = '#b5b5b5'
+    },
+    rightFunds () {
+      this.fundsPosition = -1500
+      document.querySelector('.innersMeneger').style.transform = `translateX(${this.fundsPosition}px)`
+      this.fundsL = '#b5b5b5'
+      this.fundsR = '#ededed'
     },
     leftPlan () {
       this.planPosition = 0
@@ -270,27 +253,25 @@ export default {
   }
   /* 募資管理 */
   .outersMeneger{
+    display: flex;
     position: relative;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
     width: 1500px;
-    height: 530px;
+    height: 600px;
     overflow: hidden;
   }
   .innersMeneger{
-    width: 4500px;
+    display: flex;
+    width: 3000px;
     height: 500px;
     transition: all 1s;
     position: absolute;
     display: flex;
     justify-content: space-around;
-    transform: translateX(-375px);
   }
   .theItemMeneger{
-    margin-top: 0;
     width: 375px;
     height: 500px;
+    margin-left: 30px;
   }
   /* 募資方案 */
   .outers{
