@@ -22,8 +22,8 @@
       <div class="time_location text-sm text-gray-dark">{{ inputTime }}・{{ city }}・{{ location }}</div>
       <base-badge v-if="singer" class=" mt-2" :image="singerImg" :singer="singer"></base-badge>
     </div>
-    <div class="flex mt-1 ml-6 pr-3 w-[350px] h-[200]">
-      <button v-if="check" class="self-start rounded-xl border-2 border-blue-light bg-blue-light text-white px-3">審核ing...</button>
+    <div class="flex mt-1 ml-6 pr-3 w-[350px] h-[200]" v-if="check">
+      <button  class="self-start rounded-xl border-2 border-blue-light bg-blue-light text-white px-3">審核ing...</button>
     </div>
   </div>
 </template>
