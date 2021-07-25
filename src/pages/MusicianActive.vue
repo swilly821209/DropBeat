@@ -32,8 +32,14 @@
     </div>
     <base-title title="發起活動" class="mt-20 mb-5"></base-title>
     <div class="flex w-full h-96">
-      <select-img class="w-9/12"></select-img>
-      <div class="w-3/12 flex flex-col ml-5">
+      <select-img
+        class="w-8/12"
+        :radius="'rounded-3xl'"
+        :camera="true"
+        :text="'選取圖片'"
+        :inputImg="'border-2 border-white bg-white incircle'"
+      ></select-img>
+      <div class="w-4/12 flex flex-col pt-10 ">
         <div class="flex mt-4">
           <label for="topic" class="w-2/6 text-right text-gray-dark text-xl mr-3">活動主題：</label>
           <input id="topic" type="text" class="w-4/6 border-b-2 border-gray-light focus:outline-none focus:border-orange font-bold text-gray-light">
