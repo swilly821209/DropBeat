@@ -32,7 +32,7 @@
       </div> -->
       </div>
     </div>
-    <div class="w-[380px] flex justify-between">
+    <div class="time_btns w-[380px] flex justify-between">
       <p class="text-sm text-gray-light">{{ time }}</p>
       <div class="playnum_likenum_share_add">
         <div class=" playBtn border-2 rounded-2xl border-gray-default text-gray-light flex items-center justify-center  space-x-1">

@@ -3,23 +3,37 @@
       <report-message></report-message>
     </base-dialog>
   <div class="range">
-    <h3 class="text-2xl text-black-backdrop mb-5">最熱門作品</h3>
-    <div class="flex w-full justify-between">
-      <cd-player style="width:200px"
-          :songimg="theCDsong.img"
-          :titles="theCDsong.title"
-          :author="theCDsong.author"
-          :albumname="theCDalbum.name"
-          :years="theCDalbum.years"
-          :songnum="theCDalbum.songnum"
-          :times="theCDalbum.times"
-      ></cd-player>
-        <swiper :slidesPerView="5" :direction="'vertical'" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="w-[700px] h-[400px] m-0">
+    <h3 class="title01 text-2xl text-black-backdrop">最新專輯</h3>
+    <div class="block01">
+      <div class="block01_1 flex flex-col">
+        <cd-player style="width:200px"
+            :songimg="theCDsong.img"
+            :titles="theCDsong.title"
+            :author="theCDsong.author"
+            :albumname="theCDalbum.name"
+            :years="theCDalbum.years"
+            :songnum="theCDalbum.songnum"
+            :times="theCDalbum.times"
+        ></cd-player>
+      </div>
+      <div class="block01_2">
+        <!-- <music-item
+          v-for="item in musicItems"
+          @share-social="shareSocial(item.img, item.name, item.singer)"
+          :key="item.num"
+          :num="item.num"
+          :musicName="item.name"
+          :singer="item.singer"
+          :totalSecond="item.musicTime"
+          :playCounter="item.playCounter"
+          :likeCounter="item.likeCounter">
+        </music-item> -->
+        <swiper :slidesPerView="5" :direction="'vertical'" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="w-[620px] h-[400px] m-0">
           <div class="navigations space-y-2 absolute top-1/2 z-10">
             <svg xmlns="http://www.w3.org/2000/svg" class="preArrow block text-gray-light" width="20" height="17" viewBox="0 0 20 17"><path id="up" d="M9.138,1.465a1,1,0,0,1,1.724,0l8.252,14.028A1,1,0,0,1,18.252,17H1.748a1,1,0,0,1-.862-1.507Z" fill="currentColor"/></svg>
             <svg xmlns="http://www.w3.org/2000/svg" class="nextArrow block text-gray-light" width="20" height="17" viewBox="0 0 20 17"><path id="up" d="M9.138,1.465a1,1,0,0,1,1.724,0l8.252,14.028A1,1,0,0,1,18.252,17H1.748a1,1,0,0,1-.862-1.507Z" transform="translate(20 17) rotate(180)" fill="currentColor"/></svg>
-         </div>
-          <swiper-slide  v-for="item in musicItems" :key="item.num" class="left-[6%] w-11/12">
+          </div>
+          <swiper-slide  v-for="item in musicItems" :key="item.num" class="left-[10%] w-10/12">
             <music-item
               :num="item.num"
               :musicName="item.name"
@@ -30,8 +44,9 @@
             </music-item>
           </swiper-slide>
         </swiper>
+      </div>
     </div>
-    <h3 class="text-2xl text-black-backdrop my-10">所有專輯</h3>
+    <h3 class="title02 text-2xl text-black-backdrop">所有專輯</h3>
     <div class="flex justify-between">
       <album-item
         v-for="item in albumData"
@@ -43,22 +58,25 @@
         :totalTime="item.totalTime">
       </album-item>
     </div>
-    <h3 class="text-2xl text-black-backdrop my-10">所有音樂</h3>
-    <div class="flex items-center mx-20">
+    <h3 class="title03 text-2xl text-black-backdrop ">所有音樂</h3>
+    <div class="flex items-center ">
       <song-info></song-info>
       <song-lyrics></song-lyrics>
     </div>
-    <message-board class="my-10"></message-board>
+    <!-- <message-board class="message"></message-board> -->
+    <!-- <div class="flex flex-wrap justify-around">
+      <single-music v-for="item in 12" :key="item"></single-music> -->
+    <message-board class="message"></message-board>
     <div class="single-music-carousel">
       <swiper :slidesPerView="5" :slidesPerColumn="2" :spaceBetween="20" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}"
               class="w-full h-full">
-         <div class=" absolute flex items-center top-2 right-5 z-10 space-x-3">
-            <svg xmlns="http://www.w3.org/2000/svg" class="preArrow block text-gray-light" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
-            <svg xmlns="http://www.w3.org/2000/svg" class="nextArrow block text-gray-light" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
-         </div>
-         <swiper-slide v-for="item in 12" :key="item" class="">
+        <div class=" absolute flex items-center top-5 right-5 z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="preArrow block text-gray-light" width="20" height="17" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="nextArrow block text-gray-light" width="20" height="17" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
+        </div>
+        <swiper-slide v-for="item in 12" :key="item" class="">
           <single-music></single-music>
-         </swiper-slide>
+        </swiper-slide>
       </swiper>
     </div>
   </div>
@@ -104,21 +122,21 @@ export default {
         },
         {
           img: 'https://scontent.ftpe7-2.fna.fbcdn.net/v/t31.18172-8/21415009_1654071567936794_7079793410660076323_o.jpg?_nc_cat=109&ccb=1-3&_nc_sid=174925&_nc_ohc=_O3O9YvR4BkAX-oZRTN&tn=G4i6ABBsODQmugD-&_nc_ht=scontent.ftpe7-2.fna&oh=c6e4ab7db0e42cdfaf3cf37d830900b4&oe=611F42AF',
-          albumName: '運氣來的絡有似無',
+          albumName: '運氣來的若有似無',
           year: 2021,
           num: 12,
           totalTime: '00:41:20'
         },
         {
           img: 'https://scontent.ftpe7-2.fna.fbcdn.net/v/t31.18172-8/21415009_1654071567936794_7079793410660076323_o.jpg?_nc_cat=109&ccb=1-3&_nc_sid=174925&_nc_ohc=_O3O9YvR4BkAX-oZRTN&tn=G4i6ABBsODQmugD-&_nc_ht=scontent.ftpe7-2.fna&oh=c6e4ab7db0e42cdfaf3cf37d830900b4&oe=611F42AF',
-          albumName: '運氣來的絡有似無',
+          albumName: '運氣來的若有似無',
           year: 2021,
           num: 12,
           totalTime: '00:41:20'
         },
         {
           img: 'https://scontent.ftpe7-2.fna.fbcdn.net/v/t31.18172-8/21415009_1654071567936794_7079793410660076323_o.jpg?_nc_cat=109&ccb=1-3&_nc_sid=174925&_nc_ohc=_O3O9YvR4BkAX-oZRTN&tn=G4i6ABBsODQmugD-&_nc_ht=scontent.ftpe7-2.fna&oh=c6e4ab7db0e42cdfaf3cf37d830900b4&oe=611F42AF',
-          albumName: '運氣來的絡有似無',
+          albumName: '運氣來的若有似無',
           year: 2021,
           num: 12,
           totalTime: '00:41:20'
@@ -230,12 +248,39 @@ export default {
 
 <style scoped>
   .range{
+    /* border:1px solid red; */
     padding: 60px 40px 150px 40px;
   }
-  a{
+  /* a{
     background: black;
     color: white;
     margin: 30px;
+  } */
+  .title01{
+    margin: 0 0 5px 0;
+  }
+  .block01{
+        /* border:1px solid red; */
+        display: flex;
+        justify-content: space-between;
+  }
+  .block01_1{
+      /* border:1px solid red; */
+      width: 40%;
+  }
+  .block01_2{
+      /* border:1px solid red; */
+      width: 52%;
+      padding: 10px 0 0 0;
+  }
+  ::v-deep .time_btns{
+          width:300px;
+  }
+  .title02, .title03{
+    margin: 90px 0 30px 0;
+  }
+  .message{
+        margin: 50px 0 0 0;
   }
   .single-music-carousel{
     @apply w-full h-[680px]
