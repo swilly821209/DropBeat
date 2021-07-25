@@ -14,19 +14,12 @@
           :songnum="theCDalbum.songnum"
           :times="theCDalbum.times"
       ></cd-player>
-      <div class="w-1/2 h-96">
-        <swiper :slidesPerView="5" :direction="'vertical'" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}">
-          <div class="parallax-slider-navigation">
-            <div class="nav-indicator prevArrow">
-              prev
-            </div>
-            <div class="nav-indicator nextArrow">
-              next
-            </div>
+        <swiper :slidesPerView="5" :direction="'vertical'" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="w-[700px] h-[400px] m-0">
+          <div class="navigations space-y-2 absolute top-1/2 z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="preArrow block text-gray-light" width="20" height="17" viewBox="0 0 20 17"><path id="up" d="M9.138,1.465a1,1,0,0,1,1.724,0l8.252,14.028A1,1,0,0,1,18.252,17H1.748a1,1,0,0,1-.862-1.507Z" fill="currentColor"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="nextArrow block text-gray-light" width="20" height="17" viewBox="0 0 20 17"><path id="up" d="M9.138,1.465a1,1,0,0,1,1.724,0l8.252,14.028A1,1,0,0,1,18.252,17H1.748a1,1,0,0,1-.862-1.507Z" transform="translate(20 17) rotate(180)" fill="currentColor"/></svg>
          </div>
-          <!-- <svg xmlns="http://www.w3.org/2000/svg" class="preArrow" width="20" height="17" viewBox="0 0 20 17"><path id="up" d="M9.138,1.465a1,1,0,0,1,1.724,0l8.252,14.028A1,1,0,0,1,18.252,17H1.748a1,1,0,0,1-.862-1.507Z" transform="translate(20 17) rotate(180)" fill="#b5b5b5"/></svg>
-          <svg xmlns="http://www.w3.org/2000/svg" class="nextArrow" width="20" height="17" viewBox="0 0 20 17"><path id="up" d="M9.138,1.465a1,1,0,0,1,1.724,0l8.252,14.028A1,1,0,0,1,18.252,17H1.748a1,1,0,0,1-.862-1.507Z" transform="translate(20 17) rotate(180)" fill="#b5b5b5"/></svg> -->
-          <swiper-slide  v-for="item in musicItems" :key="item.num" class="flrx items-center object-cover">
+          <swiper-slide  v-for="item in musicItems" :key="item.num" class="left-[10%] w-11/12">
             <music-item
               :num="item.num"
               :musicName="item.name"
@@ -37,10 +30,9 @@
             </music-item>
           </swiper-slide>
         </swiper>
-      </div>
     </div>
     <h3 class="text-2xl text-black-backdrop my-10">所有專輯</h3>
-    <div class="flex justify-evenly">
+    <div class="flex justify-between">
       <album-item
         v-for="item in albumData"
         :key="item.albumName"
@@ -56,9 +48,18 @@
       <song-info></song-info>
       <song-lyrics></song-lyrics>
     </div>
-    <message-board class="my-10 mx-10"></message-board>
-    <div class="flex flex-wrap justify-around">
-      <single-music v-for="item in 12" :key="item"></single-music>
+    <message-board class="my-10"></message-board>
+    <div class="single-music-carousel">
+      <swiper :slidesPerView="5" :slidesPerColumn="2" :spaceBetween="30" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}"
+              class="w-full h-full">
+         <div class=" absolute flex items-center top-5 right-5 z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="preArrow block text-gray-light" width="20" height="17" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="nextArrow block text-gray-light" width="20" height="17" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
+         </div>
+         <swiper-slide v-for="item in 12" :key="item" class="">
+          <single-music></single-music>
+         </swiper-slide>
+      </swiper>
     </div>
   </div>
 </template>
@@ -236,17 +237,16 @@ export default {
     color: white;
     margin: 30px;
   }
-.swiper-container {
-  width: 600px;
-  height: 500px;
-}
-.parallax-slider-navigation {
-  position: absolute;
-  top: 50%;
-  z-index: 2;
-  right: -100;
-  margin: auto;
-  display: flex;
-  height: 0;
+  .single-music-carousel{
+    @apply w-full h-[650px]
+  }
+  .single-music-carousel .swiper-slide{
+    height: calc((100% - 30px) / 2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+.swiper-button-disabled {
+  @apply text-gray-default
 }
 </style>
