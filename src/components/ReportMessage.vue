@@ -47,9 +47,9 @@ export default {
 </script>
 
 <style scoped>
-  .active{
+  /* .active{
     @apply text-orange bg-orange
-  }
+  } */
   .select{
     margin: 5px 0 0 0;
   }

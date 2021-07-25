@@ -25,6 +25,9 @@
         <button v-if="check" class="checkBtn rounded-xl  border-blue-light bg-blue-light text-white">審核ing...</button>
       </div>
     </div>
+    <!-- <div class="flex mt-1 ml-6 pr-3 w-[350px] h-[200]" v-if="check">
+      <button  class="self-start rounded-xl border-2 border-blue-light bg-blue-light text-white px-3">審核ing...</button>
+    </div> -->
   </div>
 </template>
 
@@ -46,9 +49,6 @@ export default {
 }
 </script>
 <style scoped>
-  .item{
-    /* border:1px solid red; */
-  }
   .time_location{
     margin: 0 0 3px 0;
   }
