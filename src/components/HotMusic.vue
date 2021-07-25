@@ -5,7 +5,7 @@
           <div class="div_music_info" v-for="(item,index) in hotMusicListLeft" :key="item">
             <span class="span_num">
               <span v-if="item.play === false">{{index+1}}</span>
-              <svg v-else xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15" height="28.571" viewBox="0 0 25 28.571">
+              <!-- <svg v-else xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15" height="28.571" viewBox="0 0 25 28.571">
                 <defs>
                   <linearGradient id="linear-gradient" x1="0.118" y1="0.5" x2="1" y2="0.5" gradientUnits="objectBoundingBox">
                     <stop offset="0" stop-color="#31bdc5"/>
@@ -13,7 +13,8 @@
                   </linearGradient>
                 </defs>
                 <path id="Icon_open-audio-spectrum" data-name="Icon open-audio-spectrum" d="M14.286,0V28.571h3.571V0ZM7.143,3.571V25h3.571V3.571ZM21.429,7.143V21.429H25V7.143ZM0,10.714v7.143H3.571V10.714Z" fill="url(#linear-gradient)"/>
-              </svg>
+              </svg> -->
+              <audio-icon v-else class="audio"></audio-icon>
             </span>
             <span :class="item.statusColor">{{item.status}}</span>
             <div class="div_cover" @click="statusFun(index)">
@@ -27,8 +28,8 @@
             </div>
             <div class="div_info_fun">
               <div class="div_name_info">
-                <span class="span_title">{{item.title}}</span>
-                <span class="span_author">{{item.author}}</span>
+                <span class="hover:text-blue-light cursor-pointer" :class="item.play ? 'span_title_play':'span_title'" >{{item.title}}</span>
+                <span class="span_author hover:underline cursor-pointer">{{item.author}}</span>
               </div>
               <div class="div_fun">
                 <span class="share"></span>
@@ -47,7 +48,7 @@
           <div class="div_music_info" v-for="(item,index) in hotMusicListRight" :key="item">
             <span class="span_num" style="fontSize:30px;color:#7b7b7b">
               <span v-if="item.play === false">{{index+5}}</span>
-              <svg v-else xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15" height="28.571" viewBox="0 0 25 28.571">
+              <!-- <svg v-else xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15" height="28.571" viewBox="0 0 25 28.571">
                 <defs>
                   <linearGradient id="linear-gradient" x1="0.118" y1="0.5" x2="1" y2="0.5" gradientUnits="objectBoundingBox">
                     <stop offset="0" stop-color="#31bdc5"/>
@@ -55,7 +56,8 @@
                   </linearGradient>
                 </defs>
                 <path id="Icon_open-audio-spectrum" data-name="Icon open-audio-spectrum" d="M14.286,0V28.571h3.571V0ZM7.143,3.571V25h3.571V3.571ZM21.429,7.143V21.429H25V7.143ZM0,10.714v7.143H3.571V10.714Z" fill="url(#linear-gradient)"/>
-              </svg>
+              </svg> -->
+              <audio-icon v-else class="audio"></audio-icon>
             </span>
             <span :class="item.statusColor">{{item.status}}</span>
             <div class="div_cover" @click="statusFuns(index)">
@@ -69,8 +71,8 @@
             </div>
             <div class="div_info_fun">
               <div class="div_name_info">
-                <span class="span_title">{{item.title}}</span>
-                <span class="span_author">{{item.author}}</span>
+                <span class="hover:text-blue-light cursor-pointer" :class="item.play ? 'span_title_play':'span_title'" >{{item.title}}</span>
+                <span class="span_author hover:underline cursor-pointer">{{item.author}}</span>
               </div>
               <div class="div_fun">
                 <span class="share"></span>
@@ -90,7 +92,11 @@
 </template>
 
 <script>
+import AudioIcon from './AudioIcon.vue'
 export default {
+  components: {
+    AudioIcon
+  },
   data () {
     return {
       hotMusicListLeft: [
@@ -171,7 +177,6 @@ export default {
     align-items: center;
     justify-content:flex-start;
     margin: 10px 0;
-    cursor: pointer;
     padding-bottom: 20px;
     border-bottom: 1px solid #EDEDED;
   }
@@ -181,9 +186,16 @@ export default {
     font-weight: 600;
     color: #7b7b7b;
   }
+  .audio{
+    margin: 0;
+  }
   .span_title{
     font-size: 16px;
     color:#383838;
+  }
+  .span_title_play{
+    font-size: 16px;
+    color:#31BDC5;
   }
   .span_author{
     font-size: 14px;
@@ -191,9 +203,9 @@ export default {
   }
   /* hover */
   /* .img_album 變化 */
-  .div_music_info:hover .span_title{
+  /* .div_music_info .span_title:hover{
     color: #31BDC5;
-  }
+  } */
 
   /* 控制播放符號動畫 */
   .span_num svg{
@@ -232,10 +244,14 @@ export default {
     justify-content: center;
     align-items: center;
     display: flex;
+    flex-shrink: 0;
+    cursor: pointer;
   }
   .img_album{
     position: relative;
-    width: 110px;
+    width: 80px;
+    height: 80px;
+    /* width: 110px; */
     border-radius: 10px;
   }
   .div_certain_container{
@@ -355,6 +371,7 @@ export default {
     border: 2px solid #ededed;
     border-radius: 20px;
     height: 25px;
+    cursor: pointer;
   }
   /* 調整like位置 */
   svg{
@@ -371,8 +388,13 @@ export default {
     width: 50%;
   }
   /* 控制第一個album */
+  .div_one_four .div_music_info:nth-child(1) .span_num{
+    width: 48px;
+  }
   .div_one_four .div_music_info:nth-child(1) .img_album{
-    width: 320px;
+    width: 180px;
+    height: 180px;
+    /* width: 320px; */
   }
   .div_one_four .div_music_info:nth-child(1) .div_curtain {
     width: 50px;
@@ -394,7 +416,7 @@ export default {
     flex-direction: column;
   }
   .div_one_four .div_music_info:nth-child(1) .div_info_fun .div_fun{
-    margin-top: 20px;
+    margin-top: 5px;
     align-self: flex-end;
   }
   /* 底線 */
@@ -412,9 +434,9 @@ export default {
   /* .div_one_four .div_music_info:nth-child(1) .img_album{
     width: 320px;
   } */
-  @media screen and (max-width: 1420px) {
+  /* @media screen and (max-width: 1420px) {
     .div_one_four .div_music_info:nth-child(1) .img_album{
       width: 380px;
     }
-  }
+  } */
 </style>
