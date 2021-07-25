@@ -19,7 +19,7 @@ textarea {
   @apply bg-gray-dark
 }
 .carousel-item {
-  @apply min-w-[800px] max-w-2xl h-96 absolute rounded-3xl overflow-hidden transition-all duration-1000 cursor-pointer shadow-xl
+  @apply  w-3/5 max-w-2xl h-80 absolute rounded-3xl overflow-hidden transition-all duration-1000 cursor-pointer shadow-xl
 }
 .item1 {
   @apply transform -translate-x-2/4 scale-50 z-20 filter blur-sm
