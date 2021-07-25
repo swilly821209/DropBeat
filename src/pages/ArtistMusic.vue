@@ -28,10 +28,11 @@
           :playCounter="item.playCounter"
           :likeCounter="item.likeCounter">
         </music-item> -->
-        <swiper :slidesPerView="5" :direction="'vertical'" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="w-[700px] h-[400px] m-0">
-          <div class="navigations space-y-2 absolute top-1/2 z-10">
-            <svg xmlns="http://www.w3.org/2000/svg" class="preArrow block text-gray-light" width="20" height="17" viewBox="0 0 20 17"><path id="up" d="M9.138,1.465a1,1,0,0,1,1.724,0l8.252,14.028A1,1,0,0,1,18.252,17H1.748a1,1,0,0,1-.862-1.507Z" fill="currentColor"/></svg>
-            <svg xmlns="http://www.w3.org/2000/svg" class="nextArrow block text-gray-light" width="20" height="17" viewBox="0 0 20 17"><path id="up" d="M9.138,1.465a1,1,0,0,1,1.724,0l8.252,14.028A1,1,0,0,1,18.252,17H1.748a1,1,0,0,1-.862-1.507Z" transform="translate(20 17) rotate(180)" fill="currentColor"/></svg>
+        <!-- <swiper :slidesPerView="4" :direction="'vertical'" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="w-[700px] h-[400px] m-0"> -->
+        <swiper :slidesPerView="4" :direction="'vertical'" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="misicSwipe h-[400px] m-0">
+          <div class="up_down navigations space-y-2 absolute z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="preArrow block text-gray-light cursor-pointer" width="20" height="17" viewBox="0 0 20 17"><path id="up" d="M9.138,1.465a1,1,0,0,1,1.724,0l8.252,14.028A1,1,0,0,1,18.252,17H1.748a1,1,0,0,1-.862-1.507Z" fill="currentColor"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="nextArrow block text-gray-light cursor-pointer" width="20" height="17" viewBox="0 0 20 17"><path id="up" d="M9.138,1.465a1,1,0,0,1,1.724,0l8.252,14.028A1,1,0,0,1,18.252,17H1.748a1,1,0,0,1-.862-1.507Z" transform="translate(20 17) rotate(180)" fill="currentColor"/></svg>
           </div>
           <swiper-slide  v-for="item in musicItems" :key="item.num" class="left-[10%] w-11/12">
             <music-item
@@ -189,7 +190,7 @@ export default {
           likeCounter: 724
         },
         {
-          num: '05',
+          num: '06',
           img: 'https://akstatic.streetvoice.com/song_covers/ju/ne/junepan/EKEn4VgY8S9H38jumNiVLA.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
           name: '在這座城市遺失了我',
           singer: '告很多人',
@@ -198,7 +199,7 @@ export default {
           likeCounter: 724
         },
         {
-          num: '05',
+          num: '07',
           img: 'https://akstatic.streetvoice.com/song_covers/ju/ne/junepan/EKEn4VgY8S9H38jumNiVLA.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
           name: '在這座城市遺失了我',
           singer: '告很多人',
@@ -207,7 +208,7 @@ export default {
           likeCounter: 724
         },
         {
-          num: '05',
+          num: '08',
           img: 'https://akstatic.streetvoice.com/song_covers/ju/ne/junepan/EKEn4VgY8S9H38jumNiVLA.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
           name: '在這座城市遺失了我',
           singer: '告很多人',
@@ -216,7 +217,7 @@ export default {
           likeCounter: 724
         },
         {
-          num: '05',
+          num: '09',
           img: 'https://akstatic.streetvoice.com/song_covers/ju/ne/junepan/EKEn4VgY8S9H38jumNiVLA.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
           name: '在這座城市遺失了我',
           singer: '告很多人',
@@ -273,8 +274,23 @@ export default {
       width: 52%;
       padding: 10px 0 0 0;
   }
+  ::v-deep.music_item{
+      padding: 13px 0;
+  }
   ::v-deep .time_btns{
-          width:300px;
+      width:230px;
+      padding: 0 10px 0 0;
+  }
+  ::v-deep .playBtn{
+    display: none;
+  }
+  .misicSwipe{
+    /* border:1px solid red; */
+    display: flex;
+    align-items: center;
+  }
+  .up_down{
+    margin: 0 0 20px 0;
   }
   .title02, .title03{
     margin: 90px 0 30px 0;
