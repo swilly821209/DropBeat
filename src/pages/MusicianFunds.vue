@@ -28,8 +28,8 @@
     </div>
     <base-title title="發起募資" class="mt-20 mb-5"></base-title>
     <div class="flex w-full h-96">
-      <select-img class="w-9/12"></select-img>
-      <div class="w-3/12 flex flex-col ml-5">
+      <select-img class="w-8/12"></select-img>
+      <div class="w-4/12 flex flex-col">
         <div class="flex justify-around mb-4">
           <p class="w-2/6 text-right text-gray-dark text-xl mr-3">封面縮圖：</p>
           <select-img class="w-4/6 h-56"></select-img>
@@ -64,23 +64,23 @@
     <div class="flex outers">
       <div class="flex inners">
         <div v-for="item in fundsList" :key="item" class="flex theItem">
-          <select-img class="w-2/6 p-10"></select-img>
-          <div class="w-4/6">
+          <select-img class="w-5/12 p-10"></select-img>
+          <div class="w-7/12">
             <div class="flex mt-4">
-              <label class="w-1/6 text-right text-xl text-gray-dark">金額：</label>
-              <input :value="item.money" class="w-5/6 border-2 border-gray-lighten text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
+              <label class="w-3/12 text-right text-xl text-gray-dark">金額：</label>
+              <input :value="item.money" class="w-9/12 border-2 border-gray-lighten text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
             </div>
             <div class="flex mt-4">
-              <label class="w-1/6 text-right text-xl text-gray-dark">標題：</label>
-              <input :value="item.title" class="w-5/6 border-2 border-gray-lighten text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
+              <label class="w-3/12 text-right text-xl text-gray-dark">標題：</label>
+              <input :value="item.title" class="w-9/12 border-2 border-gray-lighten text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
             </div>
             <div class="flex mt-4">
-              <label class="w-1/6 text-right text-xl text-gray-dark h-16">內容：</label>
-              <textarea :value="item.content" class="w-5/6 border-2 border-gray-lighten text-gray-light focus:outline-none resize-none rounded-lg pl-2 focus:border-orange"></textarea>
+              <label class="w-3/12 text-right text-xl text-gray-dark h-16">內容：</label>
+              <textarea :value="item.content" class="w-9/12 border-2 border-gray-lighten text-gray-light focus:outline-none resize-none rounded-lg pl-2 focus:border-orange"></textarea>
             </div>
             <div class="flex mt-4">
-              <label class="w-1/6 text-right text-xl text-gray-dark">限量：</label>
-              <input :value="item.quantity" class="w-5/6 border-2 border-gray-lighten text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
+              <label class="w-3/12 text-right text-xl text-gray-dark">限量：</label>
+              <input :value="item.quantity" class="w-9/12 border-2 border-gray-lighten text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
             </div>
           </div>
         </div>
@@ -221,7 +221,7 @@ export default {
       this.fundsR = '#b5b5b5'
     },
     rightFunds () {
-      this.fundsPosition = -1500
+      this.fundsPosition = -1200
       document.querySelector('.innersMeneger').style.transform = `translateX(${this.fundsPosition}px)`
       this.fundsL = '#b5b5b5'
       this.fundsR = '#ededed'
@@ -255,23 +255,21 @@ export default {
   .outersMeneger{
     display: flex;
     position: relative;
-    width: 1500px;
-    height: 600px;
+    width: 1200px;
+    height: 470px;
     overflow: hidden;
   }
   .innersMeneger{
     display: flex;
-    width: 3000px;
-    height: 500px;
+    width: 2400px;
+    height: 470px;
     transition: all 1s;
     position: absolute;
     display: flex;
     justify-content: space-around;
   }
   .theItemMeneger{
-    width: 375px;
-    height: 500px;
-    margin-left: 30px;
+    width: 300px;
   }
   /* 募資方案 */
   .outers{
