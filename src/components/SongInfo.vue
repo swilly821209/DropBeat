@@ -8,6 +8,7 @@
           @click="playFun"
           :src="playPause"
         >
+        <div class="hover_b"></div>
         <p class="p_song">{{theSong}}</p>
       </div>
       <div class="div_fun">
@@ -36,7 +37,7 @@ export default {
       turnOn: 'off',
       theSong: '我在披星載月的想你',
       img: 'https://picsum.photos/100',
-      playPause: require('../assets/icon/play.svg'),
+      playPause: require('../assets/icon/play_fff.svg'),
       likeRed: false,
       playCounts: '1,382,754',
       likeCounts: '22,617'
@@ -46,10 +47,10 @@ export default {
     playFun () {
       if (this.turnOn === 'off') {
         this.turnOn = 'on'
-        this.playPause = require('../assets/icon/pause.svg')
+        this.playPause = require('../assets/icon/pause_fff.svg')
       } else if (this.turnOn === 'on') {
         this.turnOn = 'off'
-        this.playPause = require('../assets/icon/play.svg')
+        this.playPause = require('../assets/icon/play_fff.svg')
       }
     },
     actionFun () {
@@ -61,17 +62,20 @@ export default {
 
 <style scoped>
   .div_song_day{
+    border-right:1px solid #ededed;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     width: 100%;
+    margin: 0 15px 0 0;
   }
   .div_the_song{
+    /* border:1px solid red; */
     position: relative;
     align-items: center;
     justify-content: center;
     display: flex;
-    width: 80%;
+    /* width: 80%; */
   }
   .div_song_whole{
     position: relative;
@@ -87,41 +91,44 @@ export default {
     left: 0;
     border-radius: 10px;
     transition: all .5s;
-    opacity: .5;
+    opacity: .6;
     cursor: pointer;
+    transform: scale(.6);
   }
   .div_cartain:hover{
     opacity: 1;
+    transform: scale(0.8);
   }
   #off{
     animation-name: stop;
   }
-  .div_info{
+  /* .div_info{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-  }
+  } */
+
   /* 控制照片下方的文字 */
   .p_song {
     margin-top: 10px;
     text-align: center;
     color: #383838;
-    font-size: 14px;
+    font-size: 16px;
   }
-  .p_album_letters{
+  /* .p_album_letters{
     position: absolute;
     left: 0;
     bottom: -30px;
     color: #383838;
     width: 380px;
     font-size: 14px;
-  }
-  .div_the_song p span {
+  } */
+  /* .div_the_song p span {
     margin-left: 10px;
     font-size: 14px;
     color: #7B7B7B;
-  }
+  } */
   .div_fun{
     display: flex;
     flex-direction: column;
@@ -129,68 +136,68 @@ export default {
     color: #7B7B7B;
   }
   .div_fun span{
-    margin: 3px;
-    color: #7B7B7B;
-    border: 1px solid #7B7B7B;
-    border-radius: 20px;
+    border: 2px solid #ededed;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
     background-repeat: no-repeat;
-    background-size: 12px;
-    background-position-y: center;
-    background-position-x: 3px;
-    width: 20px;
-    height: 20px;
     cursor: pointer;
+    margin:8px 0 0 0;
   }
   .div_fun span:hover{
-    background-color: #7B7B7B;
+    border: 2px solid #b5b5b5;
+    background-color: #b5b5b5;
   }
   .share{
-    background-image: url("../assets/icon/share.svg");
+    background-image: url("../assets/icon/share_b5.svg");
   }
   .share:hover{
-    background-image: url("../assets/icon/share_white.svg");
+    background-image: url("../assets/icon/share_fff.svg");
   }
   .add{
-    background-image: url("../assets/icon/add.svg");
+    background-image: url("../assets/icon/add_b5.svg");
   }
   .add:hover{
-    background-image: url("../assets/icon/add_white.svg");
+    background-image: url("../assets/icon/add_fff.svg");
   }
   .like{
-    background-image: url("../assets/icon/like.svg");
+    background-image: url("../assets/icon/like_b5.svg");
   }
   #true{
-    background-image: url("../assets/icon/like_red.svg");
-    background-position-x: 2px;
+    background-image: url("../assets/icon/like_d83.svg");
     border: 2px solid #ff9d83;
-    background-color: #fff;
+    background-color: transparent;
   }
   .like:hover{
-    background-image: url("../assets/icon/like_white.svg");
+    background-image: url("../assets/icon/like_fff.svg");
   }
-  sub, sup{
+  /* sub, sup{
     font-size: 14px;
-  }
-  /* div_count */
-  .div_playCount{
-    margin-bottom: 10px;
-  }
+  } */
+
   .div_count{
+    /* border:1px solid red; */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    margin-left: 30px;
+    margin-left: 60px;
     color: #7B7B7B;
-    width: 250px;
+    /* width: 250px; */
+  }
+  .div_playCount{
+    margin-bottom: 15px;
   }
   .div_count span{
-    font-size: 20px;
+    font-size: 16px;
     align-self: flex-start;
   }
   .div_count h3{
-    font-size: 32px;
-    align-self: flex-start;
+    font-size: 30px;
+    font-weight: 600;
+    margin: -5px 0 0 0;
+    letter-spacing: 2px;
+    /* align-self: flex-start; */
   }
   .div_count div{
     display: flex;

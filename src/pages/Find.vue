@@ -25,7 +25,7 @@
       {{ item }}
     </base-button>
   </div>
-  <find-carousel class="my-8"></find-carousel>
+  <find-carousel class="artistCarousel my-8"></find-carousel>
   <base-title title="發現音樂"></base-title>
   <div class="space-x-3">
     <base-button
@@ -203,6 +203,10 @@ export default {
 }
 .selectBtn{
     margin: 20px 0 12px 0;
+}
+.artistCarousel{
+  /* border:1px solid red; */
+    margin: 15px 0 35px 0;
 }
 .musicItemALL{
       margin: 20px 0 0 0;

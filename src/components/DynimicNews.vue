@@ -1,11 +1,11 @@
 <template>
   <base-card v-if="mode === 'newsong'">
-    <div class="px-5 py-5">
+    <div class="bg_padding flex flex-col justify-center">
       <div class="flex items-center w-44 justify-between mb-5">
         <img  class=" w-12 h-12 rounded-full" src="https://akstatic.streetvoice.com/song_covers/sh/u0/shu05229970/DrhqfgHAtMEazGmBVFLydC.jpg?x-oss-process=image/resize,m_fill,h_380,w_380,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg">
         <div>
-          <p>發布了一首作品</p>
-          <p>3小時前</p>
+          <p class="text-base text-black-backdrop">發布了一首作品</p>
+          <p class="text-sm text-gray-dark">3小時前</p>
         </div>
       </div>
       <music-item
@@ -19,13 +19,13 @@
     </div>
   </base-card>
   <base-card v-else>
-    <div class="px-5 py-5">
+    <div class="bg_padding">
       <div class="flex items-center  justify-between mb-5">
         <div class="flex items-center w-44 justify-between">
           <img  class=" w-12 h-12 rounded-full" src="https://akstatic.streetvoice.com/song_covers/sh/u0/shu05229970/DrhqfgHAtMEazGmBVFLydC.jpg?x-oss-process=image/resize,m_fill,h_380,w_380,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg">
           <div>
-            <p>發布了一首作品</p>
-            <p>3小時前</p>
+            <p class="text-bas">發布了一首作品</p>
+            <p class="text-sm text-gray-dark">3小時前</p>
           </div>
         </div>
         <div>
@@ -62,3 +62,8 @@ export default {
   }
 }
 </script>
+<style scoped>
+.bg_padding{
+  padding: 15px 20px 5px 20px;
+}
+</style>

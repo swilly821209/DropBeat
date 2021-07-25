@@ -1,7 +1,7 @@
 <template>
     <div class="range">
       <h3 class="text-2xl text-black-backdrop mb-5">最熱門作品</h3>
-        <music-item
+        <music-item class="singleMusic"
           v-for="item in musicItems"
           @share-social="shareSocial(item.img, item.name, item.singer)"
           :status="item.status"
@@ -15,7 +15,7 @@
           :playCounter="item.playCounter"
           :likeCounter="item.likeCounter">
         </music-item>
-      <h3 class="text-2xl text-black-backdrop mb-5 mt-[60px]">最熱門作品</h3>
+      <h3 class="text-2xl text-black-backdrop mb-5 mt-[60px]">動態消息</h3>
         <dynimic-news
           v-for="item in newsDatas"
           :key="item.img"
@@ -144,11 +144,15 @@ export default {
 
 <style scoped>
   .range{
-    padding: 60px 40px 150px 40px;
+    padding: 60px 40px 10px 40px;
   }
-  a{
+  /* a{
       background: whitesmoke;
-      color: balck;
+      color: black;
       margin: 30px;
+  } */
+  .singleMusic:nth-child(6) ::v-deep{
+    /* border:1px solid red; */
+    border-bottom: none;
   }
 </style>

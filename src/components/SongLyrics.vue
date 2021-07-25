@@ -124,10 +124,15 @@ export default {
     text-align: center;
     width: 50px;
     margin-left: 10px;
+    color:#383838;
+    font-size: 18px;
   }
   .lyricsContainer{
     width: 280px;
     height: 250px;
+  }
+  textarea{
+    resize: none;
   }
   .lyricsH{
     width: 270px;

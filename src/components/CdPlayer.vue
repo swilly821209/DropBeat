@@ -31,9 +31,9 @@
         </svg>
       </div>
       <p class="p_song" v-if="asong">{{titles}} <span class="span_author">{{author}}</span></p>
-      <p class="p_album_letters" v-else>{{albumname}}・{{years}}・{{songnum}}首歌・{{times}}</p>
+      <p v-else class="p_album">{{albumname}}<span class="p_album_letters">{{years}}・{{songnum}}首歌・{{times}}</span></p>
     </div>
-    <div class="div_song_info">
+    <div :class="[asong? 'div_song_info': 'div_album_info']">
       <base-date v-if="date" :time="now" class="date"></base-date>
       <div class="div_fun">
         <span v-if="likes" class="like" :id="likeRed" @click="actionFun"></span>
@@ -222,6 +222,16 @@ export default {
     font-size: 16px;
     margin: 12px 0 0 0;
   }
+  .p_album{
+    color: #383838;
+    font-size: 16px;
+    margin: 12px 0 0 0;
+  }
+  .p_album_letters{
+    color: #7b7b7b;
+    font-size: 14px;
+    margin: 12px 0 0 8px;
+  }
   .span_author{
     color: #7b7b7b;
     font-size: 14px;
@@ -235,14 +245,6 @@ export default {
     margin: 0 0 0 5px;
     padding-bottom: 2px;
   }
-  .p_album_letters{
-    /* position: absolute; */
-    /* left: 0; */
-    /* bottom: -30px; */
-    color: #7b7b7b;
-    width: 380px;
-    font-size: 14px;
-  }
   /* .div_the_song p span {
     margin-left: 10px;
     font-size: 14px;
@@ -255,6 +257,14 @@ export default {
     justify-content: space-between;
     align-items: flex-end;
     margin:0 0 0 95px;
+  }
+  .div_album_info{
+    /* border:1px solid green; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin:0 0 0 95px;
+    height: 330px;
   }
   .p_date {
     font-size: 36px;

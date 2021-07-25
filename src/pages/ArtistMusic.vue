@@ -1,20 +1,22 @@
 <template>
     <base-dialog :show="toggleDialog">
       <report-message></report-message>
-    </base-dialog> -->
+    </base-dialog>
   <div class="range">
-    <h3 class="text-2xl text-black-backdrop mb-5">最熱門作品</h3>
-    <div class="flex w-full justify-between">
-      <cd-player style="width:200px"
-          :songimg="theCDsong.img"
-          :titles="theCDsong.title"
-          :author="theCDsong.author"
-          :albumname="theCDalbum.name"
-          :years="theCDalbum.years"
-          :songnum="theCDalbum.songnum"
-          :times="theCDalbum.times"
-      ></cd-player>
-      <div class="w-1/2">
+    <h3 class="title01 text-2xl text-black-backdrop">最新專輯</h3>
+    <div class="block01">
+      <div class="block01_1 flex flex-col">
+        <cd-player style="width:200px"
+            :songimg="theCDsong.img"
+            :titles="theCDsong.title"
+            :author="theCDsong.author"
+            :albumname="theCDalbum.name"
+            :years="theCDalbum.years"
+            :songnum="theCDalbum.songnum"
+            :times="theCDalbum.times"
+        ></cd-player>
+      </div>
+      <div class="block01_2">
         <music-item
           v-for="item in musicItems"
           @share-social="shareSocial(item.img, item.name, item.singer)"
@@ -28,8 +30,8 @@
         </music-item>
       </div>
     </div>
-    <h3 class="text-2xl text-black-backdrop my-10">所有專輯</h3>
-    <div class="flex justify-evenly">
+    <h3 class="title02 text-2xl text-black-backdrop">所有專輯</h3>
+    <div class="flex justify-between">
       <album-item
         v-for="item in albumData"
         :key="item.albumName"
@@ -40,12 +42,12 @@
         :totalTime="item.totalTime">
       </album-item>
     </div>
-    <h3 class="text-2xl text-black-backdrop my-10">所有音樂</h3>
-    <div class="flex items-center mx-20">
+    <h3 class="title03 text-2xl text-black-backdrop ">所有音樂</h3>
+    <div class="flex items-center ">
       <song-info></song-info>
       <song-lyrics></song-lyrics>
     </div>
-    <message-board class="my-10 mx-10"></message-board>
+    <message-board class="message"></message-board>
     <div class="flex flex-wrap justify-around">
       <single-music v-for="item in 12" :key="item"></single-music>
     </div>
@@ -84,21 +86,21 @@ export default {
         },
         {
           img: 'https://scontent.ftpe7-2.fna.fbcdn.net/v/t31.18172-8/21415009_1654071567936794_7079793410660076323_o.jpg?_nc_cat=109&ccb=1-3&_nc_sid=174925&_nc_ohc=_O3O9YvR4BkAX-oZRTN&tn=G4i6ABBsODQmugD-&_nc_ht=scontent.ftpe7-2.fna&oh=c6e4ab7db0e42cdfaf3cf37d830900b4&oe=611F42AF',
-          albumName: '運氣來的絡有似無',
+          albumName: '運氣來的若有似無',
           year: 2021,
           num: 12,
           totalTime: '00:41:20'
         },
         {
           img: 'https://scontent.ftpe7-2.fna.fbcdn.net/v/t31.18172-8/21415009_1654071567936794_7079793410660076323_o.jpg?_nc_cat=109&ccb=1-3&_nc_sid=174925&_nc_ohc=_O3O9YvR4BkAX-oZRTN&tn=G4i6ABBsODQmugD-&_nc_ht=scontent.ftpe7-2.fna&oh=c6e4ab7db0e42cdfaf3cf37d830900b4&oe=611F42AF',
-          albumName: '運氣來的絡有似無',
+          albumName: '運氣來的若有似無',
           year: 2021,
           num: 12,
           totalTime: '00:41:20'
         },
         {
           img: 'https://scontent.ftpe7-2.fna.fbcdn.net/v/t31.18172-8/21415009_1654071567936794_7079793410660076323_o.jpg?_nc_cat=109&ccb=1-3&_nc_sid=174925&_nc_ohc=_O3O9YvR4BkAX-oZRTN&tn=G4i6ABBsODQmugD-&_nc_ht=scontent.ftpe7-2.fna&oh=c6e4ab7db0e42cdfaf3cf37d830900b4&oe=611F42AF',
-          albumName: '運氣來的絡有似無',
+          albumName: '運氣來的若有似無',
           year: 2021,
           num: 12,
           totalTime: '00:41:20'
@@ -140,15 +142,6 @@ export default {
           musicTime: 2827,
           playCounter: 8833888,
           likeCounter: 7434
-        },
-        {
-          num: '05',
-          img: 'https://akstatic.streetvoice.com/song_covers/ju/ne/junepan/EKEn4VgY8S9H38jumNiVLA.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
-          name: '在這座城市遺失了我',
-          singer: '告很多人',
-          musicTime: 2837,
-          playCounter: 888888,
-          likeCounter: 724
         }
       ],
       theCDsong: {
@@ -174,11 +167,38 @@ export default {
 
 <style scoped>
   .range{
+    /* border:1px solid red; */
     padding: 60px 40px 150px 40px;
   }
-  a{
+  /* a{
     background: black;
     color: white;
     margin: 30px;
+  } */
+  .title01{
+    margin: 0 0 5px 0;
+  }
+  .block01{
+        /* border:1px solid red; */
+        display: flex;
+        justify-content: space-between;
+  }
+  .block01_1{
+      /* border:1px solid red; */
+      width: 40%;
+  }
+  .block01_2{
+      /* border:1px solid red; */
+      width: 52%;
+      padding: 10px 0 0 0;
+  }
+  ::v-deep .time_btns{
+          width:300px;
+  }
+  .title02, .title03{
+    margin: 90px 0 30px 0;
+  }
+  .message{
+        margin: 50px 0 0 0;
   }
 </style>

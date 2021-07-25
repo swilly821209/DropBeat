@@ -17,13 +17,13 @@
     <router-link to="/Active/:id">
       <img :src="img" class="w-[350px] h-[200] rounded-3xl cursor-pointer" :style="imgWidth">
     </router-link>
-    <div class="h-[200] flex flex-col justify-center ">
+    <div class="activeContent flex flex-col justify-center">
       <h3 class=" text-lg text-black-backdrop hover:underline cursor-pointer">{{ title }}</h3>
       <div class="time_location text-sm text-gray-dark">{{ inputTime }}・{{ city }}・{{ location }}</div>
       <base-badge v-if="singer" class=" mt-2" :image="singerImg" :singer="singer"></base-badge>
-    </div>
-    <div class="flex mt-1 ml-6 pr-3 w-[350px] h-[200]">
-      <button v-if="check" class="self-start rounded-xl border-2 border-blue-light bg-blue-light text-white px-3">審核ing...</button>
+      <div >
+        <button v-if="check" class="checkBtn rounded-xl  border-blue-light bg-blue-light text-white">審核ing...</button>
+      </div>
     </div>
   </div>
 </template>
@@ -51,5 +51,14 @@ export default {
   }
   .time_location{
     margin: 0 0 3px 0;
+  }
+  .activeContent{
+        /* border:1px solid red; */
+        padding: 10px 0;
+  }
+  .checkBtn{
+    height: 25px;
+    padding: 1px 12px 0 12px;
+    margin: 3px 0 0 0;
   }
 </style>

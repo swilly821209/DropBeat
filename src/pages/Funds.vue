@@ -138,6 +138,6 @@ export default {
         margin: 35px 0 0 0;
     }
     .child {
-        width: 20%;
+        /* width: 20%; */
     }
 </style>
