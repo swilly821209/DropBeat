@@ -3,12 +3,12 @@
     <div class="pre">
       <div class="preicon"></div>
       <div class="title00">
-        <h2>更改募資方案</h2>
+        <h2><router-link to="/Funds/:id">更改募資方案</router-link></h2>
         <div class="under"></div>
       </div>
     </div>
     <div class="flex">
-      <form class=" w-8/12">
+      <form class=" w-9/12">
         <h2 class="title">收件人資訊</h2>
         <div class="px-8 py-4 my-4 mr-8 border-2 rounded-md shadow-md">
           <div class="flex flex-col mb-4">
@@ -99,14 +99,39 @@
         </div>
       </form>
       <!-- 贊助方案放這裡 -->
-      <div class="border-2 w-4/12">
+      <div class="w-3/12">
+        <h2 class="title mb-4">贊助方案</h2>
+        <fund-detail-item
+          :money="fundDatas.money"
+          :fundDesc="fundDatas.fundDesc"
+          :people="fundDatas.people"
+          :gifts="fundDatas.gifts"
+          :productNum="fundDatas.productNum"
+          :time="fundDatas.time">
+        </fund-detail-item>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import FundDetailItem from '../components/FundDetailItem.vue'
 export default {
+  components: {
+    FundDetailItem
+  },
+  data () {
+    return {
+      fundDatas: {
+        money: 100,
+        fundDesc: '為愛贊助, 不需回饋',
+        gifts: ['專輯x1', '內含：CD、寫真歌詞本、小卡'],
+        people: 25,
+        productNum: 800,
+        time: '2021/11'
+      }
+    }
+  }
 }
 </script>
 
