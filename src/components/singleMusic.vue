@@ -99,4 +99,18 @@ p {
 .clicklike .likeicon {
   background-image: url("../assets/icon/like_red.svg");
 }
+  @media screen and (max-width: 1430px) {
+    .block {
+      width: 180px;
+      height: 180px;
+    }
+  }
+  @media screen and (max-width: 1300px) {
+    .block {
+      width: 170px;
+      height: 170px;
+      margin: 15px;
+    }
+  }
+
 </style>

@@ -21,10 +21,10 @@
           <span class="text-gray-dark text-sm">公開</span>
         </div>
       </div>
-      <img class="w-64 h-64" :src="img">
-      <div class="mt-3 text-gray-dark">
-        <h3 class="text-xl">{{ albumName }}</h3>
-        <p>{{ year }}.{{ num }}首歌.{{ totalTime }}</p>
+      <img class="singleAlbum" :src="img">
+      <div class="mt-2 text-gray-dark">
+      <h3 class="text-base text-black-backdrop">{{ albumName }}</h3>
+      <p class="text-gray-dark">{{ year }}・{{ num }}首歌・{{ totalTime }}</p>
       </div>
       <div v-if="editDraft" class="flex mt-4 absolute bottom-0 right-0 cursor-pointer">
         <div class="flex flex-col items-center mr-3">
@@ -51,9 +51,17 @@ export default {
 </script>
 <style scoped>
 .singleAlbum{
-    margin: 0 20px 0 0;
+  width: 256px;
+  height: 256px;
+  /* margin: 0 20px 0 0; */
 }
 .singleAlbum:last-child{
       margin: 0 0 0 0;
+}
+@media screen and (max-width: 1360px) {
+  .singleAlbum{
+    width: 230px;
+    height: 230px;
+  }
 }
 </style>
