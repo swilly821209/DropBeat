@@ -71,20 +71,91 @@
       </div>
       <div>
         <h3 class="text-black-backdrop text-[22px] font-medium mb-3">募資方案</h3>
-        <fund-detail-item></fund-detail-item>
+        <swiper :slidesPerView="4" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="h-[700px]">
+          <div class=" absolute flex items-center top-0 right-12 z-10 justify-between w-16">
+            <svg xmlns="http://www.w3.org/2000/svg" class="preArrow block text-gray-light" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="nextArrow block text-gray-light" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
+          </div>
+          <swiper-slide v-for="item in fundDatas" :key="item" class=" top-12">
+            <fund-detail-item
+              :money="item.money"
+              :fundDesc="item.fundDesc"
+              :people="item.people"
+              :gifts="item.gifts"
+              :productNum="item.productNum"
+              :time="item.time">
+            </fund-detail-item>
+          </swiper-slide>
+        </swiper>
       </div>
     </div>
 </template>
 
 <script>
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import SwiperCore, { Navigation } from 'swiper/core'
+import 'swiper/swiper-bundle.min.css'
+
 import FundDetailItem from '../components/FundDetailItem.vue'
+
+SwiperCore.use([Navigation])
 export default {
   components: {
+    Swiper,
+    SwiperSlide,
     FundDetailItem
   },
   data () {
     return {
-      follow: false
+      follow: false,
+      fundDatas: [
+        {
+          money: 100,
+          fundDesc: '為愛贊助, 不需回饋',
+          people: 15,
+          time: '2021/12'
+        },
+        {
+          money: 100,
+          fundDesc: '為愛贊助, 不需回饋',
+          gifts: ['專輯x1', '內含：CD、寫真歌詞本、小卡'],
+          people: 25,
+          productNum: 800,
+          time: '2021/11'
+        },
+        {
+          money: 100,
+          fundDesc: '為愛贊助, 不需回饋',
+          gifts: ['專輯x1', '內含：CD、寫真歌詞本、小卡'],
+          people: 25,
+          productNum: 800,
+          time: '2021/11'
+        },
+        {
+          money: 100,
+          fundDesc: '為愛贊助, 不需回饋',
+          gifts: ['專輯x1', '內含：CD、寫真歌詞本、小卡'],
+          people: 25,
+          productNum: 800,
+          time: '2021/11'
+        },
+        {
+          money: 100,
+          fundDesc: '為愛贊助, 不需回饋',
+          gifts: ['專輯x1', '內含：CD、寫真歌詞本、小卡'],
+          people: 25,
+          productNum: 800,
+          time: '2021/11'
+        },
+        {
+          money: 100,
+          fundDesc: '為愛贊助, 不需回饋',
+          gifts: ['專輯x1', '內含：CD、寫真歌詞本、小卡'],
+          people: 25,
+          productNum: 800,
+          time: '2021/11'
+        }
+      ]
     }
   }
 }
@@ -178,5 +249,8 @@ h2 {
 .clickfollow{
   background-color: #ff9d83;
   color:#ffffff;
+}
+.swiper-button-disabled {
+  @apply text-gray-default
 }
 </style>

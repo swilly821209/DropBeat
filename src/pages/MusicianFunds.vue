@@ -28,11 +28,23 @@
     </div>
     <base-title title="發起募資" class="mt-20 mb-5"></base-title>
     <div class="flex w-full h-96">
-      <select-img class="w-8/12"></select-img>
+      <select-img
+        class="w-8/12"
+        :radius="'rounded-3xl'"
+        :camera="true"
+        :text="'選取圖片'"
+        :inputImg="'border-2 border-white bg-white incircle'"
+      ></select-img>
       <div class="w-4/12 flex flex-col">
         <div class="flex justify-around mb-4">
           <p class="w-2/6 text-right text-gray-dark text-xl mr-3">封面縮圖：</p>
-          <select-img class="w-4/6 h-56"></select-img>
+          <select-img
+            class="w-4/6 h-56"
+            :radius="'rounded-3xl'"
+            :camera="true"
+            :text="'選取圖片'"
+            :inputImg="'border-2 border-white bg-white incircle'"
+          ></select-img>
         </div>
         <div class="flex mt-4">
           <label for="topic" class="w-2/6 text-right text-gray-dark text-xl mr-3">募資主題：</label>
@@ -64,7 +76,13 @@
     <div class="flex outers">
       <div class="flex inners">
         <div v-for="item in fundsList" :key="item" class="flex theItem">
-          <select-img class="w-5/12 p-10"></select-img>
+          <select-img
+            class="w-5/12 p-10"
+            :radius="'rounded-3xl'"
+            :camera="true"
+            :text="'選取圖片'"
+            :inputImg="'border-2 border-white bg-white incircle'"
+          ></select-img>
           <div class="w-7/12">
             <div class="flex mt-4">
               <label class="w-3/12 text-right text-xl text-gray-dark">金額：</label>
