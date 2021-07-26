@@ -28,7 +28,7 @@
           </div>
           <div class="flex flex-col mb-4">
             <label for="email" class="text-gray-dark text-lg">聯絡信箱：</label>
-            <input type="email" id="email" placeholder="請填寫常用手機號碼" class="border-2 border-gray-light w-80 rounded-md p-2 text-lg focus:border-orange outline-none cursor-pointer">
+            <input type="email" id="email" placeholder="請填寫常用電子信箱" class="border-2 border-gray-light w-80 rounded-md p-2 text-lg focus:border-orange outline-none cursor-pointer">
           </div>
           <div class="flex flex-col mb-4">
             <label for="note" class="text-gray-dark text-lg">備註：</label>
@@ -58,7 +58,7 @@
                   <span class="text-xl text-gray-dark font-bold">$ 450</span>
                 </div>
                 <div class="flex flex-col mx-4">
-                  <p>.</p>
+                  <p class="invisible">.</p>
                   <span class="text-xl text-gray-dark font-bold">+</span>
                 </div>
                 <div class="flex flex-col">
@@ -66,17 +66,17 @@
                   <span class="text-xl text-gray-dark font-bold">$ 0</span>
                 </div>
                 <div class="flex flex-col mx-4">
-                  <p>.</p>
+                  <p class="invisible">.</p>
                   <span class="text-xl text-gray-dark font-bold">+</span>
                 </div>
                 <div class="flex flex-col">
                   <p class="text-gray-light text-md pl-3">額外支持</p>
-                  <span class="text-xl text-gray-dark font-bold">$<input type="text" class="border-b-2 border-orange outline-none w-16 pl-1 text-xl text-gray-dark font-bold" placeholder="0"></span>
+                  <span class="text-xl text-gray-dark font-bold">$<input v-model="money" type="text" class="border-b-2 border-orange outline-none w-16 pl-1 text-xl text-gray-dark font-bold"></span>
                 </div>
               </div>
               <div class="flex mr-4">
                 <div class="flex flex-col mr-4">
-                  <p>.</p>
+                  <p class="invisible">.</p>
                   <span class="text-xl text-gray-dark font-bold">=</span>
                 </div>
                 <div class="flex flex-col">
@@ -94,7 +94,7 @@
             <span class="ml-4 text-sm text-gray-light">勾選後您的姓名將不會出現在支持者區塊及公開的會員資料中</span>
           </div>
           <div class="flex justify-end">
-            <button class="text-center text-white bg-orange rounded-xl w-64 mt-8 hover:bg-green-400">前往付款</button>
+            <button class="text-center text-white bg-orange rounded-2xl w-64 mt-8 py-1 hover:bg-green-400">前往付款</button>
           </div>
         </div>
       </form>
@@ -129,7 +129,8 @@ export default {
         people: 25,
         productNum: 800,
         time: '2021/11'
-      }
+      },
+      money: 0
     }
   }
 }

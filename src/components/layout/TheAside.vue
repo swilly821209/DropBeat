@@ -31,9 +31,30 @@
           </g>
         </svg>
       </router-link>
+      <div class="funbox">
+        <svg id="search" class="search" xmlns="http://www.w3.org/2000/svg" width="43" height="30" viewBox="0 0 43 30">
+          <path id="Icon_ionic-ios-search" data-name="Icon ionic-ios-search" d="M24.26,23.045,18.7,17.432a7.925,7.925,0,1,0-1.2,1.218l5.525,5.577a.856.856,0,0,0,1.208.031A.861.861,0,0,0,24.26,23.045ZM12.472,18.718A6.258,6.258,0,1,1,16.9,16.886,6.219,6.219,0,0,1,12.472,18.718Z" transform="translate(7.502 0.507)" fill="#fff"/>
+        </svg>
+        <svg @click="open" id="menu" class="menu" xmlns="http://www.w3.org/2000/svg" width="27" height="20.5" viewBox="0 0 27 20.5">
+          <path id="Path_31" data-name="Path 31" d="M30.375,12.625H5.625A1.2,1.2,0,0,1,4.5,11.375h0a1.2,1.2,0,0,1,1.125-1.25h24.75a1.2,1.2,0,0,1,1.125,1.25h0A1.2,1.2,0,0,1,30.375,12.625Z" transform="translate(-4.5 -10.125)" fill="#fff"/>
+          <path id="Path_32" data-name="Path 32" d="M23.667,19.375H5.333c-.458,0-.833-.563-.833-1.25h0c0-.687.375-1.25.833-1.25H23.667c.458,0,.833.563.833,1.25h0C24.5,18.813,24.125,19.375,23.667,19.375Z" transform="translate(2.141 -7.875)" fill="#fff"/>
+          <path id="Path_33" data-name="Path 33" d="M30.375,26.125H5.625A1.2,1.2,0,0,1,4.5,24.875h0a1.2,1.2,0,0,1,1.125-1.25h24.75a1.2,1.2,0,0,1,1.125,1.25h0A1.2,1.2,0,0,1,30.375,26.125Z" transform="translate(-4.5 -5.625)" fill="#fff"/>
+        </svg>
+      </div>
     </div>
     <div class="div_container">
+      <svg @click="lock" class="close" xmlns="http://www.w3.org/2000/svg" width="20.86" height="20.86" viewBox="0 0 20.86 20.86">
+        <g id="close" transform="translate(-325.17 -27.32)">
+          <path id="Path_63" data-name="Path 63" d="M30.375,12.625H5.625A1.2,1.2,0,0,1,4.5,11.375h0a1.2,1.2,0,0,1,1.125-1.25h24.75a1.2,1.2,0,0,1,1.125,1.25h0A1.2,1.2,0,0,1,30.375,12.625Z" transform="translate(330.916 16.979) rotate(45)" fill="#fff"/>
+          <path id="Path_64" data-name="Path 64" d="M30.375,12.625H5.625A1.2,1.2,0,0,1,4.5,11.375h0a1.2,1.2,0,0,1,1.125-1.25h24.75a1.2,1.2,0,0,1,1.125,1.25h0A1.2,1.2,0,0,1,30.375,12.625Z" transform="translate(314.829 42.435) rotate(-45)" fill="#fff"/>
+        </g>
+      </svg>
       <ul>
+        <li class="li_area_one login">
+          <router-link to="/LoginIn">
+            <button class="border-2 bg-white border-gray-medium w-52 py-1 rounded-3xl  text-gray-dark hover:text-white hover:bg-orange hover:border-opacity-0">登入 / 註冊</button>
+          </router-link>
+        </li>
         <li class="li_area_one" ref="find">
           <svg class="img_icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20.005" viewBox="0 0 20 20.005">
             <path class="path_icon" id="Icon_ionic-ios-search" data-name="Icon ionic-ios-search" d="M24.265,23.05,18.7,17.436a7.927,7.927,0,1,0-1.2,1.219l5.526,5.578a.856.856,0,0,0,1.208.031A.862.862,0,0,0,24.265,23.05ZM12.474,18.722A6.259,6.259,0,1,1,16.9,16.889,6.221,6.221,0,0,1,12.474,18.722Z" transform="translate(-4.5 -4.493)" fill="#ededed"/>
@@ -140,6 +161,28 @@ export default {
         e.target.setAttribute('class', 'triangleOn')
       }
       this.cCollapse = !this.cCollapse
+    },
+    open () {
+      const con = document.querySelector('.div_container')
+      con.setAttribute('style', 'transform: translateY(0); transition: all .5s; opacity: 1;')
+      document.querySelector('html').setAttribute('style', 'overflow:hidden')
+    },
+    lock () {
+      const con = document.querySelector('.div_container')
+      con.setAttribute('style', 'transform: translateY(-120%); transition: all .5s; opacity: 0;')
+      document.querySelector('html').setAttribute('style', 'overflow:auto')
+    },
+    myEventHandler () {
+      const con = document.querySelector('.div_container').style.opacity
+      const htm = document.querySelector('html').style.overflow
+      if (window.innerWidth > 414 && con === '0') {
+        document.querySelector('.div_container').setAttribute('style', 'opacity: 1;')
+      }
+      if (window.innerWidth > 414 && htm === 'hidden') {
+        document.querySelector('html').style.overflow = 'auto'
+      } else if (window.innerWidth < 414 && htm === 'auto') {
+        document.querySelector('html').style.overflow = 'hidden'
+      }
     }
   },
   watch: {
@@ -157,7 +200,6 @@ export default {
       document.querySelectorAll('.span_nav').forEach(item => {
         item.style.color = 'white'
       })
-
       switch (this.$route.path) {
         case '/Find' :
           this.$refs.find.querySelector('path').style.fill = '#A6FF00'
@@ -185,8 +227,10 @@ export default {
           break
       }
     }
+  },
+  created () {
+    window.addEventListener('resize', this.myEventHandler)
   }
-
 }
 </script>
 <style scoped>
@@ -253,6 +297,15 @@ export default {
     margin-left: 5px;
     color: white;
   }
+  .login{
+    display: none;
+  }
+  .close{
+    display: none;
+  }
+  .funbox{
+    display: none;
+  }
   /* 控制三角形點擊收合 */
   .triangleOn{
     margin-left: 5px;
@@ -299,5 +352,65 @@ export default {
   }
   svg.img_icon{
     display: inline;
+  }
+  /* rwd */
+  /* for Aside */
+  @media screen and (max-width: 414px) {
+    nav{
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding-top: 0px;
+      width: 100%;
+      left: 0;
+      height: 60px;
+      position: fixed;
+      z-index: 2;
+    }
+    .div_logo{
+      margin:12px 0 0px 12px;
+    }
+    .div_container{
+      margin-left: -167px;
+      height: 100vh;
+      width: 100%;
+      background-color: #222222;
+      position: relative;
+      transform: translateY(-120%);
+      opacity: 0;
+      z-index: 2;
+      display: flex;
+      padding-top: 50px;
+      padding-left: 20%;
+      overflow-y: auto;
+    }
+    .login{
+      display: inline;
+    }
+    .close{
+      display: inline;
+      position:absolute;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+    }
+    .funbox{
+      display: inline;
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      cursor: pointer;
+    }
+    .menu{
+      margin-left: 5px;
+    }
+    .span_underline{
+      margin: 20px 0;
+      width: 210px;
+      border-bottom: 2px solid #7B7B7B;
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
   }
 </style>
