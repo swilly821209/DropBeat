@@ -27,19 +27,19 @@
       </div>
     </div>
     <base-title title="發起募資" class="mt-20 mb-5"></base-title>
-    <div class="flex w-full h-96">
+    <div class="flex flex-col w-full h-96 sm:flex-row">
       <select-img
-        class="w-8/12"
+        class="w-full sm:w-8/12"
         :radius="'rounded-3xl'"
         :camera="true"
         :text="'選取圖片'"
         :inputImg="'border-2 border-white bg-white incircle'"
       ></select-img>
-      <div class="w-4/12 flex flex-col">
-        <div class="flex justify-around mb-4">
-          <p class="w-2/6 text-right text-gray-dark text-xl mr-3">封面縮圖：</p>
+      <div class="w-12/12 flex flex-col sm:w-4-12">
+        <div class="flex justify-around mb-4 mt-12 sm:mt0">
+          <p class="w-5/12 text-left text-gray-dark text-xl mr-0 sm:mr-3 sm:2/6 sm:text-right">封面縮圖：</p>
           <select-img
-            class="w-4/6 h-56"
+            class="w-7/12 h-36 sm:w-4/6 sm:h-56"
             :radius="'rounded-3xl'"
             :camera="true"
             :text="'選取圖片'"
