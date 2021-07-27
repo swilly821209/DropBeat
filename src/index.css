@@ -778,6 +778,18 @@ video {
   z-index: 50;
 }
 
+.order-2 {
+  order: 2;
+}
+
+.order-3 {
+  order: 3;
+}
+
+.order-1 {
+  order: 1;
+}
+
 .m-auto {
   margin: auto;
 }
@@ -806,6 +818,11 @@ video {
   margin-bottom: 4rem;
 }
 
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 .mx-44 {
   margin-left: 11rem;
   margin-right: 11rem;
@@ -829,11 +846,6 @@ video {
 .my-2 {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
-}
-
-.my-4 {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
 }
 
 .mx-4 {
@@ -1148,6 +1160,10 @@ video {
   height: 100vh;
 }
 
+.h-\[150px\] {
+  height: 150px;
+}
+
 .w-\[350px\] {
   width: 350px;
 }
@@ -1294,6 +1310,10 @@ video {
 
 .w-\[1px\] {
   width: 1px;
+}
+
+.w-\[300px\] {
+  width: 300px;
 }
 
 .min-w-\[1000px\] {
@@ -1623,10 +1643,6 @@ video {
 
 .bg-opacity-80 {
   --tw-bg-opacity: 0.8;
-}
-
-.bg-opacity-90 {
-  --tw-bg-opacity: 0.9;
 }
 
 .bg-gradient-to-t {
@@ -2299,6 +2315,28 @@ textarea {
 
 .group:hover .group-hover\:visible {
   visibility: visible;
+}
+
+@media (min-width: 640px) {
+  .sm\:order-1 {
+    order: 1;
+  }
+
+  .sm\:order-2 {
+    order: 2;
+  }
+
+  .sm\:order-3 {
+    order: 3;
+  }
+
+  .sm\:h-\[269px\] {
+    height: 269px;
+  }
+
+  .sm\:w-\[269px\] {
+    width: 269px;
+  }
 }
 
 @media (min-width: 1024px) {
