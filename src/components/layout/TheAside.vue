@@ -239,7 +239,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 20px;
+    padding:20px 0;
     width: 230px;
     left: 0;
     height: 100vh;
@@ -255,6 +255,7 @@ export default {
   .div_container{
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
   }
   .img_icon{
     width: 20px;
@@ -353,6 +354,9 @@ export default {
   svg.img_icon{
     display: inline;
   }
+  ::-webkit-scrollbar {
+    display: none;
+  }
   /* rwd */
   /* for Aside */
   @media screen and (max-width: 414px) {
@@ -382,7 +386,6 @@ export default {
       display: flex;
       padding-top: 50px;
       padding-left: 20%;
-      overflow-y: auto;
     }
     .login{
       display: inline;
