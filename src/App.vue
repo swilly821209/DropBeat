@@ -43,7 +43,11 @@ h1 {
   margin-left: 230px;
   width: calc(100%-230px);
 }
-@media screen and (max-width: 414px) {
+.range{
+  /* padding: 60px 40px 150px 40px; */
+  padding: 60px 40px 10px 40px;
+}
+@media screen and (max-width: 640px) {
   .router{
     padding-top: 20px;
     margin-left: 0;
@@ -52,9 +56,9 @@ h1 {
   .header{
     display: none;
   }
+  .range{
+    padding: 60px 10px 10px 10px
+  }
 }
-.range{
-  /* padding: 60px 40px 150px 40px; */
-  padding: 60px 40px 10px 40px;
-}
+
 </style>

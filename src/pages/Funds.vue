@@ -12,7 +12,7 @@
             {{ item }}
             </base-button>
         </div>
-        <div class="space-x-3">
+        <div class="sm:space-x-3 space-x-1">
             <base-button
             v-for="item in fundsType"
             :key="item"
@@ -139,5 +139,13 @@ export default {
     }
     .child {
         /* width: 20%; */
+    }
+    @media (max-width: 767px){
+      .parent {
+        flex-direction: column;
+      }
+      :deep .fundBlock{
+        width: 100%;
+      }
     }
 </style>

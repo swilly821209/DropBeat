@@ -355,7 +355,7 @@ export default {
   }
   /* rwd */
   /* for Aside */
-  @media screen and (max-width: 414px) {
+  @media screen and (max-width: 640px) {
     nav{
       flex-direction: row;
       align-items: flex-start;
