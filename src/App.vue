@@ -1,5 +1,5 @@
 <template>
-  <the-header></the-header>
+  <the-header class="header"></the-header>
   <the-aside></the-aside>
   <div class="router">
     <router-view />
@@ -42,6 +42,16 @@ h1 {
 .router{
   margin-left: 230px;
   width: calc(100%-230px);
+}
+@media screen and (max-width: 414px) {
+  .router{
+    padding-top: 20px;
+    margin-left: 0;
+    width: 100%;
+  }
+  .header{
+    display: none;
+  }
 }
 .range{
   /* padding: 60px 40px 150px 40px; */
