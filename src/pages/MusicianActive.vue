@@ -1,6 +1,6 @@
 <template>
   <div class="range">
-    <div class="flex justify-between mt-5">
+    <div class="flex justify-between ">
       <base-title title="活動管理" admin></base-title>
     </div>
     <div class="flex">
@@ -34,52 +34,52 @@
           </svg>
       </span>
     </div>
-    <base-title title="發起活動" class="mt-20 mb-5"></base-title>
-    <div class="flex w-full h-96">
+    <h4>發起活動</h4>
+    <div class="flex ">
       <select-img
-        class="w-8/12"
         :radius="'rounded-3xl'"
         :camera="true"
         :text="'選取圖片'"
         :inputImg="'border-2 border-white bg-white incircle'"
       ></select-img>
-      <div class="w-4/12 flex flex-col pt-10 ">
+      <div class="content flex flex-col justify-center ">
+        <div class=" flex ">
+          <label for="topicName" class="textTitle text-right text-gray-dark text-lg mr-3">活動主題：</label>
+          <input name="topicName" id="topicName" type="text" style="color:#7b7b7b" class="textLine border-b-2 border-gray-default focus:outline-none focus:border-orange text-gray-light">
+        </div>
+        <!-- <div class="flex mt-4">
+          <label for="topic" class="textTitle text-right text-gray-dark text-xl mr-3"></label>
+          <input name="topic" id="topic" type="text" class="textLine border-b-2 border-gray-default focus:outline-none focus:border-orange text-gray-light">
+        </div> -->
         <div class="flex mt-4">
-          <label for="topicName" class="w-2/6 text-right text-gray-dark text-xl mr-3">活動主題：</label>
-          <input name="topicName" id="topicName" type="text" class="w-4/6 border-b-2 border-gray-light focus:outline-none focus:border-orange text-gray-light">
+          <label for="date" class="textTitle text-right text-gray-dark text-lg mr-3">活動日期：</label>
+          <input name="date" id="date" type="date" value="2021-08-08" @change="changeColor" style="color:#7b7b7b" class="textLine border-b-2 border-gray-default focus:outline-none focus:border-orange text-transparent font-bold">
         </div>
         <div class="flex mt-4">
-          <label for="topic" class="w-2/6 text-right text-gray-dark text-xl mr-3"></label>
-          <input name="topic" id="topic" type="text" class="w-4/6 border-b-2 border-gray-light focus:outline-none focus:border-orange text-gray-light">
+          <label for="time" class="textTitle text-right text-gray-dark text-lg mr-3">活動時間：</label>
+          <input name="time" id="time" type="time" @change="changeColor" style="color:#7b7b7b" class="textLine border-b-2 border-gray-default focus:outline-none focus:border-orange text-transparent font-bold">
         </div>
         <div class="flex mt-4">
-          <label for="date" class="w-2/6 text-right text-gray-dark text-xl mr-3">活動日期：</label>
-          <input name="date" id="date" type="date" value="2021-08-08" @change="changeColor" class="w-4/6 border-b-2 border-gray-light focus:outline-none focus:border-orange text-transparent font-bold">
-        </div>
-        <div class="flex mt-4">
-          <label for="time" class="w-2/6 text-right text-gray-dark text-xl mr-3">活動時間：</label>
-          <input name="time" id="time" type="time" @change="changeColor" class="w-4/6 border-b-2 border-gray-light focus:outline-none focus:border-orange text-transparent font-bold">
-        </div>
-        <div class="flex mt-4">
-          <label for="placeArea" class="w-2/6 text-right text-gray-dark text-xl mr-3">活動地點：</label>
-          <select name="placeArea" id="placeArea" class="w-4/6 border-b-2 border-gray-light focus:outline-none focus:border-orange text-gray-light" >
+          <label for="placeArea" class="textTitle text-right text-gray-dark text-lg mr-3">活動地點：</label>
+          <select name="placeArea" id="placeArea" style="color:#7b7b7b" class="textLine border-b-2 border-gray-default focus:outline-none focus:border-orange text-gray-light" >
             <option v-for="item in area" :key="item" :value="item">{{item}}</option>
           </select>
         </div>
         <div class="flex mt-4 relative">
-          <label class="w-2/6 mr-3"></label>
-          <label for="place" class="w-4/6">
-            <input name="place" id="place" type="text" class="w-full border-b-2 border-gray-light text-gray-dark focus:outline-none focus:border-orange text-gray-light pl-1">
+          <label class="textTitle mr-3"></label>
+          <label for="place" class="textLine">
+            <input name="place" id="place" type="text" class="w-full border-b-2 border-gray-default text-gray-dark focus:outline-none focus:border-orange text-gray-light pl-1">
           </label>
         </div>
       </div>
     </div>
-    <base-title title="活動介紹" class="mt-20  mb-5" :second="'second'"></base-title>
-    <textarea name="projectInfo" class="w-full h-72 border-2 border-gray-light text-gray-dark rounded-2xl resize-none pl-2 pt-2 focus:border-orange"></textarea>
-    <div class="flex justify-end mt-5">
+    <!-- <base-title title="活動介紹" class="mt-20  mb-5" :second="'second'"></base-title> -->
+    <h5 class="text-xl text-black-backdrop">活動介紹：</h5>
+    <textarea name="projectInfo" class="w-full h-56 border-2 border-gray-light text-gray-dark rounded-2xl resize-none pl-2 pt-2 focus:border-orange"></textarea>
+    <div class="flex justify-end mt-4">
       <div class="flex">
-        <button class="border-2 border-gray-light text-gray-light px-4 mr-5 rounded-xl hover:border-orange">取消</button>
-        <button class="border-2 border-orange bg-orange text-white px-4 rounded-xl">提交審核</button>
+        <button class="cancelBtn border-2 border-gray-default text-gray-dark  rounded-2xl hover:border-orange hover:text-orange">取消</button>
+        <button class="submitBtn border-2 border-orange bg-orange text-white rounded-2xl hover:bg-blue-light hover:border-opacity-0">提交審核</button>
       </div>
     </div>
   </div>
@@ -161,6 +161,43 @@ export default {
 </script>
 
 <style scoped>
+  :deep h2{
+    cursor: default;
+  }
+  h4{
+  font-size: 32px;
+  font-weight: 500;
+  color:#383838;
+  cursor:default;
+  margin: 70px 0 30px 0;
+}
+h5{
+    margin: 40px 0 10px 5px;
+}
+  :deep .outer{
+  width: 665px;
+  height: 380px;
+}
+.content{
+  /* border:1px solid red; */
+  width: calc(100% - 665px);
+  padding: 0 0 0 20px;
+}
+.textTitle{
+    width: 100px;
+}
+.textLine{
+    width: calc(100% - 120px);
+}
+.cancelBtn{
+  height: 30px;
+  width: 55px;
+}
+.submitBtn{
+  height: 30px;
+  width: 90px;
+  margin: 0 0 0 10px;
+}
   div[col=col]{
     flex-direction: column;
     width: 100%;
@@ -168,14 +205,14 @@ export default {
   label[for=place]::after{
     content: '.';
     position: absolute;
-    right: -1px;
+    right: 9px;
     top:-1px;
     background-image: url('../assets/icon/map.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
   }
   /* 輪播 */
   .outers{

@@ -35,26 +35,45 @@
       <h4>活動介紹</h4>
       <div class="content"><p>{{activeContent}}</p></div>
     </div>
+    <message-board class="message"></message-board>
   </div>
 </template>
 
 <script>
+import MessageBoard from '../components/MessageBoard.vue'
+
 export default {
   data () {
     return {
-      activeTitle: '2021 新歌巡迴《 穿過夜晚Go Through the Night 》',
+      activeTitle: '2021 新歌巡迴《 穿過夜晚 Go Through the Night 》',
       active: false,
       follow: false,
-      activeContent: '哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈'
+      activeContent: `黑夜籠罩之後，熟悉的日常逐漸褪色。
+清楚地感覺到自己正穿越扭曲的時間與畫面，在那裡，我遇見另一個你，比記憶中更加鮮明，也遇見另一個我，比想象中更加勇敢，
+一起往規則改變的未知前進。睜眼的那一刻便越過了黑夜。
+
+———
+
+大象體操2021年度單曲《穿過夜晚》，創作始於與日本樂團toe在疫情期間舉辦的線上合作演出。
+與toe的團員討論後，取樣其經典曲目 “Two Moons” 的木吉他音軌重新創作，為探討夢境作為主題的下一張專輯揭開序幕。
+
+● 演出日期：2021 年 10 月 10 日（日）
+● 演出時間：19:30進場 20:00演出
+● 演出地點：台北 海邊的卡夫卡（台北市中正區羅斯福路三段244巷2號2樓）
+● 演出者：大象體操
+● 票價：預售票700元 / 現場票800元`
     }
+  },
+  components: {
+    MessageBoard
   }
 }
 </script>
 
 <style scoped>
 .range {
-  border: 1px solid red;
-  padding: 60px 40px 150px 40px;
+  /* border: 1px solid red; */
+  padding: 60px 40px 10px 40px;
 }
 .pre {
   /* border: 1px solid red; */
@@ -101,8 +120,8 @@ h2 {
   flex-shrink: 0;
 }
 .banner {
-  width: 600px;
-  height: 315px;
+  width: 580px;
+  height: 330px;
   border-radius: 20px;
   background-image: url("../assets/images/active/ac001.jpg");
   margin: 0 30px 0 0;
@@ -116,7 +135,6 @@ h2 {
 h3{
   font-size: 22px;
   margin: 0 0 0 5px;
-
 }
 .share_join{
   display: flex;
@@ -191,7 +209,7 @@ p{
 }
 .artistname:hover .undername{
   background-color: #7b7b7b;
-  width: 150px;
+  width: 145px;
   height: 1px;
 }
 .artistImg{
@@ -233,11 +251,14 @@ h4{
   font-size: 22px;
   font-weight: 500;
   color: #383838;
+  margin: 0 0 10px 0;
 }
 .content{
   /* border:1px solid red; */
   margin: 5px 0 0 0;
   white-space: pre;
 }
-
+  .message{
+        margin: 50px 0 0 0;
+  }
 </style>

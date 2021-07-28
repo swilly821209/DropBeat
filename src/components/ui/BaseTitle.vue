@@ -1,11 +1,11 @@
 <template>
-<div class="title00">
+<div class="title00" :class="presign">
   <div class="titleNline">
   <h2 :class="second">{{ title }}</h2>
-  <div class="under"></div>
+  <div v-if="link" class="under"></div>
   </div>
   <router-link class="more" v-if="link" :to="to">more >></router-link>
-  <button v-else-if="admin" class="btn">聯絡管理員</button>
+  <button v-else-if="admin" class="btn ">聯絡管理員</button>
 </div>
 </template>
 
@@ -36,6 +36,11 @@ export default {
       type: String,
       required: false,
       default: ''
+    },
+    presign: {
+      type: String,
+      required: false,
+      default: ''
     }
   }
 }
@@ -46,7 +51,8 @@ export default {
   display: flex;
   align-items: baseline;
   cursor: pointer;
-  width: 410px;
+  width: 100%;
+  position: relative;
 }
 @media screen and (max-width: 640px) {
   .title00 {
@@ -57,10 +63,19 @@ export default {
   display: flex;
   flex-direction: column;
 }
+.presign::before{
+  content: '.';
+  background-color: #B5B5B5;
+  height: 40px;
+  width: 5px;
+  position: absolute;
+  left: -15px;
+  border-radius: 10px;
+}
 h2{
-    font-size: 32px;
-    font-weight: 500;
-    color: #383838;
+  font-size: 24px;
+  font-weight: 500;
+  color: #383838;
 }
 .under{
   background-color: transparent;
@@ -86,7 +101,8 @@ h2{
   margin-left: 20px;
   padding: 2px 20px;
   align-self: center;
-  justify-self: center;
+  /* justify-self: center; */
+  height: 30px;
 }
 .btn:hover{
   color: white;
@@ -95,5 +111,57 @@ h2{
 /* 次title(此size暫定) */
 .second{
   font-size: 24px;
+}
+/* RWD */
+@media screen and (min-width:640px) {
+  .title00{
+    display: flex;
+    align-items: baseline;
+    cursor: pointer;
+    width: 410px;
+  }
+  .titleNline{
+    display: flex;
+    flex-direction: column;
+  }
+  h2{
+      font-size: 32px;
+      font-weight: 500;
+      color: #383838;
+  }
+  .under{
+    background-color: transparent;
+    height: 2px;
+    margin-top: -5px ;
+  }
+  .more{
+    font-size: 14px;
+    color: #7b7b7b;
+    margin-left: 10px;
+  }
+  .title00:hover .more{
+      color: #FF9D83;
+  }
+  .title00:hover .under{
+      background-color: #7b7b7b;
+  }
+  /* 修改募資管理-修改刪除btn */
+  .btn{
+    border: 2px solid #FE9F8A;
+    color: #FE9F8A;
+    border-radius: 20px;
+    margin-left: 20px;
+    padding: 2px 20px;
+    align-self: center;
+    justify-self: center;
+  }
+  .btn:hover{
+    color: white;
+    background-color: #FE9F8A;
+  }
+  /* 次title(此size暫定) */
+  .second{
+    font-size: 24px;
+  }
 }
 </style>

@@ -49,7 +49,7 @@
             想參加
           </button>
         </div> -->
-        <div class="flex  self-end sm:block hidden">
+        <div class="sm:flex  self-end  hidden">
           <div class="share "></div>
           <button
             class="join"

@@ -26,7 +26,9 @@
         :memberMessage="item.message">
       </the-message>
     </div>
-    <div @click="displayMore" v-if="moreButton" class="cursor-pointer hover:text-blue-light text-lg text-gray-light text-right">...查看全部留言</div>
+    <div class="flex justify-end">
+      <div @click="displayMore" v-if="moreButton" class=" text-lg text-gray-light text-right hover:text-blue-light cursor-pointer">...查看全部留言</div>
+    </div>
   </div>
 </template>
 

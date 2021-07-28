@@ -27,7 +27,7 @@
       ></cd-player>
     </div>
     <div class="artist">
-      <base-title title="Artist 大家都在聽" link to="/Find" style="width:390px"></base-title>
+      <base-title title="Artist 大家都在聽" link to="/Find"></base-title>
       <div class="flex flex-wrap justify-between artcontain">
         <artist-item class=" aartist"
           :width="'w-24'"

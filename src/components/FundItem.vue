@@ -1,9 +1,21 @@
 <template>
   <div class="fundBlock">
+    <div v-if="edit" class="flex mb-2 ml-1 sm:w-auto w-[345px]">
+      <div class="h5_icon flex flex-col items-center mr-3">
+          <span class="editIcon"></span>
+          <h5>編輯</h5>
+      </div>
+      <div class="h5_icon flex flex-col items-center">
+          <span class="deleteIcon"></span>
+          <h5>刪除</h5>
+      </div>
+    </div>
     <router-link to="/Funds/:id" class="sm:order-1 order-2 flex justify-center">
       <img :src="img" class="sm:w-[269px] sm:h-[269px] w-[345px] h-[170px] object-center object-cover m-auto">
+    <!-- <router-link to="/Funds/:id" class="sm:order-1 order-2 ">
+      <img :src="img" class="sm:w-[269px] sm:h-[269px] w-[300px] h-[150px]"> -->
     </router-link>
-    <div class="content sm:order-2 order-3 sm:w-auto w-[345px] m-auto">
+    <div class="content sm:order-2 order-3 sm:w-auto w-[345px]">
       <h4 class=" text-base text-black">{{ title }}</h4>
       <p class="text-sm text-gray-dark">{{singer}}</p>
       <div class="donateline">
@@ -14,7 +26,8 @@
         <p>還剩 {{ date }} 天</p>
       </div>
     </div>
-    <div v-if="edit" class="flex my-4 sm:order-3 order-1 sm:w-auto w-[345px]">
+    <!-- <div v-if="edit" class="flex my-4 sm:order-3 order-1 "> -->
+    <!-- <div v-if="edit" class="flex my-4 sm:order-3 order-1">
       <div class="flex flex-col items-center mr-3">
         <svg xmlns="http://www.w3.org/2000/svg" width="20.001" height="20" viewBox="0 0 20.001 20">
           <path id="Icon_awesome-pen" data-name="Icon awesome-pen" d="M11.357,3.642l5,5L5.5,19.5l-4.459.492A.938.938,0,0,1,.005,18.959L.5,14.5,11.357,3.642ZM19.451,2.9,17.1.55a1.876,1.876,0,0,0-2.653,0L12.241,2.759l5,5,2.209-2.209a1.876,1.876,0,0,0,0-2.653Z" transform="translate(0.001 -0.001)" fill="#b5b5b5"/>
@@ -27,7 +40,7 @@
         </svg>
         <span class="text-gray-dark">刪除</span>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -111,4 +124,33 @@ export default {
     font-size: 16px;
     color:#383838;
   }
+  .editIcon{
+    width: 18px;
+    height: 18px;
+    background-image: url("../assets/icon/edit_b5.svg");
+    cursor: pointer;
+}
+.h5_icon:hover .editIcon{
+    background-image: url("../assets/icon/edit_d83.svg");
+}
+.deleteIcon{
+    width: 18px;
+    height: 18px;
+    background-image: url("../assets/icon/delete_b5.svg");
+    cursor: pointer;
+}
+.h5_icon:hover .deleteIcon{
+    width: 18px;
+    height: 18px;
+    background-image: url("../assets/icon/delete_d83.svg");
+    cursor: pointer;
+}
+h5{
+  color:#7b7b7b;
+  font-size: 14px;
+}
+.h5_icon:hover h5{
+  color:#FF9D83 ;
+}
+
 </style>
