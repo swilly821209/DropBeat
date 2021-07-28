@@ -175,12 +175,12 @@ export default {
     myEventHandler () {
       const con = document.querySelector('.div_container').style.opacity
       const htm = document.querySelector('html').style.overflow
-      if (window.innerWidth > 414 && con === '0') {
+      if (window.innerWidth > 640 && con === '0') {
         document.querySelector('.div_container').setAttribute('style', 'opacity: 1;')
       }
-      if (window.innerWidth > 414 && htm === 'hidden') {
+      if (window.innerWidth > 640 && htm === 'hidden') {
         document.querySelector('html').style.overflow = 'auto'
-      } else if (window.innerWidth < 414 && htm === 'auto') {
+      } else if (window.innerWidth < 640 && htm === 'auto') {
         document.querySelector('html').style.overflow = 'hidden'
       }
     }
@@ -239,7 +239,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 20px;
+    padding:20px 0;
     width: 230px;
     left: 0;
     height: 100vh;
@@ -255,6 +255,7 @@ export default {
   .div_container{
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
   }
   .img_icon{
     width: 20px;
@@ -353,9 +354,12 @@ export default {
   svg.img_icon{
     display: inline;
   }
+  ::-webkit-scrollbar {
+    display: none;
+  }
   /* rwd */
   /* for Aside */
-  @media screen and (max-width: 414px) {
+  @media screen and (max-width: 640px) {
     nav{
       flex-direction: row;
       align-items: flex-start;
@@ -381,8 +385,7 @@ export default {
       z-index: 2;
       display: flex;
       padding-top: 50px;
-      padding-left: 20%;
-      overflow-y: auto;
+      padding-left: 30%;
     }
     .login{
       display: inline;
@@ -391,7 +394,7 @@ export default {
       display: inline;
       position:absolute;
       top: 20px;
-      right: 20px;
+      right: 30px;
       cursor: pointer;
     }
     .funbox{
@@ -411,6 +414,21 @@ export default {
     }
     ::-webkit-scrollbar {
       display: none;
+    }
+  }
+  @media screen and (max-width: 540px){
+    .div_container{
+      padding-left: 25%;
+    }
+  }
+  @media screen and (max-width: 440px){
+    .div_container{
+      padding-left: 20%;
+    }
+  }
+  @media screen and (max-width: 340px){
+    .div_container{
+      padding-left: 15%;
     }
   }
 </style>

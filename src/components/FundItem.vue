@@ -12,8 +12,10 @@
     </div>
     <router-link to="/Funds/:id">
       <img :src="img">
+    <!-- <router-link to="/Funds/:id" class="sm:order-1 order-2 ">
+      <img :src="img" class="sm:w-[269px] sm:h-[269px] w-[300px] h-[150px]"> -->
     </router-link>
-    <div class="content">
+    <div class="content sm:order-2 order-3">
       <h4 class=" text-base text-black">{{ title }}</h4>
       <p class="text-sm text-gray-dark">{{singer}}</p>
       <div class="donateline">
@@ -24,6 +26,20 @@
         <p>還剩 {{ date }} 天</p>
       </div>
     </div>
+    <!-- <div v-if="edit" class="flex my-4 sm:order-3 order-1">
+      <div class="flex flex-col items-center mr-3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20.001" height="20" viewBox="0 0 20.001 20">
+          <path id="Icon_awesome-pen" data-name="Icon awesome-pen" d="M11.357,3.642l5,5L5.5,19.5l-4.459.492A.938.938,0,0,1,.005,18.959L.5,14.5,11.357,3.642ZM19.451,2.9,17.1.55a1.876,1.876,0,0,0-2.653,0L12.241,2.759l5,5,2.209-2.209a1.876,1.876,0,0,0,0-2.653Z" transform="translate(0.001 -0.001)" fill="#b5b5b5"/>
+        </svg>
+        <span class="text-gray-dark">編輯</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15.556" height="20" viewBox="0 0 15.556 20">
+          <path id="Icon_material-delete" data-name="Icon material-delete" d="M8.611,22.278A2.229,2.229,0,0,0,10.833,24.5h8.889a2.229,2.229,0,0,0,2.222-2.222V8.944H8.611ZM23.056,5.611H19.167L18.056,4.5H12.5L11.389,5.611H7.5V7.833H23.056Z" transform="translate(-7.5 -4.5)" fill="#b5b5b5"/>
+        </svg>
+        <span class="text-gray-dark">刪除</span>
+      </div>
+    </div> -->
   </div>
 </template>
 
@@ -73,6 +89,8 @@ export default {
   .fundBlock{
     margin: 35px 35px 0 0;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
   }
   .fundBlock:last-child{
     margin: 35px 0 0 0;

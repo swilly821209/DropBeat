@@ -43,7 +43,7 @@ h1 {
   margin-left: 230px;
   width: calc(100%-230px);
 }
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 640px) {
   .router{
     padding-top: 20px;
     margin-left: 0;
