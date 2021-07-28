@@ -1,7 +1,7 @@
 <template>
   <div class="fundBlock">
     <router-link to="/Funds/:id" class="sm:order-1 order-2 ">
-      <img :src="img" class="sm:w-[269px] sm:h-[269px] w-[300px] h-[150px]">
+      <img :src="img" class="sm:w-[269px] sm:h-[269px] w-[300px] h-[150px] theImg">
     </router-link>
     <div class="content sm:order-2 order-3">
       <h4 class=" text-base text-black">{{ title }}</h4>

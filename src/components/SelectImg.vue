@@ -1,7 +1,7 @@
 <template>
   <div class="bg-gray-light hover:bg-gray-default hover:shadow-lg flex justify-center items-center relative transition-all outer" :class="radius">
     <div class="flex flex-col items-center">
-      <div class="flex justify-center items-center mb-3 p-6 rounded-full transition-all" :class="inputImg">
+      <div class="flex justify-center items-center my-2 p-2 w-12 h-12 rounded-full transition-all sm:w-full sm:h-full sm:my-3 sm:p-6" :class="inputImg">
         <svg v-if="camera" xmlns="http://www.w3.org/2000/svg" width="63.551" height="57.196" viewBox="0 0 63.551 57.196">
           <g id="Group_1" data-name="Group 1" transform="translate(-418 -225.804)">
             <path class="transition pathWhite" id="Path_22" data-name="Path 22" d="M33.536,23.368A10.168,10.168,0,1,1,23.368,13.2,10.168,10.168,0,0,1,33.536,23.368Z" transform="translate(426.407 234.211)" fill="#7b7b7b"/>

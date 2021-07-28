@@ -175,12 +175,13 @@ export default {
     myEventHandler () {
       const con = document.querySelector('.div_container').style.opacity
       const htm = document.querySelector('html').style.overflow
+      const cons = document.querySelector('.div_container').style.transform
       if (window.innerWidth > 640 && con === '0') {
         document.querySelector('.div_container').setAttribute('style', 'opacity: 1;')
       }
       if (window.innerWidth > 640 && htm === 'hidden') {
         document.querySelector('html').style.overflow = 'auto'
-      } else if (window.innerWidth < 640 && htm === 'auto') {
+      } else if (window.innerWidth < 640 && htm === 'auto' && cons === 'transform: translateY(0)') {
         document.querySelector('html').style.overflow = 'hidden'
       }
     }
