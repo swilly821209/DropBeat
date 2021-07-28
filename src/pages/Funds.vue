@@ -141,11 +141,15 @@ export default {
         /* width: 20%; */
     }
     @media (max-width: 767px){
+      .range{
+        padding: 60px 15px 10px 15px;
+      }
       .parent {
         flex-direction: column;
       }
       :deep .fundBlock{
         width: 100%;
+        margin: 35px 0 0 0;
       }
     }
 </style>

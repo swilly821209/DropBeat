@@ -3,7 +3,8 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     reportDialog: false,
-    deleteMusicDialog: true
+    deleteMusicDialog: true,
+    isLogin: false
   },
   mutations: {
     setReportDialog (state, payload) {
@@ -11,6 +12,9 @@ export default createStore({
     },
     setDeleteMusic (state, payload) {
       state.deleteMusicDialog = payload
+    },
+    login (state, payload) {
+      state.isLogin = payload
     }
   },
   actions: {
@@ -19,6 +23,9 @@ export default createStore({
     },
     deleteMusicDialog (context, payload) {
       context.commit('setDeleteMusic', payload)
+    },
+    login (context, payload) {
+      context.commit('login', payload)
     }
   },
   getters: {
@@ -27,6 +34,9 @@ export default createStore({
     },
     deleteMusicState (state) {
       return state.deleteMusicDialog
+    },
+    loginState (state) {
+      return state.isLogin
     }
   }
 })
