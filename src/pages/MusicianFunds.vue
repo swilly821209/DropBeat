@@ -13,17 +13,37 @@
     </div>
     <div class="outersMeneger mt-7">
       <div class="innersMeneger">
-        <fund-item class="theItemMeneger"
-          edit
-          v-for="item in fundItems"
-          :title="item.title"
-          :img="item.img"
-          :singer="item.singer"
-          :progress="item.progress"
-          :date="item.date"
-          :money="item.money"
-          :key="item.title">
-        </fund-item>
+        <!-- 640px以上顯示 -->
+        <fund-item class="theItemMenegerSpe"
+            edit
+            v-for="item in fundItems"
+            :title="item.title"
+            :img="item.img"
+            :singer="item.singer"
+            :progress="item.progress"
+            :date="item.date"
+            :money="item.money"
+            :key="item.title">
+          </fund-item>
+        <!-- 640px以下顯示 -->
+        <div class="block flex items-center justify-center w-full sm:hidden">
+          <svg class="mr-3 cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="25" height="40" viewBox="0 0 25 40">
+            <path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" :fill="fundsL"/>
+          </svg>
+          <fund-item class="theItemMeneger"
+            edit
+            :title="fundItems[0].title"
+            :img="fundItems[0].img"
+            :singer="fundItems[0].singer"
+            :progress="fundItems[0].progress"
+            :date="fundItems[0].date"
+            :money="fundItems[0].money"
+            >
+          </fund-item>
+          <svg class="ml-3 cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="25" height="40" viewBox="0 0 25 40">
+            <path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" :fill="fundsR"/>
+          </svg>
+        </div>
       </div>
     </div>
     <h4>發起募資</h4>
@@ -45,6 +65,12 @@
             :radius="'rounded-3xl'"
             :camera="true"
             :text="'選取圖片'"
+            :inputImg="'border-2 border-white bg-white incircle'"
+          ></select-img>
+          <select-img
+            class="w-[150px] h-[150px] sm:h-44 sm:w-8/12 flex sm:hidden"
+            :radius="'rounded-3xl'"
+            :camera="true"
             :inputImg="'border-2 border-white bg-white incircle'"
           ></select-img>
         </div>
@@ -102,6 +128,56 @@
             <div class="flex mt-4">
               <label class="textTitle text-right text-lg text-gray-dark">限量：</label>
               <input :value="item.quantity" class="textLine2 border-2 border-gray-default text-base text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
+            </div>
+          </div>
+        </div>
+        <!-- 640px以下顯示 -->
+        <div class="block flex theItem sm:hidden">
+          <div class="w-[600px]">
+            <div class="flex">
+              <div class="w-9/12">
+                <!-- 金額 -->
+                <div class="flex mt-4 w-12/12">
+                  <label class="w-[90px] text-left text-xl text-gray-dark">金額：</label>
+                  <input :value="fundsList[0].money" class="w-full border-2 border-gray-lighten text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
+                </div>
+                <!-- 標題 -->
+                <div class="flex mt-4 w-12/12">
+                  <label class="w-[90px] text-left text-xl text-gray-dark">標題：</label>
+                  <input :value="fundsList[0].title" class="w-full border-2 border-gray-lighten text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
+                </div>
+              </div>
+              <!-- img -->
+              <div class="w-3/12 px-3">
+                <select-img
+                  class="w-[95px] h-[95px]"
+                  :radius="'rounded-2xl'"
+                  :camera="true"
+                  :inputImg="'border-2 border-white bg-white incircle'"
+                ></select-img>
+              </div>
+            </div>
+            <!-- 內容 -->
+            <div class="flex mt-4">
+              <label class="w-[90px] text-left text-xl text-gray-dark h-16">內容：</label>
+              <textarea :value="fundsList[0].content" class="w-full h-32 border-2 border-gray-lighten text-gray-light focus:outline-none resize-none rounded-lg pl-2 focus:border-orange"></textarea>
+            </div>
+            <!-- 限量 -->
+            <div class="flex mt-4">
+              <label class="w-[90px] text-left text-xl text-gray-dark">限量：</label>
+              <input :value="fundsList[0].quantity" class="w-full border-2 border-gray-lighten text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
+            </div>
+            <!-- 新增方案 -->
+            <div class="flex items-center mt-5">
+              <svg id="new" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+                <g id="play" fill="none" stroke="#ff9d83" stroke-width="2">
+                  <circle cx="15" cy="15" r="15" stroke="none"/>
+                  <circle cx="15" cy="15" r="14" fill="none"/>
+                </g>
+                <path id="Path_24" data-name="Path 24" d="M18,7.5V17.933" transform="translate(-3.143 2.283)" fill="none" stroke="#ff9d83" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                <path id="Path_25" data-name="Path 25" d="M7.5,18H17.933" transform="translate(2.141 -3)" fill="none" stroke="#ff9d83" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+              </svg>
+              <span class="text-orange align-baseline ml-2">新增方案</span>
             </div>
           </div>
         </div>
