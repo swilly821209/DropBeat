@@ -71,9 +71,9 @@
     <div class="single-music-carousel">
       <swiper :slidesPerView="5" :slidesPerColumn="2" :spaceBetween="20" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}"
               class="w-full h-full">
-        <div class=" absolute flex items-center top-5 right-5 z-10 space-x-3">
-            <svg xmlns="http://www.w3.org/2000/svg" class="preArrow block text-gray-light" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
-            <svg xmlns="http://www.w3.org/2000/svg" class="nextArrow block text-gray-light" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
+        <div class=" absolute flex items-center top-0 right-5 z-10 space-x-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="preArrow block text-gray-light cursor-pointer" width="25" height="35" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="nextArrow block text-gray-light cursor-pointer" width="25" height="35" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
         </div>
         <swiper-slide v-for="item in 12" :key="item" class="">
           <single-music></single-music>
@@ -250,7 +250,7 @@ export default {
 <style scoped>
   .range{
     /* border:1px solid red; */
-    padding: 60px 40px 150px 40px;
+    padding: 60px 40px 10px 40px;
   }
   /* a{
     background: black;
@@ -299,14 +299,27 @@ export default {
         margin: 50px 0 0 0;
   }
   .single-music-carousel{
-    @apply w-full h-[680px]
+    margin: 40px 0 0 0;
+    width: 100%;
+    height: 610px;
   }
   .single-music-carousel .swiper-slide{
-    height: calc((100% - 20px) / 2);
+    height: calc((100% - 60px) / 2);
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 10px 0 0 0;
   }
+  @media screen and (max-width: 1300px) {
+    .single-music-carousel{
+    height: 580px;
+  }
+  .single-music-carousel .swiper-slide{
+    height: calc((100% - 90px) / 2);
+    margin: 10px 0 0 0;
+  }
+}
+
 .swiper-button-disabled {
   @apply text-gray-default
 }

@@ -8,53 +8,53 @@
       </div>
     </div>
     <div class="flex">
-      <form class=" w-9/12">
+      <form class=" w-9/12 ml-10 ">
         <h2 class="title">收件人資訊</h2>
         <div class="px-8 py-4 my-4 mr-8 border-2 rounded-md shadow-md">
           <div class="flex flex-col mb-4">
-            <label for="name" class="text-gray-dark text-lg">收件人姓名：</label>
-            <input type="text" id="name" placeholder="請填寫真實姓名" class="border-2 border-gray-light w-80 rounded-md p-2 text-lg focus:border-orange outline-none cursor-pointer">
+            <label for="name" class="text-gray-dark text-base mb-1 ml-1">收件人姓名：</label>
+            <input type="text" id="name" placeholder="請填寫真實姓名" class="border-2 border-gray-default rounded-md w-6/6 p-1 pl-2  text-base text-gray-dark focus:border-orange outline-none cursor-pointer">
           </div>
           <div class="flex flex-col mb-4">
-            <label for="address" class="text-gray-dark text-lg">收件人地址：</label>
+            <label for="address" class="text-gray-dark text-base mb-1 ml-1">收件人地址：</label>
             <div class="flex">
-              <input type="text" id="address" placeholder="郵遞區號" class="border-2 border-gray-light w-40 rounded-md p-2 mr-4 text-lg focus:border-orange outline-none cursor-pointer">
-              <input type="text" placeholder="回饋方案將寄至此地址" class="border-2 border-gray-light w-72 rounded-md p-2 text-lg focus:border-orange outline-none cursor-pointer">
+              <input type="text" id="address" placeholder="郵遞區號" class="border-2 border-gray-default w-1/6 rounded-md p-1 pl-2  mr-4 text-base text-gray-dark focus:border-orange outline-none cursor-pointer">
+              <input type="text" placeholder="回饋方案將寄至此地址" class="border-2 border-gray-default w-5/6 rounded-md p-1 pl-2  text-base text-gray-dark focus:border-orange outline-none cursor-pointer">
             </div>
           </div>
           <div class="flex flex-col mb-4">
-            <label for="phone" class="text-gray-dark text-lg">聯絡電話：</label>
-            <input type="text" id="phone" placeholder="請填寫常用手機號碼" class="border-2 border-gray-light w-80 rounded-md p-2 text-lg focus:border-orange outline-none cursor-pointer">
+            <label for="phone" class="text-gray-dark text-base mb-1 ml-1">聯絡電話：</label>
+            <input type="text" id="phone" placeholder="請填寫常用手機號碼" class="border-2 border-gray-default w-6/6 rounded-md p-1 pl-2 text-base text-gray-dark focus:border-orange outline-none cursor-pointer">
           </div>
           <div class="flex flex-col mb-4">
-            <label for="email" class="text-gray-dark text-lg">聯絡信箱：</label>
-            <input type="email" id="email" placeholder="請填寫常用電子信箱" class="border-2 border-gray-light w-80 rounded-md p-2 text-lg focus:border-orange outline-none cursor-pointer">
+            <label for="email" class="text-gray-dark text-base mb-1 ml-1">聯絡信箱：</label>
+            <input type="email" id="email" placeholder="請填寫常用電子信箱" class="border-2 border-gray-default w-6/6 rounded-md p-1 pl-2 text-base text-gray-dark focus:border-orange outline-none cursor-pointer">
           </div>
           <div class="flex flex-col mb-4">
-            <label for="note" class="text-gray-dark text-lg">備註：</label>
-            <input type="text" id="note" placeholder="如有特殊需求請填寫在此" class="border-2 border-gray-light w-80 rounded-md p-2 text-lg focus:border-orange outline-none cursor-pointer">
+            <label for="note" class="text-gray-dark text-base mb-1 ml-1">備註：</label>
+            <input type="text" id="note" placeholder="如有特殊需求請填寫在此" class="border-2 border-gray-default w-6/6 rounded-md p-1 pl-2 text-base text-gray-dark focus:border-orange outline-none cursor-pointer">
           </div>
         </div>
-        <h2 class="title">付款資訊</h2>
+        <h2 class="title mt-10">付款資訊</h2>
         <div class="px-8 py-4 my-4 mr-8 border-2 rounded-md shadow-md">
           <div class="flex flex-col mb-4">
-            <label class="text-gray-dark text-lg">付款方式：</label>
-            <div class="flex">
-              <div class="flex justify-around items-center bg-gray-light w-64 py-2 px-4 rounded-lg">
+            <label class="text-gray-dark text-lg mb-1 ml-1">付款方式：</label>
+            <div class="flex cursor-default">
+              <div class="flex justify-around items-center bg-gray-light w-64 py-2 pl-5 pr-2 rounded-lg">
                 <svg xmlns="http://www.w3.org/2000/svg" width="25.714" height="20" viewBox="0 0 25.714 20">
                   <path id="Icon_awesome-credit-card" data-name="Icon awesome-credit-card" d="M0,20.107A2.143,2.143,0,0,0,2.143,22.25H23.571a2.143,2.143,0,0,0,2.143-2.143V12.25H0Zm8.571-3.036a.537.537,0,0,1,.536-.536h6.071a.537.537,0,0,1,.536.536v1.786a.537.537,0,0,1-.536.536H9.107a.537.537,0,0,1-.536-.536Zm-5.714,0a.537.537,0,0,1,.536-.536H6.607a.537.537,0,0,1,.536.536v1.786a.537.537,0,0,1-.536.536H3.393a.537.537,0,0,1-.536-.536ZM25.714,4.393V6.536H0V4.393A2.143,2.143,0,0,1,2.143,2.25H23.571A2.143,2.143,0,0,1,25.714,4.393Z" transform="translate(0 -2.25)" fill="#fff"/>
                 </svg>
-                <span class="text-white text-xl text-center">信用卡（一次付清）</span>
+                <span class="text-white text-lg text-center">信用卡（ 一次付清 ）</span>
               </div>
               <span class="text-gray-dark text-xs pt-8 pl-2">可用卡別：VISA / MASTERCARD / JCB / 銀聯卡，無手續費產生</span>
             </div>
           </div>
           <div class="flex flex-col mb-4">
-            <label for="address" class="text-gray-dark text-lg">贊助總金額：</label>
-            <div class="flex justify-between border-2 border-gray-light py-6 px-2 rounded-md">
-              <div class="flex ml-4">
+            <label for="address" class="text-gray-dark text-lg mb-1 ml-1">贊助總金額：</label>
+            <div class="flex justify-between border-2 border-gray-default py-6 px-2 rounded-md">
+              <div class="flex items-end ml-4">
                 <div class="flex flex-col">
-                  <p class="text-gray-light text-md">贊助金額</p>
+                  <p class="text-gray-dark text-sm">贊助金額</p>
                   <span class="text-xl text-gray-dark font-bold">$ 450</span>
                 </div>
                 <div class="flex flex-col mx-4">
@@ -62,15 +62,15 @@
                   <span class="text-xl text-gray-dark font-bold">+</span>
                 </div>
                 <div class="flex flex-col">
-                  <p class="text-gray-light text-md">運費</p>
+                  <p class="text-gray-dark text-sm">運費</p>
                   <span class="text-xl text-gray-dark font-bold">$ 0</span>
                 </div>
-                <div class="flex flex-col mx-4">
+                <div class="flex flex-col mx-4 ">
                   <p class="invisible">.</p>
                   <span class="text-xl text-gray-dark font-bold">+</span>
                 </div>
                 <div class="flex flex-col">
-                  <p class="text-gray-light text-md pl-3">額外支持</p>
+                  <p class="text-gray-dark text-sm pl-3">額外支持</p>
                   <span class="text-xl text-gray-dark font-bold">$<input v-model="money" type="text" class="border-b-2 border-orange outline-none w-16 pl-1 text-xl text-gray-dark font-bold"></span>
                 </div>
               </div>
@@ -80,7 +80,7 @@
                   <span class="text-xl text-gray-dark font-bold">=</span>
                 </div>
                 <div class="flex flex-col">
-                  <p class="text-md text-gray-light">總金額</p>
+                  <p class="text-lg text-gray-dark">總金額</p>
                   <span class="text-xl text-gray-dark font-bold">$ 450</span>
                 </div>
               </div>
@@ -89,12 +89,12 @@
         </div>
         <div class="mr-10 mt-10">
           <div class="pl-4">
-            <input type="checkbox" name="agree" class="p-16 border-2 border-gray-light rounded-md">
+            <input type="checkbox" name="agree" class="p-16 border-2 border-gray-light rounded-md ">
             <label for="agree" class="ml-2 text-lg text-gray-dark">匿名贊助</label>
-            <span class="ml-4 text-sm text-gray-light">勾選後您的姓名將不會出現在支持者區塊及公開的會員資料中</span>
+            <span class="ml-4 text-xs text-gray-dark">勾選後您的姓名將不會出現在支持者區塊及公開的會員資料中</span>
           </div>
           <div class="flex justify-end">
-            <button class="text-center text-white bg-orange rounded-2xl w-64 mt-8 py-1 hover:bg-green-400">前往付款</button>
+            <button class="text-center text-base text-white bg-orange rounded-2xl w-64 h-[30px] mt-8 py-1 hover:bg-blue-light">前往付款</button>
           </div>
         </div>
       </form>
@@ -181,7 +181,7 @@ export default {
   }
   /*  */
   .title{
-    font-size: 24px;
+    font-size: 22px;
   }
   .title::before{
     content: ".";
