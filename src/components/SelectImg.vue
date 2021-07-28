@@ -74,4 +74,5 @@ export default {
   .outer:hover .cameraIcom{
     background-image: url("../assets/icon/camera_fff.svg");
   }
+
 </style>

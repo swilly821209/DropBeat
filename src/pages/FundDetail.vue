@@ -4,31 +4,31 @@
       <div class="pre">
         <div class="preicon"></div>
         <div class="title00">
-          <h2>演出活動</h2>
+          <h2>募資計畫</h2>
           <div class="under"></div>
         </div>
       </div>
       <div class="flex">
         <div class="mr-[30px]">
-          <img class="min-w-[600px] h-[315px] rounded-[20px]" src="https://akstatic.streetvoice.com/features/2021/07/23/e053e36ad38d43f0818b33e7a9d4b108.png?x-oss-process=image/resize,m_fill,h_480,w_1250,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg">
+          <img class="min-w-[580px] h-[330px] rounded-[20px]" src="https://akstatic.streetvoice.com/features/2021/07/23/e053e36ad38d43f0818b33e7a9d4b108.png?x-oss-process=image/resize,m_fill,h_480,w_1250,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg">
           <div class=" mt-[28px]">
-              <div class="flex w-2/3 justify-between text-orange">
+              <div class="flex w-2/3 justify-between text-base text-orange">
                   <p>$0</p>
                   <p>$300,000</p>
               </div>
               <div class="bg-gray-default w-full h-[6px] rounded-3xl relative my-2">
                 <div class=" w-7/12 h-full bg-orange rounded-3xl"></div>
-                <div class="absolute w-4 h-4 bg-white border-4 border-gray-default left-1/2 rounded-full top-[-5px]"></div>
+                <div class="absolute w-4 h-4 bg-white border-4 border-orange left-1/2 rounded-full top-[-5px]"></div>
               </div>
-              <div class="flex w-2/3 justify-between text-gray-dark">
+              <div class="flex w-2/3 justify-between text-base text-gray-dark">
                 <p>募資開始</p>
                 <p>募資成功</p>
               </div>
           </div>
         </div>
         <div class="w-full">
-          <div class="pb-[10px] mb-[10px] border-b border-gray-light w-full">
-            <h1 class="text-black-backdrop text-[22px]">【 運氣來的若有似無 】專輯募資</h1>
+          <div class="pb-[10px] border-b border-gray-light w-full">
+            <h1 class="text-black-backdrop text-[22px] ml-[10px]"> 運氣來的若有似無 專輯募資</h1>
             <div class="artist">
               <img class="artistImg" src="../assets/images/artist/artist001.jpg">
               <div class="artistname">
@@ -43,40 +43,42 @@
               </button>
             </div>
           </div>
-          <div class="ml-[25px] h-72 flex flex-col justify-between">
-            <div class="text-gray-dark">
-              <p >目標 $300,000</p>
-              <p class=" text-4xl font-medium">$88,888</p>
-            </div>
-            <div class="text-gray-dark">
-              <p>贊助人數</p>
-              <p class=" text-4xl font-medium">57人</p>
-            </div>
-            <div class="text-gray-dark">
-              <p>募資倒數</p>
-              <p class=" text-4xl font-medium">12天</p>
-            </div>
-            <div>
-              <p class="text-gray-dark">結束時間 2021 年 10 月 10 日     23:59 </p>
-            </div>
-            <div>
-              <button class="bg-orange text-white rounded-3xl px-20 hover:bg-blue-light">贊助此計畫</button>
+          <div class=" ml-[10px] mt-[20px]  flex flex-col ">
+              <div class="text-gray-dark">
+                <p class="text-base">目標 $300,000</p>
+                <p class="text-[32px] font-semibold tracking-[2px] mt-[-5px]">$88,888</p>
+              </div>
+              <div class="text-gray-dark my-[10px]">
+                <p class="text-base">贊助人數</p>
+                <p class=" text-[32px] font-semibold tracking-[2px] mt-[-5px]">57人</p>
+              </div>
+              <div class="text-gray-dark">
+                <p class="text-base">募資倒數</p>
+                <p class="text-[32px] font-semibold tracking-[2px] mt-[-5px]">12天</p>
+              </div>
+              <div>
+                <p class="text-sm text-gray-dark mt-[15px] mb-[15px]">結束時間 2021 年 10 月 10 日     23:59 </p>
+              </div>
+            <div >
+              <button class="bg-orange text-white rounded-3xl h-[25px] px-20 hover:bg-blue-light">贊助此計畫</button>
             </div>
           </div>
         </div>
       </div>
       <div class="mt-10 mb-20">
         <h3 class="text-black-backdrop text-[22px] font-medium mb-3">計畫介紹</h3>
-        <p class="text-gray-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, nulla corporis vitae excepturi sunt, animi explicabo quos amet adipisci ad odio sit perspiciatis, qui laudantium dolorem? Beatae quod explicabo esse.</p>
+        <p class="text-gray-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, nulla corporis vitae excepturi sunt, animi explicabo quos amet adipisci ad odio sit perspiciatis, qui laudantium dolorem? Beatae quod explicabo esse.Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, nulla corporis vitae excepturi sunt, animi explicabo quos amet adipisci ad odio sit perspiciatis, qui laudantium dolorem? Beatae quod explicabo esse.Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, nulla corporis vitae excepturi sunt, animi explicabo quos amet adipisci ad odio sit perspiciatis, qui laudantium dolorem? Beatae quod explicabo esse.</p>
       </div>
       <div>
-        <h3 class="text-black-backdrop text-[22px] font-medium mb-3">募資方案</h3>
-        <swiper :slidesPerView="4" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="h-[700px]">
-          <div class=" absolute flex items-center top-0 right-12 z-10 justify-between w-16">
-            <svg xmlns="http://www.w3.org/2000/svg" class="preArrow block text-gray-light" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
-            <svg xmlns="http://www.w3.org/2000/svg" class="nextArrow block text-gray-light" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
+        <div class="flex justify-between">
+          <h3 class="text-black-backdrop text-[22px] font-medium mb-3">募資方案</h3>
+          <div class=" relative flex items-center top-[-8px] z-10 justify-between w-16">
+              <svg xmlns="http://www.w3.org/2000/svg" class="preArrow block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="nextArrow block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
           </div>
-          <swiper-slide v-for="item in fundDatas" :key="item" class=" top-12">
+        </div>
+        <swiper :slidesPerView="4" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="allFund h-[650px] mt-[-35px]">
+          <swiper-slide v-for="item in fundDatas" :key="item" class="singleFund top-12">
             <fund-detail-item
               :money="item.money"
               :fundDesc="item.fundDesc"
@@ -111,30 +113,30 @@ export default {
       fundDatas: [
         {
           money: 100,
-          fundDesc: '為愛贊助, 不需回饋',
+          fundDesc: '為愛贊助，不需回饋',
           people: 15,
           time: '2021/12'
         },
         {
-          money: 100,
-          fundDesc: '為愛贊助, 不需回饋',
+          money: 450,
+          fundDesc: '只想要專輯',
           gifts: ['專輯x1', '內含：CD、寫真歌詞本、小卡'],
           people: 25,
           productNum: 800,
           time: '2021/11'
         },
         {
-          money: 100,
-          fundDesc: '為愛贊助, 不需回饋',
+          money: 450,
+          fundDesc: '只想要專輯',
           gifts: ['專輯x1', '內含：CD、寫真歌詞本、小卡'],
           people: 25,
           productNum: 800,
           time: '2021/11'
         },
         {
-          money: 100,
-          fundDesc: '為愛贊助, 不需回饋',
-          gifts: ['專輯x1', '內含：CD、寫真歌詞本、小卡'],
+          money: 600,
+          fundDesc: '專輯海報組',
+          gifts: ['專輯x1', '內含：CD、寫真歌詞本、小卡', 'A2 親簽海報'],
           people: 25,
           productNum: 800,
           time: '2021/11'
@@ -163,7 +165,7 @@ export default {
 
 <style scoped>
 .range {
-  padding: 60px 40px 150px 40px;
+  padding: 60px 40px 10px 40px;
 }
 .pre {
   display: flex;
@@ -203,11 +205,12 @@ h2 {
   width: 130px;
   height: 1.5px;
 }
+
 .artist{
   display: flex;
   align-items: center;
   /* margin-bottom: 5px; */
-  margin: 10px 0 5px 25px;
+  margin: 8px 0 8px 10px;
 }
 .artist p{
   cursor: pointer;
@@ -216,7 +219,7 @@ h2 {
 }
 .artistname:hover .undername{
   background-color: #7b7b7b;
-  width: 150px;
+  width: 145px;
   height: 1px;
 }
 .artistImg{
@@ -250,7 +253,16 @@ h2 {
   background-color: #ff9d83;
   color:#ffffff;
 }
+.allFund{
+  /* border:1px solid red; */
+  transform: scale(1.02);
+}
+.singleFund{
+  padding: 0 12px 0 12px;
+}
+
 .swiper-button-disabled {
   @apply text-gray-default
 }
+
 </style>

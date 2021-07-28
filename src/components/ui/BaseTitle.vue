@@ -2,10 +2,10 @@
 <div class="title00">
   <div class="titleNline">
   <h2 :class="second">{{ title }}</h2>
-  <div class="under"></div>
+  <div v-if="link" class="under"></div>
   </div>
   <router-link class="more" v-if="link" :to="to">more >></router-link>
-  <button v-else-if="admin" class="btn">聯絡管理員</button>
+  <button v-else-if="admin" class="btn ">聯絡管理員</button>
 </div>
 </template>
 
@@ -81,7 +81,8 @@ h2{
   margin-left: 20px;
   padding: 2px 20px;
   align-self: center;
-  justify-self: center;
+  /* justify-self: center; */
+  height: 30px;
 }
 .btn:hover{
   color: white;

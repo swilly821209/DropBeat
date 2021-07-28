@@ -1,8 +1,8 @@
 <template>
   <div class="range">
-    <div class="flex justify-between mt-5">
+    <div class="flex justify-between">
       <base-title title="募資管理" admin></base-title>
-      <div class="arrow cursor-pointer" >
+      <div class="arrow cursor-pointer relative top-10 z-20" >
         <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" width="25" height="40" viewBox="0 0 25 40" @click="leftFunds">
           <path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" :fill="fundsL"/>
         </svg>
@@ -11,7 +11,7 @@
         </svg>
       </div>
     </div>
-    <div class="outersMeneger">
+    <div class="outersMeneger mt-7">
       <div class="innersMeneger">
         <fund-item class="theItemMeneger"
           edit
@@ -26,20 +26,20 @@
         </fund-item>
       </div>
     </div>
-    <base-title title="發起募資" class="mt-20 mb-5"></base-title>
-    <div class="flex w-full h-96">
-      <select-img
-        class="w-8/12"
-        :radius="'rounded-3xl'"
-        :camera="true"
-        :text="'選取圖片'"
-        :inputImg="'border-2 border-white bg-white incircle'"
-      ></select-img>
-      <div class="w-4/12 flex flex-col">
-        <div class="flex justify-around mb-4">
-          <p class="w-2/6 text-right text-gray-dark text-xl mr-3">封面縮圖：</p>
+    <h4>發起募資</h4>
+    <div class="flex">
+      <div class="selectBanner01">
+        <select-img
+          :radius="'rounded-3xl'"
+          :camera="true"
+          :text="'選取圖片'"
+          :inputImg="'border-2 border-white bg-white incircle'"
+        ></select-img>
+      </div>
+      <div class=" content  flex flex-col justify-start ">
+        <div class="flex  mt-4 selectBanner02">
+          <p class="textTitle text-right text-gray-dark text-lg mr-3">封面縮圖：</p>
           <select-img
-            class="w-4/6 h-56"
             :radius="'rounded-3xl'"
             :camera="true"
             :text="'選取圖片'"
@@ -47,24 +47,24 @@
           ></select-img>
         </div>
         <div class="flex mt-4">
-          <label for="topic" class="w-2/6 text-right text-gray-dark text-xl mr-3">募資主題：</label>
-          <input id="topic" type="text" class="w-4/6 border-b-2 border-gray-light focus:outline-none focus:border-orange font-bold text-gray-light">
+          <label for="topic" class="textTitle text-right text-gray-dark text-lg mr-3">募資主題：</label>
+          <input id="topic" type="text" class="textLine border-b-2 border-gray-default focus:outline-none focus:border-orange  text-gray-dark">
         </div>
         <div class="flex mt-4">
-          <label for="date" class="w-2/6 text-right text-gray-dark text-xl mr-3">結束日期：</label>
-          <input id="date" type="date" value="2021-08-08" @change="changeColor" class="w-4/6 border-b-2 border-gray-light focus:outline-none focus:border-orange text-transparent font-bold">
+          <label for="date" class="textTitle text-right text-gray-dark text-lg mr-3">結束日期：</label>
+          <input id="date" type="date" value="2021-08-08" @change="changeColor" style="color:#7b7b7b" class="textLine border-b-2 border-gray-default focus:outline-none focus:border-orange text-transparent font-bold">
         </div>
         <div class="flex mt-4">
-          <label for="money" class="w-2/6 text-right text-gray-dark text-xl mr-3 money">目標金額：</label>
-          <input id="money" type="text" class="w-4/6 border-b-2 border-gray-light focus:outline-none focus:border-orange font-bold text-gray-dark pl-5 text-2xl">
+          <label for="money" class="textTitle money text-right text-gray-dark text-lg mr-3">目標金額：</label>
+          <input id="money" type="text" class="textLine border-b-2 border-gray-default focus:outline-none focus:border-orange  text-gray-dark pl-6 text-xl">
         </div>
       </div>
     </div>
-    <base-title title="計畫介紹" class="mt-20  mb-5" :second="'second'"></base-title>
-    <textarea name="projectInfo" class="w-full h-72 border-2 border-gray-light rounded-2xl resize-none pl-2 pt-2 focus:border-orange"></textarea>
-    <div class="flex justify-between mt-5">
-      <base-title title="募資方案" :second="'second'" class="mb-5"></base-title>
-      <div class="arrow cursor-pointer" >
+    <h5 class="text-xl text-black-backdrop">計畫介紹：</h5>
+    <textarea name="projectInfo" class="w-full h-56 border-2 border-gray-light text-gray-dark rounded-2xl resize-none pl-2 pt-2 focus:border-orange"></textarea>
+    <div class="flex justify-between items-center ">
+      <h5 class="text-xl text-black-backdrop">募資方案：</h5>
+      <div class="arrow cursor-pointer mt-6" >
         <svg @click="leftPlan" class="mr-3" xmlns="http://www.w3.org/2000/svg" width="25" height="40" viewBox="0 0 25 40">
           <path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" :fill="planL"/>
         </svg>
@@ -75,30 +75,31 @@
     </div>
     <div class="flex outers">
       <div class="flex inners">
-        <div v-for="item in fundsList" :key="item" class="flex theItem">
-          <select-img
-            class="w-5/12 p-10"
-            :radius="'rounded-3xl'"
-            :camera="true"
-            :text="'選取圖片'"
-            :inputImg="'border-2 border-white bg-white incircle'"
-          ></select-img>
+        <div v-for="item in fundsList" :key="item" class="theItem flex items-center">
+          <div class="selectBanner03">
+            <select-img
+              :radius="'rounded-3xl'"
+              :camera="true"
+              :text="'選取圖片'"
+              :inputImg="'border-2 border-white bg-white incircle'"
+            ></select-img>
+          </div>
           <div class="w-7/12">
             <div class="flex mt-4">
-              <label class="w-3/12 text-right text-xl text-gray-dark">金額：</label>
-              <input :value="item.money" class="w-9/12 border-2 border-gray-lighten text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
+              <label class="textTitle text-right text-lg text-gray-dark">金額：</label>
+              <input :value="item.money"  class="textLine2 border-2 border-gray-default text-base text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
             </div>
             <div class="flex mt-4">
-              <label class="w-3/12 text-right text-xl text-gray-dark">標題：</label>
-              <input :value="item.title" class="w-9/12 border-2 border-gray-lighten text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
+              <label class="textTitle text-right text-lg text-gray-dark">標題：</label>
+              <input :value="item.title" class="textLine2 border-2 border-gray-default text-base text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
             </div>
             <div class="flex mt-4">
-              <label class="w-3/12 text-right text-xl text-gray-dark h-16">內容：</label>
-              <textarea :value="item.content" class="w-9/12 border-2 border-gray-lighten text-gray-light focus:outline-none resize-none rounded-lg pl-2 focus:border-orange"></textarea>
+              <label class="textTitle text-right text-lg text-gray-dark h-16">內容：</label>
+              <textarea :value="item.content" class="textLine2 border-2 border-gray-default  text-sm text-gray-light focus:outline-none resize-none rounded-lg pl-2 focus:border-orange"></textarea>
             </div>
             <div class="flex mt-4">
-              <label class="w-3/12 text-right text-xl text-gray-dark">限量：</label>
-              <input :value="item.quantity" class="w-9/12 border-2 border-gray-lighten text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
+              <label class="textTitle text-right text-lg text-gray-dark">限量：</label>
+              <input :value="item.quantity" class="textLine2 border-2 border-gray-default text-base text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
             </div>
           </div>
         </div>
@@ -106,8 +107,8 @@
     </div>
     <div class="flex justify-end mt-5">
       <div class="flex">
-        <button class="border-2 border-gray-light text-gray-light px-4 mr-5 rounded-xl hover:border-orange">取消</button>
-        <button class="border border-orange bg-orange text-white px-4 rounded-xl">提交審核</button>
+        <button class="cancelBtn border-2 border-gray-default text-gray-dark  rounded-2xl hover:border-orange hover:text-orange">取消</button>
+        <button class="submitBtn border-2 border-orange bg-orange text-white rounded-2xl hover:bg-blue-light hover:border-opacity-0">提交審核</button>
       </div>
     </div>
   </div>
@@ -239,8 +240,8 @@ export default {
       this.fundsR = '#b5b5b5'
     },
     rightFunds () {
-      this.fundsPosition = -1200
-      document.querySelector('.innersMeneger').style.transform = `translateX(${this.fundsPosition}px)`
+      this.fundsPosition = -50
+      document.querySelector('.innersMeneger').style.transform = `translateX(${this.fundsPosition}%)`
       this.fundsL = '#b5b5b5'
       this.fundsR = '#ededed'
     },
@@ -261,50 +262,115 @@ export default {
 </script>
 
 <style scoped>
-  /* 錢字號偽元素 */
-  .money::after{
-    content: '$';
-    position: absolute;
-    transform: translate(12px, 1px);
-    font-size: 28px;
-    color: #B5B5B5;
-  }
   /* 募資管理 */
   .outersMeneger{
+    /* border:1px solid red; */
     display: flex;
     position: relative;
-    width: 1200px;
-    height: 470px;
+    width: 100%;
+    height: 450px;
     overflow: hidden;
+    top:-35px;
   }
   .innersMeneger{
     display: flex;
-    width: 2400px;
-    height: 470px;
+    width: 200%;
+    height: 450px;
     transition: all 1s;
     position: absolute;
     display: flex;
     justify-content: space-around;
   }
-  .theItemMeneger{
-    width: 300px;
+  .theItemMeneger:nth-child(4n) {
+    /* border:1px solid blue; */
+    margin: 35px 0 0 0;
   }
+
+  :deep h2{
+    cursor: default;
+  }
+  h4{
+    font-size: 32px;
+    font-weight: 500;
+    color:#383838;
+    cursor:default;
+    margin: 45px 0 30px 0;
+  }
+  h5{
+    margin: 40px 0 10px 5px;
+  }
+  .selectBanner01 :deep .outer{
+    /* border:1px solid red; */
+    width: 665px;
+    height: 380px;
+  }
+  .selectBanner02 :deep .outer{
+    width: 170px;
+    height: 170px;
+    flex-shrink: 0;
+  }
+  .content{
+    /* border:1px solid red; */
+    width: calc(100% - 665px);
+    padding: 0 0 0 20px;
+  }
+  .textTitle{
+    width: 100px;
+  }
+  .textLine{
+      width: calc(100% - 120px);
+  }
+  /* 錢字號偽元素 */
+  .money::after{
+    content: '$';
+    position: absolute;
+    transform: translate(12px, 1px);
+    font-size: 26px;
+    color: #B5B5B5;
+  }
+
   /* 募資方案 */
-  .outers{
+  .outers {
+    /* border:1px solid red; */
     position: relative;
     width: 100%;
     height: 250px;
     overflow: hidden;
   }
   .inners{
+    /* border:1px solid red; */
     width: 200%;
     height: 250px;
     transition: all 1s;
     position: absolute;
+    top:-20px;
     /* transform: translateX(-50%); */
   }
   .theItem{
-    padding-left: 20px;
+    /* border:1px solid red; */
+    padding-right: 20px;
     width: 100%;
   }
+  .theItem:nth-child(2n){
+    /* border:1px solid red; */
+    padding-right: 0;
+  }
+  .selectBanner03 :deep .outer{
+    width: 200px;
+    height: 200px;
+    flex-shrink: 0;
+  }
+  .textLine2{
+      width: 100%;
+  }
+  .cancelBtn{
+  height: 30px;
+  width: 55px;
+  }
+  .submitBtn{
+    height: 30px;
+    width: 90px;
+    margin: 0 0 0 10px;
+  }
+
 </style>
