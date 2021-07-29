@@ -245,6 +245,7 @@ export default {
     left: 0;
     height: 100vh;
     position: fixed;
+    z-index: 999;
   }
   /* logo */
   .div_logo{

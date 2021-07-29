@@ -401,12 +401,12 @@ export default {
     }
   }
   .preIcon {
-  @apply text-gray-light absolute top-1/2 z-10 left-0 cursor-pointer
-}
-.nextIcon{
+    @apply text-gray-light absolute top-1/2 z-10 left-0 cursor-pointer
+  }
+  .nextIcon{
     @apply text-gray-light absolute top-1/2 z-10 right-0 cursor-pointer
-}
-.swiper-button-disabled {
-  @apply text-gray-default
-}
+  }
+  .swiper-button-disabled {
+    @apply text-gray-default
+  }
 </style>
