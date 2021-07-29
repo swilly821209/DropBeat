@@ -1051,6 +1051,94 @@ video {
   margin-right: 1.25rem;
 }
 
+.mr-0 {
+  margin-right: 0px;
+}
+
+.ml-5 {
+  margin-left: 1.25rem;
+}
+
+.ml-\[22px\] {
+  margin-left: 22px;
+}
+
+.ml-\[24px\] {
+  margin-left: 24px;
+}
+
+.ml-\[25px\] {
+  margin-left: 25px;
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
+.mr-\[200px\] {
+  margin-right: 200px;
+}
+
+.mr-\[20px\] {
+  margin-right: 20px;
+}
+
+.mr-\[18px\] {
+  margin-right: 18px;
+}
+
+.mr-\[15px\] {
+  margin-right: 15px;
+}
+
+.ml-8 {
+  margin-left: 2rem;
+}
+
+.ml-\[30px\] {
+  margin-left: 30px;
+}
+
+.mr-\[10px\] {
+  margin-right: 10px;
+}
+
+.mr-\[8px\] {
+  margin-right: 8px;
+}
+
+.ml-\[-10px\] {
+  margin-left: -10px;
+}
+
+.ml-\[-8px\] {
+  margin-left: -8px;
+}
+
+.mr-\[12px\] {
+  margin-right: 12px;
+}
+
+.mr-\[14px\] {
+  margin-right: 14px;
+}
+
+.mr-\[6px\] {
+  margin-right: 6px;
+}
+
+.mr-\[4px\] {
+  margin-right: 4px;
+}
+
+.mr-\[40px\] {
+  margin-right: 40px;
+}
+
+.mb-0 {
+  margin-bottom: 0px;
+}
+
 .block {
   display: block;
 }
@@ -1395,6 +1483,62 @@ video {
   width: 1px;
 }
 
+.w-\[200px\] {
+  width: 200px;
+}
+
+.w-\[340px\] {
+  width: 340px;
+}
+
+.w-\[330px\] {
+  width: 330px;
+}
+
+.w-\[315px\] {
+  width: 315px;
+}
+
+.w-\[285px\] {
+  width: 285px;
+}
+
+.w-\[295px\] {
+  width: 295px;
+}
+
+.w-\[400px\] {
+  width: 400px;
+}
+
+.w-\[500px\] {
+  width: 500px;
+}
+
+.w-8\/12 {
+  width: 66.666667%;
+}
+
+.w-\[10px\] {
+  width: 10px;
+}
+
+.w-\[280px\] {
+  width: 280px;
+}
+
+.w-\[290px\] {
+  width: 290px;
+}
+
+.w-\[60px\] {
+  width: 60px;
+}
+
+.w-\[70px\] {
+  width: 70px;
+}
+
 .min-w-\[1000px\] {
   min-width: 1000px;
 }
@@ -1425,6 +1569,10 @@ video {
 
 .max-w-\[80\%\] {
   max-width: 80%;
+}
+
+.max-w-\[310px\] {
+  max-width: 310px;
 }
 
 .flex-shrink {
@@ -2502,6 +2650,18 @@ textarea {
     margin-top: 5rem;
   }
 
+  .sm\:mr-4 {
+    margin-right: 1rem;
+  }
+
+  .sm\:ml-\[0px\] {
+    margin-left: 0px;
+  }
+
+  .sm\:ml-\[-25px\] {
+    margin-left: -25px;
+  }
+
   .sm\:block {
     display: block;
   }
@@ -2530,6 +2690,10 @@ textarea {
     height: 15rem;
   }
 
+  .sm\:h-72 {
+    height: 18rem;
+  }
+
   .sm\:w-auto {
     width: auto;
   }
@@ -2556,6 +2720,14 @@ textarea {
 
   .sm\:w-9\/12 {
     width: 75%;
+  }
+
+  .sm\:w-full {
+    width: 100%;
+  }
+
+  .sm\:w-3\/12 {
+    width: 25%;
   }
 
   .sm\:cursor-pointer {

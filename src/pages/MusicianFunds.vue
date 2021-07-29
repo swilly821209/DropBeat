@@ -30,7 +30,7 @@
     </div>
     <!-- 640px以下顯示 -->
     <div class="sm:hidden block mt-0">
-      <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="mr-4">
+      <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="mr-0 sm:mr-4">
         <svg xmlns="http://www.w3.org/2000/svg" class="preIcon preArrow" width="20" height="23.077" viewBox="0 0 15 23.077"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(0 23.077) rotate(-90)" fill="currentColor"/></svg>
         <swiper-slide v-for="item in fundItems" :key="item.title" class="flex justify-center">
           <fund-item
@@ -47,7 +47,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" class="nextIcon nextArrow" width="20" height="18.961" viewBox="0 0 13.72 18.961"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(15 -2.058) rotate(90)" fill="currentColor"/></svg>
       </swiper>
     </div>
-    <base-title title="發起募資" class="mt-20 mb-5" :presign='"presign"'></base-title>
+    <base-title title="發起募資" class="mt-4 sm:mt-20 mb-5"></base-title>
     <div class="flex flex-col w-full sm:flex-row">
       <select-img
         class="w-[300px] mx-6 h-48 sm:w-8/12 sm:h-[400px]"
@@ -81,7 +81,7 @@
       </div>
     </div>
     <base-title title="計畫介紹" class="mt-10 sm:mt-20 mb-5" :second="'second'"></base-title>
-    <textarea name="projectInfo" class="w-full h-72 border-2 border-gray-light rounded-2xl resize-none pl-2 pt-2 focus:border-orange"></textarea>
+    <textarea name="projectInfo" class="w-[295px] sm:w-full ml-[25px] sm:ml-[0px] h-[400px] sm:h-72 border-2 border-gray-light rounded-2xl resize-none pl-2 pt-2 focus:border-orange"></textarea>
     <div class="flex justify-between">
       <base-title title="募資方案" :second="'second'" class="mb-5"></base-title>
       <div class="hidden arrow cursor-pointer sm:block">
@@ -105,7 +105,7 @@
           ></select-img>
           <div class="w-7/12">
             <div class="flex mt-4">
-              <label class="w-3/12 text-right text-xl text-gray-dark">金額：</label>
+              <label class="sm:w-3/12 text-right text-xl text-gray-dark">金額：</label>
               <input :value="item.money" class="w-9/12 border-2 border-gray-lighten text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
             </div>
             <div class="flex mt-4">
@@ -125,21 +125,21 @@
         <!-- 640px以下顯示 -->
         <div class="block flex theItem sm:hidden">
           <div class="w-[600px]">
-            <div class="flex">
-              <div class="w-9/12">
+            <div class="flex justify-center mr-[15px]">
+              <div class="w-[200px]">
                 <!-- 金額 -->
-                <div class="flex mt-4 w-12/12">
+                <div class="flex mt-4 w-[200px]">
                   <label class="w-[90px] text-left text-xl text-gray-dark">金額：</label>
                   <input :value="fundsList[0].money" class="w-full border-2 border-gray-lighten text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
                 </div>
                 <!-- 標題 -->
-                <div class="flex mt-4 w-12/12">
+                <div class="flex mt-4 w-[200px]">
                   <label class="w-[90px] text-left text-xl text-gray-dark">標題：</label>
                   <input :value="fundsList[0].title" class="w-full border-2 border-gray-lighten text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
                 </div>
               </div>
               <!-- img -->
-              <div class="w-3/12 px-2 pt-3">
+              <div class="w-[80px] px-2 pt-3">
                 <select-img
                   class="w-[80px] h-[80px]"
                   :radius="'rounded-2xl'"
@@ -149,17 +149,17 @@
               </div>
             </div>
             <!-- 內容 -->
-            <div class="flex mt-4">
+            <div class="flex mt-4 ml-[30px] w-[290px]">
               <label class="w-[90px] text-left text-xl text-gray-dark h-16">內容：</label>
-              <textarea :value="fundsList[0].content" class="w-full h-32 border-2 border-gray-lighten text-gray-light focus:outline-none resize-none rounded-lg pl-2 focus:border-orange"></textarea>
+              <textarea :value="fundsList[0].content" class="w-full ml-[-8px] mr-[4px] h-32 border-2 border-gray-lighten text-gray-light focus:outline-none resize-none rounded-lg pl-2 focus:border-orange"></textarea>
             </div>
             <!-- 限量 -->
-            <div class="flex mt-4">
+            <div class="flex mt-4 ml-[30px] w-[290px]">
               <label class="w-[90px] text-left text-xl text-gray-dark">限量：</label>
-              <input :value="fundsList[0].quantity" class="w-full border-2 border-gray-lighten text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
+              <input :value="fundsList[0].quantity" class="w-full ml-[-8px] mr-[4px] border-2 border-gray-lighten text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
             </div>
             <!-- 新增方案 -->
-            <div class="flex items-center mt-5">
+            <div class="flex items-center mt-5 ml-[30px]">
               <svg id="new" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
                 <g id="play" fill="none" stroke="#ff9d83" stroke-width="2">
                   <circle cx="15" cy="15" r="15" stroke="none"/>
@@ -174,10 +174,10 @@
         </div>
       </div>
     </div>
-    <div class="flex justify-end mt-5">
+    <div class="flex justify-end mt-5 mr-[40px]">
       <div class="flex">
-        <button class="border-2 border-gray-light text-gray-light px-4 mr-5 rounded-xl hover:border-orange">取消</button>
-        <button class="border border-orange bg-orange text-white px-4 rounded-xl">提交審核</button>
+        <button class="w-[70px] border-2 border-gray-light text-gray-light px-4 mr-5 rounded-xl hover:border-orange">取消</button>
+        <button class="w-[100px] border border-orange bg-orange text-white px-4 rounded-xl">提交審核</button>
       </div>
     </div>
   </div>
@@ -409,9 +409,6 @@ export default {
       font-size:30px;
       font-weight: bold;
     }
-    ::v-deep .presign::before{
-      top: 5px;
-    }
     .outersMeneger{
       display: flex;
       position: relative;
@@ -450,6 +447,9 @@ export default {
     }
     ::v-deep .content{
       width: 300px;
+    }
+    ::v-deep .fundBlock{
+      margin-top: 0;
     }
     .preIcon {
       @apply text-gray-light absolute top-1/2 z-10 left-0 cursor-pointer
