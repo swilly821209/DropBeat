@@ -1,5 +1,5 @@
 <template>
-  <the-header class="header"></the-header>
+  <the-header ></the-header>
   <the-aside></the-aside>
   <div class="router">
     <router-view />
