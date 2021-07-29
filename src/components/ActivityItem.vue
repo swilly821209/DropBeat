@@ -15,7 +15,7 @@
     </router-link>
     <div class="activeContent flex flex-col justify-center">
       <h3 class=" text-lg text-black-backdrop hover:underline cursor-pointer truncate">{{ title }}</h3>
-      <div class="time_location text-sm text-gray-dark sm:hidden block">{{year}}年{{month}}月{{date}}日 ・ 星期{{day}} ・ {{ inputTime }} ・ {{ city }}</div>
+      <div class="time_location text-xs text-gray-dark sm:hidden block">{{year}}年{{month}}月{{date}}日 ・ 星期{{day}} ・ {{ inputTime }} ・ {{ city }}</div>
       <div class="time_location text-sm text-gray-dark sm:block hidden">{{ inputTime }}・{{ city }}・{{ location }}</div>
       <div class="flex justify-between items-center">
         <base-badge v-if="singer" class=" mt-2" :image="singerImg" :singer="singer"></base-badge>
