@@ -11,45 +11,46 @@
         </svg>
       </div>
     </div>
+    <!--  -->
     <div class="outersMeneger">
       <div class="innersMeneger">
         <!-- 640px以上顯示 -->
         <fund-item class="theItemMenegerSpe"
+          edit
+          v-for="item in fundItems"
+          :title="item.title"
+          :img="item.img"
+          :singer="item.singer"
+          :progress="item.progress"
+          :date="item.date"
+          :money="item.money"
+          :key="item.title">
+        </fund-item>
+      </div>
+    </div>
+    <!-- 640px以下顯示 -->
+    <div class="sm:hidden block mt-0">
+      <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="mt-[30px] mr-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="preIcon preArrow" width="20" height="23.077" viewBox="0 0 15 23.077"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(0 23.077) rotate(-90)" fill="currentColor"/></svg>
+        <swiper-slide v-for="item in fundItems" :key="item.title" class="flex justify-center">
+          <fund-item
             edit
-            v-for="item in fundItems"
+            class="max-w-[300px] m-auto"
             :title="item.title"
             :img="item.img"
             :singer="item.singer"
             :progress="item.progress"
             :date="item.date"
-            :money="item.money"
-            :key="item.title">
+            :money="item.money">
           </fund-item>
-        <!-- 640px以下顯示 -->
-        <div class="block flex items-center justify-center w-full sm:hidden">
-          <svg class="mr-3 cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="25" height="40" viewBox="0 0 25 40">
-            <path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" :fill="fundsL"/>
-          </svg>
-          <fund-item class="theItemMeneger"
-            edit
-            :title="fundItems[0].title"
-            :img="fundItems[0].img"
-            :singer="fundItems[0].singer"
-            :progress="fundItems[0].progress"
-            :date="fundItems[0].date"
-            :money="fundItems[0].money"
-            >
-          </fund-item>
-          <svg class="ml-3 cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="25" height="40" viewBox="0 0 25 40">
-            <path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" :fill="fundsR"/>
-          </svg>
-        </div>
-      </div>
+        </swiper-slide>
+        <svg xmlns="http://www.w3.org/2000/svg" class="nextIcon nextArrow" width="20" height="18.961" viewBox="0 0 13.72 18.961"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(15 -2.058) rotate(90)" fill="currentColor"/></svg>
+      </swiper>
     </div>
     <base-title title="發起募資" class="mt-20 mb-5" :presign='"presign"'></base-title>
     <div class="flex flex-col w-full sm:flex-row">
       <select-img
-        class="w-full h-64 sm:w-8/12 sm:h-[400px]"
+        class="w-[300px] mx-6 h-48 sm:w-8/12 sm:h-[400px]"
         :radius="'rounded-3xl'"
         :camera="true"
         :text="'選取圖片'"
@@ -57,38 +58,31 @@
       ></select-img>
       <div class="w-12/12 flex flex-col sm:w-4/12">
         <div class="flex justify-start sm:justify-around mb-4 mt-12 sm:mt-0">
-          <p class="w-3/12 sm:w-2/6 text-right text-gray-dark text-xl mr-3">封面縮圖：</p>
+          <p class="w-[100px] ml-[20px] sm:ml-0 sm:w-2/6 text-right text-gray-dark text-xl mr-3">封面縮圖：</p>
           <select-img
-            class="w-[150px] h-[150px] sm:h-44 sm:w-[300px] sm:h-[250px] hidden sm:flex"
-            :radius="'rounded-3xl'"
+            class="w-[80px] h-[80px] sm:h-60 sm:w-8/12 flex"
+            :radius="'rounded-2xl'"
             :camera="true"
-            :text="'選取圖片'"
-            :inputImg="'border-2 border-white bg-white incircle'"
-          ></select-img>
-          <select-img
-            class="w-[150px] h-[150px] sm:h-44 sm:w-8/12 flex sm:hidden"
-            :radius="'rounded-3xl'"
-            :camera="true"
-            :inputImg="'border-2 border-white bg-white incircle'"
+            :inputImg="'border-2 border-white mt-2 bg-white incircle'"
           ></select-img>
         </div>
         <div class="flex mt-4">
-          <label for="topic" class="w-3/12 sm:w-2/6 text-right text-gray-dark text-xl mr-3">募資主題：</label>
-          <input id="topic" type="text" class="w-9/12 sm:4/6 border-b-2 border-gray-light focus:outline-none focus:border-orange font-bold text-gray-light">
+          <label for="topic" class="w-[120px] sm:w-2/6 text-right text-gray-dark text-xl mr-3">募資主題：</label>
+          <input id="topic" type="text" class="w-[190px] sm:w-4/6 border-b-2 border-gray-light focus:outline-none focus:border-orange font-bold text-gray-light">
         </div>
         <div class="flex mt-4">
-          <label for="date" class="w-3/12 sm:w-2/6 text-right text-gray-dark text-xl mr-3">結束日期：</label>
-          <input id="date" type="date" value="2021-08-08" @change="changeColor" class="w-9/12 sm:4/6 border-b-2 border-gray-light focus:outline-none focus:border-orange text-transparent font-bold">
+          <label for="date" class="w-[120px] sm:w-2/6 text-right text-gray-dark text-xl mr-3">結束日期：</label>
+          <input id="date" type="date" value="2021-08-08" @change="changeColor" class="w-[190px] sm:w-4/6 border-b-2 border-gray-light focus:outline-none bg-white focus:border-orange text-transparent font-bold">
         </div>
         <div class="flex mt-4">
-          <label for="money" class="w-3/12 sm:w-2/6 text-right text-gray-dark text-xl mr-3 money">目標金額：</label>
-          <input id="money" type="text" class="w-9/12 sm:4/6 border-b-2 border-gray-light focus:outline-none focus:border-orange font-bold text-gray-dark pl-5 text-2xl">
+          <label for="money" class="w-[120px] sm:w-2/6 text-right text-gray-dark text-xl mr-3 sm:ml-5 money">目標金額：</label>
+          <input id="money" type="text" class="w-[190px] sm:w-9/12 sm:4/6 border-b-2 border-gray-light focus:outline-none focus:border-orange font-bold text-gray-dark sm:ml-[10px] text-2xl">
         </div>
       </div>
     </div>
-    <base-title title="計畫介紹" class="mt-20  mb-5" :second="'second'"></base-title>
+    <base-title title="計畫介紹" class="mt-10 sm:mt-20 mb-5" :second="'second'"></base-title>
     <textarea name="projectInfo" class="w-full h-72 border-2 border-gray-light rounded-2xl resize-none pl-2 pt-2 focus:border-orange"></textarea>
-    <div class="flex justify-between mt-5">
+    <div class="flex justify-between">
       <base-title title="募資方案" :second="'second'" class="mb-5"></base-title>
       <div class="hidden arrow cursor-pointer sm:block">
         <svg @click="leftPlan" class="mr-3" xmlns="http://www.w3.org/2000/svg" width="25" height="40" viewBox="0 0 25 40">
@@ -145,9 +139,9 @@
                 </div>
               </div>
               <!-- img -->
-              <div class="w-3/12 px-3">
+              <div class="w-3/12 px-2 pt-3">
                 <select-img
-                  class="w-[95px] h-[95px]"
+                  class="w-[80px] h-[80px]"
                   :radius="'rounded-2xl'"
                   :camera="true"
                   :inputImg="'border-2 border-white bg-white incircle'"
@@ -190,10 +184,18 @@
 </template>
 
 <script>
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import SwiperCore, { Navigation } from 'swiper/core'
+
 import FundItem from '../components/FundItem.vue'
 import SelectImg from '../components/SelectImg.vue'
+
+SwiperCore.use([Navigation])
+
 export default {
   components: {
+    Swiper,
+    SwiperSlide,
     FundItem,
     SelectImg
   },
@@ -366,7 +368,7 @@ export default {
     width: 300px;
   }
   .theItemMeneger{
-    width: 300px;
+    width: 200px;
   }
   /* 募資方案 */
   .outers{
@@ -427,6 +429,9 @@ export default {
       width: 100%;
       height: 470px;
     }
+    .outersMeneger{
+      display: none;
+    }
     ::v-deep .theImg{
       width: 100%;
       height: 300px;
@@ -435,16 +440,25 @@ export default {
     ::v-deep .fundBlock{
       margin: 0;
     }
-    .theItemMenegerSpe{
-      display: none;
-    }
     ::v-deep .circle{
-      width: 70px;
-      height: 70px;
+      width: 60px;
+      height: 60px;
     }
     ::v-deep .cameraIcom{
       width: 40px;
       height: 40px;
+    }
+    ::v-deep .content{
+      width: 300px;
+    }
+    .preIcon {
+      @apply text-gray-light absolute top-1/2 z-10 left-0 cursor-pointer
+    }
+    .nextIcon{
+      @apply text-gray-light absolute top-1/2 z-10 right-0 cursor-pointer
+    }
+    .swiper-button-disabled {
+      @apply text-gray-default
     }
   }
 </style>
