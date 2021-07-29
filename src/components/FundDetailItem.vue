@@ -17,7 +17,9 @@
         <p class="pl-1">預計寄送 <span class="text-base font-bold">{{ time}}</span></p>
         <p class="pl-1">寄送地點 <span class="text-base">只寄台灣本島</span></p>
       </div>
-      <button class="  border-current border-2 rounded-2xl w-full h-[25px] text-orange text-base hover:bg-orange hover:border-orange hover:text-white mt-5 ">贊助此回饋方案</button>
+      <router-link to="/Funds/:id/Form">
+        <button class="  border-current border-2 rounded-2xl w-full h-[25px] text-orange text-base hover:bg-orange hover:border-orange hover:text-white mt-5 ">贊助此回饋方案</button>
+      </router-link>
     </div>
   </div>
 </template>

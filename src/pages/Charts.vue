@@ -12,7 +12,7 @@
             {{ item }}
           </base-button>
         </div>
-        <div class="space-x-3">
+        <div class="sm:space-x-3 space-x-1  space-y-1">
           <base-button
             v-for="item in singerType"
             :key="item"
@@ -112,6 +112,61 @@ export default {
           likeCounter: 724,
           status: '▼',
           color: 'gray'
+        },
+        {
+          num: '06',
+          img: 'https://akstatic.streetvoice.com/song_covers/ju/ne/junepan/EKEn4VgY8S9H38jumNiVLA.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
+          name: '在這座城市遺失了你',
+          singer: '告五人',
+          musicTime: 287,
+          playCounter: 88888,
+          likeCounter: 744,
+          status: '▲',
+          color: 'blue'
+        },
+        {
+          num: '06',
+          img: 'https://akstatic.streetvoice.com/song_covers/ju/ne/junepan/EKEn4VgY8S9H38jumNiVLA.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
+          name: '在這座城市遺失了你',
+          singer: '告五人',
+          musicTime: 2837,
+          playCounter: 883888,
+          likeCounter: 7344,
+          status: '－',
+          color: 'gray'
+        },
+        {
+          num: '08',
+          img: 'https://akstatic.streetvoice.com/song_covers/ju/ne/junepan/EKEn4VgY8S9H38jumNiVLA.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
+          name: '在這座城市遺失了你',
+          singer: '告五人',
+          musicTime: 2227,
+          playCounter: 883388,
+          likeCounter: 7434,
+          status: '▲',
+          color: 'blue'
+        },
+        {
+          num: '09',
+          img: 'https://akstatic.streetvoice.com/song_covers/ju/ne/junepan/EKEn4VgY8S9H38jumNiVLA.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
+          name: '在這座城市找尋你',
+          singer: '告五人',
+          musicTime: 2827,
+          playCounter: 8833888,
+          likeCounter: 7434,
+          status: '－',
+          color: 'gray'
+        },
+        {
+          num: '10',
+          img: 'https://akstatic.streetvoice.com/song_covers/ju/ne/junepan/EKEn4VgY8S9H38jumNiVLA.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
+          name: '在這座城市遺失了我',
+          singer: '告很多人',
+          musicTime: 2837,
+          playCounter: 888888,
+          likeCounter: 724,
+          status: '▼',
+          color: 'gray'
         }
       ]
     }
@@ -120,9 +175,6 @@ export default {
 </script>
 
 <style scoped>
-.range{
-  padding: 60px 40px 0 40px;
-}
 .selectBtn{
     margin: 20px 0 12px 0;
 }
@@ -150,6 +202,30 @@ export default {
 .musicItem:nth-child(1) ::v-deep .hover_bg, .musicItem:nth-child(2) ::v-deep .hover_bg, .musicItem:nth-child(3) ::v-deep .hover_bg{
   width: 140px;
   height: 140px;
+}
+@media(max-width: 640px) {
+  .musicItem:nth-child(1) ::v-deep .musicImage, .musicItem:nth-child(2) ::v-deep .musicImage, .musicItem:nth-child(3) ::v-deep .musicImage{
+    /* border:1px solid red; */
+    width: 70px;
+    height: 70px;
+}
+.musicItem:nth-child(1) ::v-deep .musicImage > img, .musicItem:nth-child(2) ::v-deep .musicImage > img, .musicItem:nth-child(3) ::v-deep .musicImage > img{
+    width: 70px;
+    height: 70px;
+}
+.musicItem:nth-child(1) ::v-deep .playPauseIcon01, .musicItem:nth-child(2) ::v-deep .playPauseIcon01, .musicItem:nth-child(3) ::v-deep .playPauseIcon01{
+  width: 70px;
+  height: 70px;
+  background-size: 60%;
+}
+.musicItem:nth-child(1) ::v-deep .playPauseIcon02, .musicItem:nth-child(2) ::v-deep .playPauseIcon02, .musicItem:nth-child(3) ::v-deep .playPauseIcon02{
+  width: 70px;
+  height: 70px;
+}
+.musicItem:nth-child(1) ::v-deep .hover_bg, .musicItem:nth-child(2) ::v-deep .hover_bg, .musicItem:nth-child(3) ::v-deep .hover_bg{
+  width: 70px;
+  height: 70px;
+}
 }
 
 </style>

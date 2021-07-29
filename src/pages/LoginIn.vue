@@ -1,5 +1,4 @@
 <template>
-  <router-link to="/AccountManage" class="text-red-400 block">帳號管理頁面</router-link>
   <div id="app">
     <div class="container">
       <p class="title">會員登入</p>

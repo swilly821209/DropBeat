@@ -1,5 +1,4 @@
 <template>
-    <router-link to="/Funds/:id/Form" class="text-orange">贊助此計畫(page)</router-link>
     <div class="range">
       <div class="pre">
         <div class="preicon"></div>
@@ -60,7 +59,9 @@
                 <p class="text-sm text-gray-dark mt-[15px] mb-[15px]">結束時間 2021 年 10 月 10 日     23:59 </p>
               </div>
             <div >
-              <button class="bg-orange text-white rounded-3xl h-[25px] px-20 hover:bg-blue-light">贊助此計畫</button>
+              <router-link to="/Funds/:id/Form">
+                <button class="bg-orange text-white rounded-3xl h-[25px] px-20 hover:bg-blue-light">贊助此計畫</button>
+              </router-link>
             </div>
           </div>
         </div>
