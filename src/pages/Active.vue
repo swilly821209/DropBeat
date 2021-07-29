@@ -1,8 +1,8 @@
 <template>
   <div class="range">
     <base-title title="演出活動"></base-title>
-    <the-carousel class="carousel"></the-carousel>
-    <div class="space-x-3">
+    <the-carousel class="carousel sm:block hidden"></the-carousel>
+    <div class="sm:space-x-3 space-x-1 ">
       <base-button
         class="my-8 selectBtn"
         v-for="item in musicRange"
@@ -13,8 +13,9 @@
         {{ item }}
       </base-button>
     </div>
-    <div class="space-x-3">
+    <div class="sm:space-x-3 space-x-1 ">
       <base-button
+        class=" sm:last:inline-block last:hidden"
         v-for="item in musicType"
         :key="item"
         :active="{active: selectMusicType === item}"
@@ -28,7 +29,7 @@
         :key="item"
         class="singleActive">
         <div class="date_N_info">
-          <base-date :time="item.time" week="true" class="date"></base-date>
+          <base-date :time="item.time" week="true" class="date sm:block hidden"></base-date>
           <activity-item
             :img="item.imgSrc"
             :title="item.title"
@@ -48,8 +49,8 @@
             想參加
           </button>
         </div> -->
-        <div class="flex  self-end">
-          <div class="share"></div>
+        <div class="sm:flex  self-end  hidden">
+          <div class="share "></div>
           <button
             class="join"
             :class="{ clickjoin: active }"
@@ -183,5 +184,10 @@ export default {
   border:2px solid #FF9D83;
   background-color: #FF9D83;
   color:#ffffff;
+}
+@media (max-width: 640px) {
+  .range{
+    padding: 60px 15px 0 15px;
+  }
 }
 </style>

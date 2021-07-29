@@ -1,6 +1,6 @@
 <template>
   <div class="fundBlock">
-    <div v-if="edit" class="flex mb-2 ml-1">
+    <div v-if="edit" class="flex mb-2 ml-1 sm:w-auto w-[345px]">
       <div class="h5_icon flex flex-col items-center mr-3">
           <span class="editIcon"></span>
           <h5>編輯</h5>
@@ -10,12 +10,12 @@
           <h5>刪除</h5>
       </div>
     </div>
-    <router-link to="/Funds/:id">
-      <img :src="img">
+    <router-link to="/Funds/:id" class="sm:order-1 order-2 flex justify-center">
+      <img :src="img" class="sm:w-[269px] sm:h-[269px] w-[345px] h-[170px] object-center object-cover m-auto">
     <!-- <router-link to="/Funds/:id" class="sm:order-1 order-2 ">
       <img :src="img" class="sm:w-[269px] sm:h-[269px] w-[300px] h-[150px]"> -->
     </router-link>
-    <div class="content sm:order-2 order-3">
+    <div class="content sm:order-2 order-3 sm:w-auto w-[345px]">
       <h4 class=" text-base text-black">{{ title }}</h4>
       <p class="text-sm text-gray-dark">{{singer}}</p>
       <div class="donateline">
@@ -26,6 +26,7 @@
         <p>還剩 {{ date }} 天</p>
       </div>
     </div>
+    <!-- <div v-if="edit" class="flex my-4 sm:order-3 order-1 "> -->
     <!-- <div v-if="edit" class="flex my-4 sm:order-3 order-1">
       <div class="flex flex-col items-center mr-3">
         <svg xmlns="http://www.w3.org/2000/svg" width="20.001" height="20" viewBox="0 0 20.001 20">

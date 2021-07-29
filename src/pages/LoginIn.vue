@@ -15,7 +15,7 @@
           <a href="#">忘記密碼？</a>
         </div>
       </div>
-      <router-link to="/AccountManage" class="text-red-400 block login_btn">登入</router-link>
+      <router-link to="/" @click="login" class="text-red-400 block login_btn">登入</router-link>
       <a href="#" class="community">
         <div class="icon_container">
           <svg xmlns="http://www.w3.org/2000/svg" width="30" height="50" viewBox="0 0 50.304 50"><path id="Icon_awesome-facebook" data-name="Icon awesome-facebook" d="M50.867,25.715A25.152,25.152,0,1,0,21.785,50.563V32.985H15.4V25.715h6.389V20.173c0-6.3,3.753-9.785,9.5-9.785a38.708,38.708,0,0,1,5.631.491v6.187H33.743c-3.124,0-4.1,1.939-4.1,3.928v4.721H36.62L35.5,32.985h-5.86V50.563A25.161,25.161,0,0,0,50.867,25.715Z" transform="translate(-0.563 -0.563)" fill="#305ea7"/></svg>
@@ -33,6 +33,16 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  methods: {
+    login () {
+      this.$store.dispatch('login', true)
+    }
+  }
+}
+</script>
 
 <style scoped>
 #app{

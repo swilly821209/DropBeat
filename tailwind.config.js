@@ -856,5 +856,11 @@ module.exports = {
     'active',
     'disabled',
   ],
+  variants: {
+    extend: {
+      // ...
+     display: ['last'],
+    }
+  },
   plugins: [],
 }

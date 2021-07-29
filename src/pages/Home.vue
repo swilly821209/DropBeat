@@ -3,13 +3,18 @@
   <share-social-media></share-social-media>
 </base-dialog>
 <div class="range">
-  <div class="flex flex-col justify-center m-auto">
+  <div class="sm:flex flex-col justify-center m-auto hidden">
     <base-title title="HOT 即時熱門" link to="/Charts"></base-title>
     <hot-music></hot-music>
   </div>
   <div class="day_N_artist">
     <div class="day">
-      <base-title title="Song of the Day 每日一曲"></base-title>
+      <div class="sm:block hidden">
+        <base-title title="Song of the Day 每日一曲"></base-title>
+      </div>
+      <div class="sm:hidden block">
+        <base-title title="Song of the Day"></base-title>
+      </div>
       <cd-player style="width:200px"
         likes date asong
         :songimg="theCDsong.img"
@@ -22,7 +27,7 @@
       ></cd-player>
     </div>
     <div class="artist">
-      <base-title title="Artist 大家都在聽" link to="/Find" style="width:390px"></base-title>
+      <base-title title="Artist 大家都在聽" link to="/Find"></base-title>
       <div class="flex flex-wrap justify-between artcontain">
         <artist-item class=" aartist"
           :width="'w-24'"

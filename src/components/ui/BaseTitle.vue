@@ -54,6 +54,11 @@ export default {
   width: 100%;
   position: relative;
 }
+@media screen and (max-width: 640px) {
+  .title00 {
+    width: 100%
+  }
+}
 .titleNline{
   display: flex;
   flex-direction: column;

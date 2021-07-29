@@ -38,7 +38,7 @@ textarea {
 }
 
 .outline{
-  @apply border-gray-default text-gray-dark text-sm border-2 py-1 px-3 rounded-2xl hover:border-blue-light
+  @apply border-gray-default text-gray-dark text-sm border-2 py-1 px-[10px] rounded-2xl hover:border-blue-light
 }
 .outline.active{
   @apply bg-blue-light text-white border-2 border-blue-light
