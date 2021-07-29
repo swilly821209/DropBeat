@@ -366,7 +366,7 @@ export default {
     width: 300px;
   }
   .theItemMeneger{
-    width: 300px;
+    width: 200px;
   }
   /* 募資方案 */
   .outers{
