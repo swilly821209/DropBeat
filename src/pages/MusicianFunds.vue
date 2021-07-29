@@ -11,40 +11,40 @@
         </svg>
       </div>
     </div>
+    <!--  -->
     <div class="outersMeneger">
       <div class="innersMeneger">
         <!-- 640px以上顯示 -->
         <fund-item class="theItemMenegerSpe"
-            edit
-            v-for="item in fundItems"
+          edit
+          v-for="item in fundItems"
+          :title="item.title"
+          :img="item.img"
+          :singer="item.singer"
+          :progress="item.progress"
+          :date="item.date"
+          :money="item.money"
+          :key="item.title">
+        </fund-item>
+      </div>
+    </div>
+    <!-- 640px以下顯示 -->
+    <div class="sm:hidden block mt-10">
+      <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="mt-[30px] mr-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="preIcon preArrow" width="20" height="23.077" viewBox="0 0 15 23.077"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(0 23.077) rotate(-90)" fill="currentColor"/></svg>
+        <swiper-slide v-for="item in fundItems" :key="item.title" class="flex justify-center">
+          <fund-item
+            class="max-w-[260px] m-auto"
             :title="item.title"
             :img="item.img"
             :singer="item.singer"
             :progress="item.progress"
             :date="item.date"
-            :money="item.money"
-            :key="item.title">
+            :money="item.money">
           </fund-item>
-        <!-- 640px以下顯示 -->
-        <div class="block flex items-center justify-center w-full sm:hidden">
-          <svg class="mr-3 cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="25" height="40" viewBox="0 0 25 40">
-            <path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" :fill="fundsL"/>
-          </svg>
-          <fund-item class="theItemMeneger"
-            edit
-            :title="fundItems[0].title"
-            :img="fundItems[0].img"
-            :singer="fundItems[0].singer"
-            :progress="fundItems[0].progress"
-            :date="fundItems[0].date"
-            :money="fundItems[0].money"
-            >
-          </fund-item>
-          <svg class="ml-3 cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="25" height="40" viewBox="0 0 25 40">
-            <path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" :fill="fundsR"/>
-          </svg>
-        </div>
-      </div>
+        </swiper-slide>
+        <svg xmlns="http://www.w3.org/2000/svg" class="nextIcon nextArrow" width="20" height="18.961" viewBox="0 0 13.72 18.961"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(15 -2.058) rotate(90)" fill="currentColor"/></svg>
+      </swiper>
     </div>
     <base-title title="發起募資" class="mt-20 mb-5" :presign='"presign"'></base-title>
     <div class="flex flex-col w-full sm:flex-row">
@@ -190,10 +190,18 @@
 </template>
 
 <script>
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import SwiperCore, { Navigation } from 'swiper/core'
+
 import FundItem from '../components/FundItem.vue'
 import SelectImg from '../components/SelectImg.vue'
+
+SwiperCore.use([Navigation])
+
 export default {
   components: {
+    Swiper,
+    SwiperSlide,
     FundItem,
     SelectImg
   },
@@ -427,6 +435,9 @@ export default {
       width: 100%;
       height: 470px;
     }
+    .outersMeneger{
+      display: none;
+    }
     ::v-deep .theImg{
       width: 100%;
       height: 300px;
@@ -435,9 +446,6 @@ export default {
     ::v-deep .fundBlock{
       margin: 0;
     }
-    .theItemMenegerSpe{
-      display: none;
-    }
     ::v-deep .circle{
       width: 70px;
       height: 70px;
@@ -445,6 +453,18 @@ export default {
     ::v-deep .cameraIcom{
       width: 40px;
       height: 40px;
+    }
+    ::v-deep .content{
+      width: 260px;
+    }
+    .preIcon {
+      @apply text-gray-light absolute top-1/2 z-10 left-0 cursor-pointer
+    }
+    .nextIcon{
+      @apply text-gray-light absolute top-1/2 z-10 right-0 cursor-pointer
+    }
+    .swiper-button-disabled {
+      @apply text-gray-default
     }
   }
 </style>

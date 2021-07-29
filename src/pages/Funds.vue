@@ -23,16 +23,16 @@
             </base-button>
         </div>
         <div class="parent">
-                <fund-item class="child"
-                    v-for="item in fundItems"
-                    :title="item.title"
-                    :img="item.img"
-                    :singer="item.singer"
-                    :progress="item.progress"
-                    :date="item.date"
-                    :money="item.money"
-                    :key="item.title">
-                </fund-item>
+            <fund-item class="child"
+                v-for="item in fundItems"
+                :title="item.title"
+                :img="item.img"
+                :singer="item.singer"
+                :progress="item.progress"
+                :date="item.date"
+                :money="item.money"
+                :key="item.title">
+            </fund-item>
         </div>
     </div>
 </template>
