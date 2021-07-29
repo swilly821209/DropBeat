@@ -30,7 +30,7 @@
     </div>
     <!-- 640px以下顯示 -->
     <div class="sm:hidden block mt-0">
-      <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="mt-[30px] mr-4">
+      <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="mr-4">
         <svg xmlns="http://www.w3.org/2000/svg" class="preIcon preArrow" width="20" height="23.077" viewBox="0 0 15 23.077"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(0 23.077) rotate(-90)" fill="currentColor"/></svg>
         <swiper-slide v-for="item in fundItems" :key="item.title" class="flex justify-center">
           <fund-item
