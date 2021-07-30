@@ -1,5 +1,5 @@
 <template>
-  <div class="item flex space-x-5 sm:flex-row flex-col sm:w-auto sm:h-auto w-[345px]" :col="col">
+  <div class="item flex sm:space-x-5 sm:flex-row flex-col sm:w-auto sm:h-auto w-[345px] space-x-0 justify-center" :col="col">
     <div v-if="edit" class="flex sm:justify-end justify-start mt-4 ml-6 pr-8 w-[350px] h-[200] cursor-pointer" :style="imgWidth">
       <div class="h5_icon flex flex-col items-center mr-3 pb-2">
           <span class="editIcon"></span>

@@ -346,6 +346,7 @@ export default {
   @media (max-width: 640px) {
     .day {
       width: 100%;
+      margin: auto;
     }
     .day_N_artist{
       margin-top: 30px;
