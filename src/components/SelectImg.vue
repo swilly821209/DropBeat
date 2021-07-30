@@ -1,6 +1,6 @@
 <template>
   <div class="outer bg-gray-light hover:bg-gray-default hover:shadow-md flex justify-center items-center relative transition-all" :class="radius">
-    <div class=" flex flex-col items-center ">
+    <div class="flex flex-col items-center">
       <div class="circle flex justify-center items-center mb-3  rounded-full transition-all" :class="inputImg">
         <!-- <svg v-if="camera" xmlns="http://www.w3.org/2000/svg" width="105" height="105" viewBox="0 0 63.551 57.196">
           <g id="Group_1" data-name="Group 1" transform="translate(-418 -225.804)">
