@@ -168,9 +168,11 @@ export default {
       document.querySelector('html').setAttribute('style', 'overflow:hidden')
     },
     lock () {
-      const con = document.querySelector('.div_container')
-      con.setAttribute('style', 'transform: translateY(-120%); transition: all .5s; opacity: 0;')
-      document.querySelector('html').setAttribute('style', 'overflow:auto')
+      if (window.innerWidth < 640) {
+        const con = document.querySelector('.div_container')
+        con.setAttribute('style', 'transform: translateY(-120%); transition: all .5s; opacity: 0;')
+        document.querySelector('html').setAttribute('style', 'overflow:auto')
+      }
     },
     myEventHandler () {
       const con = document.querySelector('.div_container').style.opacity
@@ -179,7 +181,7 @@ export default {
       if (window.innerWidth > 640 && con === '0') {
         document.querySelector('.div_container').setAttribute('style', 'opacity: 1;')
       }
-      if (window.innerWidth > 414 && htm === 'hidden') {
+      if (window.innerWidth > 640 && htm === 'hidden') {
         document.querySelector('html').style.overflow = 'auto'
       } else if (window.innerWidth < 640 && htm === 'auto' && cons === 'transform: translateY(0)') {
         document.querySelector('html').style.overflow = 'hidden'
