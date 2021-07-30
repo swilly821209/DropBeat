@@ -63,7 +63,7 @@
     <base-title title="Artist 大家都在聽" link to="/Find"></base-title>
     <div class="flex justify-between mt-[30px]">
       <artist-item
-        :width="'w-24'"
+        :width="'w-20'"
         v-for="(item, index) in phArtistList"
         @click="playFun(index)"
         :play="item.play"
@@ -107,7 +107,7 @@
           :progress="item.progress"
           :date="item.date"
           :money="item.money">
-      </fund-item>
+        </fund-item>
        </swiper-slide>
      </swiper>
   </div>
@@ -346,6 +346,7 @@ export default {
   @media (max-width: 640px) {
     .day {
       width: 100%;
+      margin: auto;
     }
     .day_N_artist{
       margin-top: 30px;
@@ -400,13 +401,13 @@ export default {
       width: 80px;
     }
   }
-  .preIcon {
-    @apply text-gray-light absolute top-1/2 z-10 left-0 cursor-pointer
-  }
-  .nextIcon{
-    @apply text-gray-light absolute top-1/2 z-10 right-0 cursor-pointer
-  }
-  .swiper-button-disabled {
-    @apply text-gray-default
-  }
+.preIcon {
+  @apply text-gray-light absolute top-1/2 z-10 left-0 cursor-pointer
+}
+.nextIcon{
+  @apply text-gray-light absolute top-1/2 z-10 right-0 cursor-pointer
+}
+.swiper-button-disabled {
+  @apply text-gray-default
+}
 </style>

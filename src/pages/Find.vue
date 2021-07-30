@@ -15,8 +15,9 @@
       {{ item }}
     </base-button>
   </div>
-  <div class="space-x-3">
+  <div class="sm:space-x-3 space-x-1 space-y-1">
     <base-button
+      class="buttons"
       v-for="item in singerType"
       :key="item"
       :active="{active: selectSingerType === item}"
@@ -25,7 +26,7 @@
       {{ item }}
     </base-button>
   </div>
-  <find-carousel class="artistCarousel my-8"></find-carousel>
+  <find-carousel class="artistCarousel "></find-carousel>
   <base-title title="發現音樂"></base-title>
   <div class="space-x-3">
     <base-button
@@ -38,8 +39,9 @@
       {{ item }}
     </base-button>
   </div>
-  <div class="space-x-3">
+  <div class="sm:space-x-3 space-x-1 space-y-1">
     <base-button
+      class="buttons"
         v-for="item in musicType"
         :key="item"
         :active="{active: selectMusicType === item}"

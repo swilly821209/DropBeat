@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="sm:block hidden">
     <div class=" relative w-16 h-16">
         <span class="absolute top-0 left-0 font-medium tracking-wider text-3xl text-gray-dark" >{{ month }}</span>
         <span class="absolute w-[1px] h-12 top-2 right-8  transform rotate-45 bg-gray-dark inline-block "></span>

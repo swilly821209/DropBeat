@@ -189,5 +189,8 @@ export default {
   .range{
     padding: 60px 15px 0 15px;
   }
+  .singleActive {
+    justify-content: center;
+  }
 }
 </style>

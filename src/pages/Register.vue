@@ -6,22 +6,23 @@
       <input type="email" placeholder="信箱" />
       <input type="password" placeholder="密碼" />
       <input type="password" placeholder="確認密碼" />
-      <p class="birthday">生日</p>
-      <br />
-      <form action="">
-        <select>
-          <option disabled>年</option>
-          <option value="year" v-for="year in years" :key="year">{{1949+year}}年</option>
-        </select>
-        <select>
-          <option  disabled>月</option>
-          <option value="month" v-for="month in months" :key="month.months">{{month}}月</option>
-        </select>
-        <select>
-          <option  disabled>日</option>
-          <option value="day" v-for="day in days" :key="day">{{day}}日</option>
-        </select>
-      </form>
+      <div class="birthdayAll">
+        <p class="birthday">生日：</p>
+        <form>
+          <select>
+            <option disabled >年</option>
+            <option value="year" v-for="year in years" :key="year" class="w-6/12">{{1949+year}} 年</option>
+          </select>
+          <select>
+            <option  disabled >月</option>
+            <option value="month" v-for="month in months" :key="month.months" class="w-3/12">{{month}} 月</option>
+          </select>
+          <select>
+            <option  disabled >日</option>
+            <option value="day" v-for="day in days" :key="day" class="w-3/12">{{day}} 日</option>
+          </select>
+        </form>
+      </div>
       <a href="#" class="registered">註冊</a>
       <a href="#" class="community">
         <div class="icon_container">
@@ -35,9 +36,8 @@
         </div>
         <p class="icon_txt_2">Google 登入</p>
       </a>
-      <p class="line">123</p>
-      <p class="already">已經有帳號了？<a href="#" class="now_login">立即登入</a></p>
-    </div>
+      <p class="line"></p>
+      <span>已經有帳號了？<router-link to="/LoginIn" class="text-orange hover:text-blue-light ml-2">立即登入</router-link></span>    </div>
   </div>
 </template>
 
@@ -55,83 +55,99 @@ export default {
 </script>
 
 <style scoped>
-.member_title {
-  text-align: center;
-  padding: 10px;
-  font-size: 24px;
-  color: #707070;
+#app{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .member_container {
-  margin: 0 auto;
-  width: 380px;
+  /* border:1px solid red; */
+  /* margin: 0 auto; */
+  width: 300px;
   /* height: 900px; */
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  align-content: center;
-  height: 720px;
+  flex-wrap: wrap;
+  align-items: center;
+  /* height: 720px; */
+  margin: 90px 0 0 0;
 }
-p {
-  width: 210px;
-  text-align: center;
+.member_title {
+  /* text-align: center; */
+  /* padding: 10px; */
+  font-size: 32px;
+  font-weight: 500;
+  color: #383838;
+  margin-bottom: 20px;
 }
 input {
   border-radius: 5px;
   margin: 7px auto;
   padding: 8px;
   outline: none;
-  border: 1px solid #b5b5b5;
-  width: 235px;
+  border: 2px solid #ededed;
+  width: 260px;
+  font-size: 16px;
+  color:#7b7b7b;
 }
 input:focus {
-  border: 1px solid #ff9d83;
-  border-radius: 5px;
+  border: 2px solid #ff9d83;
 }
 input::-webkit-input-placeholder {
   color: #b5b5b5;
 }
+.birthdayAll{
+  /* border:1px solid red; */
+  display: flex;
+  flex-direction: column;
+  margin-top: 3px;
+  width: 260px;
+}
 .birthday {
-  text-align: left;
-  font-weight: bold;
+  /* text-align: left; */
+  font-weight: 500;
   color: #7b7b7b;
-  margin-right: 150px;
-  margin-left: 80px;
-  margin-top: 5px;
+  font-size: 16px;
+  margin: 0 0 0 3px;
+  /* margin-right: 150px; */
+  /* margin-left: 80px; */
+  /* margin-top: 5px; */
 }
 form {
-  font-size: 0;
+  display: flex;
+  justify-content: space-between;
 }
 select:first-child {
-  width: 85px;
+  width: 95px;
   background-image: url("https://truth.bahamut.com.tw/s01/202107/954ba87f268da64497442dda478ca750.PNG");
   background-repeat: no-repeat;
-  background-position: 62px 10px;
-  background-size: 19%;
+  background-position: 68px 10px;
+  background-size: 20%;
 }
 select {
-  margin: 5px 1px;
+  /* margin: 5px 1px; */
   border-radius: 5px;
   outline: none;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  width: 65px;
-  border: 1px solid #b5b5b5;
+  width: 75px;
+  border: 2px solid #ededed;
   padding: 7px;
   background-image: url("https://truth.bahamut.com.tw/s01/202107/954ba87f268da64497442dda478ca750.PNG");
   background-repeat: no-repeat;
-  background-position: 43px 10px;
-  background-size: 26%;
+  background-position: 48px 10px;
+  background-size: 25%;
   color: #b5b5b5;
   font-size: 16px;
-  margin: 5px;
+  /* margin: 5px; */
 }
 option {
   background: transparent;
   border: 0;
 }
 select:focus {
-  border: 1px solid #ff9d83;
+  border: 2px solid #ff9d83;
   border-radius: 5px;
 }
 .registered {
@@ -139,14 +155,17 @@ select:focus {
   background-color: #ff9d83;
   border-radius: 5px;
   padding: 10px;
-  margin: 15px 50px 7px 50px;
-  width: 235px;
+  margin: 40px 0 5px 0;
+  width: 260px;
   text-align: center;
 }
 .registered:hover {
   background-color: #31bdc5;
 }
 .community {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100px;
   height: 60px;
   margin: 15px;
@@ -157,31 +176,39 @@ select:focus {
   justify-content: center;
 }
 .icon_txt_1 {
-  font-family: "Roboto", "Noto Sans TC";
-  font-weight: bold;
+  /* font-family: "Roboto", "Noto Sans TC"; */
   color: #7b7b7b;
-  width: 107px;
+  font-size: 12px;
+  font-weight: 500;
+  /* width: 107px; */
+  margin-top: -5px;
 }
-.icon_txt_1:hover {
+.community:hover .icon_txt_1 {
   border-bottom: 1px solid #7b7b7b;
 }
 .icon_txt_2 {
-  font-family: "Roboto", "Noto Sans TC";
+  /* font-family: "Roboto", "Noto Sans TC"; */
   color: #7b7b7b;
-  font-weight: bold;
-  width: 90px;
-  margin-left: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  /* width: 90px; */
+  margin: -5px 0 0 6px;
 }
-.icon_txt_2:hover {
+.community:hover .icon_txt_2 {
   border-bottom: 1px solid #7b7b7b;
 }
 .line {
-  color: white;
+  /* color: white; */
   border-bottom: 1px solid #b5b5b5;
-  margin: 10px;
   width: 300px;
+  margin: 5px 0 10px 0;
 }
-.already {
+span{
+    color: #7b7b7b;
+    font-size: 14px;
+    margin: 5px 0 0 0;
+}
+/* .already {
   margin: 10px;
   font-weight: bold;
   color: #b5b5b5;
@@ -193,5 +220,5 @@ select:focus {
 }
 .already .now_login:hover {
   border-bottom: 1px solid #ff9d83;
-}
+} */
 </style>

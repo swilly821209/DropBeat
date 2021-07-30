@@ -369,7 +369,7 @@ export default {
       left: 0;
       height: 60px;
       position: fixed;
-      z-index: 2;
+      z-index: 999;
     }
     .div_logo{
       margin:12px 0 0px 12px;

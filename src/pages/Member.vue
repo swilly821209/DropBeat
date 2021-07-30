@@ -1,23 +1,23 @@
 <template>
   <div class="range">
-    <base-title title="會員專區" class=" mb-16"></base-title>
-    <div>
+    <base-title title="會員專區" class=" sm:mb-16 mb-5"></base-title>
+    <div class="mb-5">
       <div class="title02 flex">
         <div class="titleline"></div>
         <h3 class="text-2xl text-black-backdrop">正在關注</h3>
       </div>
         <find-carousel class="artistCarousel"></find-carousel>
     </div>
-    <div class="block">
+    <div class=" mb-12">
       <div class="title02 flex">
         <div class="titleline"></div>
         <h3 class="text-2xl text-black-backdrop">想參加活動</h3>
       </div>
-      <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="my-10">
+      <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="sm:my-10 sm:pb-0  my-0 -mt-8 pb-10">
         <svg xmlns="http://www.w3.org/2000/svg"  class="preIcon  preArrow" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" class="nextIcon nextArrow"  width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
-        <swiper-slide v-for="item in activeDatas" :key="item" class="flex justify-center">
-          <div class="activeRange flex items-center justify-between">
+        <swiper-slide v-for="item in activeDatas" :key="item" class="flex justify-center items-center sm:top-auto top-14">
+          <div class="activeRange sm:flex block items-center sm:justify-between">
             <activity-item
                 :img="item.imgSrc"
                 :title="item.title"
@@ -33,16 +33,16 @@
         </swiper-slide>
       </swiper>
     </div>
-    <div class="block">
+    <div class="mb-12">
       <div class="title02 flex">
         <div class="titleline"></div>
         <h3 class="text-2xl text-black-backdrop">已參加活動</h3>
       </div>
-      <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="my-10">
+      <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="sm:my-10 sm:pb-0  my-0 -mt-8 pb-10">
         <svg xmlns="http://www.w3.org/2000/svg"  class="preIcon  preArrow" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" class="nextIcon nextArrow"  width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
-        <swiper-slide v-for="item in activeDatas" :key="item" class="flex justify-center">
-          <div class="activeRange flex items-center justify-between">
+        <swiper-slide v-for="item in activeDatas" :key="item" class="flex justify-center items-center sm:top-auto top-14">
+          <div class="activeRange sm:flex block items-center justify-between ">
             <activity-item
                 :img="item.imgSrc"
                 :title="item.title"
@@ -58,33 +58,40 @@
         </swiper-slide>
       </swiper>
     </div>
-    <div class="block">
+    <div class="mb-12">
       <div class="title02 flex">
         <div class="titleline"></div>
         <h3 class="text-2xl text-black-backdrop">已贊助計畫</h3>
       </div>
-      <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="my-10">
+      <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="sm:my-10 sm:pb-0  my-0 -mt-8 pb-10">
         <svg xmlns="http://www.w3.org/2000/svg"  class="preIcon preArrow" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" class="nextIcon nextArrow"  width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
-        <swiper-slide v-for="item in 10" :key="item" class="flex justify-center z-20">
-          <div class="activeRange flex items-center justify-between">
-            <div class="fundImgContent">
-              <img class="w-[350px] h-[200px] rounded-3xl cursor-pointer" src="https://akstatic.streetvoice.com/features/2021/07/23/e053e36ad38d43f0818b33e7a9d4b108.png?x-oss-process=image/resize,m_fill,h_480,w_1250,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg">
-              <div class="fundContent flex flex-col ">
-                <div class="successIcon bg-orange text-white  rounded-3xl  self-end ">success</div>
+        <swiper-slide v-for="item in 10" :key="item" class="flex justify-center items-center z-20 sm:flex-row flex-col sm:top-auto top-14">
+          <div class="activeRange flex items-center justify-between ">
+            <div class="flex sm:items-center sm:flex-row flex-col items-start">
+              <img class="sm:w-[350px] sm:h-[200px] w-32 h-32 rounded-3xl cursor-pointer object-cover object-center" src="https://akstatic.streetvoice.com/features/2021/07/23/e053e36ad38d43f0818b33e7a9d4b108.png?x-oss-process=image/resize,m_fill,h_480,w_1250,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg">
+              <div class="fundContent sm:flex hidden flex-col ">
+                <div class="successIcon bg-orange text-white  rounded-3xl  self-end sm:block hidden">success</div>
                 <h4 class="text-lg text-black-backdrop ">運氣來的若有似無 專輯募資</h4>
                 <base-badge  class=" mt-2 inline-block" image="https://akstatic.streetvoice.com/profile_images/er/ic/eric198853/Y3w4tbHRLXMLzFxUmW9bb7.jpg?x-oss-process=image/resize,m_fill,h_200,w_200,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg" singer="KUNG 龔敬文"></base-badge>
               </div>
             </div>
             <div class="flex flex-col justify-center h-full border-l border-gray-default pl-5">
-                <p class="text-3xl text-orange ">$600</p>
-                <h5 class="my-1 text-black-backdrop text-base">專輯海報組</h5>
+                <div class="successIcon bg-orange text-white  rounded-3xl sm:hidden block">success</div>
+                <div class="flex sm:flex-col flex-row sm:justify-start justify-between">
+                  <p class="text-3xl text-orange sm:mb-5 mb-0 sm:order-1 order-2">$600</p>
+                  <h5 class="my-1 text-black-backdrop text-base sm:order-2 order-1">專輯海報組</h5>
+                </div>
                 <ul class="list-disc text-gray-dark text-sm">
                   <li>專輯 x1</li>
                   <li>內含：CD、寫真歌詞本、小卡</li>
                   <li>A2 親簽海報</li>
                 </ul>
             </div>
+          </div>
+          <div class="mt-2 sm:hidden block self-start ml-3">
+            <h4 class="text-lg text-black-backdrop ">運氣來的若有似無 專輯募資</h4>
+            <base-badge  class=" mt-2 inline-block" image="https://akstatic.streetvoice.com/profile_images/er/ic/eric198853/Y3w4tbHRLXMLzFxUmW9bb7.jpg?x-oss-process=image/resize,m_fill,h_200,w_200,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg" singer="KUNG 龔敬文"></base-badge>
           </div>
         </swiper-slide>
       </swiper>
@@ -218,9 +225,6 @@ export default {
 </script>
 
 <style scoped>
-.range{
-  padding: 60px 40px 110px 40px;
-}
 .titleline{
   background-color: #b5b5b5;
   width: 5px;
@@ -230,19 +234,10 @@ export default {
 .artistCarousel{
   margin: 10px 0 70px 0;
 }
-.block{
-    margin: 0 0 90px 0;
-}
 .activeRange{
   width: 80%;
 }
-.fundImgContent{
-    /* border:1px solid red; */
-    display: flex;
-    align-items: center;
-}
 .fundContent{
-    display: flex;
     margin: 0 0 0 20px;
 }
 .successIcon{
@@ -264,6 +259,11 @@ export default {
     width: 90%;
   }
 }
+@media (max-width: 767px){
+   .activeRange {
+     width: 100%;
+   }
+ }
 .preIcon {
   @apply text-gray-light absolute top-1/2 z-10 left-0 cursor-pointer
 }
@@ -275,5 +275,13 @@ export default {
 }
 .swiper-button-disabled {
   @apply text-gray-default
+}
+@media (max-width: 640px) {
+  .preIcon{
+    @apply top-0 left-auto right-8
+  }
+  .nextIcon{
+    @apply top-0 right-0
+  }
 }
 </style>
