@@ -1,18 +1,20 @@
 <template>
-  <router-link to="/AccountManage" class="text-red-400 block">帳號管理頁面</router-link>
+  <!-- <router-link to="/AccountManage" class="text-red-400 block">帳號管理頁面</router-link> -->
   <div id="app">
     <div class="container">
       <p class="title">會員登入</p>
-      <input type="text" placeholder="請輸入帳號名稱 / 電子郵件">
-      <input type="password" placeholder="密碼">
+      <input type="text" placeholder="請輸入帳號名稱 / 電子郵件" class="account">
+      <input type="password" placeholder="密碼" class="password">
       <p class="fail">登入失敗, 請輸入正確的帳號與密碼！</p>
-      <div class="login_txt">
+      <div class="login_txt ">
         <div class="first">
-          <img class="uncheckbox" src="https://img.icons8.com/ios/50/000000/unchecked-checkbox.png"/>
-          <p>保持登入狀態</p>
+          <!-- <img class="uncheckbox" src="https://img.icons8.com/ios/50/000000/unchecked-checkbox.png"/>
+          <p>保持登入狀態</p> -->
+          <input type="checkbox" name="keep" class="checkbox  border-2 border-gray-light rounded-md ">
+          <label for="keep" class=" text-sm text-gray-dark ">保持登入狀態</label>
         </div>
         <div class="second">
-          <a href="#">忘記密碼？</a>
+          <a href="#" class="text-sm text-gray-dark hover:text-orange">忘記密碼？</a>
         </div>
       </div>
       <router-link to="/AccountManage" class="text-red-400 block login_btn">登入</router-link>
@@ -28,8 +30,8 @@
         </div>
         <p class="icon_txt_2">Google 登入</p>
       </a>
-      <p class="line">123</p>
-      <span>還沒有帳號嗎？<router-link to="/Register" class="text-orange">立即註冊</router-link></span>
+      <p class="line"></p>
+      <span>還沒有帳號嗎？<router-link to="/Register" class="text-orange hover:text-blue-light ml-2">立即註冊</router-link></span>
     </div>
   </div>
 </template>
@@ -38,54 +40,72 @@
 #app{
     display: flex;
     justify-content: center;
-    align-content: center;
+    align-items: center;
 }
 .container{
-    height: 650px;
+    /* border:1px solid red; */
+    /* height: 650px; */
     display: flex;
     justify-content: center;
-    align-content: center;
-    color: #707070;
+    align-items: center;
+    color: #7b7b7b;
     flex-wrap: wrap;
     width: 300px;
+    margin: 90px 0 0 0;
 }
 p.title{
-    font-size: 24px;
+    font-size: 32px;
+    font-weight: 500;
+    color:#383838;
     margin-bottom: 20px;
 }
-p.fail{
-    opacity: 0;
-    color: #ff9d83;
-    height: 30px;
-}
-input{
+.account, .password{
   border-radius: 5px;
   margin: 7px auto;
   padding: 8px;
   outline: none;
-  border: 1px solid #b5b5b5;
+  border: 2px solid #ededed;
   width: 260px;
+  font-size: 16px;
 }
 input:focus {
-  border: 1px solid #ff9d83;
-  border-radius: 5px;
+  border: 2px solid #ff9d83;
 }
-.uncheckbox{
+input::-webkit-input-placeholder {
+  color: #b5b5b5;
+}
+p.fail{
+    /* opacity: 0; */
+    font-size: 12px;
+    color: #ff9d83;
+    margin: 0 0 25px 0;
+    display: none;
+    /* height: 30px; */
+}
+/* .uncheckbox{
     transform: scale(0.4);
     position: absolute;
     top: -13px;
     left: -16px;
-}
+} */
 .login_txt{
     display: flex;
     justify-content: space-between;
     width: 260px;
-    align-items: center;
-    position: relative;
+    /* align-items: center; */
+    /* position: relative; */
+    margin: 30px 0 0 0;
 }
 .login_txt .first{
-    padding-left: 25px;
-    cursor: pointer;
+    /* padding-left: 25px; */
+    display: flex;
+    align-items: center;
+    padding: 0 0 0 5px;
+}
+.checkbox{
+  transform: scale(1.2);
+  margin: 0 5px 0 0;
+  cursor: pointer;
 }
 .login_txt .second{
     cursor: pointer;
@@ -98,11 +118,17 @@ input:focus {
     background-color: #ff9d83;
     border-radius: 5px;
     padding: 10px;
-    margin: 15px 0 7px 0;
+    margin: 10px 0 7px 0;
     width: 260px;
     text-align: center;
 }
+.login_btn:hover{
+      background-color: #31BDC5;
+}
 .community {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100px;
   height: 60px;
   margin: 15px;
@@ -113,31 +139,36 @@ input:focus {
   justify-content: center;
 }
 .icon_txt_1 {
-  font-family: "Roboto", "Noto Sans TC";
-  font-weight: bold;
+  /* font-family: "Roboto", "Noto Sans TC"; */
   color: #7b7b7b;
-  width: 107px;
+  font-size: 12px;
+  font-weight: 500;
+  /* width: 107px; */
+  margin-top: -5px;
 }
-.icon_txt_1:hover {
+.community:hover .icon_txt_1 {
   border-bottom: 1px solid #7b7b7b;
 }
 .icon_txt_2 {
-  font-family: "Roboto", "Noto Sans TC";
+  /* font-family: "Roboto", "Noto Sans TC"; */
   color: #7b7b7b;
-  font-weight: bold;
-  width: 90px;
-  margin-left: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  /* width: 90px; */
+  margin: -5px 0 0 6px;
 }
-.icon_txt_2:hover {
+.community:hover .icon_txt_2 {
   border-bottom: 1px solid #7b7b7b;
 }
 .line {
-  color: white;
+  /* color: white; */
   border-bottom: 1px solid #b5b5b5;
-  margin: 10px;
   width: 300px;
+  margin: 5px 0 10px 0;
 }
 span{
-    color: #B5B5B5;
+    color: #7b7b7b;
+    font-size: 14px;
+    margin: 5px 0 0 0;
 }
 </style>

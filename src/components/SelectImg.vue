@@ -25,7 +25,7 @@
             <path id="Icon_awesome-upload" class="pathGray" data-name="Icon awesome-upload" d="M25.833,33.512H18.851a2.09,2.09,0,0,1-2.095-2.095V16.756H9.1a1.742,1.742,0,0,1-1.231-2.976L21.147.5a1.691,1.691,0,0,1,2.383,0L36.813,13.779a1.742,1.742,0,0,1-1.231,2.976H27.928V31.418A2.09,2.09,0,0,1,25.833,33.512Zm18.851-.7v9.775a2.09,2.09,0,0,1-2.095,2.095H2.095A2.09,2.09,0,0,1,0,42.589V32.814A2.09,2.09,0,0,1,2.095,30.72H13.964v.7a4.891,4.891,0,0,0,4.887,4.887h6.982a4.891,4.891,0,0,0,4.887-4.887v-.7H42.59A2.09,2.09,0,0,1,44.685,32.814Zm-10.822,7.68a1.745,1.745,0,1,0-1.745,1.745A1.751,1.751,0,0,0,33.863,40.494Zm5.586,0A1.745,1.745,0,1,0,37.7,42.24,1.751,1.751,0,0,0,39.448,40.494Z" transform="translate(29.658 29.655)" fill="#fff"/>
           </svg>
       </div>
-      <p class="text-base text-white transition-all">{{text}}</p>
+      <p class="cameraText text-base text-white transition-all">{{text}}</p>
     </div>
     <input type="file" class="w-full h-full absolute rounded-3xl opacity-0 cursor-pointer">
   </div>
