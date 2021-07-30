@@ -4,11 +4,13 @@
     <div class="flex items-center  justify-evenly">
       <div class="audio_N_num">
     <!-- <div class="music_N_name"> -->
-      <audio-icon v-if="playing"></audio-icon>
+      <div class="w-7 h-9">
+        <audio-icon v-if="playing"></audio-icon>
       <!-- <p v-else class="text-3xl text-gray-dark tracking-wider font-medium w-10">{{ num }}</p> -->
-      <p v-else class="music_num">{{ num }}</p>
+        <p v-else class="music_num">{{ num }}</p>
       </div>
-      <span :class="color" class="up_down">{{status}}</span>
+       <span :class="color" class="up_down">{{status}}</span>
+      </div>
       <!-- <div class="musicImage relative  " @click="playing = !playing">
         <img :src="imgSrc" :alt="imgSrc" class=" rounded-2xl" >
         <div class="absolute bg-black-backdrop bg-opacity-60 h-36 w-36 rounded-2xl top-0  group-hover:visible bg-50% bg-no-repeat bg-center"
@@ -16,7 +18,7 @@
             :style="`background-image: url(${backdropImg})`"></div>
       </div> -->
       <div class="musicImage relative " @click="playing = !playing" v-if="imgSrc">
-        <img :src="imgSrc" :alt="imgSrc"  class=" rounded-2xl" >
+        <img :src="imgSrc" :alt="imgSrc"  class=" rounded-2xl w-full h-full" >
         <div v-if="playing" class="playPauseIcon01 absolute bg-black-backdrop bg-opacity-60 rounded-2xl top-0  group-hover:visible bg-no-repeat bg-center z-10"
             :style="`background-image: url(${backdropImg})`"></div>
         <div v-if="!playing" class="playPauseIcon02 absolute  rounded-2xl top-0 bg-50% bg-no-repeat bg-center z-10"
@@ -32,7 +34,7 @@
       </div> -->
       </div>
     </div>
-    <div class="time_btns w-[380px] flex justify-between">
+    <div class="time_btns w-[380px] sm:flex hidden justify-between">
       <p class="text-sm text-gray-light">{{ time }}</p>
       <div class="playnum_likenum_share_add">
         <div class=" playBtn border-2 rounded-2xl border-gray-default text-gray-light flex items-center justify-center  space-x-1">
@@ -53,6 +55,9 @@
         <span class="share" @click="shareSocial"></span>
         <span class="add"></span>
       </div>
+    </div>
+    <div class="sm:hidden block">
+      <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-light" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
     </div>
   </div>
 </template>
@@ -120,8 +125,21 @@ export default {
 }
 .audio_N_num{
     /* border:1px solid red; */
-    width:35px;
-    height: 35px;
+  width: 60px;
+  height: 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media (max-width: 640px) {
+  .music_item {
+    padding: 10px 0;
+  }
+  .audio_N_num{
+    width:36px;
+    flex-direction: column;
+    justify-content: space-evenly
+  }
 }
 .music_num{
     font-size: 24px;
@@ -159,6 +177,24 @@ export default {
 }
 .music_item:hover .hover_bg{
   opacity: 1;
+}
+@media (max-width: 640px) {
+  .musicImage{
+    width:70px;
+    height:70px;
+  }
+  .playPauseIcon01{
+    width:70px;
+    height:70px;
+  }
+  .playPauseIcon02{
+    width: 70px;
+    height: 70px;
+  }
+  .hover_bg{
+    width: 70px;
+    height: 70px;
+  }
 }
 /* .music_item:hover h4{
   color:#31BDC5;

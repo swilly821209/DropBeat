@@ -12,7 +12,7 @@
             {{ item }}
             </base-button>
         </div>
-        <div class="space-x-3">
+        <div class="sm:space-x-3 space-x-1">
             <base-button
             v-for="item in fundsType"
             :key="item"
@@ -23,16 +23,16 @@
             </base-button>
         </div>
         <div class="parent">
-                <fund-item class="child"
-                    v-for="item in fundItems"
-                    :title="item.title"
-                    :img="item.img"
-                    :singer="item.singer"
-                    :progress="item.progress"
-                    :date="item.date"
-                    :money="item.money"
-                    :key="item.title">
-                </fund-item>
+            <fund-item class="child"
+                v-for="item in fundItems"
+                :title="item.title"
+                :img="item.img"
+                :singer="item.singer"
+                :progress="item.progress"
+                :date="item.date"
+                :money="item.money"
+                :key="item.title">
+            </fund-item>
         </div>
     </div>
 </template>
@@ -139,5 +139,17 @@ export default {
     }
     .child {
         /* width: 20%; */
+    }
+    @media (max-width: 767px){
+      .range{
+        padding: 60px 15px 10px 15px;
+      }
+      .parent {
+        flex-direction: column;
+      }
+      :deep .fundBlock{
+        width: 100%;
+        margin: 35px 0 0 0;
+      }
     }
 </style>

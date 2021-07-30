@@ -163,7 +163,7 @@ export default {
     opacity: .6;
     cursor: pointer;
     transform: scale(0.5);
-    z-index: 10;
+    z-index: 1;
   }
   .div_the_song:hover .div_cartain{
     opacity: 1;

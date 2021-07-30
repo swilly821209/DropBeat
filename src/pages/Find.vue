@@ -197,10 +197,6 @@ export default {
 </script>
 
 <style scoped>
-.range{
-  /* border:1px solid red; */
-  padding: 60px 40px 0 40px;
-}
 .selectBtn{
     margin: 20px 0 12px 0;
 }
