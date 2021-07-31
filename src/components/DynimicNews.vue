@@ -29,7 +29,12 @@
           </div>
         </div>
         <div>
-          <button class="px-2 bg-orange border border-orange text-white rounded-xl hover:bg-white hover:text-orange ">想參加</button>
+          <button
+            class="join"
+            :class="{ clickjoin: active }"
+            @click="active = !active"
+            >{{active ? '參加' : '想參加'}}
+            </button>
         </div>
       </div>
       <div class="sm:flex sm:items-center ml-9 sm:ml-14 sm:space-x-5 py-0 sm:py-5">
@@ -58,6 +63,7 @@ export default {
   },
   data () {
     return {
+      active: false
     }
   }
 }
@@ -66,6 +72,33 @@ export default {
 .bg_padding{
   padding: 15px 20px 5px 20px;
 }
+.join{
+  border: 2px solid #FF9D83;
+  background-color: #FF9D83 ;
+  border-radius: 20px;
+  width: 65px;
+  height: 25px;
+  font-size:14px;
+  color:#ffffff;
+  padding: 1px 0 0 0;
+}
+.join:hover{
+  border:2px solid #FF9D83;
+  background-color: transparent;
+  color:#FF9D83;
+}
+.clickjoin{
+  border:2px solid #FF9D83;
+  background-color: transparent;
+  color:#FF9D83;
+  width: 50px;
+}
+.clickjoin:hover{
+  border:2px solid #FF9D83;
+  background-color: #FF9D83;
+  color:#ffffff;
+}
+
 @media screen and (max-width: 640px){
   .bg_padding{
     padding: 10px 8px 5px 8px;

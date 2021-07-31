@@ -104,6 +104,9 @@ export default {
   margin: -5px 0 0 0;
 }
 @media screen and (max-width: 640px){
+  .preArrow{
+    left:25px
+  }
   .countNum{
     font-size: 34px;
     margin: -5px 0 0 0;
