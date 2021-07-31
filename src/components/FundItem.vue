@@ -152,5 +152,9 @@ h5{
 .h5_icon:hover h5{
   color:#FF9D83 ;
 }
-
+@media (max-width: 767px){
+  .content {
+    margin: auto;
+  }
+}
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="container w-full">
+  <div class="container w-full sm:flex hidden">
       <span class="cursor-pointer transition translate hover:-translate-x-0.5" @click="leftFun">
           <svg xmlns="http://www.w3.org/2000/svg" width="25" height="40" viewBox="0 0 25 40">
               <path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" :fill="arrLeftColor"/>
@@ -29,12 +29,38 @@
           </svg>
       </span>
   </div>
+  <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" :slidesPerView="3" class=" h-48 my-5 sm:hidden block">
+    <div class="absolute top-40 flex justify-center items-center w-full space-x-3">
+     <svg xmlns="http://www.w3.org/2000/svg" class="preArrow text-gray-light cursor-pointer" width="15" height="23.077" viewBox="0 0 15 23.077"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(0 23.077) rotate(-90)" fill="currentColor"/></svg>
+     <svg xmlns="http://www.w3.org/2000/svg" class="nextArrow text-gray-light cursor-pointer" width="13.72" height="18.961" viewBox="0 0 13.72 18.961"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(15 -2.058) rotate(90)" fill="currentColor"/></svg>
+    </div>
+    <swiper-slide  v-for="(item, index) in artistList"  :key="item.author">
+      <artist-item
+          class="art"
+          listen
+          :relative='"relative"'
+          @click="playFun(index)"
+          :width="'w20'"
+          :play="item.play"
+          :img="item.img"
+          :author="item.author"
+          :more="item.more">
+      </artist-item>
+    </swiper-slide>
+  </swiper>
 </template>
 
 <script>
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import SwiperCore, { Navigation } from 'swiper/core'
+
 import ArtistItem from '../components/ArtistItem.vue'
+
+SwiperCore.use([Navigation])
 export default {
   components: {
+    Swiper,
+    SwiperSlide,
     ArtistItem
   },
   data () {
@@ -140,7 +166,6 @@ export default {
 
 <style scoped>
     .container{
-        display: flex;
         align-items: center;
         justify-content: center;
         margin: -5px 0 40px 0;
@@ -162,6 +187,9 @@ export default {
     .art{
       margin: 0 10px;
     }
+    .swiper-button-disabled {
+     @apply text-gray-default
+   }
     @media screen and (max-width: 1420px) {
       .carousel_outer{
         width: 850px;
