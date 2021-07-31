@@ -908,10 +908,6 @@ video {
   margin-top: 0px;
 }
 
-.mt-1 {
-  margin-top: 0.25rem;
-}
-
 .mt-2 {
   margin-top: 0.5rem;
 }
@@ -930,6 +926,10 @@ video {
 
 .mb-4 {
   margin-bottom: 1rem;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
 }
 
 .mt-3 {
@@ -1954,11 +1954,6 @@ video {
   padding: 0.75rem;
 }
 
-.px-3 {
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-}
-
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -1987,6 +1982,11 @@ video {
 .px-10 {
   padding-left: 2.5rem;
   padding-right: 2.5rem;
+}
+
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
 }
 
 .py-1 {
@@ -2029,10 +2029,6 @@ video {
 
 .pt-\[1px\] {
   padding-top: 1px;
-}
-
-.pr-3 {
-  padding-right: 0.75rem;
 }
 
 .pl-1 {
@@ -2782,6 +2778,10 @@ textarea {
     width: auto;
   }
 
+  .sm\:w-full {
+    width: 100%;
+  }
+
   .sm\:w-\[269px\] {
     width: 269px;
   }
@@ -2812,10 +2812,6 @@ textarea {
 
   .sm\:w-80 {
     width: 20rem;
-  }
-
-  .sm\:w-full {
-    width: 100%;
   }
 
   .sm\:w-8\/12 {
@@ -2916,6 +2912,10 @@ textarea {
     padding-right: 0.5rem;
   }
 
+  .sm\:pr-16 {
+    padding-right: 4rem;
+  }
+
   .sm\:pt-8 {
     padding-top: 2rem;
   }
@@ -2930,22 +2930,6 @@ textarea {
 
   .sm\:pl-5 {
     padding-left: 1.25rem;
-  }
-
-  .sm\:pr-12 {
-    padding-right: 3rem;
-  }
-
-  .sm\:pr-10 {
-    padding-right: 2.5rem;
-  }
-
-  .sm\:pr-14 {
-    padding-right: 3.5rem;
-  }
-
-  .sm\:pr-16 {
-    padding-right: 4rem;
   }
 
   .sm\:text-3xl {
