@@ -5,7 +5,15 @@
     </div>
     <div class="artistContent flex flex-col sm:flex-row space-x-10 items-center h-[180px] sm:h-[360px]">
       <div class="flex flex-col justify-center items-center space-y-4 mt-[40px] sm:mt-[0]">
+        <div class="artistSelectImg relative">
         <img class="artistPhoto mb-[35px] sm:mb-[0px] rounded-full w-[120px] h-[120px] sm:w-80 sm:h-80 sm:min-w-[320px]" src="https://akstatic.streetvoice.com/profile_images/er/ic/eric198853/Y3w4tbHRLXMLzFxUmW9bb7.jpg?x-oss-process=image/resize,m_fill,h_380,w_380,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg">
+        <select-img class="selectImg"
+            :radius="'rounded-3xl'"
+            :camera="true"
+            :text="'選取圖片'"
+          :inputImg="'border-2 border-white bg-white incircle'"
+        ></select-img>
+        </div>
         <div class="approve">
           <div class="approveIcon"></div>
           <p>已認證藝人</p>
@@ -329,43 +337,65 @@ export default {
   /* border:1px solid red; */
   box-shadow:  0px 4px 5px rgba(0, 0, 0, 0.25);
 }
-:deep .outer{
+.artistSelectImg :deep .outer{
   /* border:1px solid red; */
   background-color: transparent;
 }
-:deep .outer:hover{
+.artistSelectImg :deep .outer:hover{
   /* border:1px solid red; */
   background-color: #383838;
   opacity: 0.85;
 }
-:deep .circle{
+.artistSelectImg :deep .circle{
   /* border:1px solid red; */
   width: 50px;
   height: 50px;
   opacity: 0.75;
 }
-:deep .outer:hover .circle{
+.artistSelectImg :deep .outer:hover .circle{
    /* border:1px solid blue; */
   width: 105px;
   height: 105px;
   background-color: #ffffff;
 }
-:deep .cameraIcom{
+.artistSelectImg :deep .cameraIcom{
   width: 30px;
   height: 30px;
 }
-:deep .outer:hover .cameraIcom{
+.artistSelectImg :deep .outer:hover .cameraIcom{
   width: 50px;
   height: 50px;
   background-image: url("../assets/icon/camera_7b.svg");
   opacity: 1;
 }
-:deep .cameraText{
+.artistSelectImg :deep .cameraText{
   display: none;
 }
-:deep .outer:hover .cameraText{
+.artistSelectImg :deep .outer:hover .cameraText{
   display: block;
   color: #ffffff;
+}
+@media screen and (max-width: 640px){
+  .artistSelectImg :deep .outer{
+    width: 120px;
+    height: 120px;
+  }
+  .artistSelectImg :deep .outer:hover{
+    width: 120px;
+    height: 120px;
+  }
+  .artistSelectImg :deep .circle{
+    width: 40px;
+    height: 40px;
+    margin: 0;
+  }
+  .artistSelectImg :deep .cameraIcom{
+    width: 20px;
+    height: 20px;
+  }
+  .artistSelectImg :deep .outer:hover .cameraText{
+    display: none;
+  }
 }
 .approve{
     display: flex;
