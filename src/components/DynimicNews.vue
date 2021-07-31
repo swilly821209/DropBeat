@@ -24,7 +24,7 @@
         <div class="flex items-center w-44 justify-between">
           <img  class=" w-12 h-12 rounded-full" src="https://akstatic.streetvoice.com/song_covers/sh/u0/shu05229970/DrhqfgHAtMEazGmBVFLydC.jpg?x-oss-process=image/resize,m_fill,h_380,w_380,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg">
           <div>
-            <p class="text-base">發布了一首作品</p>
+            <p class="text-base">將演出一場活動</p>
             <p class="text-sm text-gray-dark">3小時前</p>
           </div>
         </div>
@@ -32,8 +32,8 @@
           <button class="px-2 bg-orange border border-orange text-white rounded-xl hover:bg-white hover:text-orange ">想參加</button>
         </div>
       </div>
-      <div  class="flex items-center ml-14 space-x-5 py-5">
-        <base-date :time="date" week="true"></base-date>
+      <div class="sm:flex sm:items-center ml-9 sm:ml-14 sm:space-x-5 py-0 sm:py-5">
+        <base-date :time="date" week="true" class="hidden sm:block"></base-date>
         <activity-item
           :img="img"
           :title="title"
@@ -66,4 +66,26 @@ export default {
 .bg_padding{
   padding: 15px 20px 5px 20px;
 }
+@media screen and (max-width: 640px){
+  .bg_padding{
+    padding: 10px 8px 5px 8px;
+  }
+}
+  @media (max-width: 640px) {
+    :deep .music_item{
+      /* border:1px solid red; */
+      align-items: flex-end;
+      padding: 0 0 10px 0;
+    }
+    :deep .activeImg{
+      width:255px;
+    }
+    :deep .activeJoin{
+      display: none;
+    }
+    :deep .activeContent{
+      width:255px;
+    }
+  }
+
 </style>

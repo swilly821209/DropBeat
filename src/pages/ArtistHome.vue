@@ -146,6 +146,11 @@ export default {
   .range{
     padding: 60px 40px 10px 40px;
   }
+  @media screen and (max-width: 640px){
+    .range{
+      padding: 60px 20px 0 20px;
+    }
+  }
   /* a{
       background: whitesmoke;
       color: black;
@@ -155,4 +160,5 @@ export default {
     /* border:1px solid red; */
     border-bottom: none;
   }
+
 </style>

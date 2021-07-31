@@ -180,8 +180,10 @@ export default {
 }
 @media (max-width: 640px) {
   .musicImage{
+    /* border:1px solid red; */
     width:70px;
     height:70px;
+    flex-shrink: 0;
   }
   .playPauseIcon01{
     width:70px;
