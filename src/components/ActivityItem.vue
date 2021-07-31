@@ -1,6 +1,6 @@
 <template>
   <div class="item flex space-x-5 sm:flex-row flex-col sm:w-auto sm:h-auto w-[345px]" :col="col">
-    <div v-if="edit" class="flex sm:justify-end justify-start mt-4 ml-6 pr-8 w-[350px] h-[200] cursor-pointer editclass" :style="imgWidth">
+    <div v-if="edit" class="flex sm:justify-end justify-start mt-4 ml-6 pr-8 sm:pr-16 w-[350px] sm:w-full h-[200] cursor-pointer editclass" :style="imgWidth">
       <div class="h5_icon flex flex-col items-center mr-3 pb-2">
           <span class="editIcon"></span>
           <h5>編輯</h5>
@@ -25,9 +25,6 @@
         <button v-if="check" class="checkBtn rounded-xl text-sm border-blue-light bg-blue-light text-white">審核ing...</button>
       </div>
     </div>
-    <!-- <div class="flex mt-1 ml-6 pr-3 w-[350px] h-[200]" v-if="check">
-      <button  class="self-start rounded-xl border-2 border-blue-light bg-blue-light text-white px-3">審核ing...</button>
-    </div> -->
   </div>
 </template>
 

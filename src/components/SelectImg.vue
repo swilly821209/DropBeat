@@ -1,7 +1,7 @@
 <template>
   <div class="outer bg-gray-light hover:bg-gray-default hover:shadow-md flex justify-center items-center relative transition-all" :class="radius">
     <div class="flex flex-col items-center iconDerection">
-      <div class="circle flex justify-center items-center mb-3  rounded-full transition-all" :class="inputImg">
+      <div class="circle flex justify-center items-center mb-3 rounded-full transition-all" :class="inputImg">
         <div v-if="camera" class="cameraIcom"></div>
         <svg v-else-if="album" xmlns="http://www.w3.org/2000/svg" width="105" height="105" viewBox="0 0 105 105">
           <g id="play" fill="none" stroke="#fff" stroke-width="3">
@@ -68,9 +68,4 @@ export default {
   .outer:hover .cameraIcom{
     background-image: url("../assets/icon/camera_fff.svg");
   }
-  /* @media screen and (max-width: 640px) {
-    .outer{
-      width: 100%;
-    }
-  } */
 </style>

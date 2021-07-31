@@ -462,5 +462,16 @@ h4{
       margin-top: 35px;
       margin-left: 10px;
   }
+  ::v-deep .circle{
+    /* border:1px solid red; */
+    width: 50px;
+    height: 50px;
+  }
+  ::v-deep .iconDerection{
+    flex-direction: row;
+  }
+  ::v-deep .cameraText{
+    margin-left: 10px;
+  }
 }
 </style>

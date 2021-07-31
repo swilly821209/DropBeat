@@ -345,7 +345,7 @@ export default {
   .money::after{
     content: '$';
     position: absolute;
-    transform: translate(12px, 1px);
+    transform: translate(4px, 1px);
     font-size: 28px;
     color: #B5B5B5;
   }
@@ -430,6 +430,9 @@ export default {
     }
     .outersMeneger{
       display: none;
+    }
+    .money::after{
+      transform: translate(-5px, 1px);
     }
     ::v-deep .theImg{
       width: 100%;
