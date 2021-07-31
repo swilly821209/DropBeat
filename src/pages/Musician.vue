@@ -13,7 +13,15 @@
     </div>
     <div class="artistContent flex space-x-10 items-center h-[360px]">
       <div class="flex flex-col justify-center items-center space-y-4">
-        <img class="artistPhoto rounded-full w-80 h-80 min-w-[320px]" src="https://akstatic.streetvoice.com/profile_images/er/ic/eric198853/Y3w4tbHRLXMLzFxUmW9bb7.jpg?x-oss-process=image/resize,m_fill,h_380,w_380,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg">
+        <div class="relative">
+          <img class="artistPhoto rounded-full w-80 h-80 min-w-[320px]" src="https://akstatic.streetvoice.com/profile_images/er/ic/eric198853/Y3w4tbHRLXMLzFxUmW9bb7.jpg?x-oss-process=image/resize,m_fill,h_380,w_380,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg">
+          <select-img class="selectImg"
+              :radius="'rounded-3xl'"
+              :camera="true"
+              :text="'選取圖片'"
+              :inputImg="'border-2 border-white bg-white incircle'"
+          ></select-img>
+        </div>
         <div class="approve">
           <div class="approveIcon"></div>
           <p>已認證藝人</p>
@@ -237,8 +245,55 @@ export default {
   /* border:1px solid red; */
   margin: 30px 0 0 0;
 }
+.selectImg{
+    /* border:1px solid red; */
+    position: absolute;
+    top:0;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+}
 .artistPhoto{
+  /* border:1px solid red; */
   box-shadow:  0px 4px 5px rgba(0, 0, 0, 0.25);
+}
+:deep .outer{
+  /* border:1px solid red; */
+  background-color: transparent;
+}
+:deep .outer:hover{
+  /* border:1px solid red; */
+  background-color: #383838;
+  opacity: 0.85;
+}
+:deep .circle{
+  /* border:1px solid red; */
+  width: 50px;
+  height: 50px;
+  opacity: 0.75;
+}
+:deep .outer:hover .circle{
+   /* border:1px solid blue; */
+  width: 105px;
+  height: 105px;
+  background-color: #ffffff;
+}
+:deep .cameraIcom{
+  width: 30px;
+  height: 30px;
+}
+:deep .outer:hover .cameraIcom{
+  width: 50px;
+  height: 50px;
+  background-image: url("../assets/icon/camera_7b.svg");
+  opacity: 1;
+}
+:deep .cameraText{
+  display: none;
+}
+:deep .outer:hover .cameraText{
+  display: block;
+  color: #ffffff;
 }
 .approve{
     display: flex;

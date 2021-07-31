@@ -84,11 +84,6 @@ p.title{
    /* width: 300px; */
    margin: 5px 0 20px 0;
 }
-.picture{
-   /* width: 150px; */
-   /* height: 150px; */
-   /* text-align: center; */
-}
 .picture img{
    position: absolute;
    width: 150px;
