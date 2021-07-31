@@ -156,9 +156,9 @@ export default {
     },
     cCollapseFun (e) {
       if (this.cCollapse === true) {
-        e.target.setAttribute('class', 'router-link')
+        e.target.setAttribute('class', 'triangleOff')
       } else {
-        e.target.setAttribute('class', 'router-link')
+        e.target.setAttribute('class', 'triangleOn')
       }
       this.cCollapse = !this.cCollapse
     },
@@ -185,6 +185,12 @@ export default {
         document.querySelector('html').style.overflow = 'auto'
       } else if (window.innerWidth < 640 && htm === 'auto' && cons === 'transform: translateY(0)') {
         document.querySelector('html').style.overflow = 'hidden'
+      }
+      // 判斷Z-Index
+      if (window.innerWidth > 640) {
+        document.querySelector('nav').style.zIndex = '99'
+      } else {
+        document.querySelector('nav').style.zIndex = '101'
       }
     }
   },
@@ -233,6 +239,13 @@ export default {
   },
   created () {
     window.addEventListener('resize', this.myEventHandler)
+  },
+  mounted () {
+    if (window.innerWidth > 640) {
+      document.querySelector('nav').style.zIndex = '99'
+    } else {
+      document.querySelector('nav').style.zIndex = '101'
+    }
   }
 }
 </script>
@@ -247,7 +260,7 @@ export default {
     left: 0;
     height: 100vh;
     position: fixed;
-    z-index: 999;
+    z-index: 99px;
   }
   /* logo */
   .div_logo{
@@ -259,6 +272,8 @@ export default {
   .div_container{
     display: flex;
     flex-direction: column;
+    padding-bottom: 100px;
+    overflow-y: auto;
   }
   .img_icon{
     width: 20px;
@@ -357,6 +372,9 @@ export default {
   svg.img_icon{
     display: inline;
   }
+  ::-webkit-scrollbar {
+      display: none;
+    }
   /* rwd */
   /* for Aside */
   @media screen and (max-width: 640px) {
@@ -369,7 +387,7 @@ export default {
       left: 0;
       height: 60px;
       position: fixed;
-      z-index: 999;
+      z-index: 101;
     }
     .div_logo{
       margin:12px 0 0px 12px;
@@ -412,9 +430,6 @@ export default {
       margin: 20px 0;
       width: 210px;
       border-bottom: 2px solid #7B7B7B;
-    }
-    ::-webkit-scrollbar {
-      display: none;
     }
   }
 </style>

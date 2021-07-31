@@ -21,7 +21,17 @@
       <p v-if="editAlbum" class="text-sm text-gray-dark">{{ year }}・{{ num }}首歌・{{ totalTime }}</p>
       <p v-if="editMusic" class="text-sm text-gray-dark">{{ year }}・{{ totalTime }}</p>
       </div>
-      <div v-if="editDraft" class=" flex mt-4 absolute bottom-0 right-0 ">
+      <div v-if="editDraft" class=" flex mt-4 absolute top-[-60px] left-0 sm:hidden">
+        <div class="h5_icon flex flex-col items-center mr-3 cursor-pointer">
+          <span class="editIcon"></span>
+          <h5>編輯</h5>
+        </div>
+        <div class="h5_icon flex flex-col items-center cursor-pointer">
+          <span class="deleteIcon"></span>
+          <h5>刪除</h5>
+        </div>
+      </div>
+      <div v-if="editDraft" class=" hidden mt-4 absolute bottom- right-0 sm:flex">
         <div class="h5_icon flex flex-col items-center mr-3 cursor-pointer">
           <span class="editIcon"></span>
           <h5>編輯</h5>
@@ -50,7 +60,7 @@ export default {
   flex-shrink: 0;
 }
 .singleAlbum:last-child{
-      margin: 0 0 0 0;
+  margin: 0 0 0 0;
 }
 .editIcon{
     width: 18px;

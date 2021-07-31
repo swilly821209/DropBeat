@@ -48,7 +48,7 @@
       </swiper>
     </div>
     <base-title title="發起募資" class="mt-4 sm:mt-20 mb-5"></base-title>
-    <div class="flex flex-col w-full sm:flex-row">
+    <div class="flex flex-col w-full items-center sm:flex-row">
       <select-img
         class="w-[300px] mx-6 h-48 sm:w-8/12 sm:h-[400px]"
         :radius="'rounded-3xl'"
@@ -56,12 +56,12 @@
         :text="'選取圖片'"
         :inputImg="'border-2 border-white bg-white incircle'"
       ></select-img>
-      <div class="w-12/12 flex flex-col sm:w-4/12">
+      <div class="w-[340px] flex flex-col sm:w-4/12">
         <div class="flex justify-start sm:justify-around mb-4 mt-12 sm:mt-0">
           <p class="w-[100px] ml-[20px] sm:ml-0 sm:w-2/6 text-right text-gray-dark text-xl mr-3">封面縮圖：</p>
           <select-img
             class="w-[80px] h-[80px] sm:h-60 sm:w-8/12 flex"
-            :radius="'rounded-2xl'"
+            :radius="'rounded-3xl'"
             :camera="true"
             :inputImg="'border-2 border-white mt-2 bg-white incircle'"
           ></select-img>
@@ -81,7 +81,9 @@
       </div>
     </div>
     <base-title title="計畫介紹" class="mt-10 sm:mt-20 mb-5" :second="'second'"></base-title>
-    <textarea name="projectInfo" class="w-[295px] sm:w-full ml-[25px] sm:ml-[0px] h-[400px] sm:h-72 border-2 border-gray-light rounded-2xl resize-none pl-2 pt-2 focus:border-orange"></textarea>
+    <div class="flex justify-center mb-5">
+      <textarea name="projectInfo" class="w-[295px] sm:w-full ml-[5px] sm:ml-[0px] h-[400px] sm:h-72 border-2 border-gray-light rounded-2xl resize-none pl-2 pt-2 focus:border-orange"></textarea>
+    </div>
     <div class="flex justify-between">
       <base-title title="募資方案" :second="'second'" class="mb-5"></base-title>
       <div class="hidden arrow cursor-pointer sm:block">
@@ -149,12 +151,12 @@
               </div>
             </div>
             <!-- 內容 -->
-            <div class="flex mt-4 ml-[30px] w-[290px]">
+            <div class="flex mt-4 mx-auto w-[290px]">
               <label class="w-[90px] text-left text-xl text-gray-dark h-16">內容：</label>
               <textarea :value="fundsList[0].content" class="w-full ml-[-8px] mr-[4px] h-32 border-2 border-gray-lighten text-gray-light focus:outline-none resize-none rounded-lg pl-2 focus:border-orange"></textarea>
             </div>
             <!-- 限量 -->
-            <div class="flex mt-4 ml-[30px] w-[290px]">
+            <div class="flex mt-4 mx-auto w-[290px]">
               <label class="w-[90px] text-left text-xl text-gray-dark">限量：</label>
               <input :value="fundsList[0].quantity" class="w-full ml-[-8px] mr-[4px] border-2 border-gray-lighten text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
             </div>
