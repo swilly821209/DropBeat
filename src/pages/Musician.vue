@@ -91,14 +91,14 @@
   </div>
   <div class="range">
     <div class="flex justify-between mt-5">
-      <h4 class="t3">我的音樂</h4>
+      <h4 class="t3">我的專輯</h4>
       <div class="relative hidden sm:flex items-center top-[-8px] z-10 justify-between w-16" >
         <svg xmlns="http://www.w3.org/2000/svg" class="preArrow block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" class="nextArrow block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
       </div>
     </div>
     <div class="flex flex-col sm:flex-row justify-center sm:justify-start items-center sm:items-start mb-32">
-      <div class="flex flex-col justify-center items-center relative mr-4 sm:mr-12 fullWidth h-[100px] sm:h-full">
+      <div class="flex flex-coljustify-center items-center relative mr-0 sm:mr-12 fullWidth h-[100px] sm:h-full bg-[#B5B5B5]">
         <select-img
           class="addFile02"
           :file="true"
@@ -134,6 +134,10 @@
           ></album-item>
         </swiper-slide>
       </swiper>
+      <div class="relative flex sm:hidden items-center top-[10px] z-10 justify-between w-16" >
+        <svg xmlns="http://www.w3.org/2000/svg" class="preArrow block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="nextArrow block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
+      </div>
     </div>
     <!-- 專輯草稿 -->
     <base-title title="專輯草稿"></base-title>
@@ -154,8 +158,8 @@
       </swiper>
     </div>
     <!-- RWD  -->
-    <div class="justify-start items-start mb-32 flex sm:hidden mt-[50px]">
-      <swiper :slidesPerView="2" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="allFund h-[250px] mt-[-48px] w-full">
+    <div class="justify-start flex-col items-center mb-32 flex sm:hidden mt-[50px]">
+      <swiper :slidesPerView="2" :navigation="{nextEl: '.nextArrowA', prevEl: '.preArrowA'}" class="allFund h-[250px] mt-[-48px] w-full">
         <swiper-slide v-for="item in draftAblum" :key="item" class="singleFund top-12">
           <album-item class="singleAlbum"
             :editDraft="true"
@@ -169,6 +173,10 @@
           ></album-item>
         </swiper-slide>
       </swiper>
+      <div class="relative flex sm:hidden items-center top-[10px] z-10 justify-between w-16" >
+        <svg xmlns="http://www.w3.org/2000/svg" class="preArrowA block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="nextArrowA block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
+      </div>
     </div>
     <div class="flex justify-between mt-5">
       <h4 class="t3">我的音樂</h4>
@@ -178,7 +186,7 @@
       </div>
     </div>
     <div class="flex flex-col sm:flex-row justify-center sm:justify-start items-center sm:items-start mb-32">
-      <div class="flex flex-col justify-center items-center relative mr-4 sm:mr-12 fullWidth h-[100px] sm:h-full">
+      <div class="flex flex-col justify-center items-center relative mr-0 sm:mr-12 fullWidth h-[100px] sm:h-full bg-[#B5B5B5]">
         <select-img
           class="addFile02"
           :file="true"
@@ -201,7 +209,7 @@
         </swiper-slide>
       </swiper>
       <!-- 640以下 -->
-      <swiper :slidesPerView="2" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="allFund h-[250px] mt-[35px] w-full sm:hidden">
+      <swiper :slidesPerView="2" :navigation="{nextEl: '.nextArrows', prevEl: '.preArrows'}" class="allFund h-[250px] mt-[35px] w-full sm:hidden">
         <swiper-slide v-for="item in myMusic" :key="item" class="singleFund top-12">
           <album-item class="singleAlbum"
             :edit="true"
@@ -214,6 +222,10 @@
           ></album-item>
         </swiper-slide>
       </swiper>
+      <div class="relative flex sm:hidden items-center top-[10px] z-10 justify-between w-16" >
+        <svg xmlns="http://www.w3.org/2000/svg" class="preArrows block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="nextArrows block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
+      </div>
     </div>
     <!-- 音樂草稿  -->
     <base-title title="音樂草稿"></base-title>
@@ -233,8 +245,8 @@
       </swiper>
     </div>
     <!-- RWD  -->
-    <div class="justify-start items-start mb-0 flex sm:hidden mt-[50px]">
-      <swiper :slidesPerView="2" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="allFund h-[250px] mt-[-48px] w-full">
+    <div class="justify-start flex-col items-center mb-0 flex sm:hidden mt-[50px]">
+      <swiper :slidesPerView="2" :navigation="{nextEl: '.nextArrowM', prevEl: '.preArrowM'}" class="allFund h-[250px] mt-[-48px] w-full">
         <swiper-slide v-for="item in draftMusic" :key="item" class="singleFund top-12">
           <album-item class="singleAlbum"
             :editDraft="true"
@@ -247,6 +259,10 @@
           ></album-item>
         </swiper-slide>
       </swiper>
+      <div class="relative flex sm:hidden items-center top-[10px] z-10 justify-between w-16" >
+        <svg xmlns="http://www.w3.org/2000/svg" class="preArrowM block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="nextArrowM block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
+      </div>
     </div>
   </div>
 </template>
@@ -472,7 +488,7 @@ h4{
 .addFile02{
     width: 260px;
     height: 260px;
-    margin: 0 -15px 0 0;
+    /* margin: 0 -15px 0 0; */
 }
 .allFund{
   /* border:1px solid red; */
