@@ -4,35 +4,35 @@
       <!-- <router-link to="/Find">pre-arrow</router-link> -->
       <router-link to="/Find" class="preArrow"></router-link>
     </div>
-    <div class="artistContent flex space-x-10 items-center h-[360px]">
-      <div class="flex flex-col justify-center items-center space-y-4">
+    <div class="artistContent flex flex-col sm:flex-row space-x-0 sm:space-x-10 items-center h-[360px]">
+      <div class="flex flex-col justify-center items-center space-y-16 sm:space-y-4 ">
         <img class="artistPhoto rounded-full w-80 h-80 min-w-[320px]" src="https://akstatic.streetvoice.com/profile_images/er/ic/eric198853/Y3w4tbHRLXMLzFxUmW9bb7.jpg?x-oss-process=image/resize,m_fill,h_380,w_380,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg">
         <div class="approve">
           <div class="approveIcon"></div>
           <p>已認證藝人</p>
         </div>
       </div>
-      <div class=" h-1/2">
-        <h1 class="text-5xl text-white font-medium min-w-[400px]">告五人 Accusefive</h1>
-        <div>
-          <div class="count_share_follow flex items-start w-full justify-between">
-            <div class="flex w-80 justify-between">
+      <div class=" h-1/2 mt-[-80px] sm:mt-0">
+        <h1 class="text-[32px] sm:text-5xl text-black-backdrop sm:text-white font-medium w-full sm:min-w-[400px] flex justify-center sm:justify-start">告五人 Accusefive</h1>
+        <div class=" w-[340px] sm:w-full py-4">
+          <div class=" count_share_follow flex items-center sm:items-start w-full justify-between">
+            <div class="flex w-[200px] sm:w-80 justify-between">
               <div>
-                <p class="text-base text-black-backdrop">音樂</p>
+                <p class="text-sm sm:text-base text-black-backdrop">音樂</p>
                 <div class="countNum text-black-backdrop font-bold tracking-wider">16</div>
               </div>
               <div>
-                <p class="text-base text-black-backdrop">粉絲</p>
+                <p class="text-sm sm:text-base text-black-backdrop">粉絲</p>
                 <div class="countNum text-black-backdrop font-bold tracking-wider">68,250</div>
               </div>
             </div>
             <div class="share_follow">
-            <div class="share"></div>
-            <button
-              class="follow"
-              :class="{ clickfollow: follow }"
-              @click="follow = !follow"
-            >{{follow ? '正在關注' : '關注'}}</button>
+              <div class="share"></div>
+              <button
+                class="follow"
+                :class="{ clickfollow: follow }"
+                @click="follow = !follow"
+              >{{follow ? '正在關注' : '關注'}}</button>
             </div>
           </div>
           <p class="detail text-sm text-gray-dark ">告五人成立於2011年，2017年重新成團，2018年以首張EP《迷霧之子》獲得金音獎最佳新人。目前為主唱潘雲安、犬青及鼓手哲謙的三人編制， 男女雙主唱的迷人交錯聲線，帶給聽眾強烈的吸引力。</p>
@@ -40,13 +40,13 @@
       </div>
     </div>
   </div>
-  <div class="px-10 flex items-center">
-    <span class="border-t border-gray-light w-20 text-xs"></span>
+  <div class="px-5 sm:px-10 flex items-center mt-[220px] sm:mt-0">
+    <span class="border-t border-gray-light w-3/6 sm:w-20 text-xs"></span>
     <div class="min-w-[198px] px-5 flex justify-evenly">
       <router-link to="/Artist/:id/ArtistHome" :class="{active: page === '主頁'}"  @click="active" class="bookmark rounded-2xl border-2 border-gray-default text-gray-dark hover:border-orange hover:text-orange">主頁</router-link>
       <router-link to="/Artist/:id/ArtistMusic" :class="{active: page === '音樂'}"  @click="active" class="bookmark rounded-2xl border-2 border-gray-default text-gray-dark hover:border-orange hover:text-orange">音樂</router-link>
     </div>
-    <span class="border-t border-gray-light w-full"></span>
+    <span class="border-t border-gray-light w-3/6 sm:w-full"></span>
   </div>
   <router-view></router-view>
 </template>
@@ -82,6 +82,7 @@ export default {
   box-shadow:  0px 4px 5px rgba(0, 0, 0, 0.25);
 }
 .approve{
+  /* border:1px solid red; */
     display: flex;
     align-items: center;
 }
@@ -101,6 +102,15 @@ export default {
 .countNum{
   font-size: 40px;
   margin: -5px 0 0 0;
+}
+@media screen and (max-width: 640px){
+  .preArrow{
+    left:25px
+  }
+  .countNum{
+    font-size: 34px;
+    margin: -5px 0 0 0;
+  }
 }
 .share_follow{
   display: flex;

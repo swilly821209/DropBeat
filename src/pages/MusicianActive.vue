@@ -1,9 +1,10 @@
 <template>
   <div class="range">
-    <div class="flex justify-between ">
+    <div class="flex justify-between mt-5 ml">
       <base-title title="活動管理" admin></base-title>
     </div>
-    <div class="flex">
+    <!-- 640以上顯示 -->
+    <div class="hidden sm:flex">
       <span class="cursor-pointer transition translate hover:-translate-x-0.5 self-center" @click="leftFun">
           <svg xmlns="http://www.w3.org/2000/svg" width="25" height="40" viewBox="0 0 25 40">
               <path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" :fill="arrLeftColor"/>
@@ -14,7 +15,6 @@
           <activity-item
             class="w-full"
             v-for="item in activeDatas"
-            :imgWidth="'width:95%;'"
             :check="true"
             :edit="true"
             :col="'col'"
@@ -34,38 +34,54 @@
           </svg>
       </span>
     </div>
+    <!-- 640以下顯示 -->
+    <div class="sm:hidden block mt-5">
+      <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="mr-0 sm:mr-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="preIcon preArrow" width="20" height="23.077" viewBox="0 0 15 23.077"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(0 23.077) rotate(-90)" fill="currentColor"/></svg>
+        <swiper-slide v-for="item in activeDatas" :key="item.title" class="flex justify-center">
+          <activity-item
+            :edit="'edit'"
+            class="max-w-[340px] mr-[2px]"
+            :img="item.imgSrc"
+            :title="item.title"
+            :time="item.time"
+            :city="item.city"
+            :location="item.location"
+            :singerImg="item.singerImg"
+            :singer="item.singer">
+          </activity-item>
+        </swiper-slide>
+        <svg xmlns="http://www.w3.org/2000/svg" class="nextIcon nextArrow" width="20" height="18.961" viewBox="0 0 13.72 18.961"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(15 -2.058) rotate(90)" fill="currentColor"/></svg>
+      </swiper>
+    </div>
     <h4>發起活動</h4>
-    <div class="flex ">
+    <div class="flex flex-col sm:flex-row">
       <select-img
         :radius="'rounded-3xl'"
         :camera="true"
         :text="'選取圖片'"
         :inputImg="'border-2 border-white bg-white incircle'"
       ></select-img>
-      <div class="content flex flex-col justify-center ">
-        <div class=" flex ">
+      <div class="content flex flex-col justify-center">
+        <div class=" flex mt-3 sm:mt-0 w-[320px] sm:w-full">
           <label for="topicName" class="textTitle text-right text-gray-dark text-lg mr-3">活動主題：</label>
           <input name="topicName" id="topicName" type="text" style="color:#7b7b7b" class="textLine border-b-2 border-gray-default focus:outline-none focus:border-orange text-gray-light">
         </div>
-        <!-- <div class="flex mt-4">
-          <label for="topic" class="textTitle text-right text-gray-dark text-xl mr-3"></label>
-          <input name="topic" id="topic" type="text" class="textLine border-b-2 border-gray-default focus:outline-none focus:border-orange text-gray-light">
-        </div> -->
-        <div class="flex mt-4">
+        <div class="flex mt-4 w-[320px] sm:w-full">
           <label for="date" class="textTitle text-right text-gray-dark text-lg mr-3">活動日期：</label>
-          <input name="date" id="date" type="date" value="2021-08-08" @change="changeColor" style="color:#7b7b7b" class="textLine border-b-2 border-gray-default focus:outline-none focus:border-orange text-transparent font-bold">
+          <input name="date" id="date" type="date" value="2021-08-08" @change="changeColor" style="color:#7b7b7b" class="bg-white sm:bg-opacity-0 textLine border-b-2 border-gray-default focus:outline-none focus:border-orange text-transparent font-bold">
         </div>
-        <div class="flex mt-4">
+        <div class="flex mt-4 w-[320px] sm:w-full">
           <label for="time" class="textTitle text-right text-gray-dark text-lg mr-3">活動時間：</label>
-          <input name="time" id="time" type="time" @change="changeColor" style="color:#7b7b7b" class="textLine border-b-2 border-gray-default focus:outline-none focus:border-orange text-transparent font-bold">
+          <input name="time" id="time" type="time" @change="changeColor" style="color:#7b7b7b" class="bg-white sm:bg-opacity-0 textLine border-b-2 border-gray-default focus:outline-none focus:border-orange text-transparent font-bold">
         </div>
-        <div class="flex mt-4">
+        <div class="flex mt-4 w-[320px] sm:w-full">
           <label for="placeArea" class="textTitle text-right text-gray-dark text-lg mr-3">活動地點：</label>
-          <select name="placeArea" id="placeArea" style="color:#7b7b7b" class="textLine border-b-2 border-gray-default focus:outline-none focus:border-orange text-gray-light" >
+          <select name="placeArea" id="placeArea" style="color:#7b7b7b" class="bg-white sm:bg-opacity-0 textLine border-b-2 border-gray-default focus:outline-none focus:border-orange text-gray-light" >
             <option v-for="item in area" :key="item" :value="item">{{item}}</option>
           </select>
         </div>
-        <div class="flex mt-4 relative">
+        <div class="flex mt-4  w-[320px] sm:w-full relative">
           <label class="textTitle mr-3"></label>
           <label for="place" class="textLine">
             <input name="place" id="place" type="text" class="w-full border-b-2 border-gray-default text-gray-dark focus:outline-none focus:border-orange text-gray-light pl-1">
@@ -86,10 +102,18 @@
 </template>
 
 <script>
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import SwiperCore, { Navigation } from 'swiper/core'
+
 import ActivityItem from '../components/ActivityItem.vue'
 import SelectImg from '../components/SelectImg.vue'
+
+SwiperCore.use([Navigation])
+
 export default {
   components: {
+    Swiper,
+    SwiperSlide,
     ActivityItem,
     SelectImg
   },
@@ -165,39 +189,39 @@ export default {
     cursor: default;
   }
   h4{
-  font-size: 32px;
-  font-weight: 500;
-  color:#383838;
-  cursor:default;
-  margin: 70px 0 30px 0;
-}
-h5{
+    font-size: 32px;
+    font-weight: 500;
+    color:#383838;
+    cursor:default;
+    margin: 70px 0 30px 0;
+  }
+  h5{
     margin: 40px 0 10px 5px;
-}
+  }
   :deep .outer{
-  width: 665px;
-  height: 380px;
-}
-.content{
-  /* border:1px solid red; */
-  width: calc(100% - 665px);
-  padding: 0 0 0 20px;
-}
-.textTitle{
-    width: 100px;
-}
-.textLine{
-    width: calc(100% - 120px);
-}
-.cancelBtn{
-  height: 30px;
-  width: 55px;
-}
-.submitBtn{
-  height: 30px;
-  width: 90px;
-  margin: 0 0 0 10px;
-}
+    width: 665px;
+    height: 380px;
+  }
+  .content{
+    /* border:1px solid red; */
+    width: calc(100% - 665px);
+    padding: 0 0 0 20px;
+  }
+  .textTitle{
+      width: 100px;
+  }
+  .textLine{
+      width: calc(100% - 120px);
+  }
+  .cancelBtn{
+    height: 30px;
+    width: 55px;
+  }
+  .submitBtn{
+    height: 30px;
+    width: 90px;
+    margin: 0 0 0 10px;
+  }
   div[col=col]{
     flex-direction: column;
     width: 100%;
@@ -219,16 +243,49 @@ h5{
     display: flex;
     position: relative;
     width: 100%;
-    height: 430px;
+    height: 440px;
     overflow: hidden;
     /* border: 1px solid red; */
   }
   .inners{
     display: flex;
     width: 200%;
-    height: 430px;
+    height: 440px;
     transition: all 1s;
     position: absolute;
     /* transform: translateX(-50%); */
+  }
+  ::v-deep .imgWidth{
+    width: 95%;
+  }
+  @media screen and (max-width:640px) {
+    .preIcon {
+      @apply text-gray-light absolute top-1/2 z-10 left-0 cursor-pointer
+    }
+    .nextIcon{
+      @apply text-gray-light absolute top-1/2 z-10 right-0 cursor-pointer
+    }
+    .swiper-button-disabled {
+      @apply text-gray-default
+    }
+    ::v-deep .join{
+      display: none;
+    }
+    ::v-deep .editclass{
+      width: 270px;
+      padding-right: 0px;
+    }
+    ::v-deep .title00{
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    ::v-deep .titleNline h2{
+      font-size:30px;
+      font-weight: bold;
+    }
+    ::v-deep .outer{
+      width: 100%;
+      height: 200px;
+    }
   }
 </style>

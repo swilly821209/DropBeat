@@ -89,7 +89,7 @@
             :location="item.location"
             :singerImg="item.singerImg"
             :singer="item.singer">
-        </activity-item>
+          </activity-item>
        </swiper-slide>
      </swiper>
   </div>

@@ -30,11 +30,11 @@
         </music-item> -->
         <!-- <swiper :slidesPerView="4" :direction="'vertical'" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="w-[700px] h-[400px] m-0"> -->
         <swiper :slidesPerView="4" :direction="'vertical'" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="misicSwipe h-[400px] m-0">
-          <div class="up_down navigations space-y-2 absolute z-10">
+          <div class="up_down navigations space-y-2 absolute z-10 hidden sm:block">
             <svg xmlns="http://www.w3.org/2000/svg" class="preArrow block text-gray-light cursor-pointer" width="20" height="17" viewBox="0 0 20 17"><path id="up" d="M9.138,1.465a1,1,0,0,1,1.724,0l8.252,14.028A1,1,0,0,1,18.252,17H1.748a1,1,0,0,1-.862-1.507Z" fill="currentColor"/></svg>
             <svg xmlns="http://www.w3.org/2000/svg" class="nextArrow block text-gray-light cursor-pointer" width="20" height="17" viewBox="0 0 20 17"><path id="up" d="M9.138,1.465a1,1,0,0,1,1.724,0l8.252,14.028A1,1,0,0,1,18.252,17H1.748a1,1,0,0,1-.862-1.507Z" transform="translate(20 17) rotate(180)" fill="currentColor"/></svg>
           </div>
-          <swiper-slide  v-for="item in musicItems" :key="item.num" class="left-[10%] w-10/12">
+          <swiper-slide  v-for="item in musicItems" :key="item.num" class="sm:left-[10%] w-full sm:w-10/12">
             <music-item
               :num="item.num"
               :musicName="item.name"
@@ -45,10 +45,13 @@
             </music-item>
           </swiper-slide>
         </swiper>
+        <div class="flex justify-center items-center bg-[#EDEDED] rounded-xl sm:hidden">
+          <span class="text-[#7B7B7B]">more</span>
+        </div>
       </div>
     </div>
     <h3 class="title02 text-2xl text-black-backdrop">所有專輯</h3>
-    <div class="flex justify-between">
+    <!-- <div class="flex justify-between">
       <album-item
         v-for="item in albumData"
         :key="item.albumName"
@@ -58,17 +61,41 @@
         :num="item.num"
         :totalTime="item.totalTime">
       </album-item>
-    </div>
+    </div> -->
+    <!-- 640以上 -->
+    <swiper :slidesPerView="4" :spaceBetween="20" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="w-full h-full hidden sm:block">
+      <swiper-slide v-for="item in albumData" :key="item">
+        <album-item
+          :albumName="item.albumName"
+          :img="item.img"
+          :year="item.year"
+          :num="item.num"
+          :totalTime="item.totalTime">
+        </album-item>
+      </swiper-slide>
+    </swiper>
+    <!-- 640以下 -->
+    <swiper :slidesPerView="2" :spaceBetween="20" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="w-full h-full block sm:hidden">
+      <swiper-slide v-for="item in albumData" :key="item">
+        <album-item
+          :albumName="item.albumName"
+          :img="item.img"
+          :year="item.year"
+          :num="item.num"
+          :totalTime="item.totalTime">
+        </album-item>
+      </swiper-slide>
+    </swiper>
     <h3 class="title03 text-2xl text-black-backdrop ">所有音樂</h3>
-    <div class="flex items-center ">
+    <div class="hidden sm:flex items-center ">
       <song-info></song-info>
       <song-lyrics></song-lyrics>
     </div>
     <!-- <message-board class="message"></message-board> -->
     <!-- <div class="flex flex-wrap justify-around">
       <single-music v-for="item in 12" :key="item"></single-music> -->
-    <message-board class="message"></message-board>
-    <div class="single-music-carousel">
+    <message-board class="message hidden sm:block"></message-board>
+    <div class="single-music-carousel hidden sm:block">
       <swiper :slidesPerView="5" :slidesPerColumn="2" :spaceBetween="20" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}"
               class="w-full h-full">
         <div class=" absolute flex items-center top-0 right-5 z-10 space-x-3">
@@ -80,6 +107,22 @@
         </swiper-slide>
       </swiper>
     </div>
+    <swiper :slidesPerView="4" :direction="'vertical'" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="flex items-center h-[400px] m-0 sm:hidden">
+      <div class="up_down navigations space-y-2 absolute z-10 hidden sm:block">
+        <svg xmlns="http://www.w3.org/2000/svg" class="preArrow block text-gray-light cursor-pointer" width="20" height="17" viewBox="0 0 20 17"><path id="up" d="M9.138,1.465a1,1,0,0,1,1.724,0l8.252,14.028A1,1,0,0,1,18.252,17H1.748a1,1,0,0,1-.862-1.507Z" fill="currentColor"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="nextArrow block text-gray-light cursor-pointer" width="20" height="17" viewBox="0 0 20 17"><path id="up" d="M9.138,1.465a1,1,0,0,1,1.724,0l8.252,14.028A1,1,0,0,1,18.252,17H1.748a1,1,0,0,1-.862-1.507Z" transform="translate(20 17) rotate(180)" fill="currentColor"/></svg>
+      </div>
+      <swiper-slide  v-for="item in musicItems" :key="item.num" class="sm:left-[10%] w-full sm:w-10/12">
+        <music-item
+          :num="item.num"
+          :musicName="item.name"
+          :singer="item.singer"
+          :totalSecond="item.musicTime"
+          :playCounter="item.playCounter"
+          :likeCounter="item.likeCounter">
+        </music-item>
+      </swiper-slide>
+    </swiper>
   </div>
 </template>
 
@@ -250,7 +293,7 @@ export default {
 <style scoped>
   .range{
     /* border:1px solid red; */
-    padding: 60px 40px 10px 40px;
+    padding: 60px 20px 10px 20px;
   }
   /* a{
     background: black;
@@ -312,15 +355,33 @@ export default {
   }
   @media screen and (max-width: 1300px) {
     .single-music-carousel{
-    height: 580px;
+      height: 580px;
+    }
+    .single-music-carousel .swiper-slide{
+      height: calc((100% - 90px) / 2);
+      margin: 10px 0 0 0;
+    }
   }
-  .single-music-carousel .swiper-slide{
-    height: calc((100% - 90px) / 2);
-    margin: 10px 0 0 0;
+  @media screen and (max-width: 640px) {
+    .block01{
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .block01_1{
+      width: 100%;
+    }
+    .block01_2{
+      width: 100%;
+      margin-top: 20px;
+    }
+    .title03{
+      margin: 30px 0 30px 0;
+    }
+    ::v-deep .div_album_info{
+      margin: -35px 0 0 65px;
+    }
   }
-}
-
-.swiper-button-disabled {
-  @apply text-gray-default
-}
+  .swiper-button-disabled {
+    @apply text-gray-default
+  }
 </style>
