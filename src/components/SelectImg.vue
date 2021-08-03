@@ -27,7 +27,7 @@
       </div>
       <p class="cameraText text-base text-white transition-all">{{text}}</p>
     </div>
-    <input type="file" class="w-full h-full absolute rounded-3xl opacity-0 cursor-pointer">
+    <input type="file" @change="fileChange" class="w-full h-full absolute rounded-3xl opacity-0 cursor-pointer">
   </div>
 </template>
 
@@ -36,6 +36,18 @@ export default {
   props: ['radius', 'camera', 'file', 'album', 'text', 'inputImg'],
   data () {
     return {
+    }
+  },
+  methods: {
+    async fileChange (e) {
+      const t = e.target.files
+      const form = new FormData()
+      console.log(t)
+      form.append('file', e.target.files[0])
+      await fetch('FileUpload/SingleFile.php', {
+        method: 'POST',
+        body: form
+      })
     }
   }
 }

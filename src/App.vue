@@ -30,7 +30,6 @@ export default {
 * {
   box-sizing: border-box;
   text-decoration: none;
-  list-style: none;
   font-family: "Roboto", 'Noto Sans TC';
 }
 html, body {

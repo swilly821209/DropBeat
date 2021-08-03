@@ -96,7 +96,7 @@
   <div class="sm:hidden block mt-10">
     <base-title title="Crowdfunding 募資計畫" link to="/Funds"></base-title>
       <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="mt-[30px]">
-       <svg xmlns="http://www.w3.org/2000/svg" class="preIcon preArrow" width="15" height="23.077" viewBox="0 0 15 23.077"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(0 23.077) rotate(-90)" fill="currentColor"/></svg>
+       <svg xmlns="http://www.w3.org/2000/svg" class="preIcon preArrow" width="13.72" height="18.96" viewBox="0 0 13.72 18.961"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(0 23.077) rotate(-90)" fill="currentColor"/></svg>
        <svg xmlns="http://www.w3.org/2000/svg" class="nextIcon nextArrow" width="13.72" height="18.961" viewBox="0 0 13.72 18.961"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(15 -2.058) rotate(90)" fill="currentColor"/></svg>
        <swiper-slide v-for="item in fundItems"  :key="item.title">
          <fund-item
@@ -402,10 +402,10 @@ export default {
     }
   }
 .preIcon {
-  @apply text-gray-light absolute top-1/2 z-10 left-0 cursor-pointer
+  @apply text-gray-light absolute top-1/3 z-10 left-0 cursor-pointer fill-current w-5 h-5
 }
 .nextIcon{
-  @apply text-gray-light absolute top-1/2 z-10 right-0 cursor-pointer
+  @apply text-gray-light absolute top-1/3 z-10 right-0 cursor-pointer
 }
 .swiper-button-disabled {
   @apply text-gray-default

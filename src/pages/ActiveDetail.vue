@@ -8,16 +8,18 @@
       </div>
     </div>
     <div class="block01">
+      <h3 class="sm:hidden block mb-5">{{activeTitle}}</h3>
       <div class="banner"></div>
       <div class="title01">
-        <h3>{{activeTitle}}</h3>
+        <h3 class="sm:block hidden">{{activeTitle}}</h3>
         <div class="share_join">
           <div class="share"></div>
           <button
-          class="join"
-          :class="{ clickjoin: active }"
-          @click="active = !active"
-        >{{active ? '參加' : '想參加'}}</button>
+            class="join"
+            :class="{ clickjoin: active }"
+            @click="active = !active">
+            {{active ? '參加' : '想參加'}}
+          </button>
         </div>
         <div class="hr"></div>
         <div class="day"><div class="dayicon"></div><p>2021 年 10 月 10 日・星期日・20:00</p></div>
@@ -34,6 +36,13 @@
     <div class="block02">
       <h4>活動介紹</h4>
       <div class="content"><p>{{activeContent}}</p></div>
+      <ul class="text-gray-dark list-disc text-[14px] mt-20 list-inside">
+        <li>演出日期: {{activeDate}}</li>
+        <li>演出時間: {{activeTime}}</li>
+        <li class="truncate">演出地點: {{activeLocation}}</li>
+        <li>演出者: {{singer}}</li>
+        <li>票價: {{price}}</li>
+      </ul>
     </div>
     <message-board class="message"></message-board>
   </div>
@@ -56,12 +65,12 @@ export default {
 
 大象體操2021年度單曲《穿過夜晚》，創作始於與日本樂團toe在疫情期間舉辦的線上合作演出。
 與toe的團員討論後，取樣其經典曲目 “Two Moons” 的木吉他音軌重新創作，為探討夢境作為主題的下一張專輯揭開序幕。
-
-● 演出日期：2021 年 10 月 10 日（日）
-● 演出時間：19:30進場 20:00演出
-● 演出地點：台北 海邊的卡夫卡（台北市中正區羅斯福路三段244巷2號2樓）
-● 演出者：大象體操
-● 票價：預售票700元 / 現場票800元`
+`,
+      activeDate: '2021 年 10 月 10 日（日）',
+      activeTime: '19:30進場 20:00演出',
+      activeLocation: '台北 海邊的卡夫卡（台北市中正區羅斯福路三段244巷2號2樓)',
+      singer: '大象體操',
+      price: '預售票700元 / 現場票800元'
     }
   },
   components: {
@@ -71,10 +80,6 @@ export default {
 </script>
 
 <style scoped>
-.range {
-  /* border: 1px solid red; */
-  padding: 60px 40px 10px 40px;
-}
 .pre {
   /* border: 1px solid red; */
   display: flex;
@@ -134,7 +139,7 @@ h2 {
 }
 h3{
   font-size: 22px;
-  margin: 0 0 0 5px;
+  margin-left: 5px;
 }
 .share_join{
   display: flex;
@@ -155,6 +160,21 @@ h3{
   border: 2px solid #b5b5b5;
   background-color: #b5b5b5;
   background-image: url("../assets/icon/share_fff.svg");
+}
+@media (max-width: 640px) {
+  .block01 {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .banner {
+    width: 345px;
+    height: 170px;
+    margin: 0 auto;
+  }
+  .title01{
+    width: 100%
+  }
 }
 .join{
   background-color: #ff9d83;
@@ -260,5 +280,10 @@ h4{
 }
   .message{
         margin: 50px 0 0 0;
+  }
+  @media (max-width: 640px) {
+    .content {
+      white-space:normal;
+    }
   }
 </style>
