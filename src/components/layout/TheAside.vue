@@ -408,6 +408,7 @@ export default {
     }
     .login{
       display: inline;
+      margin: 0 0 15px 0;
     }
     .close{
       display: inline;
