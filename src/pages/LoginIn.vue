@@ -3,8 +3,8 @@
   <div id="app">
     <div class="container">
       <p class="title">會員登入</p>
-      <input type="text" placeholder="請輸入帳號名稱 / 電子郵件" class="account">
-      <input type="password" placeholder="密碼" class="password">
+      <input type="text" placeholder="請輸入帳號名稱 / 電子郵件" class="account" v-model="member.account">
+      <input type="password" placeholder="密碼" class="password" v-model="member.pwd">
       <p class="fail">登入失敗, 請輸入正確的帳號與密碼！</p>
       <div class="login_txt ">
         <div class="first">
@@ -17,7 +17,8 @@
           <a href="#" class="text-sm text-gray-dark hover:text-orange">忘記密碼？</a>
         </div>
       </div>
-      <router-link to="/" @click="login" class="text-red-400 block login_btn">登入</router-link>
+      <!-- <router-link to="/" @click="login" class="text-red-400 block login_btn">登入</router-link> -->
+      <button @click="login" class="text-red-400 block login_btn">登入</button>
       <a href="#" class="community">
         <div class="icon_container">
           <svg xmlns="http://www.w3.org/2000/svg" width="30" height="50" viewBox="0 0 50.304 50"><path id="Icon_awesome-facebook" data-name="Icon awesome-facebook" d="M50.867,25.715A25.152,25.152,0,1,0,21.785,50.563V32.985H15.4V25.715h6.389V20.173c0-6.3,3.753-9.785,9.5-9.785a38.708,38.708,0,0,1,5.631.491v6.187H33.743c-3.124,0-4.1,1.939-4.1,3.928v4.721H36.62L35.5,32.985h-5.86V50.563A25.161,25.161,0,0,0,50.867,25.715Z" transform="translate(-0.563 -0.563)" fill="#305ea7"/></svg>
@@ -38,17 +39,44 @@
 
 <script>
 export default {
+  data () {
+    return {
+      member: {
+        account: '',
+        pwd: ''
+      },
+      users: [],
+      container: ''
+    }
+  },
   methods: {
-    login () {
-      this.$store.dispatch('login', true)
+    async login () {
+      // this.$store.dispatch('login', true)
+      const form = new FormData()
+      form.append('account', this.member.account)
+      form.append('password', this.member.pwd)
+      const response = await fetch('http://localhost/DropbeatBackend/login.php', {
+        method: 'POST',
+        body: form
+      })
+      const responseData = await response.json()
+      console.log(responseData)
     }
   }
+  // ----------------------------
+  // async created () {
+  //   const res = await fetch('http://localhost/DropbeatBackend/login.php')
+  //   const resdata = await res.json()
+  //   console.log(res)
+  //   console.log(resdata)
+  // }
 }
 </script>
 
 <style scoped>
 #app{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }

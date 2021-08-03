@@ -98,7 +98,7 @@
       </div>
     </div>
     <div class="flex flex-col sm:flex-row justify-center sm:justify-start items-center sm:items-start mb-32">
-      <div class="flex flex-coljustify-center items-center relative mr-0 sm:mr-12 fullWidth h-[100px] sm:h-full bg-[#B5B5B5]">
+      <div class="flex flex-col justify-center items-center relative mr-0 sm:mr-12 fullWidth h-[100px] sm:h-full bg-[#B5B5B5]">
         <select-img
           class="addFile02"
           :file="true"

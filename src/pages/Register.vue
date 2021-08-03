@@ -2,28 +2,28 @@
   <div id="app">
     <div class="member_container" >
       <p class="member_title">會員註冊</p>
-      <input type="text" placeholder="請輸入帳號名稱" />
-      <input type="email" placeholder="信箱" />
-      <input type="password" placeholder="密碼" />
-      <input type="password" placeholder="確認密碼" />
+      <input type="text" name="account" v-model="member.account" placeholder="請輸入帳號名稱" />
+      <input type="email" name="email" v-model="member.email" placeholder="信箱" />
+      <input type="password" name="pwd" v-model="member.pwd" placeholder="密碼" />
+      <input type="password" v-model="member.pwd2" placeholder="確認密碼" />
       <div class="birthdayAll">
         <p class="birthday">生日：</p>
-        <form>
-          <select>
-            <option disabled >年</option>
-            <option value="year" v-for="year in years" :key="year" class="w-6/12">{{1949+year}} 年</option>
+        <div class="birth">
+          <select v-model="year">
+            <option disabled>年</option>
+            <option :value="1949+year" v-for="year in years" :key="year" class="w-6/12">{{1949+year}} 年</option>
           </select>
-          <select>
+          <select v-model="month">
             <option  disabled >月</option>
-            <option value="month" v-for="month in months" :key="month.months" class="w-3/12">{{month}} 月</option>
+            <option :value="month" v-for="month in months" :key="month.months" class="w-3/12">{{month}} 月</option>
           </select>
-          <select>
+          <select v-model="date">
             <option  disabled >日</option>
-            <option value="day" v-for="day in days" :key="day" class="w-3/12">{{day}} 日</option>
+            <option :value="day" v-for="day in days" :key="day" class="w-3/12">{{day}} 日</option>
           </select>
-        </form>
+        </div>
       </div>
-      <a href="#" class="registered">註冊</a>
+      <button type="button" class="registered" @click="sendData">註冊</button>
       <a href="#" class="community">
         <div class="icon_container">
           <svg xmlns="http://www.w3.org/2000/svg" width="30" height="50" viewBox="0 0 50.304 50"><path id="Icon_awesome-facebook" data-name="Icon awesome-facebook" d="M50.867,25.715A25.152,25.152,0,1,0,21.785,50.563V32.985H15.4V25.715h6.389V20.173c0-6.3,3.753-9.785,9.5-9.785a38.708,38.708,0,0,1,5.631.491v6.187H33.743c-3.124,0-4.1,1.939-4.1,3.928v4.721H36.62L35.5,32.985h-5.86V50.563A25.161,25.161,0,0,0,50.867,25.715Z" transform="translate(-0.563 -0.563)" fill="#305ea7"/></svg>
@@ -48,7 +48,32 @@ export default {
     return {
       years: 101,
       months: 12,
-      days: 31
+      days: 31,
+      member: {
+        account: '',
+        email: '',
+        pwd: '',
+        pwd2: ''
+      }
+    }
+  },
+  computed: {
+    birthday () {
+      return `${this.year}-${this.month}-${this.date}`
+    }
+  },
+  methods: {
+    sendData () {
+      const form = new FormData()
+      form.append('id', Math.floor(Math.random() * 9999))
+      form.append('account', this.member.account)
+      form.append('email', this.member.email)
+      form.append('pwd', this.member.pwd)
+      form.append('birthday', this.birthday)
+      fetch('http://localhost/DropbeatBackend/register.php', {
+        method: 'POST',
+        body: form
+      })
     }
   }
 }
@@ -113,7 +138,7 @@ input::-webkit-input-placeholder {
   /* margin-left: 80px; */
   /* margin-top: 5px; */
 }
-form {
+.birth {
   display: flex;
   justify-content: space-between;
 }
