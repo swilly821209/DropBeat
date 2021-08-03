@@ -38,7 +38,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 export default {
   data () {
     return {
@@ -49,27 +48,25 @@ export default {
       users: []
     }
   },
-  methods: {
-    login () {
-      axios.get('http://localhost/apiLogin.php').then(res => {
-        this.users = res.data
-        const accountBase = []
-        const pwdBase = []
-        this.users.forEach(element => { accountBase.push(element.account) })
-        this.users.forEach(element => { pwdBase.push(element.pwd) })
-        const thisNum = accountBase.indexOf(this.member.account)
-        if (accountBase[thisNum] === this.member.account) {
-          if (pwdBase[thisNum] === this.member.pwd) {
-            alert(`${this.member.account}您好，歡迎使用DROPBEAT！`)
-            this.$store.dispatch('login', true)
-          } else {
-            alert('密碼錯誤，請重新輸入！')
-          }
-        } else {
-          alert('帳號錯誤，請重新輸入！')
-        }
-      })
-    }
+  // methods: {
+  //   async login () {
+  //     // this.$store.dispatch('login', true)
+  //     const form = new FormData()
+  //     form.append('account', this.member.account)
+  //     form.append('password', this.member.pwd)
+  //     await fetch('http://localhost/DropbeatBackend/login.php', {
+  //       method: 'POST',
+  //       body: form
+  //     }).then(response => {
+  //       console.log(response)
+  //     })
+  //   }
+  // }
+  async created () {
+    const res = await fetch('http://localhost/DropbeatBackend/login.php')
+    const resdata = await res.json()
+    console.log(res)
+    console.log(resdata)
   }
 }
 </script>
