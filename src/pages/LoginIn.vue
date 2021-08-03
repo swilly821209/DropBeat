@@ -45,29 +45,31 @@ export default {
         account: '',
         pwd: ''
       },
-      users: []
+      users: [],
+      container: ''
     }
   },
-  // methods: {
-  //   async login () {
-  //     // this.$store.dispatch('login', true)
-  //     const form = new FormData()
-  //     form.append('account', this.member.account)
-  //     form.append('password', this.member.pwd)
-  //     await fetch('http://localhost/DropbeatBackend/login.php', {
-  //       method: 'POST',
-  //       body: form
-  //     }).then(response => {
-  //       console.log(response)
-  //     })
-  //   }
-  // }
-  async created () {
-    const res = await fetch('http://localhost/DropbeatBackend/login.php')
-    const resdata = await res.json()
-    console.log(res)
-    console.log(resdata)
+  methods: {
+    async login () {
+      // this.$store.dispatch('login', true)
+      const form = new FormData()
+      form.append('account', this.member.account)
+      form.append('password', this.member.pwd)
+      const response = await fetch('http://localhost/DropbeatBackend/login.php', {
+        method: 'POST',
+        body: form
+      })
+      const responseData = await response.json()
+      console.log(responseData)
+    }
   }
+  // ----------------------------
+  // async created () {
+  //   const res = await fetch('http://localhost/DropbeatBackend/login.php')
+  //   const resdata = await res.json()
+  //   console.log(res)
+  //   console.log(resdata)
+  // }
 }
 </script>
 
