@@ -62,7 +62,7 @@ export default {
     sendData (e) {
       e.preventDefault()
       console.log('sendData active !!')
-      axios.post('http://localhost/apiSign.php', {
+      axios.post('http://localhost/DropbeatBackend/Connection.php', {
         account: this.member.account,
         email: this.member.email,
         pwd: this.member.pwd

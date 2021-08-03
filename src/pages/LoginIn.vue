@@ -34,20 +34,6 @@
       <p class="line"></p>
       <span>還沒有帳號嗎？<router-link to="/Register" class="text-orange hover:text-blue-light ml-2">立即註冊</router-link></span>
     </div>
-    <hr>
-    <h2>ss</h2>
-    <table cellspacing="0" border="1px">
-      <tr>
-        <th>account</th>
-        <th>email</th>
-        <th>pwd</th>
-      </tr>
-      <tr v-for="item in users" :key="item">
-        <td>{{item.account}}</td>
-        <td>{{item.email}}</td>
-        <td>{{item.pwd}}</td>
-      </tr>
-    </table>
   </div>
 </template>
 

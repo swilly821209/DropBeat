@@ -52,7 +52,7 @@
       <ul>
         <li class="li_area_one login">
           <router-link to="/LoginIn">
-            <button class="border-2 bg-white border-gray-medium w-52 py-1 rounded-3xl  text-gray-dark hover:text-white hover:bg-orange hover:border-opacity-0">登入 / 註冊</button>
+            <button @click="lock" class="border-2 bg-white border-gray-medium w-52 py-1 rounded-3xl  text-gray-dark hover:text-white hover:bg-orange hover:border-opacity-0">登入 / 註冊</button>
           </router-link>
         </li>
         <li class="li_area_one" ref="find">
