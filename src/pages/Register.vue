@@ -9,17 +9,17 @@
       <div class="birthdayAll">
         <p class="birthday">生日：</p>
         <div class="birth">
-          <select>
-            <option disabled >年</option>
-            <option value="year" v-for="year in years" :key="year" class="w-6/12">{{1949+year}} 年</option>
+          <select v-model="year">
+            <option disabled>年</option>
+            <option :value="1949+year" v-for="year in years" :key="year" class="w-6/12">{{1949+year}} 年</option>
           </select>
-          <select>
+          <select v-model="month">
             <option  disabled >月</option>
-            <option value="month" v-for="month in months" :key="month.months" class="w-3/12">{{month}} 月</option>
+            <option :value="month" v-for="month in months" :key="month.months" class="w-3/12">{{month}} 月</option>
           </select>
-          <select>
+          <select v-model="date">
             <option  disabled >日</option>
-            <option value="day" v-for="day in days" :key="day" class="w-3/12">{{day}} 日</option>
+            <option :value="day" v-for="day in days" :key="day" class="w-3/12">{{day}} 日</option>
           </select>
         </div>
       </div>
@@ -42,7 +42,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 export default {
   name: 'app',
   data () {
@@ -58,26 +57,23 @@ export default {
       }
     }
   },
+  computed: {
+    birthday () {
+      return `${this.year}-${this.month}-${this.date}`
+    }
+  },
   methods: {
-    sendData (e) {
-      e.preventDefault()
-      console.log('sendData active !!')
-      axios.post('http://localhost/DropbeatBackend/Connection.php', {
-        account: this.member.account,
-        email: this.member.email,
-        pwd: this.member.pwd
+    sendData () {
+      const form = new FormData()
+      form.append('id', Math.floor(Math.random() * 9999))
+      form.append('account', this.member.account)
+      form.append('email', this.member.email)
+      form.append('pwd', this.member.pwd)
+      form.append('birthday', this.birthday)
+      fetch('http://localhost/DropbeatBackend/register.php', {
+        method: 'POST',
+        body: form
       })
-        .then(function (response) {
-          console.log(response)
-          alert('註冊成功！')
-        })
-        .catch(function (error) {
-          console.log(error)
-        })
-      this.member.account = ''
-      this.member.email = ''
-      this.member.pwd = ''
-      this.member.pwd2 = ''
     }
   }
 }

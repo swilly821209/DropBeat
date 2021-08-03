@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     login () {
-      axios.get('http://localhost/apiLogin.php').then(res => {
+      axios.get('http://localhost/DropbeatBackend/apiLogin.php').then(res => {
         this.users = res.data
         const accountBase = []
         const pwdBase = []
