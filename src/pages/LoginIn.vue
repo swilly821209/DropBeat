@@ -61,15 +61,9 @@ export default {
       })
       const responseData = await response.json()
       console.log(responseData)
+      console.log(responseData[0].account)
     }
   }
-  // ----------------------------
-  // async created () {
-  //   const res = await fetch('http://localhost/DropbeatBackend/login.php')
-  //   const resdata = await res.json()
-  //   console.log(res)
-  //   console.log(resdata)
-  // }
 }
 </script>
 

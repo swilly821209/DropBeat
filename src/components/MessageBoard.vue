@@ -19,11 +19,11 @@
     <div class="space-y-5">
       <the-message
         v-for="item in displayMessageData"
-        :key="item.message"
-        :memberImg="item.img"
-        :commentTime="item.time"
-        :memberName="item.memberName"
-        :memberMessage="item.message">
+        :key="item.content"
+        :memberImg="'https://akstatic.streetvoice.com/profile_images/sa/nd/sandwichfail/3fT9Y92afyjdDbtNEFb2rh.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg'"
+        :commentTime="item.setup_data"
+        :memberName="item.member"
+        :memberMessage="item.content">
       </the-message>
     </div>
     <div class="flex justify-end">
@@ -62,17 +62,18 @@ export default {
           img: 'https://akstatic.streetvoice.com/profile_images/sa/nd/sandwichfail/3fT9Y92afyjdDbtNEFb2rh.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
           message: '我是打倒三明治!!!!!!'
         }
-      ]
+      ],
+      nowArray: []
     }
   },
   computed: {
     displayMessageData () {
-      return this.memberMessageData.slice(0, this.displayNum)
+      return this.nowArray.slice(0, this.displayNum)
     }
   },
   methods: {
     displayMore () {
-      this.displayNum = this.memberMessageData.length
+      this.displayNum = this.nowArray.length
       this.moreButton = false
     },
     clearInput () {
@@ -80,14 +81,34 @@ export default {
     },
     commentMessage () {
       const messageData = {
-        memberName: 'willy',
-        time: new Date(),
+        member: 'willy',
+        setup_date: new Date(),
         img: 'https://akstatic.streetvoice.com/profile_images/sa/nd/sandwichfail/3fT9Y92afyjdDbtNEFb2rh.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
-        message: this.inputMessage
+        content: this.inputMessage
       }
       this.inputMessage = ''
-      this.memberMessageData.unshift(messageData)
+      this.nowArray.unshift(messageData)
+      // 傳後端
+      const form = new FormData()
+      form.append('message_id', Math.floor(Math.random() * 9999)) // message_id (DB是INT)
+      form.append('member', Math.floor(Math.random() * 9999)) // member_id (DB是INT)
+      form.append('musician', Math.floor(Math.random() * 9999)) // musician (DB是INT)
+      // form.append('setup_date', messageData.time)
+      form.append('content', messageData.content)
+      fetch('http://localhost/DropbeatBackend/mussage_mus_send.php', {
+        method: 'POST',
+        body: form
+      })
     }
+  },
+  async created () {
+    const response = await fetch('http://localhost/DropbeatBackend/mussage_mus_get.php')
+    const responseData = await response.json()
+    // 操作
+    responseData.forEach((item) => {
+      this.nowArray.unshift(item)
+    })
+    console.log(this.nowArray)
   }
 }
 </script>
