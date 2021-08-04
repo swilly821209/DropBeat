@@ -19,26 +19,15 @@
     <div class="space-y-5">
       <the-message
         v-for="item in displayMessageData"
-        :key="item.message"
-        :memberImg="item.img"
-        :commentTime="item.time"
-        :memberName="item.memberName"
-        :memberMessage="item.message">
-      </the-message>
-    </div>
-    <div class="flex justify-end">
-      <div @click="displayMore" v-if="moreButton" class=" text-lg text-gray-light text-right hover:text-blue-light cursor-pointer">...查看全部留言</div>
-    </div>
-    <hr>
-    <div class="space-y-5">
-      <the-message
-        v-for="item in nowArray"
         :key="item.content"
         :memberImg="'https://akstatic.streetvoice.com/profile_images/sa/nd/sandwichfail/3fT9Y92afyjdDbtNEFb2rh.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg'"
         :commentTime="item.setup_data"
         :memberName="item.member"
         :memberMessage="item.content">
       </the-message>
+    </div>
+    <div class="flex justify-end">
+      <div @click="displayMore" v-if="moreButton" class=" text-lg text-gray-light text-right hover:text-blue-light cursor-pointer">...查看全部留言</div>
     </div>
   </div>
 </template>
@@ -74,20 +63,17 @@ export default {
           message: '我是打倒三明治!!!!!!'
         }
       ],
-      textArray: []
+      nowArray: []
     }
   },
   computed: {
     displayMessageData () {
-      return this.memberMessageData.slice(0, this.displayNum)
-    },
-    nowArray () {
-      return []
+      return this.nowArray.slice(0, this.displayNum)
     }
   },
   methods: {
     displayMore () {
-      this.displayNum = this.memberMessageData.length
+      this.displayNum = this.nowArray.length
       this.moreButton = false
     },
     clearInput () {
@@ -101,7 +87,7 @@ export default {
         message: this.inputMessage
       }
       this.inputMessage = ''
-      this.memberMessageData.unshift(messageData)
+      this.nowArray.unshift(messageData)
       // 傳後端
       const form = new FormData()
       form.append('message_id', Math.floor(Math.random() * 9999)) // message_id (DB是INT)
@@ -118,10 +104,9 @@ export default {
   async created () {
     const response = await fetch('http://localhost/DropbeatBackend/mussage_mus_get.php')
     const responseData = await response.json()
-    console.log(responseData)
     // 操作
     responseData.forEach((item) => {
-      this.nowArray.push(item)
+      this.nowArray.unshift(item)
     })
     console.log(this.nowArray)
   }

@@ -65,7 +65,7 @@ export default {
   methods: {
     sendData () {
       const form = new FormData()
-      form.append('id', Math.floor(Math.random() * 9999))
+      // form.append('id', Math.floor(Math.random() * 9999))
       form.append('account', this.member.account)
       form.append('email', this.member.email)
       form.append('pwd', this.member.pwd)
