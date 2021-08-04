@@ -81,10 +81,10 @@ export default {
     },
     commentMessage () {
       const messageData = {
-        memberName: 'willy',
-        time: new Date(),
+        member: 'willy',
+        setup_date: new Date(),
         img: 'https://akstatic.streetvoice.com/profile_images/sa/nd/sandwichfail/3fT9Y92afyjdDbtNEFb2rh.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
-        message: this.inputMessage
+        content: this.inputMessage
       }
       this.inputMessage = ''
       this.nowArray.unshift(messageData)
@@ -94,7 +94,7 @@ export default {
       form.append('member', Math.floor(Math.random() * 9999)) // member_id (DB是INT)
       form.append('musician', Math.floor(Math.random() * 9999)) // musician (DB是INT)
       // form.append('setup_date', messageData.time)
-      form.append('content', messageData.message)
+      form.append('content', messageData.content)
       fetch('http://localhost/DropbeatBackend/mussage_mus_send.php', {
         method: 'POST',
         body: form
