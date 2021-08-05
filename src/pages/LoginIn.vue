@@ -5,7 +5,7 @@
       <p class="title">會員登入</p>
       <input type="text" placeholder="請輸入帳號名稱 / 電子郵件" class="account" v-model="member.account">
       <input type="password" placeholder="密碼" class="password" v-model="member.pwd">
-      <p class="fail">登入失敗, 請輸入正確的帳號與密碼！</p>
+      <p v-if="warn" class="text-xs justify-self-start w-[256px] text-orange">登入失敗, 請輸入正確的帳號與密碼！</p>
       <div class="login_txt ">
         <div class="first">
           <!-- <img class="uncheckbox" src="https://img.icons8.com/ios/50/000000/unchecked-checkbox.png"/>
@@ -41,6 +41,7 @@
 export default {
   data () {
     return {
+      warn: false,
       member: {
         account: '',
         pwd: ''
@@ -51,7 +52,6 @@ export default {
   },
   methods: {
     async login () {
-      // this.$store.dispatch('login', true)
       const form = new FormData()
       form.append('account', this.member.account)
       form.append('password', this.member.pwd)
@@ -61,7 +61,13 @@ export default {
       })
       const responseData = await response.json()
       console.log(responseData)
-      console.log(responseData[0].account)
+      if (responseData.length > 0) {
+        console.log('hi')
+        this.$store.dispatch('login', responseData[0][2])
+        this.$router.replace('/')
+      } else {
+        this.warn = true
+      }
     }
   }
 }
@@ -105,14 +111,6 @@ input:focus {
 }
 input::-webkit-input-placeholder {
   color: #b5b5b5;
-}
-p.fail{
-    /* opacity: 0; */
-    font-size: 12px;
-    color: #ff9d83;
-    margin: 0 0 25px 0;
-    display: none;
-    /* height: 30px; */
 }
 /* .uncheckbox{
     transform: scale(0.4);

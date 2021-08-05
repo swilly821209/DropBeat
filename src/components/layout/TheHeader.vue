@@ -7,17 +7,19 @@
   <router-link to="/LoginIn" v-if="!isLogin">
     <button class="border-2 bg-white border-gray-medium w-44 h-10 rounded-3xl  text-gray-dark hover:text-white hover:bg-orange hover:border-opacity-0  ">登入 / 註冊</button>
   </router-link>
-  <div v-else class="relative w-44 flex justify-between items-center border-2 border-gray-medium rounded-3xl inline-block">
+  <div v-else class="relative w-44 flex justify-between items-center border-2 border-current text-gray-light rounded-3xl inline-block hover:text-orange" :class="{'text-orange': detail}">
     <img class="w-9 h-9 rounded-full" src="https://akstatic.streetvoice.com/playlist_images/sv/mu/svmusic/EMGVjwN9cWkwgEFFKawTrh.jpeg?x-oss-process=image/resize,m_fill,h_380,w_380,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg">
-    <p>assusefive</p>
-    <router-link to="/AccountManage">
-      <div class="mr-3 cursor-pointer">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="12.5" viewBox="0 0 20 12.5"><path id="next" d="M8.438,1.952a2,2,0,0,1,3.123,0l5.839,7.3A2,2,0,0,1,15.839,12.5H4.161A2,2,0,0,1,2.6,9.251Z" transform="translate(20 12.5) rotate(180)" fill="#b5b5b5"/></svg>
-      </div>
-    </router-link>
-    <ul class="absolute w-44">
-      <li>帳號管理</li>
-      <li>登出</li>
+    <p class="text-gray-light">{{accountName}}</p>
+    <div class="mr-3 cursor-pointer transition-all" @click="openDetail" :class="[{'rotate-180': detail}, {'text-orange': detail}]">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="12.5" viewBox="0 0 20 12.5"><path id="next" d="M8.438,1.952a2,2,0,0,1,3.123,0l5.839,7.3A2,2,0,0,1,15.839,12.5H4.161A2,2,0,0,1,2.6,9.251Z" transform="translate(20 12.5) rotate(180)" fill="currentColor"/></svg>
+    </div>
+    <ul v-if="detail" class="bg-white text-gray-light absolute w-36 top-10 right-1 text-center p-2 border border-gray-default rounded-2xl leading-8">
+      <router-link to="/AccountManage" @click="openDetail">
+        <li class=" hover:text-orange border-b border-gray-default">帳號管理</li>
+      </router-link>
+      <router-link to="/" @click="logout">
+        <li class="hover:text-orange">登出</li>
+      </router-link>
     </ul>
   </div>
 </div>
@@ -27,12 +29,25 @@
 export default {
   data () {
     return {
+      detail: false
     }
   },
   computed: {
     isLogin () {
-      console.log(this.$store.getters.loginState)
       return this.$store.getters.loginState
+    },
+    accountName () {
+      return this.$store.getters.loginState
+    }
+  },
+  methods: {
+    openDetail () {
+      this.detail = !this.detail
+    },
+    logout () {
+      this.openDetail()
+      this.accountName = ''
+      this.$store.dispatch('login', false)
     }
   }
 }
