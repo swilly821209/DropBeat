@@ -7,18 +7,21 @@
         </div>
         <div class="flex items-center space-x-5">
             <img class=" rounded-full" src="https://akstatic.streetvoice.com/profile_images/sa/nd/sandwichfail/3fT9Y92afyjdDbtNEFb2rh.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg">
-            <textarea v-model="inputMessage" class="write text-gray-dark rounded-xl border-2 px-4 py-2 placeholder-gray-light focus:placeholder-opacity-0  border-gray-default focus:border-orange"
-                    placeholder="新增留言…
+            <textarea
+            :value="modelValue"
+            @input="$emit('update:modelValue', $event.target.value)"
+            class="write text-gray-dark rounded-xl border-2 px-4 py-2 placeholder-gray-light focus:placeholder-opacity-0  border-gray-default focus:border-orange"
+            placeholder="新增留言…
 留言內容含有污辱謾罵、人身攻擊、色情...等不當字眼字眼，管理員有權利刪除留言！"></textarea>
             <div class="space-x-2 flex">
-              <button @click="clearInput" class="rounded-3xl border-2 border-gray-default  text-sm text-gray-dark hover:text-orange hover:border-orange">取消</button>
-              <button @click="commentMessage" class="rounded-3xl border border-orange  text-sm text-white bg-orange hover:bg-blue-light hover:border-opacity-0">留言</button>
+              <button @click="nowClear" class="rounded-3xl border-2 border-gray-default  text-sm text-gray-dark hover:text-orange hover:border-orange">取消</button>
+              <button @click="nowMessage" class="rounded-3xl border border-orange  text-sm text-white bg-orange hover:bg-blue-light hover:border-opacity-0">留言</button>
             </div>
         </div>
     </div>
     <div class="space-y-5">
       <the-message
-        v-for="item in displayMessageData"
+        v-for="item in outerArray"
         :key="item.content"
         :memberImg="'https://akstatic.streetvoice.com/profile_images/sa/nd/sandwichfail/3fT9Y92afyjdDbtNEFb2rh.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg'"
         :commentTime="item.setup_data"
@@ -27,89 +30,50 @@
       </the-message>
     </div>
     <div class="flex justify-end">
-      <div @click="displayMore" v-if="moreButton" class=" text-lg text-gray-light text-right hover:text-blue-light cursor-pointer">...查看全部留言</div>
+      <div @click="nowDisplay" v-if="nowButton" class=" text-lg text-gray-light text-right hover:text-blue-light cursor-pointer">...查看全部留言</div>
     </div>
+    <hr>
   </div>
 </template>
 
 <script>
 import TheMessage from './TheMessage.vue'
 export default {
+  props: ['outerArray', 'nowDisplay', 'nowMessage', 'nowClear', 'nowButton', 'modelValue'],
+  emits: ['update:modelValue'],
   components: {
     TheMessage
   },
   data () {
     return {
-      moreButton: true,
-      inputMessage: '',
-      displayNum: 2,
-      memberMessageData: [
-        {
-          memberName: 'willy',
-          time: '2021-7-20 02:00:00',
-          img: 'https://akstatic.streetvoice.com/profile_images/sa/nd/sandwichfail/3fT9Y92afyjdDbtNEFb2rh.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
-          message: '我是打倒三明治!!!!!!'
-        },
-        {
-          memberName: 'willy',
-          time: '2021-2-22 02:00:00',
-          img: 'https://akstatic.streetvoice.com/profile_images/sa/nd/sandwichfail/3fT9Y92afyjdDbtNEFb2rh.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
-          message: '我是打倒三明治!!!!!!'
-        },
-        {
-          memberName: 'willy',
-          time: '2021-7-2 02:00:00',
-          img: 'https://akstatic.streetvoice.com/profile_images/sa/nd/sandwichfail/3fT9Y92afyjdDbtNEFb2rh.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
-          message: '我是打倒三明治!!!!!!'
-        }
-      ],
-      nowArray: []
+      // moreButton: true,
+      thisInput: ''
+      // displayNum: 2,
+      // nowArray: []
     }
   },
   computed: {
-    displayMessageData () {
-      return this.nowArray.slice(0, this.displayNum)
-    }
+    // displayMessageData () {
+    //   return this.nowArray.slice(0, this.displayNum)
+    // }
   },
   methods: {
-    displayMore () {
-      this.displayNum = this.nowArray.length
-      this.moreButton = false
-    },
-    clearInput () {
-      this.inputMessage = ''
-    },
-    commentMessage () {
-      const messageData = {
-        member: 'willy',
-        setup_date: new Date(),
-        img: 'https://akstatic.streetvoice.com/profile_images/sa/nd/sandwichfail/3fT9Y92afyjdDbtNEFb2rh.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
-        content: this.inputMessage
-      }
-      this.inputMessage = ''
-      this.nowArray.unshift(messageData)
-      // 傳後端
-      const form = new FormData()
-      form.append('message_id', Math.floor(Math.random() * 9999)) // message_id (DB是INT)
-      form.append('member', Math.floor(Math.random() * 9999)) // member_id (DB是INT)
-      form.append('musician', Math.floor(Math.random() * 9999)) // musician (DB是INT)
-      // form.append('setup_date', messageData.time)
-      form.append('content', messageData.content)
-      fetch('http://localhost/DropbeatBackend/mussage_mus_send.php', {
-        method: 'POST',
-        body: form
-      })
-    }
-  },
-  async created () {
-    const response = await fetch('http://localhost/DropbeatBackend/mussage_mus_get.php')
-    const responseData = await response.json()
-    // 操作
-    responseData.forEach((item) => {
-      this.nowArray.unshift(item)
-    })
-    console.log(this.nowArray)
+    // displayMore () {
+    //   this.displayNum = this.outerArray.length
+    //   this.moreButton = false
+    // },
+    // clearInput () {
+    //   this.inputMessage = ''
+    // }
   }
+  // async created () {
+  //   const response = await fetch('http://localhost/DropbeatBackend/mussage_mus_get.php')
+  //   const responseData = await response.json()
+  //   // 操作
+  //   responseData.forEach((item) => {
+  //     this.nowArray.unshift(item)
+  //   })
+  // }
 }
 </script>
 <style scoped>

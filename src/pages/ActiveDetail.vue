@@ -35,7 +35,15 @@
       <h4>活動介紹</h4>
       <div class="content"><p>{{activeContent}}</p></div>
     </div>
-    <message-board class="message"></message-board>
+    <message-board
+      class="message"
+      :outerArray='displayMessageData'
+      :nowDisplay='displayMore'
+      :nowMessage='commentMessage'
+      :nowClear='clearInput'
+      :nowButton='moreButton'
+      v-model="inputMessage"
+    ></message-board>
   </div>
 </template>
 
@@ -61,11 +69,60 @@ export default {
 ● 演出時間：19:30進場 20:00演出
 ● 演出地點：台北 海邊的卡夫卡（台北市中正區羅斯福路三段244巷2號2樓）
 ● 演出者：大象體操
-● 票價：預售票700元 / 現場票800元`
+● 票價：預售票700元 / 現場票800元`,
+      moreButton: true,
+      displayNum: 2,
+      nowArray: [],
+      inputMessage: ''
     }
   },
   components: {
     MessageBoard
+  },
+  methods: {
+    displayMore () {
+      this.displayNum = this.nowArray.length
+      this.moreButton = false
+    },
+    clearInput () {
+      this.inputMessage = ''
+    },
+    commentMessage () {
+      const messageData = {
+        member: 'willy',
+        setup_date: `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`,
+        img: 'https://akstatic.streetvoice.com/profile_images/sa/nd/sandwichfail/3fT9Y92afyjdDbtNEFb2rh.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
+        content: this.inputMessage
+      }
+      this.inputMessage = ''
+      this.nowArray.unshift(messageData)
+      console.log(this.nowArray)
+      // 傳後端
+      const form = new FormData()
+      form.append('message_id', Math.floor(Math.random() * 9999)) // message_id (DB是INT)
+      form.append('member', Math.floor(Math.random() * 9999)) // member_id (DB是INT)
+      form.append('musician', Math.floor(Math.random() * 9999)) // musician (DB是INT)
+      // form.append('setup_date', messageData.time)
+      form.append('content', messageData.content)
+      fetch('http://localhost/DropbeatBackend/mussage_act_send.php', {
+        method: 'POST',
+        body: form
+      })
+    }
+  },
+  computed: {
+    displayMessageData () {
+      return this.nowArray.slice(0, this.displayNum)
+    }
+  },
+  async created () {
+    const response = await fetch('http://localhost/DropbeatBackend/mussage_act_get.php')
+    const responseData = await response.json()
+    // 操作
+    responseData.forEach((item) => {
+      this.nowArray.unshift(item)
+    })
+    console.log(this.nowArray)
   }
 }
 </script>
