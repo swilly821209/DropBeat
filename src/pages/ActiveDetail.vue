@@ -44,7 +44,15 @@
         <li>票價: {{price}}</li>
       </ul>
     </div>
-    <message-board class="message"></message-board>
+    <message-board
+      class="message"
+      :outerArray='displayMessageData'
+      :nowDisplay='displayMore'
+      :nowMessage='commentMessage'
+      :nowClear='clearInput'
+      :nowButton='moreButton'
+      v-model="inputMessage"
+    ></message-board>
   </div>
 </template>
 
@@ -65,16 +73,65 @@ export default {
 
 大象體操2021年度單曲《穿過夜晚》，創作始於與日本樂團toe在疫情期間舉辦的線上合作演出。
 與toe的團員討論後，取樣其經典曲目 “Two Moons” 的木吉他音軌重新創作，為探討夢境作為主題的下一張專輯揭開序幕。
-`,
-      activeDate: '2021 年 10 月 10 日（日）',
-      activeTime: '19:30進場 20:00演出',
-      activeLocation: '台北 海邊的卡夫卡（台北市中正區羅斯福路三段244巷2號2樓)',
-      singer: '大象體操',
-      price: '預售票700元 / 現場票800元'
+
+● 演出日期：2021 年 10 月 10 日（日）
+● 演出時間：19:30進場 20:00演出
+● 演出地點：台北 海邊的卡夫卡（台北市中正區羅斯福路三段244巷2號2樓）
+● 演出者：大象體操
+● 票價：預售票700元 / 現場票800元`,
+      moreButton: true,
+      displayNum: 2,
+      nowArray: [],
+      inputMessage: ''
     }
   },
   components: {
     MessageBoard
+  },
+  methods: {
+    displayMore () {
+      this.displayNum = this.nowArray.length
+      this.moreButton = false
+    },
+    clearInput () {
+      this.inputMessage = ''
+    },
+    commentMessage () {
+      const messageData = {
+        member: 'willy',
+        setup_date: `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`,
+        img: 'https://akstatic.streetvoice.com/profile_images/sa/nd/sandwichfail/3fT9Y92afyjdDbtNEFb2rh.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
+        content: this.inputMessage
+      }
+      this.inputMessage = ''
+      this.nowArray.unshift(messageData)
+      console.log(this.nowArray)
+      // 傳後端
+      const form = new FormData()
+      form.append('message_id', Math.floor(Math.random() * 9999)) // message_id (DB是INT)
+      form.append('member', Math.floor(Math.random() * 9999)) // member_id (DB是INT)
+      form.append('musician', Math.floor(Math.random() * 9999)) // musician (DB是INT)
+      // form.append('setup_date', messageData.time)
+      form.append('content', messageData.content)
+      fetch('http://localhost/DropbeatBackend/mussage_act_send.php', {
+        method: 'POST',
+        body: form
+      })
+    }
+  },
+  computed: {
+    displayMessageData () {
+      return this.nowArray.slice(0, this.displayNum)
+    }
+  },
+  async created () {
+    const response = await fetch('http://localhost/DropbeatBackend/mussage_act_get.php')
+    const responseData = await response.json()
+    // 操作
+    responseData.forEach((item) => {
+      this.nowArray.unshift(item)
+    })
+    console.log(this.nowArray)
   }
 }
 </script>
