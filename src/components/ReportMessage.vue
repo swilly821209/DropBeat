@@ -4,7 +4,7 @@
         <h2 class=" text-[32px] text-black-backdrop">向管理員檢舉此留言</h2>
         <p class="text-sm text-gray-dark">請選擇檢舉內容。其他人不會看到您的姓名</p>
       </div>
-      <div v-for="report in reportTitle" :key="report" class="select flex items-center space-x-3 ml-1 ">
+      <div v-for="(report) in reportTitle" :key="report" class="select flex items-center space-x-3 ml-1 ">
         <button class="w-2 h-2 ring-offset-2 ring-1 ring-current text-gray-light rounded-full"
                 @click="selectMessage(report)"
                 :class="{'active': report === selectReport}"></button>
@@ -41,6 +41,16 @@ export default {
     },
     sendReport () {
       this.$store.dispatch('reportDialog', false)
+      // console.log(this.$store.getters.mesIdState)
+      // console.log(this.selectReport)
+      // 傳後端
+      const form = new FormData()
+      form.append('report_id', this.$store.getters.mesIdState) // 被檢舉的id
+      form.append('report_option', this.selectReport) // 被檢舉類型
+      fetch('http://localhost/DropbeatBackend/report_send.php', {
+        method: 'POST',
+        body: form
+      })
     }
   }
 }

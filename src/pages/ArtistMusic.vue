@@ -1,7 +1,7 @@
 <template>
-    <base-dialog :show="toggleDialog">
-      <report-message></report-message>
-    </base-dialog>
+  <base-dialog :show="toggleDialog">
+    <report-message></report-message>
+  </base-dialog>
   <div class="range">
     <h3 class="title01 text-2xl text-black-backdrop">最新專輯</h3>
     <div class="block01">
@@ -340,6 +340,7 @@ export default {
     responseData.forEach((item) => {
       this.nowArray.unshift(item)
     })
+    console.log(this.nowArray)
   }
 }
 </script>

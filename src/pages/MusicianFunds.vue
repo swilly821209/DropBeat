@@ -57,7 +57,7 @@
         :inputImg="'border-2 border-white bg-white incircle'"
       ></select-img>
       <div class="w-[340px] flex flex-col sm:w-4/12">
-        <div class="flex justify-start sm:justify-around mb-4 mt-12 sm:mt-0">
+        <!-- <div class="flex justify-start sm:justify-around mb-4 mt-12 sm:mt-0">
           <p class="w-[100px] ml-[20px] sm:ml-0 sm:w-2/6 text-right text-gray-dark text-xl mr-3">封面縮圖：</p>
           <select-img
             class="w-[80px] h-[80px] sm:h-60 sm:w-8/12 flex"
@@ -65,7 +65,7 @@
             :camera="true"
             :inputImg="'border-2 border-white mt-2 bg-white incircle'"
           ></select-img>
-        </div>
+        </div> -->
         <div class="flex mt-4">
           <label for="topic" class="w-[120px] sm:w-2/6 text-right text-gray-dark text-xl mr-3">募資主題：</label>
           <input id="topic" type="text" class="w-[190px] sm:w-4/6 border-b-2 border-gray-light focus:outline-none focus:border-orange font-bold text-gray-light">

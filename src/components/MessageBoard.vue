@@ -26,6 +26,7 @@
         :memberImg="'https://akstatic.streetvoice.com/profile_images/sa/nd/sandwichfail/3fT9Y92afyjdDbtNEFb2rh.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg'"
         :commentTime="item.setup_data"
         :memberName="item.member"
+        :mesId='item[0]'
         :memberMessage="item.content">
       </the-message>
     </div>

@@ -1,4 +1,7 @@
 <template>
+  <base-dialog :show="toggleDialog">
+    <report-message></report-message>
+  </base-dialog>
   <div class="range">
     <div class="pre">
       <div class="preicon"></div>
@@ -58,6 +61,7 @@
 
 <script>
 import MessageBoard from '../components/MessageBoard.vue'
+import ReportMessage from '../components/ReportMessage.vue'
 
 export default {
   data () {
@@ -86,7 +90,8 @@ export default {
     }
   },
   components: {
-    MessageBoard
+    MessageBoard,
+    ReportMessage
   },
   methods: {
     displayMore () {
@@ -120,6 +125,9 @@ export default {
     }
   },
   computed: {
+    toggleDialog () {
+      return this.$store.getters.reportDialogState
+    },
     displayMessageData () {
       return this.nowArray.slice(0, this.displayNum)
     }
