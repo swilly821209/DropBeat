@@ -1,4 +1,7 @@
 <template>
+  <base-dialog :show="toggleDialog">
+    <report-message></report-message>
+  </base-dialog>
   <div class="range">
     <div class="pre">
       <div class="preicon"></div>
@@ -8,16 +11,18 @@
       </div>
     </div>
     <div class="block01">
+      <h3 class="sm:hidden block mb-5">{{activeTitle}}</h3>
       <div class="banner"></div>
       <div class="title01">
-        <h3>{{activeTitle}}</h3>
+        <h3 class="sm:block hidden">{{activeTitle}}</h3>
         <div class="share_join">
           <div class="share"></div>
           <button
-          class="join"
-          :class="{ clickjoin: active }"
-          @click="active = !active"
-        >{{active ? '參加' : '想參加'}}</button>
+            class="join"
+            :class="{ clickjoin: active }"
+            @click="active = !active">
+            {{active ? '參加' : '想參加'}}
+          </button>
         </div>
         <div class="hr"></div>
         <div class="day"><div class="dayicon"></div><p>2021 年 10 月 10 日・星期日・20:00</p></div>
@@ -34,13 +39,29 @@
     <div class="block02">
       <h4>活動介紹</h4>
       <div class="content"><p>{{activeContent}}</p></div>
+      <ul class="text-gray-dark list-disc text-[14px] mt-20 list-inside">
+        <li>演出日期: {{activeDate}}</li>
+        <li>演出時間: {{activeTime}}</li>
+        <li class="truncate">演出地點: {{activeLocation}}</li>
+        <li>演出者: {{singer}}</li>
+        <li>票價: {{price}}</li>
+      </ul>
     </div>
-    <message-board class="message"></message-board>
+    <message-board
+      class="message"
+      :outerArray='displayMessageData'
+      :nowDisplay='displayMore'
+      :nowMessage='commentMessage'
+      :nowClear='clearInput'
+      :nowButton='moreButton'
+      v-model="inputMessage"
+    ></message-board>
   </div>
 </template>
 
 <script>
 import MessageBoard from '../components/MessageBoard.vue'
+import ReportMessage from '../components/ReportMessage.vue'
 
 export default {
   data () {
@@ -61,20 +82,69 @@ export default {
 ● 演出時間：19:30進場 20:00演出
 ● 演出地點：台北 海邊的卡夫卡（台北市中正區羅斯福路三段244巷2號2樓）
 ● 演出者：大象體操
-● 票價：預售票700元 / 現場票800元`
+● 票價：預售票700元 / 現場票800元`,
+      moreButton: true,
+      displayNum: 2,
+      nowArray: [],
+      inputMessage: ''
     }
   },
   components: {
-    MessageBoard
+    MessageBoard,
+    ReportMessage
+  },
+  methods: {
+    displayMore () {
+      this.displayNum = this.nowArray.length
+      this.moreButton = false
+    },
+    clearInput () {
+      this.inputMessage = ''
+    },
+    commentMessage () {
+      const messageData = {
+        member: 'willy',
+        setup_date: `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`,
+        img: 'https://akstatic.streetvoice.com/profile_images/sa/nd/sandwichfail/3fT9Y92afyjdDbtNEFb2rh.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
+        content: this.inputMessage
+      }
+      this.inputMessage = ''
+      this.nowArray.unshift(messageData)
+      console.log(this.nowArray)
+      // 傳後端
+      const form = new FormData()
+      form.append('message_id', Math.floor(Math.random() * 9999)) // message_id (DB是INT)
+      form.append('member', Math.floor(Math.random() * 9999)) // member_id (DB是INT)
+      form.append('musician', Math.floor(Math.random() * 9999)) // musician (DB是INT)
+      // form.append('setup_date', messageData.time)
+      form.append('content', messageData.content)
+      fetch('http://localhost/DropbeatBackend/mussage_act_send.php', {
+        method: 'POST',
+        body: form
+      })
+    }
+  },
+  computed: {
+    toggleDialog () {
+      return this.$store.getters.reportDialogState
+    },
+    displayMessageData () {
+      return this.nowArray.slice(0, this.displayNum)
+    }
+  },
+  async created () {
+    const response = await fetch('http://localhost/DropbeatBackend/mussage_act_get.php')
+    const responseData = await response.json()
+    // 操作
+    responseData.forEach((item) => {
+      this.nowArray.unshift(item)
+    })
+    console.log(this.nowArray)
   }
 }
 </script>
 
 <style scoped>
-.range {
-  /* border: 1px solid red; */
-  padding: 60px 40px 10px 40px;
-}
 .pre {
   /* border: 1px solid red; */
   display: flex;
@@ -134,7 +204,7 @@ h2 {
 }
 h3{
   font-size: 22px;
-  margin: 0 0 0 5px;
+  margin-left: 5px;
 }
 .share_join{
   display: flex;
@@ -155,6 +225,21 @@ h3{
   border: 2px solid #b5b5b5;
   background-color: #b5b5b5;
   background-image: url("../assets/icon/share_fff.svg");
+}
+@media (max-width: 640px) {
+  .block01 {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .banner {
+    width: 345px;
+    height: 170px;
+    margin: 0 auto;
+  }
+  .title01{
+    width: 100%
+  }
 }
 .join{
   background-color: #ff9d83;
@@ -260,5 +345,10 @@ h4{
 }
   .message{
         margin: 50px 0 0 0;
+  }
+  @media (max-width: 640px) {
+    .content {
+      white-space:normal;
+    }
   }
 </style>

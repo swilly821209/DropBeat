@@ -1,7 +1,7 @@
 <template>
-    <base-dialog :show="toggleDialog">
-      <report-message></report-message>
-    </base-dialog>
+  <base-dialog :show="toggleDialog">
+    <report-message></report-message>
+  </base-dialog>
   <div class="range">
     <h3 class="title01 text-2xl text-black-backdrop">最新專輯</h3>
     <div class="block01">
@@ -102,7 +102,15 @@
     <!-- <message-board class="message"></message-board> -->
     <!-- <div class="flex flex-wrap justify-around">
       <single-music v-for="item in 12" :key="item"></single-music> -->
-    <message-board class="message hidden sm:block"></message-board>
+    <message-board
+      class="message hidden sm:block"
+      :outerArray='displayMessageData'
+      :nowDisplay='displayMore'
+      :nowMessage='commentMessage'
+      :nowClear='clearInput'
+      :nowButton='moreButton'
+      v-model="inputMessage"
+    ></message-board>
     <div class="single-music-carousel hidden sm:block">
       <swiper :slidesPerView="5" :slidesPerColumn="2" :spaceBetween="20" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}"
               class="w-full h-full">
@@ -294,13 +302,60 @@ export default {
         years: 2021,
         songnum: 12,
         times: '00:51:03'
+      },
+      moreButton: true,
+      displayNum: 2,
+      nowArray: [],
+      inputMessage: ''
+    }
+  },
+  methods: {
+    displayMore () {
+      this.displayNum = this.nowArray.length
+      this.moreButton = false
+    },
+    clearInput () {
+      this.inputMessage = ''
+    },
+    commentMessage () {
+      const messageData = {
+        member: 'willy',
+        setup_date: `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`,
+        img: 'https://akstatic.streetvoice.com/profile_images/sa/nd/sandwichfail/3fT9Y92afyjdDbtNEFb2rh.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
+        content: this.inputMessage
       }
+      this.inputMessage = ''
+      this.nowArray.unshift(messageData)
+      console.log(this.nowArray)
+      // 傳後端
+      const form = new FormData()
+      form.append('message_id', Math.floor(Math.random() * 9999)) // message_id (DB是INT)
+      form.append('member', Math.floor(Math.random() * 9999)) // member_id (DB是INT)
+      form.append('musician', Math.floor(Math.random() * 9999)) // musician (DB是INT)
+      // form.append('setup_date', messageData.time)
+      form.append('content', messageData.content)
+      fetch('http://localhost/DropbeatBackend/mussage_mus_send.php', {
+        method: 'POST',
+        body: form
+      })
     }
   },
   computed: {
     toggleDialog () {
       return this.$store.getters.reportDialogState
+    },
+    displayMessageData () {
+      return this.nowArray.slice(0, this.displayNum)
     }
+  },
+  async created () {
+    const response = await fetch('http://localhost/DropbeatBackend/mussage_mus_get.php')
+    const responseData = await response.json()
+    // 操作
+    responseData.forEach((item) => {
+      this.nowArray.unshift(item)
+    })
+    console.log(this.nowArray)
   }
 }
 </script>

@@ -41,6 +41,9 @@ export default {
   components: {
     SelectImg
   },
+  //   async create () {
+  //      const response = await fetch()
+  //   },
   data () {
     return {
       account: 'accusefive',

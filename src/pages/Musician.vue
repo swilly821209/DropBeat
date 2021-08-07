@@ -1,4 +1,18 @@
 <template>
+  <base-dialog>
+    <delete-music></delete-music>
+  </base-dialog>
+  <base-dialog :show="uploadMusicDialog">
+    <upload-music></upload-music>
+  </base-dialog>
+  <base-dialog :show="true">
+    <div>
+      <p>刪除此音樂後不可復原，您確定刪除？</p>
+      <p>若您有問題請聯繫管理員</p>
+    </div>
+  </base-dialog>
+  <!-- <div class="h-[500px] bg-50% bg-top bg-gradient-to-t to-gray-light from-black-backdrop bg-no-repeat px-10 pt-[60px]"> -->
+    <!-- <div class="flex justify-center items-center bg-gray-300 rounded-full w-10 h-10 cursor-pointer"> -->
   <div class="h-[400px] sm:h-[500px] mb-[100px] sm:mb-[0] bg-50% bg-top bg-gradient-to-t to-gray-light from-black-backdrop bg-no-repeat px-10 pt-[60px]">
     <div>
       <span class="chooseBg"></span>
@@ -188,7 +202,8 @@
     <div class="flex flex-col sm:flex-row justify-center sm:justify-start items-center sm:items-start mb-32">
       <div class="flex flex-col justify-center items-center relative mr-0 sm:mr-12 fullWidth h-[100px] sm:h-full bg-[#B5B5B5]">
         <select-img
-          class="addFile02"
+          @click="uploadMusic"
+          class=" addFile02"
           :file="true"
           :text="'選取檔案'"
           :inputImg="'bg-ligth'"
@@ -274,6 +289,7 @@ import 'swiper/swiper-bundle.min.css'
 // import DeleteMusic from '../components/DeleteMusic.vue'
 import AlbumItem from '../components/AlbumItem.vue'
 import SelectImg from '../components/SelectImg.vue'
+import UploadMusic from '../components/UploadMusic.vue'
 SwiperCore.use([Navigation])
 export default {
   components: {
@@ -281,7 +297,8 @@ export default {
     SwiperSlide,
     // DeleteMusic
     AlbumItem,
-    SelectImg
+    SelectImg,
+    UploadMusic
   },
   data () {
     return {
@@ -320,6 +337,14 @@ export default {
   computed: {
     deleteMusicDialog () {
       return this.$store.getters.deleteMusicState
+    },
+    uploadMusicDialog () {
+      return this.$store.getters.uploadMusicDialogState
+    }
+  },
+  methods: {
+    uploadMusic () {
+      this.$store.dispatch('uploadMusicDialog', true)
     }
   }
 }

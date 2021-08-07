@@ -2,10 +2,14 @@
   <div id="app">
     <div class="member_container" >
       <p class="member_title">會員註冊</p>
-      <input type="text" name="account" v-model="member.account" placeholder="請輸入帳號名稱" />
-      <input type="email" name="email" v-model="member.email" placeholder="信箱" />
-      <input type="password" name="pwd" v-model="member.pwd" placeholder="密碼" />
-      <input type="password" v-model="member.pwd2" placeholder="確認密碼" />
+      <input @blur="checkAccount" type="text" name="account" v-model="member.account" placeholder="請輸入帳號名稱" />
+      <p v-if="accountWarn" class="text-orange text-xs justify-self-end w-[256px]">請輸入帳號名稱!</p>
+      <input @blur="checkEmail" type="email" name="email" v-model="member.email" placeholder="信箱" />
+      <p v-if="emailWarn" class="text-orange text-xs justify-self-end w-[256px]">請輸入信箱!</p>
+      <input @blur="checkPassword" type="password" name="pwd" v-model="member.pwd" placeholder="密碼" />
+      <input @blur="reconfirmPassword" type="password" v-model="member.pwd2" placeholder="確認密碼" />
+      <p v-if="passwordWarn" class="text-orange text-xs justify-self-end w-[256px]">請輸入密碼!</p>
+      <p v-if="reconfirm" class="text-orange text-xs justify-self-end w-[256px]">密碼不相符請確認!</p>
       <div class="birthdayAll">
         <p class="birthday">生日：</p>
         <div class="birth">
@@ -46,6 +50,10 @@ export default {
   name: 'app',
   data () {
     return {
+      accountWarn: false,
+      emailWarn: false,
+      passwordWarn: false,
+      reconfirm: false,
       years: 101,
       months: 12,
       days: 31,
@@ -63,9 +71,37 @@ export default {
     }
   },
   methods: {
+    reconfirmPassword () {
+      if (this.member.pwd !== this.member.pwd2) {
+        this.reconfirm = true
+      } else {
+        this.reconfirm = false
+      }
+    },
+    checkPassword () {
+      if (this.member.pwd === '') {
+        this.passwordWarn = true
+      } else {
+        this.passwordWarn = false
+      }
+    },
+    checkAccount () {
+      if (this.member.account === '') {
+        this.accountWarn = true
+      } else {
+        this.accountWarn = false
+      }
+    },
+    checkEmail () {
+      if (this.member.email === '') {
+        this.emailWarn = true
+      } else {
+        this.emailWarn = false
+      }
+    },
     sendData () {
       const form = new FormData()
-      form.append('id', Math.floor(Math.random() * 9999))
+      // form.append('id', Math.floor(Math.random() * 9999))
       form.append('account', this.member.account)
       form.append('email', this.member.email)
       form.append('pwd', this.member.pwd)
