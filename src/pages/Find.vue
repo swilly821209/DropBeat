@@ -15,7 +15,7 @@
       {{ item }}
     </base-button>
   </div>
-  <div class="sm:space-x-3 space-x-1 space-y-1">
+  <div class="sm:space-x-2 sm:space-y-2 space-y-2">
     <base-button
       class="buttons"
       v-for="item in singerType"
@@ -27,7 +27,7 @@
     </base-button>
   </div>
   <find-carousel class="artistCarousel "></find-carousel>
-  <base-title title="發現音樂"></base-title>
+  <base-title title="發現音樂" class="mt-[-20px] sm:mt-0"></base-title>
   <div class="space-x-3">
     <base-button
       class="my-8 selectBtn"
@@ -39,7 +39,7 @@
       {{ item }}
     </base-button>
   </div>
-  <div class="sm:space-x-3 space-x-1 space-y-1">
+  <div class="sm:space-x-2 sm:space-y-2 space-y-2">
     <base-button
       class="buttons"
         v-for="item in musicType"
@@ -207,13 +207,39 @@ export default {
     margin: 15px 0 35px 0;
 }
 .musicItemALL{
+    /* border:1px solid red; */
       margin: 20px 0 0 0;
 }
-  /*
-  a{
-    background: rgb(113, 227, 241);
-    color: rgb(255, 255, 255);
-    font-size: 20px;
-    margin: 200px;
-  } */
+@media screen and (max-width: 640px){
+  .buttons{
+      margin: 0 6px 0 0;
+      padding: 2px 8px;
+  }
+  :deep .carouselAll{
+    height: 220px;
+    margin: 30px 0 40px 0;
+  }
+  :deep .pre_next{
+      /* border:1px solid red; */
+      margin-top: 20px;
+  }
+  :deep .preIconArtist{
+    width: 25px;
+    height: 40px;
+    position: relative;
+    z-index: 10;
+  }
+  :deep .nextIconArtist{
+    width: 23px;
+    height: 40px;
+    position: relative;
+    z-index: 10;
+  }
+}
+@media screen and (max-width: 400px){
+    :deep .pre_next{
+      /* border:1px solid red; */
+      margin-top: 10px;
+  }
+}
 </style>

@@ -197,7 +197,9 @@ export default {
   watch: {
     $route () {
       // logo變色
-      if (this.$route.path !== '/') {
+      if (window.innerWidth < 640) {
+        this.color = ['#a6ff00', '#7de845', '#5cd57c', '#45c8a4', '#36c0bc', '#31bdc5', '#a6ff00', '#31bdc5']
+      } else if (this.$route.path !== '/') {
         this.color = ['#ffffff', '#ffffff', '#ffffff', '#ffffff', '#ffffff', '#ffffff', '#ffffff', '#ffffff']
       } else {
         this.color = ['#a6ff00', '#7de845', '#5cd57c', '#45c8a4', '#36c0bc', '#31bdc5', '#a6ff00', '#31bdc5']

@@ -60,7 +60,7 @@ h1 {
     display: none;
   }
   .range{
-    padding: 60px 10px 10px 10px
+    padding: 60px 15px 10px 15px
   }
 }
 

@@ -5,7 +5,7 @@
       <div class="audio_N_num">
     <!-- <div class="music_N_name"> -->
       <div class="w-7 h-9">
-        <audio-icon v-if="playing"></audio-icon>
+        <audio-icon v-if="playing " class="relative left-[-4px] sm:left-0"></audio-icon>
       <!-- <p v-else class="text-3xl text-gray-dark tracking-wider font-medium w-10">{{ num }}</p> -->
         <p v-else class="music_num">{{ num }}</p>
       </div>
@@ -25,7 +25,7 @@
             :style="`background-image: url(${backdropImg})`"></div>
         <div class="hover_bg absolute bg-black-backdrop bg-opacity-60 rounded-2xl top-0" ></div>
       </div>
-      <div class=" text-black-backdrop">
+      <div class="music_text text-black-backdrop">
         <h4 class="text-base transition-all cursor-pointer hover:text-blue-light " :class="{'text-blue-light': playing}">{{ musicName }}</h4>
         <p class=" text-sm text-gray-dark cursor-pointer hover:underline">{{ singer }}</p>
       <!-- <div class=" space-y-2 text-black-backdrop w-44">
@@ -131,16 +131,6 @@ export default {
   justify-content: space-between;
   align-items: center;
 }
-@media (max-width: 640px) {
-  .music_item {
-    padding: 10px 0;
-  }
-  .audio_N_num{
-    width:36px;
-    flex-direction: column;
-    justify-content: space-evenly
-  }
-}
 .music_num{
     font-size: 24px;
     font-weight: 500;
@@ -177,26 +167,6 @@ export default {
 }
 .music_item:hover .hover_bg{
   opacity: 1;
-}
-@media (max-width: 640px) {
-  .musicImage{
-    /* border:1px solid red; */
-    width:70px;
-    height:70px;
-    flex-shrink: 0;
-  }
-  .playPauseIcon01{
-    width:70px;
-    height:70px;
-  }
-  .playPauseIcon02{
-    width: 70px;
-    height: 70px;
-  }
-  .hover_bg{
-    width: 70px;
-    height: 70px;
-  }
 }
 /* .music_item:hover h4{
   color:#31BDC5;
@@ -258,4 +228,34 @@ export default {
     margin: 0 5px;
     color: #31BDC5;
   }
+  @media (max-width: 640px) {
+  .musicImage{
+    /* border:1px solid red; */
+    width:70px;
+    height:70px;
+    flex-shrink: 0;
+  }
+  .playPauseIcon01{
+    width:70px;
+    height:70px;
+  }
+  .playPauseIcon02{
+    width: 70px;
+    height: 70px;
+  }
+  .hover_bg{
+    width: 70px;
+    height: 70px;
+  }
+  .music_item {
+    padding: 15px 0;
+    margin: 0;
+  }
+  .audio_N_num{
+    /* border:1px solid red; */
+    width:36px;
+    flex-direction: column;
+    justify-content: space-evenly
+  }
+}
 </style>
