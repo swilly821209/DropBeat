@@ -51,6 +51,7 @@ export default {
         method: 'POST',
         body: form
       })
+      alert('已成功檢舉！')
     }
   }
 }

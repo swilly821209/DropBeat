@@ -6,6 +6,7 @@ export default createStore({
     deleteMusicDialog: true,
     uploadMusicDialog: false,
     isLogin: false,
+    idLogin: 'ddddd',
     mesId: 'fffff'
   },
   mutations: {
@@ -17,6 +18,9 @@ export default createStore({
     },
     login (state, payload) {
       state.isLogin = payload
+    },
+    loginId (state, payload) {
+      state.idLogin = payload
     },
     setUploadMusicDialog (state, payload) {
       state.uploadMusicDialog = payload
@@ -34,6 +38,9 @@ export default createStore({
     },
     login (context, payload) {
       context.commit('login', payload)
+    },
+    loginId (context, payload) {
+      context.commit('loginId', payload)
     },
     uploadMusicDialog (context, payload) {
       context.commit('setUploadMusicDialog', payload)
@@ -54,6 +61,9 @@ export default createStore({
     },
     loginState (state) {
       return state.isLogin
+    },
+    loginIdState (state) {
+      return state.idLogin
     },
     mesIdState (state) {
       return state.mesId

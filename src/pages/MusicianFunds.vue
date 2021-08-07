@@ -1,33 +1,41 @@
 <template>
   <div class="range">
-    <div class="flex justify-between mt-5">
+    <div class="flex justify-between items-center mt-5">
       <base-title title="募資管理" admin></base-title>
-      <div class="arrow cursor-pointer hidden sm:block" >
-        <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" width="25" height="40" viewBox="0 0 25 40" @click="leftFunds">
-          <path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" :fill="fundsL"/>
-        </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="40" viewBox="0 0 25 40" @click="rightFunds">
-          <path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" :fill="fundsR"/>
-        </svg>
+      <div class="cursor-pointer hidden sm:flex sm:mr-3" >
+        <svg xmlns="http://www.w3.org/2000/svg" class="preArrow mr-3 block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="nextArrow block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
       </div>
     </div>
-    <!--  -->
-    <div class="outersMeneger">
-      <div class="innersMeneger">
-        <!-- 640px以上顯示 -->
+    <!-- 640px以上顯示 -->
+    <!-- 未登入 -->
+    <swiper v-if="defaultEdit" :slidesPerView="4" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="hidden sm:flex">
+      <swiper-slide v-for="item in fundItems" :key="item.title">
         <fund-item class="theItemMenegerSpe"
           edit
-          v-for="item in fundItems"
           :title="item.title"
           :img="item.img"
           :singer="item.singer"
           :progress="item.progress"
           :date="item.date"
-          :money="item.money"
-          :key="item.title">
+          :money="item.money">
         </fund-item>
-      </div>
-    </div>
+      </swiper-slide>
+    </swiper>
+    <!-- 有登入 -->
+    <swiper v-else :slidesPerView="4" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="hidden sm:flex">
+      <swiper-slide v-for="item in computedNowArray" :key="item.donate_name">
+        <fund-item class="theItemMenegerSpe"
+          edit
+          :title="item.donate_name"
+          :img="item.donate_photo"
+          :singer="item.initiator"
+          :progress="'20%'"
+          :date="'20'"
+          :money="item.goal">
+        </fund-item>
+      </swiper-slide>
+    </swiper>
     <!-- 640px以下顯示 -->
     <div class="sm:hidden block mt-0">
       <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="mr-0 sm:mr-4">
@@ -54,35 +62,27 @@
         :radius="'rounded-3xl'"
         :camera="true"
         :text="'選取圖片'"
+        :sendFun="fileChange"
         :inputImg="'border-2 border-white bg-white incircle'"
       ></select-img>
       <div class="w-[340px] flex flex-col sm:w-4/12">
-        <!-- <div class="flex justify-start sm:justify-around mb-4 mt-12 sm:mt-0">
-          <p class="w-[100px] ml-[20px] sm:ml-0 sm:w-2/6 text-right text-gray-dark text-xl mr-3">封面縮圖：</p>
-          <select-img
-            class="w-[80px] h-[80px] sm:h-60 sm:w-8/12 flex"
-            :radius="'rounded-3xl'"
-            :camera="true"
-            :inputImg="'border-2 border-white mt-2 bg-white incircle'"
-          ></select-img>
-        </div> -->
         <div class="flex mt-4">
           <label for="topic" class="w-[120px] sm:w-2/6 text-right text-gray-dark text-xl mr-3">募資主題：</label>
-          <input id="topic" type="text" class="w-[190px] sm:w-4/6 border-b-2 border-gray-light focus:outline-none focus:border-orange font-bold text-gray-light">
+          <input v-model="fundTitle" id="topic" type="text" class="w-[190px] sm:w-4/6 border-b-2 border-gray-light focus:outline-none focus:border-orange font-bold text-gray-light">
         </div>
         <div class="flex mt-4">
           <label for="date" class="w-[120px] sm:w-2/6 text-right text-gray-dark text-xl mr-3">結束日期：</label>
-          <input id="date" type="date" value="2021-08-08" @change="changeColor" class="w-[190px] sm:w-4/6 border-b-2 border-gray-light focus:outline-none bg-white focus:border-orange text-transparent font-bold">
+          <input :value="fundEndDate" id="date" type="date" @change="changeColor" class="w-[190px] sm:w-4/6 border-b-2 border-gray-light focus:outline-none bg-white focus:border-orange text-transparent font-bold">
         </div>
         <div class="flex mt-4">
           <label for="money" class="w-[120px] sm:w-2/6 text-right text-gray-dark text-xl mr-3 sm:ml-5 money">目標金額：</label>
-          <input id="money" type="text" class="w-[190px] sm:w-9/12 sm:4/6 border-b-2 border-gray-light focus:outline-none focus:border-orange font-bold text-gray-dark sm:ml-[10px] text-2xl">
+          <input v-model="fundMoney" id="money" type="text" class="w-[190px] sm:w-9/12 sm:4/6 border-b-2 border-gray-light focus:outline-none focus:border-orange font-bold text-gray-dark sm:ml-[10px] text-2xl">
         </div>
       </div>
     </div>
     <base-title title="計畫介紹" class="mt-10 sm:mt-20 mb-5" :second="'second'"></base-title>
     <div class="flex justify-center mb-5">
-      <textarea name="projectInfo" class="w-[295px] sm:w-full ml-[5px] sm:ml-[0px] h-[400px] sm:h-72 border-2 border-gray-light rounded-2xl resize-none pl-2 pt-2 focus:border-orange"></textarea>
+      <textarea v-model="fundInfo" name="projectInfo" class="w-[295px] sm:w-full ml-[5px] sm:ml-[0px] h-[400px] sm:h-72 border-2 border-gray-light rounded-2xl resize-none pl-2 pt-2 focus:border-orange"></textarea>
     </div>
     <div class="flex justify-between">
       <base-title title="募資方案" :second="'second'" class="mb-5"></base-title>
@@ -97,30 +97,31 @@
     </div>
     <div class="flex outers">
       <div class="flex inners">
-        <div v-for="item in fundsList" :key="item" class="hidden flex theItem sm:flex">
+        <div v-for="item in fundsList" :key="item" class="hidden flex theItem sm:flex theOption">
           <select-img
             class="w-5/12 p-10"
             :radius="'rounded-3xl'"
             :camera="true"
             :text="'選取圖片'"
+            :sendFun="fileChange"
             :inputImg="'border-2 border-white bg-white incircle'"
           ></select-img>
           <div class="w-7/12">
             <div class="flex mt-4">
               <label class="sm:w-3/12 text-right text-xl text-gray-dark">金額：</label>
-              <input :value="item.money" class="w-9/12 border-2 border-gray-lighten text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
+              <input v-model="item.money" class="w-9/12 border-2 border-gray-lighten text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
             </div>
             <div class="flex mt-4">
               <label class="w-3/12 text-right text-xl text-gray-dark">標題：</label>
-              <input :value="item.title" class="w-9/12 border-2 border-gray-lighten text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
+              <input v-model="item.title" class="w-9/12 border-2 border-gray-lighten text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
             </div>
             <div class="flex mt-4">
               <label class="w-3/12 text-right text-xl text-gray-dark h-16">內容：</label>
-              <textarea :value="item.content" class="w-9/12 border-2 border-gray-lighten text-gray-light focus:outline-none resize-none rounded-lg pl-2 focus:border-orange"></textarea>
+              <textarea v-model="item.content" class="w-9/12 border-2 border-gray-lighten text-gray-light focus:outline-none resize-none rounded-lg pl-2 focus:border-orange"></textarea>
             </div>
             <div class="flex mt-4">
               <label class="w-3/12 text-right text-xl text-gray-dark">限量：</label>
-              <input :value="item.quantity" class="w-9/12 border-2 border-gray-lighten text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
+              <input v-model="item.quantity" class="w-9/12 border-2 border-gray-lighten text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
             </div>
           </div>
         </div>
@@ -146,6 +147,7 @@
                   class="w-[80px] h-[80px]"
                   :radius="'rounded-2xl'"
                   :camera="true"
+                  :sendFun="fileChange"
                   :inputImg="'border-2 border-white bg-white incircle'"
                 ></select-img>
               </div>
@@ -179,7 +181,7 @@
     <div class="flex justify-end mt-5 mr-[40px]">
       <div class="flex">
         <button class="w-[70px] border-2 border-gray-light text-gray-light px-4 mr-5 rounded-xl hover:border-orange">取消</button>
-        <button class="w-[100px] border border-orange bg-orange text-white px-4 rounded-xl">提交審核</button>
+        <button @click="sendData" class="w-[100px] border border-orange bg-orange text-white px-4 rounded-xl">提交審核</button>
       </div>
     </div>
   </div>
@@ -203,6 +205,14 @@ export default {
   },
   data () {
     return {
+      fundTitle: '',
+      fundEndDate: '2021-08-08',
+      fundMoney: '',
+      fundInfo: '',
+      fundImg: {},
+      donateArray: [],
+      nowFundArray: [],
+      defaultEdit: true,
       fundItems: [
         {
           title: '運氣來的若有似無 專輯募資',
@@ -299,6 +309,7 @@ export default {
           quantity: 800
         }
       ],
+      donateId: Math.floor(Math.random() * 9999),
       fundsPosition: 0,
       fundsL: '#ededed',
       fundsR: '#b5b5b5',
@@ -311,6 +322,7 @@ export default {
     changeColor (e) {
       e.target.classList.remove('text-transparent')
       e.target.classList.add('text-gray-light')
+      this.fundEndDate = e.target.value
     },
     leftFunds () {
       this.fundsPosition = 0
@@ -335,6 +347,78 @@ export default {
       document.querySelector('.inners').style.transform = `translateX(${this.planPosition}%)`
       this.planL = '#b5b5b5'
       this.planR = '#ededed'
+    },
+    async fileChange (e) {
+      // 圖片處理
+      const file = e.target.files[0]
+      const readFile = new FileReader()
+      readFile.readAsDataURL(file)
+      readFile.addEventListener('load', function () {
+        const image = e.target.closest('.outer')
+        image.style.backgroundImage = `url('${readFile.result}')`
+      })
+      // 將路徑存到data中(2種)
+      if (e.target.closest('div.theOption')) {
+        this.donateArray.unshift(file)
+      } else {
+        this.fundImg = file
+      }
+    },
+    sendData () {
+      if (this.$store.getters.loginState !== false) {
+        const form = new FormData()
+        // 傳後端(發起募資)======================================================
+        form.append('file', this.fundImg) // 傳照片
+        form.append('donate_id', this.donateId) // donate_id
+        form.append('initiator', this.$store.getters.loginIdState) // initiator (募款發起人)
+        form.append('donate_name', this.fundTitle) // donate_name
+        form.append('info', this.fundInfo) // info
+        form.append('goal', this.fundMoney) // goal
+        form.append('end_date', this.fundEndDate) // donate_name
+        fetch('http://localhost/DropbeatBackend/FileUpload/funds_single_files_send.php', {
+          method: 'POST',
+          body: form
+        })
+        // 傳後端(募資方案)======================================================
+        const forms = new FormData()
+        const donateOptionId = Math.floor(Math.random() * 9999)
+        forms.append('length', this.donateArray.length)
+        for (let i = 0; i < this.donateArray.length; i++) {
+          forms.append(`file${i}`, this.donateArray[i]) // 存照片
+          forms.append(`donate_option_id${i}`, `${donateOptionId}${i}`) // 募款方案編號
+          forms.append('donate', this.donateId) // 募款編號
+          forms.append(`option_name${i}`, this.fundsList[i].title) // 方案名稱
+          forms.append(`option_reward${i}`, this.fundsList[i].content) // 方案回饋內容
+          forms.append(`option_price${i}`, this.fundsList[i].money) // 金額
+          forms.append(`num${i}`, this.fundsList[i].quantity) // 是否限量(填金額)
+        }
+        fetch('http://localhost/DropbeatBackend/FileUpload/funds_multiple_files_send.php', {
+          method: 'POST',
+          body: forms
+        })
+        // 其他前台動作
+        alert('成功新增募資！')
+        this.$router.replace('/')
+      } else {
+        alert('請登入後編輯！')
+      }
+    }
+  },
+  computed: {
+    computedNowArray () {
+      return this.nowFundArray
+    }
+  },
+  async created () {
+    const response = await fetch('http://localhost/DropbeatBackend/FileUpload/funds_single_files_get.php')
+    const responseData = await response.json()
+    // 操作
+    // 判斷是否有登入
+    if (this.$store.getters.loginState) {
+      this.defaultEdit = false
+      responseData.forEach((item) => {
+        this.nowFundArray.unshift(item)
+      })
     }
   }
 }
@@ -389,6 +473,10 @@ export default {
   .theItem{
     padding-left: 20px;
     width: 100%;
+  }
+  ::v-deep .edit{
+    justify-content:flex-end;
+    margin-right: 20px;
   }
   @media screen and (max-width:640px) {
     .theItem{

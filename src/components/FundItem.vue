@@ -1,6 +1,6 @@
 <template>
   <div class="fundBlock">
-    <div v-if="edit" class="flex mb-2 ml-1 sm:w-auto w-[300px]">
+    <div v-if="edit" class="flex mb-2 ml-1 sm:w-auto w-[300px] edit">
       <div class="h5_icon flex flex-col items-center mr-3">
           <span class="editIcon"></span>
           <h5>編輯</h5>

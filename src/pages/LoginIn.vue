@@ -64,6 +64,7 @@ export default {
       if (responseData.length > 0) {
         console.log('hi')
         this.$store.dispatch('login', responseData[0][2])
+        this.$store.dispatch('loginId', responseData[0][0])
         this.$router.replace('/')
       } else {
         this.warn = true
