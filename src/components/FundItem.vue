@@ -11,7 +11,7 @@
       </div>
     </div>
     <router-link to="/Funds/:id" class="sm:order-1 order-2 flex justify-center">
-      <img :src="img" class="sm:w-[269px] sm:h-[269px] w-[345px] h-[170px] object-center object-cover m-auto">
+      <img :src="img" class="homeActivity sm:w-[269px] sm:h-[269px] w-[345px] h-[195px] object-center object-cover m-auto">
     <!-- <router-link to="/Funds/:id" class="sm:order-1 order-2 ">
       <img :src="img" class="sm:w-[269px] sm:h-[269px] w-[300px] h-[150px]"> -->
     </router-link>

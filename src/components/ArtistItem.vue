@@ -179,7 +179,7 @@ export default {
     position: relative;
   }
   /* RWD */
-  @media screen and (max-width: 1430px) {
+  /* @media screen and (max-width: 1430px) {
     .span_author{
       font-size: 14px;
     }
@@ -187,8 +187,8 @@ export default {
       font-size: 12px;
       width: 50px;
     }
-  }
-  @media screen and (max-width: 1270px) {
+  } */
+  /* @media screen and (max-width: 1270px) {
     .span_author{
       font-size: 12px;
     }
@@ -196,5 +196,5 @@ export default {
       font-size: 10px;
       width: 40px;
     }
-  }
+  } */
 </style>

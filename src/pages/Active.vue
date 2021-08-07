@@ -13,7 +13,7 @@
         {{ item }}
       </base-button>
     </div>
-    <div class="sm:space-x-3 space-x-1 ">
+    <div class="sm:space-x-3 space-x-1 space-y-1 sm:space-y-2">
       <base-button
         class=" sm:last:inline-block last:hidden"
         v-for="item in musicType"
@@ -191,6 +191,7 @@ export default {
   }
   .singleActive {
     justify-content: center;
+    padding: 30px 0 10px 0;
   }
 }
 </style>

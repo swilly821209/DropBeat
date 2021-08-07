@@ -29,12 +29,12 @@
           :likeCounter="item.likeCounter">
         </music-item> -->
         <!-- <swiper :slidesPerView="4" :direction="'vertical'" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="w-[700px] h-[400px] m-0"> -->
-        <swiper :slidesPerView="4" :direction="'vertical'" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="misicSwipe h-[400px] m-0">
-          <div class="up_down navigations space-y-2 absolute z-10 hidden sm:block">
+        <swiper :slidesPerView="5" :direction="'vertical'" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="misicSwipe h-[400px] m-0">
+          <div class="up_down navigations space-y-2 absolute z-10 sm:left-0 right-0">
             <svg xmlns="http://www.w3.org/2000/svg" class="preArrow block text-gray-light cursor-pointer" width="20" height="17" viewBox="0 0 20 17"><path id="up" d="M9.138,1.465a1,1,0,0,1,1.724,0l8.252,14.028A1,1,0,0,1,18.252,17H1.748a1,1,0,0,1-.862-1.507Z" fill="currentColor"/></svg>
             <svg xmlns="http://www.w3.org/2000/svg" class="nextArrow block text-gray-light cursor-pointer" width="20" height="17" viewBox="0 0 20 17"><path id="up" d="M9.138,1.465a1,1,0,0,1,1.724,0l8.252,14.028A1,1,0,0,1,18.252,17H1.748a1,1,0,0,1-.862-1.507Z" transform="translate(20 17) rotate(180)" fill="currentColor"/></svg>
           </div>
-          <swiper-slide  v-for="item in musicItems" :key="item.num" class="sm:left-[10%] w-full sm:w-10/12">
+          <swiper-slide  v-for="item in musicItems" :key="item.num" class="sm:left-[10%] w-full sm:w-10/12 sm:pr-0 pr-12">
             <music-item
               :num="item.num"
               :musicName="item.name"
@@ -45,9 +45,9 @@
             </music-item>
           </swiper-slide>
         </swiper>
-        <div class="flex justify-center items-center bg-[#EDEDED] rounded-xl sm:hidden">
+        <!-- <div class="flex justify-center items-center bg-[#EDEDED] rounded-xl sm:hidden">
           <span class="text-[#7B7B7B]">more</span>
-        </div>
+        </div> -->
       </div>
     </div>
     <h3 class="title02 text-2xl text-black-backdrop">所有專輯</h3>
@@ -63,7 +63,11 @@
       </album-item>
     </div> -->
     <!-- 640以上 -->
-    <swiper :slidesPerView="4" :spaceBetween="20" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="w-full h-full hidden sm:block">
+    <swiper :slidesPerView="4" :spaceBetween="20" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="allAlbumRange w-full h-full relative top-[-40px] hidden sm:block ">
+      <div class=" absolute flex items-center top-0 right-5 z-10 space-x-3">
+        <svg xmlns="http://www.w3.org/2000/svg" class="preArrow block text-gray-light cursor-pointer" width="25" height="35" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="nextArrow block text-gray-light cursor-pointer" width="25" height="35" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
+      </div>
       <swiper-slide v-for="item in albumData" :key="item">
         <album-item
           :albumName="item.albumName"
@@ -75,7 +79,11 @@
       </swiper-slide>
     </swiper>
     <!-- 640以下 -->
-    <swiper :slidesPerView="2" :spaceBetween="20" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="w-full h-full block sm:hidden">
+    <swiper :slidesPerView="2" :spaceBetween="20" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="allAlbumRange w-full h-full relative top-[-55px] block sm:hidden">
+      <div class=" absolute flex items-center top-0 right-0 z-10 space-x-3">
+        <svg xmlns="http://www.w3.org/2000/svg" class="preArrow block text-gray-light cursor-pointer" width="25" height="35" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="nextArrow block text-gray-light cursor-pointer" width="25" height="35" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
+      </div>
       <swiper-slide v-for="item in albumData" :key="item">
         <album-item
           :albumName="item.albumName"
@@ -115,12 +123,12 @@
         </swiper-slide>
       </swiper>
     </div>
-    <swiper :slidesPerView="4" :direction="'vertical'" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="flex items-center h-[400px] m-0 sm:hidden">
-      <div class="up_down navigations space-y-2 absolute z-10 hidden sm:block">
+    <swiper :slidesPerView="5" :direction="'vertical'" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="flex items-center h-[400px] m-0 sm:hidden">
+      <div class="up_down navigations space-y-2 absolute z-10 right-0">
         <svg xmlns="http://www.w3.org/2000/svg" class="preArrow block text-gray-light cursor-pointer" width="20" height="17" viewBox="0 0 20 17"><path id="up" d="M9.138,1.465a1,1,0,0,1,1.724,0l8.252,14.028A1,1,0,0,1,18.252,17H1.748a1,1,0,0,1-.862-1.507Z" fill="currentColor"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" class="nextArrow block text-gray-light cursor-pointer" width="20" height="17" viewBox="0 0 20 17"><path id="up" d="M9.138,1.465a1,1,0,0,1,1.724,0l8.252,14.028A1,1,0,0,1,18.252,17H1.748a1,1,0,0,1-.862-1.507Z" transform="translate(20 17) rotate(180)" fill="currentColor"/></svg>
       </div>
-      <swiper-slide  v-for="item in musicItems" :key="item.num" class="sm:left-[10%] w-full sm:w-10/12">
+      <swiper-slide  v-for="item in musicItems" :key="item.num" class="sm:left-[10%] w-full sm:w-10/12 pr-12">
         <music-item
           :num="item.num"
           :musicName="item.name"
@@ -168,6 +176,13 @@ export default {
         {
           img: 'https://scontent.ftpe7-2.fna.fbcdn.net/v/t31.18172-8/21415009_1654071567936794_7079793410660076323_o.jpg?_nc_cat=109&ccb=1-3&_nc_sid=174925&_nc_ohc=_O3O9YvR4BkAX-oZRTN&tn=G4i6ABBsODQmugD-&_nc_ht=scontent.ftpe7-2.fna&oh=c6e4ab7db0e42cdfaf3cf37d830900b4&oe=611F42AF',
           albumName: '運氣來的絡有似無',
+          year: 2021,
+          num: 12,
+          totalTime: '00:41:20'
+        },
+        {
+          img: 'https://scontent.ftpe7-2.fna.fbcdn.net/v/t31.18172-8/21415009_1654071567936794_7079793410660076323_o.jpg?_nc_cat=109&ccb=1-3&_nc_sid=174925&_nc_ohc=_O3O9YvR4BkAX-oZRTN&tn=G4i6ABBsODQmugD-&_nc_ht=scontent.ftpe7-2.fna&oh=c6e4ab7db0e42cdfaf3cf37d830900b4&oe=611F42AF',
+          albumName: '運氣來的若有似無',
           year: 2021,
           num: 12,
           totalTime: '00:41:20'
@@ -352,7 +367,7 @@ export default {
 <style scoped>
   .range{
     /* border:1px solid red; */
-    padding: 60px 20px 10px 20px;
+    padding: 60px 40px 10px 40px;
   }
   /* a{
     background: black;
@@ -376,14 +391,14 @@ export default {
       width: 52%;
       padding: 10px 0 0 0;
   }
-  ::v-deep.music_item{
+  :deep .music_item{
       padding: 13px 0;
   }
-  ::v-deep .time_btns{
+  :deep .time_btns{
       width:230px;
       padding: 0 10px 0 0;
   }
-  ::v-deep .playBtn{
+  :deep .playBtn{
     display: none;
   }
   .misicSwipe{
@@ -412,6 +427,11 @@ export default {
     align-items: center;
     margin: 10px 0 0 0;
   }
+  .allAlbumRange{
+    /* border:1px solid red; */
+    height: 350px;
+    padding-top: 50px;
+  }
   @media screen and (max-width: 1300px) {
     .single-music-carousel{
       height: 580px;
@@ -422,6 +442,10 @@ export default {
     }
   }
   @media screen and (max-width: 640px) {
+    .range{
+      /* border:1px solid red; */
+      padding: 60px 20px 10px 20px;
+    }
     .block01{
       flex-direction: column;
       justify-content: space-between;
@@ -436,8 +460,47 @@ export default {
     .title03{
       margin: 30px 0 30px 0;
     }
-    ::v-deep .div_album_info{
-      margin: -35px 0 0 65px;
+    :deep .div_song_day{
+      margin: 10px 0 0 0;
+    }
+    :deep .div_album_info{
+      /* border:1px solid red; */
+      justify-content: center;
+      height: 240px;
+      margin: 0 0 0 110px;
+    }
+    :deep .div_fun{
+      /* position: relative; */
+      padding: 0 0 0 0;
+    }
+    :deep .music_text{
+      margin: 0 0 0 10px;
+    }
+    .title02{
+      margin: 60px 0 20px 0;
+    }
+    .title03{
+      margin: 10px 0 10px 0;
+    }
+    :deep .singleAlbum{
+        height: 180px;
+    }
+    .allAlbumRange{
+      /* border:1px solid red; */
+      height: 260px;
+      padding-top: 50px;
+    }
+  }
+  @media screen and (max-width: 400px) {
+    :deep .cd{
+      left: 51%;
+    }
+    :deep .div_album_info{
+      height: 210px;
+      margin: 0 0 0 105px;
+    }
+    :deep .singleAlbum{
+        height: 160px;
     }
   }
   .swiper-button-disabled {

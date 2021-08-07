@@ -12,7 +12,7 @@
             {{ item }}
             </base-button>
         </div>
-        <div class="sm:space-x-3 space-x-1">
+        <div class="sm:space-x-3 space-x-1 space-y-1 sm:space-y-2">
             <base-button
             v-for="item in fundsType"
             :key="item"

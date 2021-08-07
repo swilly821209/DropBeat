@@ -29,12 +29,12 @@
           </svg>
       </span>
   </div>
-  <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" :slidesPerView="3" class=" h-48 my-5 sm:hidden block">
-    <div class="absolute top-40 flex justify-center items-center w-full space-x-3">
-     <svg xmlns="http://www.w3.org/2000/svg" class="preArrow text-gray-light cursor-pointer" width="15" height="23.077" viewBox="0 0 15 23.077"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(0 23.077) rotate(-90)" fill="currentColor"/></svg>
-     <svg xmlns="http://www.w3.org/2000/svg" class="nextArrow text-gray-light cursor-pointer" width="13.72" height="18.961" viewBox="0 0 13.72 18.961"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(15 -2.058) rotate(90)" fill="currentColor"/></svg>
+  <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" :slidesPerView="3" class="carouselAll h-48 my-5 sm:hidden block">
+    <div class="pre_next absolute top-40 flex justify-center items-center w-full space-x-5">
+     <svg xmlns="http://www.w3.org/2000/svg" class="preIconArtist preArrow text-gray-light cursor-pointer" width="15" height="23.077" viewBox="0 0 15 23.077"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(0 23.077) rotate(-90)" fill="currentColor"/></svg>
+     <svg xmlns="http://www.w3.org/2000/svg" class="nextIconArtist nextArrow text-gray-light cursor-pointer" width="13.72" height="18.961" viewBox="0 0 13.72 18.961"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(15 -2.058) rotate(90)" fill="currentColor"/></svg>
     </div>
-    <swiper-slide  v-for="(item, index) in artistList"  :key="item.author">
+    <swiper-slide  v-for="(item, index) in artistList"  :key="item.author " class="aa">
       <artist-item
           class="art"
           listen
@@ -166,9 +166,10 @@ export default {
 
 <style scoped>
     .container{
-        align-items: center;
+      /* border:1px solid red; */
+      align-items: center;
         justify-content: center;
-        margin: -5px 0 40px 0;
+        margin: 10px 0 40px 0;
     }
     .carousel_outer{
         position: relative;

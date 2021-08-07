@@ -103,21 +103,23 @@ export default {
   .bg_padding{
     padding: 10px 8px 5px 8px;
   }
-}
-  @media (max-width: 640px) {
     :deep .music_item{
       /* border:1px solid red; */
       align-items: flex-end;
       padding: 0 0 10px 0;
     }
+    :deep .item{
+      width:100%;
+    }
     :deep .activeImg{
-      width:255px;
+      width:100%;
+      height: auto;
     }
     :deep .activeJoin{
       display: none;
     }
     :deep .activeContent{
-      width:255px;
+      width:100%;
     }
   }
 

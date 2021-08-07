@@ -31,7 +31,7 @@
         </svg>
       </div>
       <p class="p_song" v-if="asong">{{titles}} <span class="span_author">{{author}}</span></p>
-      <p v-else class="p_album">{{albumname}}<span class="p_album_letters">{{years}}・{{songnum}}首歌・{{times}}</span></p>
+      <p v-else class="p_album flex  flex-col sm:block">{{albumname}}<span class="p_album_letters">{{years}}・{{songnum}}首歌・{{times}}</span></p>
     </div>
     <div :class="[asong? 'div_song_info': 'div_album_info']">
       <base-date v-if="date" :time="now" class="date"></base-date>
@@ -263,6 +263,7 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    align-items: flex-end;
     margin:0 0 0 95px;
     height: 330px;
   }
@@ -343,4 +344,47 @@ export default {
       height: 210px;
     }
   }
+  @media screen and (max-width: 640px) {
+    .div_song_whole{
+      /* border:1px solid red; */
+      width: 240px;
+    }
+    .cd{
+      width: 210px;
+      height: 210px;
+      left: 55%;
+    }
+    .div_song_info{
+      /* border:1px solid red; */
+      margin:0 0 0 115px;
+      height: 200px;
+    }
+    .div_fun{
+      padding: 70px 0 0 0;
+    }
+    .p_album_letters{
+      color: #7b7b7b;
+      font-size: 12px;
+      margin: 0;
+    }
+  }
+  @media screen and (max-width: 400px) {
+    .div_song_whole{
+      /* border:1px solid red; */
+      width: 210px;
+    }
+    .cd{
+      width: 200px;
+      height: 200px;
+    }
+    .div_song_info{
+      /* border:1px solid red; */
+      margin:0 0 0 110px;
+      height: 200px;
+    }
+    .div_fun{
+      padding: 45px 0 0 0;
+    }
+  }
+
 </style>

@@ -4,7 +4,7 @@
 </base-dialog>
 <div class="range">
   <div class="sm:flex flex-col justify-center m-auto hidden">
-    <base-title title="HOT 即時熱門" link to="/Charts"></base-title>
+    <base-title title="HOT 即時熱門" link to="/Charts" ></base-title>
     <hot-music></hot-music>
   </div>
   <div class="day_N_artist">
@@ -12,10 +12,10 @@
       <div class="sm:block hidden">
         <base-title title="Song of the Day 每日一曲"></base-title>
       </div>
-      <div class="sm:hidden block">
-        <base-title title="Song of the Day"></base-title>
+      <div class="sm:hidden block mt-[-20px]">
+        <base-title title="Song of the Day 每日一曲"></base-title>
       </div>
-      <cd-player style="width:200px"
+      <cd-player style="width:200px" class="cd_Player"
         likes date asong
         :songimg="theCDsong.img"
         :titles="theCDsong.title"
@@ -42,10 +42,10 @@
       </div>
     </div>
   </div>
-  <div class="sm:hidden block mt-10">
+  <div class="sm:hidden block mt-8">
     <base-title title="HOT 即時熱門" link to="/Charts"></base-title>
       <music-item
-        class="mt-[30px]"
+        class="mt-[10px] "
         v-for="item in musicItems"
         :status="item.status"
         :color="item.color"
@@ -59,9 +59,9 @@
         :likeCounter="item.likeCounter">
       </music-item>
   </div>
-  <div class="sm:hidden block mt-10">
+  <div class="sm:hidden block mt-14">
     <base-title title="Artist 大家都在聽" link to="/Find"></base-title>
-    <div class="flex justify-between mt-[30px]">
+    <div class="flex justify-between mt-[20px]">
       <artist-item
         :width="'w-20'"
         v-for="(item, index) in phArtistList"
@@ -74,14 +74,14 @@
       </artist-item>
     </div>
   </div>
-  <div class="sm:hidden block mt-10">
+  <div class="sm:hidden block mt-14">
     <base-title title="Showcase 演出活動" link to="/Find"></base-title>
-     <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="mt-[30px]">
-       <svg xmlns="http://www.w3.org/2000/svg" class="preIcon preArrow" width="15" height="23.077" viewBox="0 0 15 23.077"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(0 23.077) rotate(-90)" fill="currentColor"/></svg>
-       <svg xmlns="http://www.w3.org/2000/svg" class="nextIcon nextArrow" width="13.72" height="18.961" viewBox="0 0 13.72 18.961"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(15 -2.058) rotate(90)" fill="currentColor"/></svg>
+     <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="mt-[20px]">
+       <svg xmlns="http://www.w3.org/2000/svg" class="preIcon1 preArrow " width="15" height="23" viewBox="0 0 15 23.077"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(0 23.077) rotate(-90)" fill="currentColor"/></svg>
+       <svg xmlns="http://www.w3.org/2000/svg" class="nextIcon1 nextArrow" width="13.72" height="23" viewBox="0 0 13.72 18.961"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(15 -2.058) rotate(90)" fill="currentColor"/></svg>
        <swiper-slide v-for="item in activeDatas" :key="item">
          <activity-item
-            class="max-w-[300px] m-auto"
+            class="singleSwipe m-auto"
             :img="item.imgSrc"
             :title="item.title"
             :time="item.time"
@@ -94,13 +94,13 @@
      </swiper>
   </div>
   <div class="sm:hidden block mt-10">
-    <base-title title="Crowdfunding 募資計畫" link to="/Funds"></base-title>
-      <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="mt-[30px]">
-       <svg xmlns="http://www.w3.org/2000/svg" class="preIcon preArrow" width="13.72" height="18.96" viewBox="0 0 13.72 18.961"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(0 23.077) rotate(-90)" fill="currentColor"/></svg>
-       <svg xmlns="http://www.w3.org/2000/svg" class="nextIcon nextArrow" width="13.72" height="18.961" viewBox="0 0 13.72 18.961"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(15 -2.058) rotate(90)" fill="currentColor"/></svg>
+    <base-title title="Crowdfunding 募資" link to="/Funds"></base-title>
+      <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="mt-[-10px]">
+       <svg xmlns="http://www.w3.org/2000/svg" class="preIcon2 preArrow" width="15" height="23" viewBox="0 0 15 23.077"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(0 23.077) rotate(-90)" fill="currentColor"/></svg>
+       <svg xmlns="http://www.w3.org/2000/svg" class="nextIcon2 nextArrow" width="13.72" height="23" viewBox="0 0 13.72 18.961"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(15 -2.058) rotate(90)" fill="currentColor"/></svg>
        <swiper-slide v-for="item in fundItems"  :key="item.title">
          <fund-item
-          class="max-w-[300px] m-auto"
+          class="singleSwipe m-auto "
           :title="item.title"
           :img="item.img"
           :singer="item.singer"
@@ -343,32 +343,11 @@ export default {
     /* border: 1px solid green; */
     width: calc((100% - 60px)/2);
   }
-  @media (max-width: 640px) {
-    .day {
-      width: 100%;
-      margin: auto;
-    }
-    .day_N_artist{
-      margin-top: 30px;
-    }
-  }
   .artcontain{
     margin-top: 10px;
   }
   .aartist{
     margin-top: 20px;
-  }
-  @media (max-width: 640px){
-    :deep .fundBlock{
-      width: 100%;
-      margin: 35px auto 0 auto;
-    }
-    :deep .fundBlock:last-child {
-      margin: 35px auto 0 auto;
-    }
-    :deep .content {
-      width: 300px;
-    }
   }
   /* RWD */
   @media screen and (max-width: 1920px) {
@@ -401,11 +380,55 @@ export default {
       width: 80px;
     }
   }
-.preIcon {
-  @apply text-gray-light absolute top-1/3 z-10 left-0 cursor-pointer fill-current w-5 h-5
+  @media screen and (max-width: 640px) {
+    .day {
+      width: 100%;
+      margin: auto;
+    }
+    .day_N_artist{
+      margin-top: 30px;
+    }
+    .cd_Player{
+      margin: 15px 0 30px 0;
+    }
+    :deep .fundBlock{
+      width: 100%;
+      margin: 35px auto 0 auto;
+    }
+    :deep .fundBlock:last-child {
+      margin: 35px auto 0 auto;
+    }
+    :deep .content {
+      width: 320px;
+    }
+    .singleSwipe{
+      /* border:1px solid red; */
+      max-width: 320px;
+    }
+    :deep .homeActivity{
+      height: 155px;
+    }
+  }
+  @media screen and (max-width: 400px) {
+    .singleSwipe{
+      /* border:1px solid red; */
+      max-width: 290px;
+    }
+    :deep .content {
+      width: 290px;
+    }
+  }
+.preIcon1 {
+  @apply text-gray-light absolute top-1/4 z-10 left-0 cursor-pointer
 }
-.nextIcon{
-  @apply text-gray-light absolute top-1/3 z-10 right-0 cursor-pointer
+.nextIcon1{
+  @apply text-gray-light absolute top-1/4 z-10 right-0 cursor-pointer
+}
+.preIcon2 {
+  @apply text-gray-light absolute top-[100px] z-10 left-0 cursor-pointer
+}
+.nextIcon2{
+  @apply text-gray-light absolute top-[100px] z-10 right-0 cursor-pointer
 }
 .swiper-button-disabled {
   @apply text-gray-default
