@@ -410,7 +410,12 @@ export default {
     }
   },
   async created () {
-    const response = await fetch('http://localhost/DropbeatBackend/FileUpload/funds_single_files_get.php')
+    const formGet = new FormData()
+    formGet.append('initiator', this.$store.getters.loginIdState)
+    const response = await fetch('http://localhost/DropbeatBackend/FileUpload/funds_single_files_get.php', {
+      method: 'POST',
+      body: formGet
+    })
     const responseData = await response.json()
     // 操作
     // 判斷是否有登入
@@ -420,6 +425,7 @@ export default {
         this.nowFundArray.unshift(item)
       })
     }
+    console.log(this.nowFundArray)
   }
 }
 </script>
