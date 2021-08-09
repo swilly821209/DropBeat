@@ -31,6 +31,7 @@ export default {
   box-sizing: border-box;
   text-decoration: none;
   font-family: "Roboto", 'Noto Sans TC';
+  scroll-behavior: smooth;
 }
 html, body {
   margin: 0;

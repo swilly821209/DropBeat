@@ -1,11 +1,11 @@
 <template>
   <div class="fundBlock">
     <div v-if="edit" class="flex mb-2 ml-1 sm:w-auto w-[300px] edit">
-      <div class="h5_icon flex flex-col items-center mr-3">
-          <span class="editIcon"></span>
+      <div class="h5_icon flex flex-col items-center mr-3" @click="edidFund">
+          <span class="editIcon" ></span>
           <h5>編輯</h5>
       </div>
-      <div class="h5_icon flex flex-col items-center">
+      <div class="h5_icon flex flex-col items-center" @click="deleteDialogFun">
           <span class="deleteIcon"></span>
           <h5>刪除</h5>
       </div>
@@ -81,6 +81,16 @@ export default {
       type: Boolean,
       required: false,
       default: false
+    },
+    edidFund: {
+      type: String,
+      required: false,
+      default: ''
+    },
+    deleteDialogFun: {
+      type: String,
+      required: false,
+      default: ''
     }
   }
 }

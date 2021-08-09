@@ -1,5 +1,41 @@
 <template>
   <div class="range">
+    <base-dialog :show="cancleDialog">
+      <div class="flex flex-col items-center py-10 px-40">
+        <p class="text-[#383838]">您先前編輯的內容都將不會儲存</p>
+        <p class="text-[#383838]">確定離開？</p>
+        <div class="flex mt-[20px]">
+          <button @click="cancleFun" class="mr-[20px] text-white bg-orange border-2 border-orange rounded-2xl w-[60px]">取消</button>
+          <button @click="cancleDialog = !cancleDialog" class="text-[#7B7B7B] bg-white border-2 border-[#B5B5B5] rounded-2xl w-[60px]">離開</button>
+        </div>
+      </div>
+    </base-dialog>
+    <base-dialog :show="submitDialog">
+      <div class="flex flex-col items-center py-10 px-20">
+        <p class="text-[#383838] text-2xl">募資審核需要7個工作天！</p>
+        <p class="text-[#383838] text-2xl">審核狀態將顯示在募資管理頁面</p>
+        <ul class="mt-[40px]">
+          <li class="mb-[5px]">・募資日期一經設定後就無法再更改，請確認後再提案。</li>
+          <li class="mb-[5px]">・募資提案必須為可以履行的計劃目標且資訊內容清楚，不可涉及爭議性內容且不違反中華民國現行法律之提案。</li>
+          <li>・若期限屆滿仍未達成募資目標，所有的贊助款項均將交還給贊助者。您可以修改提案再次重新提交審核。</li>
+        </ul>
+        <div class="flex mt-[20px]">
+          <button @click="submitDialog = !submitDialog" class="mr-[20px] text-[#7B7B7B] bg-white border-2 border-[#B5B5B5] rounded-2xl w-[60px]">取消</button>
+          <button @click="sendData" class="text-white bg-orange border-2 border-orange rounded-2xl w-[60px]">提交</button>
+        </div>
+      </div>
+    </base-dialog>
+    <base-dialog :show="deleteDialog">
+      <div class="flex flex-col items-center py-10 px-40">
+        <p class="text-[#383838] text-2xl">刪除此募資提案後不可復原，您確定刪除？</p>
+        <p class="text-[#383838] text-sm">若您有問題請聯繫管理員</p>
+        <p class="text-[#383838]">・若期限屆滿前刪除募資提案，所有的贊助款項均將交還給贊助者。</p>
+        <div class="flex mt-[20px]">
+          <button @click="deleteDialog = !deleteDialog" class="mr-[20px] text-white bg-orange border-2 border-orange rounded-2xl w-[60px]">取消</button>
+          <button @click="deleteFun" class="text-[#7B7B7B] bg-white border-2 border-[#B5B5B5] rounded-2xl w-[60px]">刪除</button>
+        </div>
+      </div>
+    </base-dialog>
     <div class="flex justify-between items-center mt-5">
       <base-title title="募資管理" admin></base-title>
       <div class="cursor-pointer hidden sm:flex sm:mr-3" >
@@ -24,15 +60,17 @@
     </swiper>
     <!-- 有登入 -->
     <swiper v-else :slidesPerView="4" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="hidden sm:flex">
-      <swiper-slide v-for="item in computedNowArray" :key="item.donate_name">
-        <fund-item class="theItemMenegerSpe"
+      <swiper-slide v-for="(item, index) in nowFundArray" :key="item.donate_name">
+        <fund-item class="theItemMenegerSpe" :id = index
           edit
           :title="item.donate_name"
           :img="item.donate_photo"
           :singer="item.initiator"
           :progress="'20%'"
           :date="'20'"
-          :money="item.goal">
+          :money="item.goal"
+          :edidFund="edidFund"
+          :deleteDialogFun="deleteDialogFun">
         </fund-item>
       </swiper-slide>
     </swiper>
@@ -55,7 +93,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" class="nextIcon nextArrow" width="20" height="18.961" viewBox="0 0 13.72 18.961"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(15 -2.058) rotate(90)" fill="currentColor"/></svg>
       </swiper>
     </div>
-    <base-title title="發起募資" class="mt-4 sm:mt-20 mb-5"></base-title>
+    <base-title id="activeFund" title="發起募資" class="mt-4 sm:mt-20 mb-5"></base-title>
     <div class="flex flex-col w-full items-center sm:flex-row">
       <select-img
         class="w-[300px] mx-6 h-48 sm:w-8/12 sm:h-[400px]"
@@ -72,7 +110,7 @@
         </div>
         <div class="flex mt-4">
           <label for="date" class="w-[120px] sm:w-2/6 text-right text-gray-dark text-xl mr-3">結束日期：</label>
-          <input :value="fundEndDate" id="date" type="date" @change="changeColor" class="w-[190px] sm:w-4/6 border-b-2 border-gray-light focus:outline-none bg-white focus:border-orange text-transparent font-bold">
+          <input v-model="fundEndDate" id="date" type="date" @change="changeColor" class="w-[190px] sm:w-4/6 border-b-2 border-gray-light focus:outline-none bg-white focus:border-orange text-transparent font-bold">
         </div>
         <div class="flex mt-4">
           <label for="money" class="w-[120px] sm:w-2/6 text-right text-gray-dark text-xl mr-3 sm:ml-5 money">目標金額：</label>
@@ -97,8 +135,9 @@
     </div>
     <div class="flex outers">
       <div class="flex inners">
-        <div v-for="item in fundsList" :key="item" class="hidden flex theItem sm:flex theOption">
+        <div v-for="(item, index) in fundsList" :key="item" class="hidden flex theItem sm:flex theOption">
           <select-img
+            :id="index"
             class="w-5/12 p-10"
             :radius="'rounded-3xl'"
             :camera="true"
@@ -180,8 +219,9 @@
     </div>
     <div class="flex justify-end mt-5 mr-[40px]">
       <div class="flex">
-        <button class="w-[70px] border-2 border-gray-light text-gray-light px-4 mr-5 rounded-xl hover:border-orange">取消</button>
-        <button @click="sendData" class="w-[100px] border border-orange bg-orange text-white px-4 rounded-xl">提交審核</button>
+        <button @click="cancleDialog = !cancleDialog" class="w-[70px] border-2 border-gray-light text-gray-light px-4 mr-5 rounded-xl hover:border-orange">取消</button>
+        <button v-if="sendStatus" @click="submitDialog = !submitDialog" class="w-[100px] border border-orange bg-orange text-white px-4 rounded-xl">提交審核</button>
+        <button v-else @click="sendEdit" class="w-[100px] border border-orange bg-orange text-white px-4 rounded-xl">確認編輯</button>
       </div>
     </div>
   </div>
@@ -205,14 +245,22 @@ export default {
   },
   data () {
     return {
+      cancleDialog: false,
+      submitDialog: false,
+      deleteDialog: false,
+      fundId: '',
       fundTitle: '',
-      fundEndDate: '2021-08-08',
+      fundEndDate: '',
       fundMoney: '',
       fundInfo: '',
-      fundImg: {},
-      donateArray: [],
-      nowFundArray: [],
+      fundImg: {}, // 發起募資的照片(一張)
+      donateImg: [], // user上傳募資方案的照片(多張)
+      editDonateArray: [], // 點擊編輯後產生的陣列
+      nowFundArray: [], // 一開始渲染user的募資資料
+      arrayIndex: '', // delete用獲取該陣列
+      topTag: '', // delete用獲取該元素
       defaultEdit: true,
+      sendStatus: true,
       fundItems: [
         {
           title: '運氣來的若有似無 專輯募資',
@@ -319,22 +367,10 @@ export default {
     }
   },
   methods: {
-    changeColor (e) {
-      e.target.classList.remove('text-transparent')
-      e.target.classList.add('text-gray-light')
-      this.fundEndDate = e.target.value
-    },
-    leftFunds () {
-      this.fundsPosition = 0
-      document.querySelector('.innersMeneger').style.transform = `translateX(${this.fundsPosition}px)`
-      this.fundsL = '#ededed'
-      this.fundsR = '#b5b5b5'
-    },
-    rightFunds () {
-      this.fundsPosition = -1200
-      document.querySelector('.innersMeneger').style.transform = `translateX(${this.fundsPosition}px)`
-      this.fundsL = '#b5b5b5'
-      this.fundsR = '#ededed'
+    changeColor () {
+      document.querySelector('#date').classList.remove('text-transparent')
+      document.querySelector('#date').classList.add('text-gray-light')
+      this.fundEndDate = document.querySelector('#date').value
     },
     leftPlan () {
       this.planPosition = 0
@@ -348,7 +384,7 @@ export default {
       this.planL = '#b5b5b5'
       this.planR = '#ededed'
     },
-    async fileChange (e) {
+    fileChange (e) {
       // 圖片處理
       const file = e.target.files[0]
       const readFile = new FileReader()
@@ -357,24 +393,37 @@ export default {
         const image = e.target.closest('.outer')
         image.style.backgroundImage = `url('${readFile.result}')`
       })
-      // 將路徑存到data中(2種)
-      if (e.target.closest('div.theOption')) {
-        this.donateArray.unshift(file)
+      // 將路徑存到data中
+      if (this.editDonateArray.length === 0) {
+        if (e.target.closest('div.theOption')) {
+          this.donateImg.push(file)
+        } else {
+          this.fundImg = file
+        }
       } else {
-        this.fundImg = file
+        if (e.target.closest('div.theOption')) {
+          const getId = e.target.closest('.outer').id
+          if (getId > this.editDonateArray.length - 1) {
+            this.editDonateArray.push({ option_img: file })
+          } else {
+            this.editDonateArray[getId].option_img = file
+          }
+        } else {
+          this.fundImg = file
+        }
       }
     },
     sendData () {
       if (this.$store.getters.loginState !== false) {
         const form = new FormData()
         // 傳後端(發起募資)======================================================
-        form.append('file', this.fundImg) // 傳照片
+        form.append('file', this.fundImg) // 存照片
         form.append('donate_id', this.donateId) // donate_id
         form.append('initiator', this.$store.getters.loginIdState) // initiator (募款發起人)
         form.append('donate_name', this.fundTitle) // donate_name
         form.append('info', this.fundInfo) // info
         form.append('goal', this.fundMoney) // goal
-        form.append('end_date', this.fundEndDate) // donate_name
+        form.append('end_date', this.fundEndDate) // end_date
         fetch('http://localhost/DropbeatBackend/FileUpload/funds_single_files_send.php', {
           method: 'POST',
           body: form
@@ -382,9 +431,9 @@ export default {
         // 傳後端(募資方案)======================================================
         const forms = new FormData()
         const donateOptionId = Math.floor(Math.random() * 9999)
-        forms.append('length', this.donateArray.length)
-        for (let i = 0; i < this.donateArray.length; i++) {
-          forms.append(`file${i}`, this.donateArray[i]) // 存照片
+        forms.append('length', this.donateImg.length)
+        for (let i = 0; i < this.donateImg.length; i++) {
+          forms.append(`file${i}`, this.donateImg[i]) // 存照片
           forms.append(`donate_option_id${i}`, `${donateOptionId}${i}`) // 募款方案編號
           forms.append('donate', this.donateId) // 募款編號
           forms.append(`option_name${i}`, this.fundsList[i].title) // 方案名稱
@@ -397,16 +446,142 @@ export default {
           body: forms
         })
         // 其他前台動作
+        this.submitDialog = !this.submitDialog
         alert('成功新增募資！')
-        this.$router.replace('/')
+        this.$router.replace('/Funds')
+        window.scrollTo(0, 0)
       } else {
-        alert('請登入後編輯！')
+        alert('請先登入帳號！')
+        this.$router.replace('/LoginIn')
       }
-    }
-  },
-  computed: {
-    computedNowArray () {
-      return this.nowFundArray
+    },
+    async edidFund (e) {
+      window.location.hash = '#activeFund'
+      this.sendStatus = !this.sendStatus
+      // 先將圖片與文字清空
+      document.querySelectorAll('.outer').forEach(item => {
+        item.style.backgroundImage = 'none'
+      })
+      this.fundsList.forEach(item => {
+        item.money = 450
+        item.title = '只想要專輯'
+        item.content = `- 專輯 x1 
+- 內含：CD、寫真歌詞本、小卡 `
+        item.quantity = 800
+      })
+      // 獲取該陣列數
+      const arrayIndex = e.target.closest('div.theItemMenegerSpe').id
+      // 獲取該募資的id->再用id去DB找募資方案內容
+      const form = new FormData()
+      form.append('donate', this.nowFundArray[arrayIndex].donate_id)
+      const response = await fetch('http://localhost/DropbeatBackend/FileUpload/funds_multiple_files_get.php', {
+        method: 'POST',
+        body: form
+      })
+      const responseData = await response.json()
+      // 取得該會員 該募資項目的資料，from DONATE, DONATEOPTION
+      // DONATE
+      this.fundImg = this.nowFundArray[arrayIndex].donate_photo
+      this.fundId = this.nowFundArray[arrayIndex].donate_id
+      this.fundTitle = this.nowFundArray[arrayIndex].donate_name
+      this.fundInfo = this.nowFundArray[arrayIndex].info
+      this.fundEndDate = this.nowFundArray[arrayIndex].end_date
+      this.fundMoney = this.nowFundArray[arrayIndex].goal
+      document.querySelector('#date').value = this.fundEndDate
+      this.changeColor() // 日期顯示
+      const image = document.querySelectorAll('.outer')[0] // 圖片顯示
+      image.style.backgroundImage = `url('${this.fundImg}')`
+      // DONATEOPTION
+      this.editDonateArray = responseData
+      console.log(this.editDonateArray)
+      const donateIndex = this.editDonateArray.length
+      const donateImage = document.querySelectorAll('.outer')
+      for (let i = 0; i < donateIndex; i++) {
+        this.fundsList[i].money = this.editDonateArray[i].option_price
+        this.fundsList[i].title = this.editDonateArray[i].option_name
+        this.fundsList[i].content = this.editDonateArray[i].option_reward
+        this.fundsList[i].quantity = this.editDonateArray[i].num
+        donateImage[i + 1].style.backgroundImage = `url('${this.editDonateArray[i].option_img}')`
+      }
+    },
+    deleteDialogFun (e) {
+      this.deleteDialog = !this.deleteDialog
+      this.arrayIndex = e.target.closest('div.theItemMenegerSpe').id
+      this.topTag = e.target.closest('div.swiper-slide')
+    },
+    deleteFun () {
+      // 刪除該元素
+      this.topTag.remove()
+      // 獲取該募資的id->再用id去DB找募資方案內容
+      const form = new FormData()
+      form.append('donate', this.nowFundArray[this.arrayIndex].donate_id)
+      fetch('http://localhost/DropbeatBackend/FileUpload/funds_delete.php', {
+        method: 'POST',
+        body: form
+      })
+      this.deleteDialog = !this.deleteDialog
+      this.$router.replace('/Funds')
+      window.scrollTo(0, 0)
+    },
+    cancleFun () {
+      this.cancleDialog = !this.cancleDialog
+      this.sendStatus = true
+      this.$router.replace('/MusicianFunds')
+      window.scrollTo(0, 0)
+      // 清空圖片
+      document.querySelectorAll('.outer').forEach(item => {
+        item.style.backgroundImage = 'none'
+      })
+      // 清空文字&變回原樣
+      this.fundTitle = ''
+      this.fundEndDate = ''
+      this.fundMoney = ''
+      this.fundInfo = ''
+      this.fundsList.forEach(item => {
+        item.money = 450
+        item.title = '只想要專輯'
+        item.content = `- 專輯 x1 
+- 內含：CD、寫真歌詞本、小卡 `
+        item.quantity = 800
+      })
+      this.editDonateArray = []
+    },
+    sendEdit () {
+      alert('編輯已送出')
+      // 取上半部資料
+      const form = new FormData()
+      form.append('donate_id', this.fundId)
+      // form.append('initiator', this.$store.getters.loginIdState)
+      form.append('donate_name', this.fundTitle)
+      form.append('info', this.fundInfo)
+      form.append('goal', this.fundMoney)
+      form.append('end_date', this.fundEndDate)
+      form.append('file', this.fundImg) // 存照片
+      fetch('http://localhost/DropbeatBackend/FileUpload/funds_single_files_edit.php', {
+        method: 'POST',
+        body: form
+      })
+      // 取下半部資料
+      const optionId = this.editDonateArray[0].donate_option_id.slice(0, -1) // 獲取donate_option_id
+      const index = this.editDonateArray.length
+      const forms = new FormData()
+      forms.append('length', index) // 陣列長度
+      forms.append('donate', this.editDonateArray[0].donate) // 該donate編號(取一個即可)
+      for (let i = 0; i < index; i++) {
+        forms.append(`donate_option_id${i}`, `${optionId}${i}`)
+        forms.append(`option_name${i}`, this.fundsList[i].title)
+        forms.append(`file${i}`, this.editDonateArray[i].option_img)
+        console.log(this.editDonateArray[i])
+        forms.append(`option_reward${i}`, this.fundsList[i].content)
+        forms.append(`option_price${i}`, this.fundsList[i].money)
+        forms.append(`num${i}`, parseInt(this.fundsList[i].quantity))
+      }
+      fetch('http://localhost/DropbeatBackend/FileUpload/funds_multiple_files_edit.php', {
+        method: 'POST',
+        body: forms
+      })
+      this.$router.replace('/Funds')
+      window.scrollTo(0, 0)
     }
   },
   async created () {
@@ -424,8 +599,8 @@ export default {
       responseData.forEach((item) => {
         this.nowFundArray.unshift(item)
       })
+      // console.log(this.nowFundArray)
     }
-    console.log(this.nowFundArray)
   }
 }
 </script>
