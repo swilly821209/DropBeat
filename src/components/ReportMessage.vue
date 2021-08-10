@@ -1,8 +1,8 @@
 <template>
-    <div class=" mx-44 my-10">
+    <div class="mx-6 my-6 sm:mx-44 sm:my-10 text-center">
       <div class="mb-6">
-        <h2 class=" text-[32px] text-black-backdrop">向管理員檢舉此留言</h2>
-        <p class="text-sm text-gray-dark">請選擇檢舉內容。其他人不會看到您的姓名</p>
+        <h2 class="text-[28px] sm:text-[32px] text-black-backdrop">向管理員檢舉此留言</h2>
+        <p class="text-xs sm:text-sm text-gray-dark">請選擇檢舉內容。其他人不會看到您的姓名</p>
       </div>
       <div v-for="(report) in reportTitle" :key="report" class="select flex items-center space-x-3 ml-1 ">
         <button class="w-2 h-2 ring-offset-2 ring-1 ring-current text-gray-light rounded-full"

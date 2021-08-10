@@ -3,7 +3,7 @@
     <img :src="memberImg" class="w-20 h-20 rounded-full">
     <div>
       <p class="text-sm text-gray-light">{{ memberName }}・{{ timeLag }}前</p>
-      <div class="text-base text-gray-dark space-x-5 flex items-center">
+      <div class="text-base text-gray-dark space-x-5 flex items-center ">
         <p>{{ memberMessage }}</p>
         <span @click="toggleReport" class=" cursor-pointer hover:bg-gray-default w-6 h-6 flex justify-center items-center self-end rounded-full relative">
           <base-card v-if="report" :id="mesId" @click="reportMessage" class="absolute text-sm py-1 px-1 bottom-[-70px] w-32 text-center my-0 hover:bg-gray-light hover:text-white transition-all">檢舉此留言</base-card>

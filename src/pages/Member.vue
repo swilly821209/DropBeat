@@ -82,7 +82,7 @@
                   <p class="sm:text-3xl text-2xl text-orange sm:mb-5 mb-0 sm:order-1 order-2">$600</p>
                   <h5 class="my-1 text-black-backdrop text-base sm:mr-0 mr-8 sm:order-2 order-1">專輯海報組</h5>
                 </div>
-                <ul class="list-disc text-gray-dark sm:text-sm text-xs sm:mb-0 mb-2">
+                <ul class="list-disc text-gray-dark sm:text-sm text-xs pl-4 sm:mb-0 mb-2">
                   <li>專輯 x1</li>
                   <li>內含：CD、寫真歌詞本、小卡</li>
                   <li>A2 親簽海報</li>
