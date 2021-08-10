@@ -47,7 +47,10 @@ export default {
     logout () {
       this.openDetail()
       this.accountName = ''
-      this.$store.dispatch('login', false)
+      this.$store.dispatch('login', {
+        account: false,
+        memberId: false
+      })
     }
   }
 }

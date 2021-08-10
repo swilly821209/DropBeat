@@ -822,6 +822,10 @@ video {
   top: -58px;
 }
 
+.right-\[5px\] {
+  right: 5px;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -2911,6 +2915,10 @@ textarea {
 
   .sm\:top-\[-60px\] {
     top: -60px;
+  }
+
+  .sm\:bottom-0 {
+    bottom: 0px;
   }
 
   .sm\:order-1 {

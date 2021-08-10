@@ -41,9 +41,19 @@ export default {
   components: {
     SelectImg
   },
-  //   async create () {
-  //      const response = await fetch()
-  //   },
+  async created () {
+    const form = new FormData()
+    form.append('account', this.$store.getters.loginState)
+    console.log(this.$store)
+    const response = await fetch('http://localhost/DropbeatBackend/AccountManage.php', {
+      method: 'POST',
+      body: form
+    })
+    const responseDate = await response.json()
+    this.account = responseDate.account
+    this.artistName = responseDate.account
+    this.mail = responseDate.email
+  },
   data () {
     return {
       account: 'accusefive',

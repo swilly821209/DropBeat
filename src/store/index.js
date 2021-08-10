@@ -6,6 +6,7 @@ export default createStore({
     deleteMusicDialog: true,
     uploadMusicDialog: false,
     isLogin: false,
+    memberId: false,
     idLogin: 'ddddd',
     mesId: 'fffff'
   },
@@ -17,7 +18,8 @@ export default createStore({
       state.deleteMusicDialog = payload
     },
     login (state, payload) {
-      state.isLogin = payload
+      state.isLogin = payload.account
+      state.memberId = payload.memberId
     },
     loginId (state, payload) {
       state.idLogin = payload
@@ -61,6 +63,9 @@ export default createStore({
     },
     loginState (state) {
       return state.isLogin
+    },
+    memberIdState (state) {
+      return state.memberId
     },
     loginIdState (state) {
       return state.idLogin
