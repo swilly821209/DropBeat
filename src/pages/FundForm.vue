@@ -10,23 +10,23 @@
     <div class="flex">
       <form class=" w-full sm:w-9/12 ml-0 sm:ml-10 ">
         <h2 class="title">收件人資訊</h2>
-        <div class="px-2 sm:px-8 py-4 my-4 mr-0 sm:mr-8 border-2 rounded-md shadow-md">
-          <div class="flex flex-col mb-4">
-            <label for="name" class="text-gray-dark text-base mb-1 ml-1">收件人姓名：</label>
+        <div class="aa px-3 sm:px-8 py-4 my-4 mr-0 sm:mr-8 border-2 rounded-md shadow-md">
+          <div class="flex flex-col sm:mb-4 mb-5">
+            <label for="name" class="text-gray-dark text-base mb-1 ml-1 mt-2">收件人姓名：</label>
             <input type="text" id="name" placeholder="請填寫真實姓名" class="border-2 border-gray-default rounded-md w-6/6 p-1 pl-2  text-base text-gray-dark focus:border-orange outline-none cursor-pointer">
           </div>
-          <div class="flex flex-col mb-4">
+          <div class="flex flex-col sm:mb-4 mb-5">
             <label for="address" class="text-gray-dark text-base mb-1 ml-1">收件人地址：</label>
             <div class="flex">
               <input type="text" id="address" placeholder="郵遞區號" class="border-2 border-gray-default w-2/6 sm:w-1/6 rounded-md p-1 pl-2  mr-4 text-base text-gray-dark focus:border-orange outline-none cursor-pointer">
               <input type="text" placeholder="回饋方案將寄至此地址" class="border-2 border-gray-default w-4/6 sm:w-5/6 rounded-md p-1 pl-2  text-base text-gray-dark focus:border-orange outline-none cursor-pointer">
             </div>
           </div>
-          <div class="flex flex-col mb-4">
+          <div class="flex flex-col sm:mb-4 mb-5">
             <label for="phone" class="text-gray-dark text-base mb-1 ml-1">聯絡電話：</label>
             <input type="text" id="phone" placeholder="請填寫常用手機號碼" class="border-2 border-gray-default w-6/6 rounded-md p-1 pl-2 text-base text-gray-dark focus:border-orange outline-none cursor-pointer">
           </div>
-          <div class="flex flex-col mb-4">
+          <div class="flex flex-col sm:mb-4 mb-5">
             <label for="email" class="text-gray-dark text-base mb-1 ml-1">聯絡信箱：</label>
             <input type="email" id="email" placeholder="請填寫常用電子信箱" class="border-2 border-gray-default w-6/6 rounded-md p-1 pl-2 text-base text-gray-dark focus:border-orange outline-none cursor-pointer">
           </div>
@@ -36,9 +36,9 @@
           </div>
         </div>
         <h2 class="title mt-10">付款資訊</h2>
-        <div class="px-2 sm:px-8 py-4 my-4 mr-0 sm:mr-8 border-2 rounded-md shadow-md">
-          <div class="flex flex-col mb-4">
-            <label class="text-gray-dark text-lg mb-1 ml-1">付款方式：</label>
+        <div class="sm:px-2 px-3 sm:px-8 py-4 my-4 mr-0 sm:mr-8 border-2 rounded-md shadow-md">
+          <div class="flex flex-col sm:mb-4 mb-5">
+            <label class="text-gray-dark text-base mb-1 ml-1 mt-1">付款方式：</label>
             <div class="flex flex-col sm:flex-row cursor-default">
               <div class="flex flex-row justify-center sm:justify-around items-center bg-gray-light w-full sm:w-64 py-2 pl-5 pr-2 rounded-lg">
                 <svg xmlns="http://www.w3.org/2000/svg" width="25.714" height="20" viewBox="0 0 25.714 20">
@@ -50,9 +50,9 @@
             </div>
           </div>
           <div class="flex flex-col mb-4">
-            <label for="address" class="text-gray-dark text-lg mb-1 ml-1">贊助總金額：</label>
-            <div class="flex flex-col sm:flex-row items-center justify-between border-2 border-gray-default py-2 sm:py-6 px-0 sm:px-2 rounded-md">
-              <div class="flex space-x-7 items-center sm:items-end justify-center sm:justify-start sm:ml-4 w-full sm:w-5/6">
+            <label for="address" class="text-gray-dark text-base mb-1 ml-1">贊助總金額：</label>
+            <div class="flex flex-col sm:flex-row items-center justify-between border-2 border-gray-default py-2 sm:py-6 px-4 sm:px-2 rounded-md">
+              <div class="flex justify-between sm:space-x-7 items-center sm:items-end justify-center sm:justify-start sm:ml-4 w-full sm:w-5/6">
                 <div class="flex flex-col">
                   <p class="text-gray-dark text-sm">贊助金額</p>
                   <span class="text-xl text-gray-dark font-bold">$ 450</span>
@@ -71,32 +71,32 @@
                 </div>
                 <div class="flex flex-col">
                   <p class="text-gray-dark text-sm pl-3">額外支持</p>
-                  <span class="text-xl text-gray-dark font-bold">$<input v-model="money" type="text" class="border-b-2 border-orange outline-none w-16 pl-1 text-xl text-gray-dark font-bold"></span>
+                  <span class="text-xl text-gray-dark font-bold">$<input v-model="money" type="text" placeholder="0" class="border-b-2 border-orange outline-none w-16 pl-1 text-xl text-orange font-bold"></span>
                 </div>
               </div>
-              <div class=" mr-4 flex self-end">
+              <div class=" mr-0 sm:mr-4 flex self-end">
                 <div class="flex flex-col mr-4">
                   <p class="invisible">.</p>
                   <span class="text-xl text-gray-dark font-bold">=</span>
                 </div>
-                <div class="flex flex-row sm:flex-col items-end">
-                  <p class="text-lg text-gray-dark">總金額</p>
+                <div class="flex flex-row sm:flex-col items-end ">
+                  <p class="text-lg text-gray-dark mr-2 sm:mr-0">總金額</p>
                   <span class="text-xl text-gray-dark font-bold">$ 450</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="mr-10 mt-10">
-          <div class="flex items-center pl-4">
-            <input type="checkbox" name="agree" class="w-[30px] h-[30px] sm:w-[20px] sm:h-[20px] p-16 border-2 border-gray-light rounded-md ">
-            <div class="flex flex-col sm:flex-row items-start sm:items-center">
+        <div class=" mt-10">
+          <div class="noname flex  sm:items-center items-start sm:pl-4 pl-0">
+            <input type="checkbox" name="agree" class="w-[30px] h-[30px] sm:w-[20px] sm:h-[20px] p-16 border-2 border-gray-light rounded-[30px] cursor-pointer">
+            <div class=" flex flex-col sm:flex-row items-start sm:items-center sm:mt-0 mt-[-3px]">
               <label for="agree" class="ml-2 sm:ml-2 sm:text-lg text-gray-dark">匿名贊助</label>
-              <span span class="ml-2 sm:ml-4 text-xs text-gray-dark">勾選後您的姓名將不會出現在支持者區塊及公開的會員資料中</span>
+              <span span class="ml-2 sm:ml-4 text-xs sm:text-gray-dark text-gray-light">勾選後您的姓名將不會出現在支持者區塊及公開的會員資料中</span>
             </div>
           </div>
-          <div class="flex justify-end">
-            <button class="text-center text-base text-white bg-orange rounded-2xl w-64 h-[30px] mt-8 py-1 hover:bg-blue-light">前往付款</button>
+          <div class="flex justify-center sm:justify-end">
+            <button class="text-center text-base text-white bg-orange rounded-2xl w-full sm:w-64 h-[30px] mt-10 sm:mt-8 py-1 hover:bg-blue-light">前往付款</button>
           </div>
         </div>
       </form>
@@ -132,7 +132,7 @@ export default {
         productNum: 800,
         time: '2021/11'
       },
-      money: 0
+      money: ''
     }
   }
 }
@@ -193,9 +193,34 @@ export default {
     background-color: #B5B5B5;
     margin-right: 6px;
   }
+  input::-webkit-input-placeholder{
+    color: #b5b5b5;
+  }
+
+  .noname input:checked::before{
+    content: "\2714";
+    border-radius: 5px;
+    color: #ffffff;
+    background-color: #FF9D83;
+    padding: 7px 9px;
+    position: relative;
+    top:3px;
+    left: -1px;
+  }
+  .noname input:checked::before{
+      content: "\2714";
+      border-radius: 5px;
+      color: #ffffff;
+      background-color: #FF9D83;
+      padding: 3px 5px;
+      position: relative;
+      top:-2px;
+      left: -2px;
+      cursor: pointer;
+  }
   @media screen and (max-width: 640px) {
     .range{
-      padding: 60px 15px 0 10px;
+      padding: 60px 20px 0 20px;
     }
     .preicon {
       width: 20px;
@@ -206,6 +231,38 @@ export default {
     }
     .title::before{
       content: "";
+    }
+    .title{
+      font-size: 24px;
+    }
+    .aa input::-webkit-input-placeholder{
+      font-size: 14px;
+    }
+    .noname input:checked::before{
+      content: "\2714";
+      border-radius: 5px;
+      color: #ffffff;
+      background-color: #FF9D83;
+      padding: 7px 9px;
+      position: relative;
+      top:3px;
+      left: -1px;
+    }
+  }
+  @media screen and (max-width: 400px) {
+    .noname input{
+      width: 25px;
+      height: 25px;
+    }
+    .noname input:checked::before{
+      content: "\2714";
+      border-radius: 5px;
+      color: #ffffff;
+      background-color: #FF9D83;
+      padding: 5px 6px;
+      position: relative;
+      top:1px;
+      left: -1px;
     }
   }
 </style>

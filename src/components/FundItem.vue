@@ -1,17 +1,17 @@
 <template>
   <div class="fundBlock">
-    <div v-if="edit" class="flex mb-2 ml-1 sm:w-auto w-[300px]">
-      <div class="h5_icon flex flex-col items-center mr-3">
-          <span class="editIcon"></span>
+    <div v-if="edit" class="flex mb-2 ml-1 sm:w-auto w-[300px] edit">
+      <div class="h5_icon flex flex-col items-center mr-3" @click="edidFund">
+          <span class="editIcon" ></span>
           <h5>編輯</h5>
       </div>
-      <div class="h5_icon flex flex-col items-center">
+      <div class="h5_icon flex flex-col items-center" @click="deleteDialogFun">
           <span class="deleteIcon"></span>
           <h5>刪除</h5>
       </div>
     </div>
     <router-link to="/Funds/:id" class="sm:order-1 order-2 flex justify-center">
-      <img :src="img" class="sm:w-[269px] sm:h-[269px] w-[345px] h-[170px] object-center object-cover m-auto">
+      <img :src="img" class="homeActivity sm:w-[269px] sm:h-[269px] w-[345px] h-[195px] object-center object-cover m-auto">
     <!-- <router-link to="/Funds/:id" class="sm:order-1 order-2 ">
       <img :src="img" class="sm:w-[269px] sm:h-[269px] w-[300px] h-[150px]"> -->
     </router-link>
@@ -81,6 +81,16 @@ export default {
       type: Boolean,
       required: false,
       default: false
+    },
+    edidFund: {
+      type: String,
+      required: false,
+      default: ''
+    },
+    deleteDialogFun: {
+      type: String,
+      required: false,
+      default: ''
     }
   }
 }

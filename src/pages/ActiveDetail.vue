@@ -1,10 +1,13 @@
 <template>
+  <base-dialog :show="toggleDialog">
+    <report-message></report-message>
+  </base-dialog>
   <div class="range">
     <div class="pre">
       <div class="preicon"></div>
       <div class="title00">
-        <h2>演出活動</h2>
-        <div class="under"></div>
+        <h2><router-link to="/Active" class="text-[18px] sm:text-[32px]">演出活動</router-link></h2>
+        <div class="under hidden sm:block"></div>
       </div>
     </div>
     <div class="block01">
@@ -12,7 +15,8 @@
       <div class="banner"></div>
       <div class="title01">
         <h3 class="sm:block hidden">{{activeTitle}}</h3>
-        <div class="share_join">
+        <div class="share_join flex justify-between sm:justify-end ">
+          <div class="block sm:hidden border-b border-gray-default w-4/6 mb-3 mr-3 ml-1"></div>
           <div class="share"></div>
           <button
             class="join"
@@ -21,10 +25,10 @@
             {{active ? '參加' : '想參加'}}
           </button>
         </div>
-        <div class="hr"></div>
-        <div class="day"><div class="dayicon"></div><p>2021 年 10 月 10 日・星期日・20:00</p></div>
-        <div class="location"><div class="loctionicon"></div><p>台北市・海邊的卡夫卡 Kafka by the Sea</p></div>
-        <div class="artist"><img class="artistImg" src="../assets/images/artist/artist001.jpg"><div class="artistname"><p>大象體操 Elephant Gym</p><div class="undername"></div></div>
+        <div class="hr sm:block hidden"></div>
+        <div class="day"><div class="dayicon sm:block hidden"></div><p>2021 年 10 月 10 日・星期日・20:00</p></div>
+        <div class="location"><div class="loctionicon sm:block hidden"></div><p>台北市・海邊的卡夫卡 Kafka by the Sea</p></div>
+        <div class="artist"><img class="artistImg sm:block hidden" src="../assets/images/artist/artist001.jpg"><div class="artistname"><p>大象體操 Elephant Gym</p><div class="undername"></div></div>
           <button
             class="follow"
             :class="{ clickfollow: follow }"
@@ -58,6 +62,7 @@
 
 <script>
 import MessageBoard from '../components/MessageBoard.vue'
+import ReportMessage from '../components/ReportMessage.vue'
 
 export default {
   data () {
@@ -86,7 +91,8 @@ export default {
     }
   },
   components: {
-    MessageBoard
+    MessageBoard,
+    ReportMessage
   },
   methods: {
     displayMore () {
@@ -97,29 +103,37 @@ export default {
       this.inputMessage = ''
     },
     commentMessage () {
-      const messageData = {
-        member: 'willy',
-        setup_date: `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`,
-        img: 'https://akstatic.streetvoice.com/profile_images/sa/nd/sandwichfail/3fT9Y92afyjdDbtNEFb2rh.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
-        content: this.inputMessage
+      // 判斷是否登入
+      if (this.$store.getters.loginState !== false) {
+        const messageData = {
+          member: 'willy',
+          setup_date: `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`,
+          img: 'https://akstatic.streetvoice.com/profile_images/sa/nd/sandwichfail/3fT9Y92afyjdDbtNEFb2rh.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
+          content: this.inputMessage
+        }
+        this.inputMessage = ''
+        this.nowArray.unshift(messageData)
+        console.log(this.nowArray)
+        // 傳後端
+        const form = new FormData()
+        form.append('message_id', Math.floor(Math.random() * 999)) // message_id (DB是INT)
+        form.append('member', this.$store.getters.loginIdState) // member_id (DB是INT)
+        form.append('musician', Math.floor(Math.random() * 9999)) // musician (DB是INT)
+        // form.append('setup_date', messageData.time)
+        form.append('content', messageData.content)
+        fetch('http://localhost/DropbeatBackend/mussage_act_send.php', {
+          method: 'POST',
+          body: form
+        })
+      } else {
+        alert('請登入後留言！')
       }
-      this.inputMessage = ''
-      this.nowArray.unshift(messageData)
-      console.log(this.nowArray)
-      // 傳後端
-      const form = new FormData()
-      form.append('message_id', Math.floor(Math.random() * 9999)) // message_id (DB是INT)
-      form.append('member', Math.floor(Math.random() * 9999)) // member_id (DB是INT)
-      form.append('musician', Math.floor(Math.random() * 9999)) // musician (DB是INT)
-      // form.append('setup_date', messageData.time)
-      form.append('content', messageData.content)
-      fetch('http://localhost/DropbeatBackend/mussage_act_send.php', {
-        method: 'POST',
-        body: form
-      })
     }
   },
   computed: {
+    toggleDialog () {
+      return this.$store.getters.reportDialogState
+    },
     displayMessageData () {
       return this.nowArray.slice(0, this.displayNum)
     }
@@ -137,6 +151,9 @@ export default {
 </script>
 
 <style scoped>
+  .range{
+    padding: 60px 40px 0 40px;
+  }
 .pre {
   /* border: 1px solid red; */
   display: flex;
@@ -199,8 +216,6 @@ h3{
   margin-left: 5px;
 }
 .share_join{
-  display: flex;
-  justify-content: flex-end;
   margin: 10px 5px 0 0;
 }
 .share{
@@ -217,21 +232,6 @@ h3{
   border: 2px solid #b5b5b5;
   background-color: #b5b5b5;
   background-image: url("../assets/icon/share_fff.svg");
-}
-@media (max-width: 640px) {
-  .block01 {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .banner {
-    width: 345px;
-    height: 170px;
-    margin: 0 auto;
-  }
-  .title01{
-    width: 100%
-  }
 }
 .join{
   background-color: #ff9d83;
@@ -322,13 +322,13 @@ p{
 }
 /*-------------------- block02 -----------------------*/
 .block02{
-  margin: 40px 15px 0 15px;
+  margin: 40px 0 0 0;
 }
 h4{
   font-size: 22px;
   font-weight: 500;
   color: #383838;
-  margin: 0 0 10px 0;
+  margin: 0 0 12px 0;
 }
 .content{
   /* border:1px solid red; */
@@ -339,8 +339,37 @@ h4{
         margin: 50px 0 0 0;
   }
   @media (max-width: 640px) {
+    .range{
+      padding: 60px 20px 0 20px;
+    }
+    .preicon {
+      width: 20px;
+      height: 20px;
+      background-image: url("../assets/icon/pre_7b.svg");
+      background-repeat: no-repeat;
+      margin: 10px 10px 0 0;
+    }
+  .block01 {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .banner {
+    width: 100%;
+    height: 100%;
+    background-size: cover ;
+    padding-top: 57%;
+    margin: 0 auto;
+    border-radius: 10px;
+  }
+  .title01{
+    width: 100%
+  }
     .content {
       white-space:normal;
+    }
+    .share_join{
+      margin: 15px 5px 10px 0;
     }
   }
 </style>

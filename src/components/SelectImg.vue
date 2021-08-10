@@ -21,17 +21,36 @@
       </div>
       <p class="cameraText text-base text-white transition-all">{{text}}</p>
     </div>
-    <input type="file"  class="w-full h-full absolute rounded-3xl opacity-0 cursor-pointer">
+    <input type="file" @change="sendFun" class="w-full h-full absolute rounded-3xl opacity-0 cursor-pointer">
   </div>
 </template>
 
 <script>
 export default {
-  props: ['radius', 'camera', 'file', 'album', 'text', 'inputImg'],
+  props: ['radius', 'camera', 'file', 'album', 'text', 'inputImg', 'sendFun'],
   data () {
     return {
     }
   }
+  // methods: {
+  //   async fileChange (e) {
+  //     // const t = e.target.files
+  //     const form = new FormData()
+  //     // console.log(t)
+  //     form.append('file', e.target.files[0])
+  //     await fetch('http://localhost/DropbeatBackend/FileUpload/funds_files.php', {
+  //       method: 'POST',
+  //       body: form
+  //     })
+  //     const file = e.target.files[0]
+  //     const readFile = new FileReader()
+  //     readFile.readAsDataURL(file)
+  //     readFile.addEventListener('load', function () {
+  //       const image = e.target.closest('.outer')
+  //       image.style.backgroundImage = `url('${readFile.result}')`
+  //     })
+  //   }
+  // }
 }
 </script>
 
@@ -54,6 +73,12 @@ export default {
   }
   .outer:hover g {
     stroke: #B5B5B5;
+  }
+  .outer {
+    /* background-image: url('../assets/images/active/ac001.jpg'); */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
   }
   .circle{
     /* border:1px solid red; */

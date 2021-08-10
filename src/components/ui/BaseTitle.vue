@@ -56,7 +56,7 @@ export default {
 }
 @media screen and (max-width: 640px) {
   .title00 {
-    width: 100%
+    width: 100%;
   }
 }
 .titleNline{
@@ -73,7 +73,7 @@ export default {
   border-radius: 10px;
 }
 h2{
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 500;
   color: #383838;
 }

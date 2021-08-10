@@ -31,6 +31,7 @@ export default {
   box-sizing: border-box;
   text-decoration: none;
   font-family: "Roboto", 'Noto Sans TC';
+  scroll-behavior: smooth;
 }
 html, body {
   margin: 0;
@@ -59,7 +60,7 @@ h1 {
     display: none;
   }
   .range{
-    padding: 60px 10px 10px 10px
+    padding: 60px 15px 10px 15px
   }
 }
 

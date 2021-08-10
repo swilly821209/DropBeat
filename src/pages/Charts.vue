@@ -12,8 +12,8 @@
             {{ item }}
           </base-button>
         </div>
-        <div class="sm:space-x-3 space-x-1  space-y-1">
-          <base-button
+        <div class="sm:space-x-2 sm:space-y-2 space-y-2">
+          <base-button class="buttons"
             v-for="item in singerType"
             :key="item"
             :active="{active: selectSingerType === item}"
@@ -203,29 +203,33 @@ export default {
   width: 140px;
   height: 140px;
 }
-@media(max-width: 640px) {
+@media screen and (max-width: 640px) {
+  .buttons{
+      margin: 0 6px 0 0;
+      padding: 2px 8px;
+  }
   .musicItem:nth-child(1) ::v-deep .musicImage, .musicItem:nth-child(2) ::v-deep .musicImage, .musicItem:nth-child(3) ::v-deep .musicImage{
     /* border:1px solid red; */
     width: 70px;
     height: 70px;
-}
-.musicItem:nth-child(1) ::v-deep .musicImage > img, .musicItem:nth-child(2) ::v-deep .musicImage > img, .musicItem:nth-child(3) ::v-deep .musicImage > img{
+  }
+  .musicItem:nth-child(1) ::v-deep .musicImage > img, .musicItem:nth-child(2) ::v-deep .musicImage > img, .musicItem:nth-child(3) ::v-deep .musicImage > img{
+      width: 70px;
+      height: 70px;
+  }
+  .musicItem:nth-child(1) ::v-deep .playPauseIcon01, .musicItem:nth-child(2) ::v-deep .playPauseIcon01, .musicItem:nth-child(3) ::v-deep .playPauseIcon01{
     width: 70px;
     height: 70px;
-}
-.musicItem:nth-child(1) ::v-deep .playPauseIcon01, .musicItem:nth-child(2) ::v-deep .playPauseIcon01, .musicItem:nth-child(3) ::v-deep .playPauseIcon01{
-  width: 70px;
-  height: 70px;
-  background-size: 60%;
-}
-.musicItem:nth-child(1) ::v-deep .playPauseIcon02, .musicItem:nth-child(2) ::v-deep .playPauseIcon02, .musicItem:nth-child(3) ::v-deep .playPauseIcon02{
-  width: 70px;
-  height: 70px;
-}
-.musicItem:nth-child(1) ::v-deep .hover_bg, .musicItem:nth-child(2) ::v-deep .hover_bg, .musicItem:nth-child(3) ::v-deep .hover_bg{
-  width: 70px;
-  height: 70px;
-}
+    background-size: 60%;
+  }
+  .musicItem:nth-child(1) ::v-deep .playPauseIcon02, .musicItem:nth-child(2) ::v-deep .playPauseIcon02, .musicItem:nth-child(3) ::v-deep .playPauseIcon02{
+    width: 70px;
+    height: 70px;
+  }
+  .musicItem:nth-child(1) ::v-deep .hover_bg, .musicItem:nth-child(2) ::v-deep .hover_bg, .musicItem:nth-child(3) ::v-deep .hover_bg{
+    width: 70px;
+    height: 70px;
+  }
 }
 
 </style>
