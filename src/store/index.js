@@ -5,7 +5,8 @@ export default createStore({
     reportDialog: false,
     deleteMusicDialog: true,
     uploadMusicDialog: false,
-    isLogin: false
+    isLogin: false,
+    memberId: false
   },
   mutations: {
     setReportDialog (state, payload) {
@@ -15,7 +16,8 @@ export default createStore({
       state.deleteMusicDialog = payload
     },
     login (state, payload) {
-      state.isLogin = payload
+      state.isLogin = payload.account
+      state.memberId = payload.memberId
     },
     setUploadMusicDialog (state, payload) {
       state.uploadMusicDialog = payload
@@ -47,6 +49,9 @@ export default createStore({
     },
     loginState (state) {
       return state.isLogin
+    },
+    memberIdState (state) {
+      return state.memberId
     }
   }
 })

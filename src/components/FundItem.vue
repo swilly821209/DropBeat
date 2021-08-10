@@ -68,14 +68,14 @@ export default {
       default: ''
     },
     money: {
-      type: String,
+      type: Number,
       required: false,
-      default: ''
+      default: 0
     },
     date: {
-      type: String,
+      type: Number,
       required: false,
-      default: ''
+      default: 0
     },
     edit: {
       type: Boolean,

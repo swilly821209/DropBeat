@@ -3,9 +3,9 @@
     <delete-music></delete-music>
   </base-dialog>
   <base-dialog :show="uploadMusicDialog">
-    <upload-music></upload-music>
+    <upload-music @edit-name="editName = false" :musicFile="musicFile" :duration="duration" :edit="editName"></upload-music>
   </base-dialog>
-  <base-dialog :show="true">
+  <base-dialog :show="false">
     <div>
       <p>刪除此音樂後不可復原，您確定刪除？</p>
       <p>若您有問題請聯繫管理員</p>
@@ -202,7 +202,7 @@
     <div class="flex flex-col sm:flex-row justify-center sm:justify-start items-center sm:items-start mb-32">
       <div class="flex flex-col justify-center items-center relative mr-0 sm:mr-12 fullWidth h-[100px] sm:h-full bg-[#B5B5B5]">
         <select-img
-          @click="uploadMusic"
+          @change="uploadMusic"
           class=" addFile02"
           :file="true"
           :text="'選取檔案'"
@@ -214,7 +214,7 @@
         <swiper-slide v-for="item in myMusic" :key="item" class="singleFund top-12">
           <album-item class="singleAlbum"
             :edit="true"
-            :editAlbum="true"
+            :editMusic="true"
             :img="item.img"
             :albumName="item.albumName"
             :year="item.year"
@@ -228,7 +228,7 @@
         <swiper-slide v-for="item in myMusic" :key="item" class="singleFund top-12">
           <album-item class="singleAlbum"
             :edit="true"
-            :editAlbum="true"
+            :editMusic="true"
             :img="item.img"
             :albumName="item.albumName"
             :year="item.year"
@@ -248,6 +248,7 @@
       <swiper :slidesPerView="4" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="allFund h-[370px] mt-[-48px] w-full">
         <swiper-slide v-for="item in draftMusic" :key="item" class="singleFund top-12">
           <album-item class="singleAlbum"
+            @edit-draft="editDraft(item.albumName)"
             :editDraft="true"
             :editMusic="true"
             :img="item.img"
@@ -264,6 +265,7 @@
       <swiper :slidesPerView="2" :navigation="{nextEl: '.nextArrowM', prevEl: '.preArrowM'}" class="allFund h-[250px] mt-[-48px] w-full">
         <swiper-slide v-for="item in draftMusic" :key="item" class="singleFund top-12">
           <album-item class="singleAlbum"
+            @edit-draft="editDraft(item.albumName)"
             :editDraft="true"
             :editMusic="true"
             :img="item.img"
@@ -300,8 +302,35 @@ export default {
     SelectImg,
     UploadMusic
   },
+  async created () {
+    const music = await fetch('http://localhost/DropBeatBackend/Musician.php')
+    const musicResponse = await music.json()
+    musicResponse.forEach((e) => {
+      console.log(e.publish)
+      if (e.publish === '1') {
+        const time = this.transformSecond(e.music_long)
+        this.myMusic.push({
+          img: e.music_photo,
+          albumName: e.music_name,
+          year: new Date(e.setup_date).getFullYear(),
+          totalTime: time
+        })
+      } else {
+        const time = this.transformSecond(e.music_long)
+        this.draftMusic.push({
+          img: e.music_photo,
+          albumName: e.music_name,
+          year: new Date(e.setup_date).getFullYear(),
+          totalTime: time
+        })
+      }
+    })
+  },
   data () {
     return {
+      editName: false,
+      musicFile: '',
+      duration: 0,
       myAlbum: [
         { img: 'https://picsum.photos/100', albumName: '運氣來的若有似無', year: '2020', num: '12', totalTime: '00:51:03' },
         { img: 'https://picsum.photos/200', albumName: '運氣來的若有似無', year: '2020', num: '12', totalTime: '00:51:03' },
@@ -315,18 +344,18 @@ export default {
         { img: require('../assets/bg-gray.svg'), albumName: '運氣來的若有似無', year: '2020', num: '12', totalTime: '00:51:03' }
       ],
       myMusic: [
-        { img: 'https://picsum.photos/500', albumName: '在這座城市遺失了你', year: '2020', num: '12', totalTime: '00:05:57' },
-        { img: 'https://picsum.photos/600', albumName: '在這座城市遺失了你', year: '2020', num: '12', totalTime: '00:05:57' },
-        { img: 'https://picsum.photos/700', albumName: '在這座城市遺失了你', year: '2020', num: '12', totalTime: '00:05:57' },
-        { img: 'https://picsum.photos/500', albumName: '在這座城市遺失了你', year: '2020', num: '12', totalTime: '00:05:57' },
-        { img: 'https://picsum.photos/600', albumName: '在這座城市遺失了你', year: '2020', num: '12', totalTime: '00:05:57' },
-        { img: 'https://picsum.photos/700', albumName: '在這座城市遺失了你', year: '2020', num: '12', totalTime: '00:05:57' }
+        // { img: 'https://picsum.photos/500', albumName: '在這座城市遺失了你', year: '2020', num: '12', totalTime: '00:05:57' },
+        // { img: 'https://picsum.photos/600', albumName: '在這座城市遺失了你', year: '2020', num: '12', totalTime: '00:05:57' },
+        // { img: 'https://picsum.photos/700', albumName: '在這座城市遺失了你', year: '2020', num: '12', totalTime: '00:05:57' },
+        // { img: 'https://picsum.photos/500', albumName: '在這座城市遺失了你', year: '2020', num: '12', totalTime: '00:05:57' },
+        // { img: 'https://picsum.photos/600', albumName: '在這座城市遺失了你', year: '2020', num: '12', totalTime: '00:05:57' },
+        // { img: 'https://picsum.photos/700', albumName: '在這座城市遺失了你', year: '2020', num: '12', totalTime: '00:05:57' }
       ],
       draftMusic: [
-        { img: 'https://picsum.photos/800', albumName: '在這座城市遺失了你', year: '2020', num: '12', totalTime: '00:05:57' },
-        { img: require('../assets/bg-gray.svg'), albumName: '在這座城市遺失了你', year: '2020', num: '12', totalTime: '00:05:57' },
-        { img: 'https://picsum.photos/900', albumName: '在這座城市遺失了你', year: '2020', num: '12', totalTime: '00:05:57' },
-        { img: 'https://picsum.photos/900', albumName: '在這座城市遺失了你', year: '2020', num: '12', totalTime: '00:05:57' }
+        // { img: 'https://picsum.photos/800', albumName: '在這座城市遺失了你', year: '2020', num: '12', totalTime: '00:05:57' },
+        // { img: require('../assets/bg-gray.svg'), albumName: '在這座城市遺失了你', year: '2020', num: '12', totalTime: '00:05:57' },
+        // { img: 'https://picsum.photos/900', albumName: '在這座城市遺失了你', year: '2020', num: '12', totalTime: '00:05:57' },
+        // { img: 'https://picsum.photos/900', albumName: '在這座城市遺失了你', year: '2020', num: '12', totalTime: '00:05:57' }
       ],
       albumL: '#ededed',
       albumR: '#b5b5b5',
@@ -343,7 +372,25 @@ export default {
     }
   },
   methods: {
-    uploadMusic () {
+    editDraft (editName) {
+      console.log(editName)
+      console.log('hi')
+      this.editName = editName
+      this.$store.dispatch('uploadMusicDialog', true)
+    },
+    transformSecond (second) {
+      const minute = Math.floor(second / 60).toString().padStart(2, '0')
+      const sec = Math.floor(second % 60).toString().padStart(2, '0')
+      return minute + ':' + sec
+    },
+    uploadMusic (e) {
+      this.musicFile = e.target.files[0]
+      const objdectUrl = URL.createObjectURL(this.musicFile)
+      const audio = new Audio(objdectUrl)
+      audio.addEventListener('canplaythrough', () => {
+        console.log(audio.duration)
+        this.duration = Math.floor(audio.duration)
+      })
       this.$store.dispatch('uploadMusicDialog', true)
     }
   }
