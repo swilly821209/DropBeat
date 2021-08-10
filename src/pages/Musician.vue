@@ -10,7 +10,7 @@
       <p>刪除此音樂後不可復原，您確定刪除？</p>
       <p>若您有問題請聯繫管理員</p>
     </div>
-  </base-dialog> -->
+  </base-dialog>
   <!-- <div class="h-[500px] bg-50% bg-top bg-gradient-to-t to-gray-light from-black-backdrop bg-no-repeat px-10 pt-[60px]">
     <div class="flex justify-center items-center bg-gray-300 rounded-full w-10 h-10 cursor-pointer"> -->
   <div class="h-[400px] sm:h-[500px] mb-[100px] sm:mb-[0] bg-50% bg-top bg-gradient-to-t to-gray-light from-black-backdrop bg-no-repeat px-10 pt-[60px]">

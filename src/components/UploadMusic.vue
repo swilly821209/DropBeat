@@ -18,7 +18,7 @@
         </div>
         <div class="text-sm text-gray-light">
           <label for="time" class=" text-black-backdrop">發行時間: </label>
-          <input type="date" v-model="time" id="time" class=" w-52 text-sm focus:outline-none border-b border-current">
+          <input type="date" :value="time" id="time" class=" w-52 text-sm focus:outline-none border-b border-current">
         </div>
         <div class="text-sm text-gray-light flex items-center">
           <label for="type"  class="mr-1 text-black-backdrop">音樂類型:</label>
@@ -40,10 +40,10 @@
           </div>
         </div>
         <label for="file" class="block">
-          <div class="text-sm text-gray-light flex">
+          <div class="text-sm text-gray-light flex" >
             <input type="file" id="file" @change="fileData" class="hidden">
             <p class="text-black-backdrop mr-1">專輯照片:</p>
-            <div class="w-20 h-20 bg-gray-light flex flex-col justify-center items-center">
+            <div :style="`background-image: url(${albumImg})`" class="w-20 h-20 bg-gray-light flex flex-col justify-center items-center">
               <div class="border-white border-[4px] rounded-full w-8 h-8 flex items-center justify-center">
                 <svg class=" w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="20.003" height="20" viewBox="0 0 20.003 20"><path id="Icon_awesome-upload" data-name="Icon awesome-upload" d="M11.564,15H8.439a.935.935,0,0,1-.938-.938V7.5H4.075a.78.78,0,0,1-.551-1.332L9.466.225a.757.757,0,0,1,1.067,0l5.946,5.946A.78.78,0,0,1,15.928,7.5H12.5v6.563A.935.935,0,0,1,11.564,15ZM20,14.692v4.376a.935.935,0,0,1-.938.938H.938A.935.935,0,0,1,0,19.068V14.692a.935.935,0,0,1,.938-.938H6.251v.313a2.189,2.189,0,0,0,2.188,2.188h3.125a2.189,2.189,0,0,0,2.188-2.188v-.313h5.313A.935.935,0,0,1,20,14.692ZM15.158,18.13a.781.781,0,1,0-.781.781A.784.784,0,0,0,15.158,18.13Zm2.5,0a.781.781,0,1,0-.781.781A.784.784,0,0,0,17.659,18.13Z" transform="translate(0 -0.005)" fill="#FFF"/></svg>
               </div>
@@ -81,13 +81,14 @@ export default {
       console.log(responseEditData.music_name)
       this.title = responseEditData.music_name
       this.type = responseData[responseEditData.music_type].type_name
-      console.log(responseEditData.setup_date)
+      console.log(responseEditData.setup_date, 'hi')
       this.time = responseEditData.setup_date
       this.lyrics = responseEditData.lyrics
     }
   },
   data () {
     return {
+      albumImg: '',
       title: '',
       type: '',
       time: '',
