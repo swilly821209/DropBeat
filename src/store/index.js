@@ -6,10 +6,15 @@ export default createStore({
     deleteMusicDialog: true,
     uploadMusicDialog: false,
     isLogin: false,
+    memberId: false,
     idLogin: 'ddddd',
-    mesId: 'fffff'
+    mesId: 'fffff',
+    rwdmusic: false
   },
   mutations: {
+    rwdMusic (state, payload) {
+      state.rwdmusic = payload
+    },
     setReportDialog (state, payload) {
       state.reportDialog = payload
     },
@@ -17,7 +22,8 @@ export default createStore({
       state.deleteMusicDialog = payload
     },
     login (state, payload) {
-      state.isLogin = payload
+      state.isLogin = payload.account
+      state.memberId = payload.memberId
     },
     loginId (state, payload) {
       state.idLogin = payload
@@ -30,6 +36,9 @@ export default createStore({
     }
   },
   actions: {
+    rwdMusicitem (context, payload) {
+      context.commit('rwdMusic', payload)
+    },
     reportDialog (context, payload) {
       context.commit('setReportDialog', payload)
     },
@@ -50,6 +59,9 @@ export default createStore({
     }
   },
   getters: {
+    rwdMusicState (state) {
+      return state.rwdmusic
+    },
     reportDialogState (state) {
       return state.reportDialog
     },
@@ -61,6 +73,9 @@ export default createStore({
     },
     loginState (state) {
       return state.isLogin
+    },
+    memberIdState (state) {
+      return state.memberId
     },
     loginIdState (state) {
       return state.idLogin

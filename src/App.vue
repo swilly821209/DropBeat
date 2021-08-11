@@ -2,6 +2,7 @@
   <the-header ></the-header>
   <the-aside></the-aside>
   <music-player></music-player>
+  <rwd-musicitem></rwd-musicitem>
   <div class="router">
     <router-view />
     <the-footer></the-footer>
@@ -13,13 +14,15 @@ import TheAside from './components/layout/TheAside.vue'
 import TheHeader from './components/layout/TheHeader.vue'
 import TheFooter from './components/layout/TheFooter.vue'
 import MusicPlayer from './components/MusicPlayer.vue'
+import RwdMusicitem from './components/RWDMusicItem.vue'
 
 export default {
   components: {
     TheAside,
     TheHeader,
     TheFooter,
-    MusicPlayer
+    MusicPlayer,
+    RwdMusicitem
   }
 }
 </script>

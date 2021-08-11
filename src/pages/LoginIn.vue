@@ -60,11 +60,11 @@ export default {
         body: form
       })
       const responseData = await response.json()
-      console.log(responseData)
       if (responseData.length > 0) {
-        console.log('hi')
-        this.$store.dispatch('login', responseData[0][2])
-        this.$store.dispatch('loginId', responseData[0][0])
+        this.$store.dispatch('login', {
+          account: responseData[0].account,
+          memberId: responseData[0].member_id
+        })
         this.$router.replace('/')
       } else {
         this.warn = true
