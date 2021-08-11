@@ -412,7 +412,7 @@ export default {
         // 傳後端(發起募資)======================================================
         form.append('file', this.fundImg) // 存照片
         form.append('donate_id', this.donateId) // donate_id
-        form.append('initiator', this.$store.getters.loginIdState) // initiator (募款發起人)
+        form.append('initiator', this.$store.getters.memberIdState) // initiator (募款發起人)
         form.append('donate_name', this.fundTitle) // donate_name
         form.append('info', this.fundInfo) // info
         form.append('goal', this.fundMoney) // goal
@@ -580,7 +580,7 @@ export default {
   },
   async created () {
     const formGet = new FormData()
-    formGet.append('initiator', this.$store.getters.loginIdState)
+    formGet.append('initiator', this.$store.getters.memberIdState)
     const response = await fetch('http://localhost/DropbeatBackend/FileUpload/funds_single_files_get.php', {
       method: 'POST',
       body: formGet
@@ -588,12 +588,12 @@ export default {
     const responseData = await response.json()
     // 操作
     // 判斷是否有登入
-    if (this.$store.getters.loginState) {
+    if (this.$store.getters.memberIdState) {
       this.defaultEdit = false
       responseData.forEach((item) => {
         this.nowFundArray.unshift(item)
       })
-      // console.log(this.nowFundArray)
+      console.log(this.nowFundArray)
     }
   }
 }

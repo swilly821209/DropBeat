@@ -117,7 +117,7 @@ export default {
         // 傳後端
         const form = new FormData()
         form.append('message_id', Math.floor(Math.random() * 999)) // message_id (DB是INT)
-        form.append('member', this.$store.getters.loginIdState) // member_id (DB是INT)
+        form.append('member', this.$store.getters.memberIdState) // member_id (DB是INT)
         form.append('musician', Math.floor(Math.random() * 9999)) // musician (DB是INT)
         // form.append('setup_date', messageData.time)
         form.append('content', messageData.content)
