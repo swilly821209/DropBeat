@@ -81,7 +81,7 @@
         </li>
       </ul>
       <span class="span_underline"></span>
-      <ul>
+      <ul @click="turnFun">
         <li class="li_area_two" ref="member">
           <svg class="img_icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
             <path class="path_icon" id="Icon_material-library-music" data-name="Icon material-library-music" d="M21,3H9A2.006,2.006,0,0,0,7,5V17a2.006,2.006,0,0,0,2,2H21a2.006,2.006,0,0,0,2-2V5A2.006,2.006,0,0,0,21,3ZM19,8H16v5.5A2.5,2.5,0,1,1,13.5,11a2.447,2.447,0,0,1,1.5.51V6h4ZM5,7H3V21a2.006,2.006,0,0,0,2,2H19V21H5Z" transform="translate(-3 -3)" fill="#fff"/>
@@ -113,7 +113,7 @@
           </ul>
         </li>
       </ul>
-      <ul class="ul_musician">
+      <ul @click="turnFun" class="ul_musician">
         <li class="li_area_two" ref="musician">
           <svg class="img_icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
             <path class="path_icon" id="Icon_awesome-music" data-name="Icon awesome-music" d="M20,1.25A1.249,1.249,0,0,0,18.375.058L5.875,3.75A1.25,1.25,0,0,0,5,4.941V15.153A5.4,5.4,0,0,0,3.75,15C1.679,15,0,16.119,0,17.5S1.679,20,3.75,20,7.5,18.881,7.5,17.5V8.371l10-2.93v7.212a5.4,5.4,0,0,0-1.25-.153c-2.071,0-3.75,1.119-3.75,2.5s1.679,2.5,3.75,2.5S20,16.381,20,15V1.25Z" transform="translate(0 0.001)" fill="#ededed"/>
@@ -191,6 +191,12 @@ export default {
         document.querySelector('nav').style.zIndex = '99'
       } else {
         document.querySelector('nav').style.zIndex = '101'
+      }
+    },
+    turnFun () {
+      if (!this.$store.getters.loginState) {
+        this.$router.replace('/LoginIn')
+        window.scrollTo(0, 0)
       }
     }
   },

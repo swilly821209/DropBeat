@@ -4,6 +4,7 @@
       <p class="member_title">會員註冊</p>
       <input @blur="checkAccount" type="text" name="account" v-model="member.account" placeholder="請輸入帳號名稱" />
       <p v-if="accountWarn" class="text-orange text-xs justify-self-end w-[256px]">請輸入帳號名稱!</p>
+      <p v-if="sameAccount" class="text-orange text-xs justify-self-end w-[256px]">帳號已重複，請輸入其他帳號！</p>
       <input @blur="checkEmail" type="email" name="email" v-model="member.email" placeholder="信箱" />
       <p v-if="emailWarn" class="text-orange text-xs justify-self-end w-[256px]">請輸入信箱!</p>
       <input @blur="checkPassword" type="password" name="pwd" v-model="member.pwd" placeholder="密碼" />
@@ -50,6 +51,7 @@ export default {
   name: 'app',
   data () {
     return {
+      sameAccount: false,
       accountWarn: false,
       emailWarn: false,
       passwordWarn: false,
@@ -90,6 +92,7 @@ export default {
         this.accountWarn = true
       } else {
         this.accountWarn = false
+        this.sameAccount = false
       }
     },
     checkEmail () {
@@ -99,17 +102,38 @@ export default {
         this.emailWarn = false
       }
     },
-    sendData () {
-      const form = new FormData()
-      // form.append('id', Math.floor(Math.random() * 9999))
-      form.append('account', this.member.account)
-      form.append('email', this.member.email)
-      form.append('pwd', this.member.pwd)
-      form.append('birthday', this.birthday)
-      fetch('http://localhost/DropbeatBackend/register.php', {
-        method: 'POST',
-        body: form
-      })
+    async sendData () {
+      if (this.member.account !== '' && this.member.email !== '' && this.member.pwd !== '' && this.member.pwd2 !== '') {
+        // INSERT會員(MEMBER)、音樂人(MUSICIAN)資料
+        const form = new FormData()
+        form.append('account', this.member.account)
+        form.append('email', this.member.email)
+        form.append('pwd', this.member.pwd)
+        form.append('birthday', this.birthday)
+        const response = await fetch('http://localhost/DropbeatBackend/registerInsert.php', {
+          method: 'POST',
+          body: form
+        })
+        // 回傳註冊成功者資訊->登入
+        const forms = new FormData()
+        forms.append('accountThis', this.member.account)
+        const responseAll = await fetch('http://localhost/DropbeatBackend/registerSelect.php', {
+          method: 'POST',
+          body: forms
+        })
+        const responseAllData = await responseAll.json()
+        const responseData = await response.text()
+        console.log(responseAllData)
+        if (responseData === this.member.account) {
+          this.sameAccount = true
+        } else {
+          this.$store.dispatch('login', responseAllData[0][2])
+          this.$store.dispatch('loginId', responseAllData[0][0])
+          this.$router.replace('/')
+        }
+      } else {
+        alert('請確認輸入欄位')
+      }
     }
   }
 }
