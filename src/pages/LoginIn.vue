@@ -69,6 +69,8 @@ export default {
       } else {
         this.warn = true
       }
+      console.log(this.$store.getters.loginState) // 這是user account
+      console.log(this.$store.getters.memberIdState) // 這是user id
     }
   }
 }

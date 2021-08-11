@@ -44,22 +44,7 @@
       </div>
     </div>
     <!-- 640px以上顯示 -->
-    <!-- 未登入 -->
-    <swiper v-if="defaultEdit" :slidesPerView="4" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="hidden sm:flex">
-      <swiper-slide v-for="item in fundItems" :key="item.title">
-        <fund-item class="theItemMenegerSpe"
-          edit
-          :title="item.title"
-          :img="item.img"
-          :singer="item.singer"
-          :progress="item.progress"
-          :date="item.date"
-          :money="item.money">
-        </fund-item>
-      </swiper-slide>
-    </swiper>
-    <!-- 有登入 -->
-    <swiper v-else :slidesPerView="4" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="hidden sm:flex">
+    <swiper :slidesPerView="4" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="hidden sm:flex">
       <swiper-slide v-for="(item, index) in nowFundArray" :key="item.donate_name">
         <fund-item class="theItemMenegerSpe" :id = index
           edit
@@ -259,6 +244,7 @@ export default {
       nowFundArray: [], // 一開始渲染user的募資資料
       arrayIndex: '', // delete用獲取該陣列
       topTag: '', // delete用獲取該元素
+      nowChange: [0, 0, 0, 0],
       defaultEdit: true,
       sendStatus: true,
       fundItems: [
@@ -385,7 +371,7 @@ export default {
       this.planR = '#ededed'
     },
     fileChange (e) {
-      // 圖片處理
+      // 圖片渲染在畫面中
       const file = e.target.files[0]
       const readFile = new FileReader()
       readFile.readAsDataURL(file)
@@ -396,18 +382,25 @@ export default {
       // 將路徑存到data中
       if (this.editDonateArray.length === 0) {
         if (e.target.closest('div.theOption')) {
-          this.donateImg.push(file)
+          this.donateImg.push(file) // 存下半部(多筆)
         } else {
-          this.fundImg = file
+          this.fundImg = file // 存上半部(單筆)
         }
       } else {
+        // 編輯狀態圖片修改
+        // 修改下半部(多筆)
         if (e.target.closest('div.theOption')) {
-          const getId = e.target.closest('.outer').id
+          const getId = e.target.closest('.outer').id // 獲取該筆id
           if (getId > this.editDonateArray.length - 1) {
-            this.editDonateArray.push({ option_img: file })
+            this.editDonateArray.push({ option_img: file }) // push當下換的圖片file格式資料
+            this.nowChange[getId] = 1
+            console.log(this.nowChange)
           } else {
-            this.editDonateArray[getId].option_img = file
+            this.editDonateArray[getId].option_img = file // 修改裡面圖片變file格式資料
+            this.nowChange[getId] = 1
+            console.log(this.nowChange)
           }
+        // 修改上半部(單筆)
         } else {
           this.fundImg = file
         }
@@ -419,7 +412,7 @@ export default {
         // 傳後端(發起募資)======================================================
         form.append('file', this.fundImg) // 存照片
         form.append('donate_id', this.donateId) // donate_id
-        form.append('initiator', this.$store.getters.loginIdState) // initiator (募款發起人)
+        form.append('initiator', this.$store.getters.memberIdState) // initiator (募款發起人)
         form.append('donate_name', this.fundTitle) // donate_name
         form.append('info', this.fundInfo) // info
         form.append('goal', this.fundMoney) // goal
@@ -493,7 +486,7 @@ export default {
       image.style.backgroundImage = `url('${this.fundImg}')`
       // DONATEOPTION
       this.editDonateArray = responseData
-      console.log(this.editDonateArray)
+      // console.log(this.editDonateArray)
       const donateIndex = this.editDonateArray.length
       const donateImage = document.querySelectorAll('.outer')
       for (let i = 0; i < donateIndex; i++) {
@@ -565,13 +558,14 @@ export default {
       const optionId = this.editDonateArray[0].donate_option_id.slice(0, -1) // 獲取donate_option_id
       const index = this.editDonateArray.length
       const forms = new FormData()
+      forms.append('nowChange', this.nowChange) // 傳改變的圖片數量
       forms.append('length', index) // 陣列長度
       forms.append('donate', this.editDonateArray[0].donate) // 該donate編號(取一個即可)
       for (let i = 0; i < index; i++) {
         forms.append(`donate_option_id${i}`, `${optionId}${i}`)
         forms.append(`option_name${i}`, this.fundsList[i].title)
         forms.append(`file${i}`, this.editDonateArray[i].option_img)
-        console.log(this.editDonateArray[i])
+        console.log(this.editDonateArray[i].option_img)
         forms.append(`option_reward${i}`, this.fundsList[i].content)
         forms.append(`option_price${i}`, this.fundsList[i].money)
         forms.append(`num${i}`, parseInt(this.fundsList[i].quantity))
@@ -586,7 +580,7 @@ export default {
   },
   async created () {
     const formGet = new FormData()
-    formGet.append('initiator', this.$store.getters.loginIdState)
+    formGet.append('initiator', this.$store.getters.memberIdState)
     const response = await fetch('http://localhost/DropbeatBackend/FileUpload/funds_single_files_get.php', {
       method: 'POST',
       body: formGet
@@ -594,12 +588,12 @@ export default {
     const responseData = await response.json()
     // 操作
     // 判斷是否有登入
-    if (this.$store.getters.loginState) {
+    if (this.$store.getters.memberIdState) {
       this.defaultEdit = false
       responseData.forEach((item) => {
         this.nowFundArray.unshift(item)
       })
-      // console.log(this.nowFundArray)
+      console.log(this.nowFundArray)
     }
   }
 }
