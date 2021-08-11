@@ -1,7 +1,7 @@
 <template>
   <div class="fixed bottom-[0vh] w-full z-[100]">
-    <div class="donateline">
-      <div class="donateNow" :style="`width: ${progress}`"></div>
+    <div class="playingline">
+      <div class="playingNow" :style="`width: ${progress}`"></div>
     </div>
     <div class="flex justify-between items-center bg-black-backdrop h-[70px]">
       <div class="img_title_author flex items-center flex-shrink-0 ml-4 sm:ml-11 ">
@@ -40,7 +40,7 @@
           @click="like = !like"
         ></button>
         <span class="add hidden sm:block"></span>
-        <div class="block sm:hidden">
+        <div class="block cursor-pointer sm:hidden" @click="rwdMusicitem">
           <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-light" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
         </div>
       </div>
@@ -74,17 +74,22 @@ export default {
       const seconds = this.totalSecond % 60
       return `${minute} : ${seconds}`
     }
+  },
+  methods: {
+    rwdMusicitem () {
+      this.$store.dispatch('rwdMusicitem', true)
+    }
   }
 }
 </script>
 
 <style scoped>
-  .donateline{
+  .playingline{
     height: 5px;
     background-color: #ededed;
     border-radius: 5px;
   }
-  .donateNow{
+  .playingNow{
     height: 5px;
     background-image: linear-gradient(to right, #31BDC5 30%, #A6ff00);
     border-radius: 5px;
