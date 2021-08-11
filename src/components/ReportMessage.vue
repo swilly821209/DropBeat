@@ -41,11 +41,9 @@ export default {
     },
     sendReport () {
       this.$store.dispatch('reportDialog', false)
-      // console.log(this.$store.getters.mesIdState)
-      // console.log(this.selectReport)
       // 傳後端
       const form = new FormData()
-      form.append('report_id', this.$store.getters.mesIdState) // 被檢舉的id
+      form.append('report_id', this.$store.getters.mesIdState) // 被檢舉的id = 那篇留言的id
       form.append('report_option', this.selectReport) // 被檢舉類型
       fetch('http://localhost/DropbeatBackend/report_send.php', {
         method: 'POST',

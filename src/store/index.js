@@ -8,7 +8,7 @@ export default createStore({
     isLogin: false,
     memberId: false,
     // idLogin: 'ddddd',
-    // mesId: 'fffff',
+    mesId: 'fffff',
     rwdmusic: false
   },
   mutations: {
@@ -30,10 +30,10 @@ export default createStore({
     // },
     setUploadMusicDialog (state, payload) {
       state.uploadMusicDialog = payload
+    },
+    mesId (state, payload) {
+      state.mesId = payload
     }
-    // mesId (state, payload) {
-    //   state.mesId = payload
-    // }
   },
   actions: {
     rwdMusicitem (context, payload) {
@@ -53,10 +53,10 @@ export default createStore({
     // },
     uploadMusicDialog (context, payload) {
       context.commit('setUploadMusicDialog', payload)
+    },
+    mesId (context, payload) {
+      context.commit('mesId', payload)
     }
-    // mesId (context, payload) {
-    //   context.commit('mesId', payload)
-    // }
   },
   getters: {
     rwdMusicState (state) {
@@ -76,12 +76,12 @@ export default createStore({
     },
     memberIdState (state) {
       return state.memberId
-    }
+    },
     // loginIdState (state) {
     //   return state.idLogin
     // },
-    // mesIdState (state) {
-    //   return state.mesId
-    // }
+    mesIdState (state) {
+      return state.mesId
+    }
   }
 })
