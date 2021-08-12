@@ -306,7 +306,8 @@ export default {
       moreButton: true,
       displayNum: 2,
       nowArray: [],
-      inputMessage: ''
+      inputMessage: '',
+      sendMessageId: '' // 傳到ReportMessage的Compnent
     }
   },
   methods: {
@@ -330,7 +331,8 @@ export default {
         this.nowArray.unshift(messageData)
         // 傳後端
         const form = new FormData()
-        form.append('message_id', Math.floor(Math.random() * 9999)) // message_id (DB是INT)
+        const messageId = Math.floor(Math.random() * 9999)
+        form.append('message_id', messageId) // message_id (DB是INT)
         form.append('member', this.$store.getters.memberIdState) // member_id (DB是INT)
         form.append('musician', Math.floor(Math.random() * 9999)) // musician (DB是INT)
         // form.append('setup_date', messageData.time)
@@ -339,6 +341,7 @@ export default {
           method: 'POST',
           body: form
         })
+        this.$store.dispatch('mesId', this.sendMessageId = messageId)
       } else {
         alert('請登入後留言！')
       }

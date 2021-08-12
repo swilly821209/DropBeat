@@ -1422,6 +1422,10 @@ video {
   height: 100vh;
 }
 
+.h-24 {
+  height: 6rem;
+}
+
 .w-\[345px\] {
   width: 345px;
 }
@@ -1654,6 +1658,10 @@ video {
   width: 1px;
 }
 
+.w-\[650px\] {
+  width: 650px;
+}
+
 .min-w-\[1000px\] {
   min-width: 1000px;
 }
@@ -1684,6 +1692,10 @@ video {
 
 .max-w-\[90\%\] {
   max-width: 90%;
+}
+
+.max-w-full {
+  max-width: 100%;
 }
 
 .flex-shrink {
@@ -2259,6 +2271,11 @@ video {
 .px-20 {
   padding-left: 5rem;
   padding-right: 5rem;
+}
+
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .pr-8 {
