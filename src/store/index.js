@@ -2,6 +2,7 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
+    uploadAlbumState: false,
     reportDialog: false,
     deleteMusicDialog: true,
     uploadMusicDialog: false,
@@ -33,9 +34,15 @@ export default createStore({
     },
     mesId (state, payload) {
       state.mesId = payload
+    },
+    setUploadAlbumDialog (state, payload) {
+      state.uploadAlbumState = payload
     }
   },
   actions: {
+    uploadAlbumDialog (context, payload) {
+      context.commit('setUploadAlbumDialog', payload)
+    },
     rwdMusicitem (context, payload) {
       context.commit('rwdMusic', payload)
     },
@@ -82,6 +89,9 @@ export default createStore({
     },
     mesIdState (state) {
       return state.mesId
+    },
+    uploadAlbumState (state) {
+      return state.uploadAlbumState
     }
   }
 })

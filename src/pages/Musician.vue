@@ -11,6 +11,9 @@
       <p>若您有問題請聯繫管理員</p>
     </div>
   </base-dialog>
+  <base-dialog :show="uploadAlbumDialog">
+    <upload-album></upload-album>
+  </base-dialog>
   <!-- <div class="h-[500px] bg-50% bg-top bg-gradient-to-t to-gray-light from-black-backdrop bg-no-repeat px-10 pt-[60px]">
     <div class="flex justify-center items-center bg-gray-300 rounded-full w-10 h-10 cursor-pointer"> -->
   <div class="rangeTop h-[400px] sm:h-[500px] mb-[100px] sm:mb-[0] bg-50% bg-top bg-gradient-to-t to-gray-light from-black-backdrop bg-no-repeat px-10 pt-[60px]">
@@ -112,13 +115,13 @@
       </div>
     </div>
     <div class="flex flex-col sm:flex-row justify-center sm:justify-start items-center w-full sm:items-start mb-20">
-      <div class="pr-2 sm:pr-0 flex flex-col justify-center items-center relative mr-0 sm:mr-6 sm:w-[260px] w-full sm:h-[260px] h-[100px] bg-[#B5B5B5]">
-        <select-img
-          class="addFile02"
-          :file="true"
-          :text="'選取檔案'"
-          :inputImg="'bg-ligth'"
-        ></select-img>
+      <div class=" flex flex-col justify-center items-center relative mr-0 sm:mr-6 sm:w-[260px] w-full sm:h-[260px] h-[100px] bg-[#B5B5B5]">
+        <div @click="uploadAlbum" class="group hover:bg-gray-default cursor-pointer sm:w-[260px] w-full sm:h-[260px] h-[100px] flex sm:flex-col justify-center items-center">
+          <div class="border-white rounded-full border-4 inline-block group-hover:border-gray-light">
+            <svg class="group-hover:text-gray-light fill-current text-white sm:w-[105px] sm:h-[105px] w-10 h-10 sm:p-5 p-2" id="圖層_1" data-name="圖層 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><defs></defs><title>addmusic_d83</title><path id="Icon_awesome-plus" data-name="Icon awesome-plus" class="cls-1" d="M18.57,7.86H12.14V1.43A1.43,1.43,0,0,0,10.71,0H9.29A1.43,1.43,0,0,0,7.86,1.43h0V7.86H1.43A1.43,1.43,0,0,0,0,9.29v1.43a1.43,1.43,0,0,0,1.43,1.42H7.86v6.43A1.43,1.43,0,0,0,9.29,20h1.43a1.43,1.43,0,0,0,1.42-1.43h0V12.14h6.43A1.43,1.43,0,0,0,20,10.71V9.29a1.43,1.43,0,0,0-1.43-1.43Z"/></svg>
+          </div>
+          <p class="text-white sm:mt-5 ml-2 group-hover:text-gray-light">建立專輯</p>
+        </div>
       </div>
       <!-- 640以上 -->
       <swiper :slidesPerView="3" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="aa allFund h-[370px] mt-[-48px] hidden sm:flex">
@@ -219,6 +222,7 @@
       <swiper :slidesPerView="3" :navigation="{nextEl: '.nextArrowB', prevEl: '.preArrowB'}" class="allFund h-[370px] mt-[-48px] hidden sm:flex">
         <swiper-slide v-for="item in myMusic" :key="item" class="singleFund top-12">
           <album-item class="singleAlbum"
+            @edit-draft="editDraft(item.albumName)"
             :edit="true"
             :editMusic="true"
             :img="item.img"
@@ -233,6 +237,7 @@
       <swiper :slidesPerView="2" :navigation="{nextEl: '.nextArrowsB', prevEl: '.preArrowsB'}" class="allFund h-[250px] mt-[35px] w-full sm:hidden">
         <swiper-slide v-for="item in myMusic" :key="item" class="singleFund top-12">
           <album-item class="singleAlbum"
+            @edit-draft="editDraft(item.albumName)"
             :edit="true"
             :editMusic="true"
             :img="item.img"
@@ -304,6 +309,7 @@ import 'swiper/swiper-bundle.min.css'
 import AlbumItem from '../components/AlbumItem.vue'
 import SelectImg from '../components/SelectImg.vue'
 import UploadMusic from '../components/UploadMusic.vue'
+import UploadAlbum from '../components/UploadAlbum.vue'
 SwiperCore.use([Navigation])
 export default {
   components: {
@@ -312,7 +318,8 @@ export default {
     // DeleteMusic
     AlbumItem,
     SelectImg,
-    UploadMusic
+    UploadMusic,
+    UploadAlbum
   },
   async created () {
     const music = await fetch('http://localhost/DropBeatBackend/Musician.php')
@@ -381,6 +388,9 @@ export default {
     },
     uploadMusicDialog () {
       return this.$store.getters.uploadMusicDialogState
+    },
+    uploadAlbumDialog () {
+      return this.$store.getters.uploadAlbumState
     }
   },
   methods: {
@@ -404,6 +414,9 @@ export default {
         this.duration = Math.floor(audio.duration)
       })
       this.$store.dispatch('uploadMusicDialog', true)
+    },
+    uploadAlbum () {
+      this.$store.dispatch('uploadAlbumDialog', true)
     }
   }
 }

@@ -2,7 +2,7 @@
   <div>
     <div class="relative">
       <div v-if="edit" class=" flex mt-4 absolute sm:-top-16 -top-14 sm:left-0 right-0">
-        <div class="h5_icon flex flex-col items-center sm:mr-3 ml-0 cursor-pointer">
+        <div @click="editDraftAlbum" class="h5_icon flex flex-col items-center sm:mr-3 ml-0 cursor-pointer">
           <span class="editIcon"></span>
           <h5>編輯</h5>
         </div>
