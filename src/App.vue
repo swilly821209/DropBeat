@@ -26,8 +26,9 @@ export default {
   },
   created () {
     const getMember = JSON.parse(localStorage.getItem('member'))
-    this.$store.dispatch('login', getMember)
-    // console.log(getMember)
+    if (getMember) {
+      this.$store.dispatch('login', getMember)
+    }
   }
 }
 </script>
