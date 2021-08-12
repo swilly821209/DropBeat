@@ -1,27 +1,27 @@
 <template>
   <div class="range">
-    <base-dialog :show="cancleDialog">
-      <div class="flex flex-col items-center py-10 px-40">
-        <p class="text-[#383838]">您先前編輯的內容都將不會儲存</p>
-        <p class="text-[#383838]">確定離開？</p>
+    <base-dialog :show="cancleDialog" class="relative z-[100]">
+      <div class="flex flex-col items-center py-4 sm:py-10 px-3 sm:px-40 ">
+        <p class="text-[#383838] text-xl sm:text-2xl mb-[4px]">您先前編輯的內容都將不會儲存</p>
+        <p class="text-[#383838] text-xl sm:text-2xl">確定離開？</p>
         <div class="flex mt-[20px]">
-          <button @click="cancleFun" class="mr-[20px] text-white bg-orange border-2 border-orange rounded-2xl w-[60px]">取消</button>
-          <button @click="cancleDialog = !cancleDialog" class="text-[#7B7B7B] bg-white border-2 border-[#B5B5B5] rounded-2xl w-[60px]">離開</button>
+          <button @click="cancleFun" class="mr-[12px] text-white text-[16px] bg-orange border-2 border-orange rounded-2xl w-[55px] h-[25px] hover:bg-blue-light hover:border-blue-light">取消</button>
+          <button @click="cancleDialog = !cancleDialog" class="text-[#7B7B7B] text-[16px] bg-white border-2 border-gray-default rounded-2xl w-[55px] h-[25px] hover:border-orange hover:text-orange">離開</button>
         </div>
       </div>
     </base-dialog>
-    <base-dialog :show="submitDialog">
-      <div class="flex flex-col items-center py-10 px-20">
-        <p class="text-[#383838] text-2xl">募資審核需要7個工作天！</p>
-        <p class="text-[#383838] text-2xl">審核狀態將顯示在募資管理頁面</p>
-        <ul class="mt-[40px]">
+    <base-dialog :show="submitDialog" class="relative z-[100]">
+      <div class="flex flex-col items-center py-4 sm:py-10 px-3 sm:px-20">
+        <p class="text-[#383838] text-2xl mb-[2px]">募資審核需要7個工作天！</p>
+        <p class="text-[#383838] text-xl sm:text-2xl">審核狀態將顯示在募資管理頁面</p>
+        <ul class="mt-[30px] sm:mt-[40px] text-sm sm:text-base text-gray-dark">
           <li class="mb-[5px]">・募資日期一經設定後就無法再更改，請確認後再提案。</li>
           <li class="mb-[5px]">・募資提案必須為可以履行的計劃目標且資訊內容清楚，不可涉及爭議性內容且不違反中華民國現行法律之提案。</li>
           <li>・若期限屆滿仍未達成募資目標，所有的贊助款項均將交還給贊助者。您可以修改提案再次重新提交審核。</li>
         </ul>
-        <div class="flex mt-[20px]">
-          <button @click="submitDialog = !submitDialog" class="mr-[20px] text-[#7B7B7B] bg-white border-2 border-[#B5B5B5] rounded-2xl w-[60px]">取消</button>
-          <button @click="sendData" class="text-white bg-orange border-2 border-orange rounded-2xl w-[60px]">提交</button>
+        <div class="flex mt-[30px] text-base">
+          <button @click="submitDialog = !submitDialog" class="mr-[12px] text-[#7B7B7B] bg-white border-2 border-gray-default rounded-2xl w-[55px] h-[25px] hover:text-orange hover:border-orange">取消</button>
+          <button @click="sendData" class="text-white bg-orange border-2 border-orange rounded-2xl w-[60px] w-[55px] h-[25px] hover:border-blue-light hover:bg-blue-light ">提交</button>
         </div>
       </div>
     </base-dialog>
@@ -60,10 +60,10 @@
       </swiper-slide>
     </swiper>
     <!-- 640px以下顯示 -->
-    <div class="sm:hidden block mt-0">
-      <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="mr-0 sm:mr-4">
-        <svg xmlns="http://www.w3.org/2000/svg" class="preIcon preArrow" width="20" height="23.077" viewBox="0 0 15 23.077"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(0 23.077) rotate(-90)" fill="currentColor"/></svg>
-        <swiper-slide v-for="item in fundItems" :key="item.title" class="flex justify-center">
+    <div class="sm:hidden block mt-[-30px]">
+      <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" >
+        <svg xmlns="http://www.w3.org/2000/svg" class="preIcon preArrow " width="20" height="23.077" viewBox="0 0 15 23.077"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(0 23.077) rotate(-90)" fill="currentColor"/></svg>
+        <swiper-slide v-for="item in fundItems" :key="item.title" class="flex justify-center ">
           <fund-item
             edit
             class="max-w-[300px] m-auto"
@@ -78,37 +78,37 @@
         <svg xmlns="http://www.w3.org/2000/svg" class="nextIcon nextArrow" width="20" height="18.961" viewBox="0 0 13.72 18.961"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(15 -2.058) rotate(90)" fill="currentColor"/></svg>
       </swiper>
     </div>
-    <base-title id="activeFund" title="發起募資" class="mt-4 sm:mt-20 mb-5"></base-title>
-    <div class="flex flex-col w-full items-center sm:flex-row">
+    <base-title id="activeFund" title="發起募資" class="text-[22px] mt-12 sm:mt-20 mb-5"></base-title>
+    <div class="flex flex-col w-full items-center sm:flex-row ">
       <select-img
-        class="w-[300px] mx-6 h-48 sm:w-8/12 sm:h-[400px]"
-        :radius="'rounded-3xl'"
+        class="w-[345px] h-48 sm:w-8/12 sm:h-[400px] sm:mr-6"
+        :radius="'rounded-2xl sm:rounded-3xl'"
         :camera="true"
         :text="'選取圖片'"
         :sendFun="fileChange"
         :inputImg="'border-2 border-white bg-white incircle'"
       ></select-img>
-      <div class="w-[340px] flex flex-col sm:w-4/12">
+      <div class="w-full sm:w-[340px] flex flex-col sm:w-4/12 mt-2 sm:mt-0">
         <div class="flex mt-4">
-          <label for="topic" class="w-[120px] sm:w-2/6 text-right text-gray-dark text-xl mr-3">募資主題：</label>
-          <input v-model="fundTitle" id="topic" type="text" class="w-[190px] sm:w-4/6 border-b-2 border-gray-light focus:outline-none focus:border-orange font-bold text-gray-light">
+          <label for="topic" class="flex-shrink-0  sm:w-2/6 text-right text-gray-dark text-lg sm:text-xl mr-3">募資主題：</label>
+          <input v-model="fundTitle" id="topic" type="text" class="w-4/6 border-b-2 border-gray-light focus:outline-none focus:border-orange font-bold text-gray-dark">
         </div>
         <div class="flex mt-4">
-          <label for="date" class="w-[120px] sm:w-2/6 text-right text-gray-dark text-xl mr-3">結束日期：</label>
-          <input v-model="fundEndDate" id="date" type="date" @change="changeColor" class="w-[190px] sm:w-4/6 border-b-2 border-gray-light focus:outline-none bg-white focus:border-orange text-transparent font-bold">
+          <label for="date" class="flex-shrink-0  sm:w-2/6 text-right text-gray-dark text-lg sm:text-xl mr-3">結束日期：</label>
+          <input v-model="fundEndDate" id="date" type="date" @change="changeColor" class="w-4/6 border-b-2 border-gray-light focus:outline-none bg-white focus:border-orange text-transparent font-bold">
         </div>
         <div class="flex mt-4">
-          <label for="money" class="w-[120px] sm:w-2/6 text-right text-gray-dark text-xl mr-3 sm:ml-5 money">目標金額：</label>
-          <input v-model="fundMoney" id="money" type="text" class="w-[190px] sm:w-9/12 sm:4/6 border-b-2 border-gray-light focus:outline-none focus:border-orange font-bold text-gray-dark sm:ml-[10px] text-2xl">
+          <label for="money" class="flex-shrink-0  sm:w-2/6 text-right text-gray-dark text-lg sm:text-xl mr-3  money">目標金額：</label>
+          <input v-model="fundMoney" id="money" type="text" class="w-8/12  border-b-2 border-gray-light focus:outline-none focus:border-orange font-bold text-gray-dark sm:ml-[10px] text-2xl">
         </div>
       </div>
     </div>
-    <base-title title="計畫介紹" class="mt-10 sm:mt-20 mb-5" :second="'second'"></base-title>
-    <div class="flex justify-center mb-5">
-      <textarea v-model="fundInfo" name="projectInfo" class="w-[295px] sm:w-full ml-[5px] sm:ml-[0px] h-[400px] sm:h-72 border-2 border-gray-light rounded-2xl resize-none pl-2 pt-2 focus:border-orange"></textarea>
+    <h3  class="text-[22px] sm:text-[24px] text-black-backdrop font-medium mt-10 sm:mt-16 sm:mb-5 mb-3" :second="'second'">計畫介紹</h3>
+    <div class="flex justify-center mb-12">
+      <textarea v-model="fundInfo" name="projectInfo" class="w-full ml-[5px] sm:ml-[0px] h-[200px] sm:h-72 border-2 border-gray-light rounded-2xl resize-none pl-2 pt-2 focus:border-orange"></textarea>
     </div>
     <div class="flex justify-between">
-      <base-title title="募資方案" :second="'second'" class="mb-5"></base-title>
+      <h3 :second="'second'" class="text-[22px] sm:text-[24px] text-black-backdrop font-medium sm:mb-5 mb-0">募資方案</h3>
       <div class="hidden arrow cursor-pointer sm:block">
         <svg @click="leftPlan" class="mr-3" xmlns="http://www.w3.org/2000/svg" width="25" height="40" viewBox="0 0 25 40">
           <path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" :fill="planL"/>
@@ -118,12 +118,12 @@
         </svg>
       </div>
     </div>
-    <div class="flex outers">
-      <div class="flex inners">
+    <div class="flex outers ">
+      <div class="flex inners items-center ">
         <div v-for="(item, index) in fundsList" :key="item" class="hidden flex theItem sm:flex theOption">
           <select-img
             :id="index"
-            class="w-5/12 p-10"
+            class="w-6/12 p-10 mr-5"
             :radius="'rounded-3xl'"
             :camera="true"
             :text="'選取圖片'"
@@ -131,44 +131,44 @@
             :inputImg="'border-2 border-white bg-white incircle'"
           ></select-img>
           <div class="w-7/12">
-            <div class="flex mt-4">
-              <label class="sm:w-3/12 text-right text-xl text-gray-dark">金額：</label>
+            <div class="flex mt-4 ">
+              <label class=" text-right text-lg text-gray-dark">金額：</label>
               <input v-model="item.money" class="w-9/12 border-2 border-gray-lighten text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
             </div>
             <div class="flex mt-4">
-              <label class="w-3/12 text-right text-xl text-gray-dark">標題：</label>
+              <label class=" text-right text-lg text-gray-dark">標題：</label>
               <input v-model="item.title" class="w-9/12 border-2 border-gray-lighten text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
             </div>
             <div class="flex mt-4">
-              <label class="w-3/12 text-right text-xl text-gray-dark h-16">內容：</label>
+              <label class=" text-right text-lg text-gray-dark h-16">內容：</label>
               <textarea v-model="item.content" class="w-9/12 border-2 border-gray-lighten text-gray-light focus:outline-none resize-none rounded-lg pl-2 focus:border-orange"></textarea>
             </div>
             <div class="flex mt-4">
-              <label class="w-3/12 text-right text-xl text-gray-dark">限量：</label>
+              <label class=" text-right text-lg text-gray-dark">限量：</label>
               <input v-model="item.quantity" class="w-9/12 border-2 border-gray-lighten text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
             </div>
           </div>
         </div>
         <!-- 640px以下顯示 -->
         <div class="block flex theItem sm:hidden">
-          <div class="w-[600px]">
-            <div class="flex justify-center mr-[15px]">
-              <div class="w-[200px]">
+          <div class="w-full">
+            <div class="flex justify-center items-center">
+              <div class=" mr-4">
                 <!-- 金額 -->
-                <div class="flex mt-4 w-[200px]">
-                  <label class="w-[90px] text-left text-xl text-gray-dark">金額：</label>
+                <div class="flex mt-4 ">
+                  <label class="w-[90px] text-left text-lg text-gray-dark">金額：</label>
                   <input :value="fundsList[0].money" class="w-full border-2 border-gray-lighten text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
                 </div>
                 <!-- 標題 -->
-                <div class="flex mt-4 w-[200px]">
-                  <label class="w-[90px] text-left text-xl text-gray-dark">標題：</label>
+                <div class="flex mt-4 ">
+                  <label class="w-[90px] text-left text-lg text-gray-dark">標題：</label>
                   <input :value="fundsList[0].title" class="w-full border-2 border-gray-lighten text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
                 </div>
               </div>
               <!-- img -->
-              <div class="w-[80px] px-2 pt-3">
+              <div class="w-[80px]  pt-3">
                 <select-img
-                  class="w-[80px] h-[80px]"
+                  class="w-[80px] h-[80px] pt-3"
                   :radius="'rounded-2xl'"
                   :camera="true"
                   :sendFun="fileChange"
@@ -177,17 +177,17 @@
               </div>
             </div>
             <!-- 內容 -->
-            <div class="flex mt-4 mx-auto w-[290px]">
-              <label class="w-[90px] text-left text-xl text-gray-dark h-16">內容：</label>
+            <div class="flex mt-4 mx-auto w-full">
+              <label class="w-[90px] text-left text-lg text-gray-dark h-16">內容：</label>
               <textarea :value="fundsList[0].content" class="w-full ml-[-8px] mr-[4px] h-32 border-2 border-gray-lighten text-gray-light focus:outline-none resize-none rounded-lg pl-2 focus:border-orange"></textarea>
             </div>
             <!-- 限量 -->
-            <div class="flex mt-4 mx-auto w-[290px]">
-              <label class="w-[90px] text-left text-xl text-gray-dark">限量：</label>
+            <div class="flex mt-4 mx-auto w-full">
+              <label class="w-[90px] text-left text-lg text-gray-dark">限量：</label>
               <input :value="fundsList[0].quantity" class="w-full ml-[-8px] mr-[4px] border-2 border-gray-lighten text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
             </div>
             <!-- 新增方案 -->
-            <div class="flex items-center mt-5 ml-[30px]">
+            <div class="flex items-center mt-5 ">
               <svg id="new" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
                 <g id="play" fill="none" stroke="#ff9d83" stroke-width="2">
                   <circle cx="15" cy="15" r="15" stroke="none"/>
@@ -202,11 +202,11 @@
         </div>
       </div>
     </div>
-    <div class="flex justify-end mt-5 mr-[40px]">
+    <div class="flex justify-end mt-12 ">
       <div class="flex">
-        <button @click="cancleDialog = !cancleDialog" class="w-[70px] border-2 border-gray-light text-gray-light px-4 mr-5 rounded-xl hover:border-orange">取消</button>
-        <button v-if="sendStatus" @click="submitDialog = !submitDialog" class="w-[100px] border border-orange bg-orange text-white px-4 rounded-xl">提交審核</button>
-        <button v-else @click="sendEdit" class="w-[100px] border border-orange bg-orange text-white px-4 rounded-xl">確認編輯</button>
+        <button @click="cancleDialog = !cancleDialog" class="w-[55px] h-[25px] border-2 border-gray-default text-gray-dark  mr-4 sm:mr-5 rounded-xl hover:border-orange hover:text-orange">取消</button>
+        <button v-if="sendStatus" @click="submitDialog = !submitDialog" class="w-[85px] h-[25px] border border-orange bg-orange text-white  rounded-xl hover:border-blue-light hover:bg-blue-light">提交審核</button>
+        <button v-else @click="sendEdit" class="w-[85px] h-[25px] border border-orange bg-orange text-white  rounded-xl hover:border-blue-light hover:bg-blue-light">確認編輯</button>
       </div>
     </div>
   </div>
@@ -633,12 +633,14 @@ export default {
   }
   /* 募資方案 */
   .outers{
+    /* border:1px solid red; */
     position: relative;
     width: 100%;
     height: 250px;
     overflow: hidden;
   }
   .inners{
+    /* border:1px solid red; */
     width: 200%;
     height: 250px;
     transition: all 1s;
@@ -648,8 +650,12 @@ export default {
   .theItem{
     padding-left: 20px;
     width: 100%;
+    height: 100%;
   }
-  ::v-deep .edit{
+  .theItem:nth-child(2n-1){
+    padding-left: 0;
+  }
+  :deep .edit{
     justify-content:flex-end;
     margin-right: 20px;
   }
@@ -666,13 +672,13 @@ export default {
       width:100%;
       height: 340px;
     }
-    ::v-deep .title00{
+    :deep .title00{
       justify-content: space-between;
       margin-bottom: 20px;
     }
-    ::v-deep .titleNline h2{
-      font-size:30px;
-      font-weight: bold;
+    :deep .titleNline h2{
+      font-size:28px;
+      /* font-weight: bold; */
     }
     .outersMeneger{
       display: flex;
@@ -697,26 +703,26 @@ export default {
     .money::after{
       transform: translate(-5px, 1px);
     }
-    ::v-deep .theImg{
+    :deep .theImg{
       width: 100%;
       height: 300px;
       object-fit: cover;
     }
-    ::v-deep .fundBlock{
+    :deep .fundBlock{
       margin: 0;
     }
-    ::v-deep .circle{
+    :deep .circle{
       width: 60px;
       height: 60px;
     }
-    ::v-deep .cameraIcom{
+    :deep .cameraIcom{
       width: 40px;
       height: 40px;
     }
-    ::v-deep .content{
+    :deep .content{
       width: 300px;
     }
-    ::v-deep .fundBlock{
+    :deep .fundBlock{
       margin-top: 0;
     }
     .preIcon {

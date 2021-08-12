@@ -1194,16 +1194,36 @@ video {
   margin-right: 2px;
 }
 
-.mr-\[20px\] {
-  margin-right: 20px;
+.mb-\[4px\] {
+  margin-bottom: 4px;
+}
+
+.mr-\[12px\] {
+  margin-right: 12px;
+}
+
+.mt-\[30px\] {
+  margin-top: 30px;
 }
 
 .mb-\[5px\] {
   margin-bottom: 5px;
 }
 
-.mr-\[15px\] {
-  margin-right: 15px;
+.mr-\[20px\] {
+  margin-right: 20px;
+}
+
+.mt-\[-30px\] {
+  margin-top: -30px;
+}
+
+.mt-12 {
+  margin-top: 3rem;
+}
+
+.mr-5 {
+  margin-right: 1.25rem;
 }
 
 .ml-\[-8px\] {
@@ -1212,18 +1232,6 @@ video {
 
 .mr-\[4px\] {
   margin-right: 4px;
-}
-
-.ml-\[30px\] {
-  margin-left: 30px;
-}
-
-.mr-\[40px\] {
-  margin-right: 40px;
-}
-
-.mr-5 {
-  margin-right: 1.25rem;
 }
 
 .block {
@@ -1422,10 +1430,6 @@ video {
   height: 100vh;
 }
 
-.h-24 {
-  height: 6rem;
-}
-
 .w-\[345px\] {
   width: 345px;
 }
@@ -1598,28 +1602,20 @@ video {
   width: 320px;
 }
 
+.w-\[55px\] {
+  width: 55px;
+}
+
 .w-\[60px\] {
   width: 60px;
 }
 
-.w-\[190px\] {
-  width: 190px;
-}
-
-.w-\[295px\] {
-  width: 295px;
-}
-
-.w-5\/12 {
-  width: 41.666667%;
+.w-6\/12 {
+  width: 50%;
 }
 
 .w-9\/12 {
   width: 75%;
-}
-
-.w-\[600px\] {
-  width: 600px;
 }
 
 .w-\[90px\] {
@@ -1630,20 +1626,8 @@ video {
   width: 80px;
 }
 
-.w-\[290px\] {
-  width: 290px;
-}
-
-.w-\[70px\] {
-  width: 70px;
-}
-
-.w-\[100px\] {
-  width: 100px;
-}
-
-.w-6\/12 {
-  width: 50%;
+.w-\[85px\] {
+  width: 85px;
 }
 
 .w-9 {
@@ -1656,10 +1640,6 @@ video {
 
 .w-\[1px\] {
   width: 1px;
-}
-
-.w-\[650px\] {
-  width: 650px;
 }
 
 .min-w-\[1000px\] {
@@ -1692,10 +1672,6 @@ video {
 
 .max-w-\[90\%\] {
   max-width: 90%;
-}
-
-.max-w-full {
-  max-width: 100%;
 }
 
 .flex-shrink {
@@ -2089,31 +2065,6 @@ video {
   background-color: rgba(123, 123, 123, var(--tw-bg-opacity));
 }
 
-.bg-\[\#000000\] {
-  --tw-bg-opacity: 1;
-  background-color: rgba(0, 0, 0, var(--tw-bg-opacity));
-}
-
-.bg-\[\#383838\] {
-  --tw-bg-opacity: 1;
-  background-color: rgba(56, 56, 56, var(--tw-bg-opacity));
-}
-
-.bg-\[\#242424\] {
-  --tw-bg-opacity: 1;
-  background-color: rgba(36, 36, 36, var(--tw-bg-opacity));
-}
-
-.bg-\[\#3b3b3b\] {
-  --tw-bg-opacity: 1;
-  background-color: rgba(59, 59, 59, var(--tw-bg-opacity));
-}
-
-.bg-\[\#272727\] {
-  --tw-bg-opacity: 1;
-  background-color: rgba(39, 39, 39, var(--tw-bg-opacity));
-}
-
 .bg-\[\#292929\] {
   --tw-bg-opacity: 1;
   background-color: rgba(41, 41, 41, var(--tw-bg-opacity));
@@ -2129,10 +2080,6 @@ video {
 
 .bg-opacity-100 {
   --tw-bg-opacity: 1;
-}
-
-.bg-opacity-90 {
-  --tw-bg-opacity: 0.9;
 }
 
 .bg-gradient-to-t {
@@ -2266,16 +2213,6 @@ video {
 .px-40 {
   padding-left: 10rem;
   padding-right: 10rem;
-}
-
-.px-20 {
-  padding-left: 5rem;
-  padding-right: 5rem;
-}
-
-.px-8 {
-  padding-left: 2rem;
-  padding-right: 2rem;
 }
 
 .pr-8 {
@@ -2443,6 +2380,10 @@ video {
 
 .text-\[26px\] {
   font-size: 26px;
+}
+
+.text-\[16px\] {
+  font-size: 16px;
 }
 
 .font-medium {
@@ -3093,16 +3034,20 @@ textarea {
     margin-right: 1.75rem;
   }
 
+  .sm\:mt-\[40px\] {
+    margin-top: 40px;
+  }
+
   .sm\:mt-20 {
     margin-top: 5rem;
   }
 
-  .sm\:ml-5 {
-    margin-left: 1.25rem;
-  }
-
   .sm\:ml-\[0px\] {
     margin-left: 0px;
+  }
+
+  .sm\:mr-5 {
+    margin-right: 1.25rem;
   }
 
   .sm\:block {
@@ -3237,20 +3182,16 @@ textarea {
     width: 66.666667%;
   }
 
+  .sm\:w-\[340px\] {
+    width: 340px;
+  }
+
   .sm\:w-4\/12 {
     width: 33.333333%;
   }
 
   .sm\:w-2\/6 {
     width: 33.333333%;
-  }
-
-  .sm\:w-4\/6 {
-    width: 66.666667%;
-  }
-
-  .sm\:w-3\/12 {
-    width: 25%;
   }
 
   .sm\:min-w-\[650px\] {
@@ -3371,6 +3312,10 @@ textarea {
     border-radius: 20px;
   }
 
+  .sm\:rounded-3xl {
+    border-radius: 1.5rem;
+  }
+
   .sm\:border-l {
     border-left-width: 1px;
   }
@@ -3421,6 +3366,21 @@ textarea {
   .sm\:py-6 {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
+  }
+
+  .sm\:py-10 {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .sm\:px-40 {
+    padding-left: 10rem;
+    padding-right: 10rem;
+  }
+
+  .sm\:px-20 {
+    padding-left: 5rem;
+    padding-right: 5rem;
   }
 
   .sm\:pr-16 {
@@ -3487,6 +3447,15 @@ textarea {
   .sm\:text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
+  }
+
+  .sm\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  .sm\:text-\[24px\] {
+    font-size: 24px;
   }
 
   .sm\:text-white {
