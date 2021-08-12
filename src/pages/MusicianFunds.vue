@@ -525,6 +525,10 @@ export default {
       document.querySelectorAll('.outer').forEach(item => {
         item.style.backgroundImage = 'none'
       })
+      // 清空input file裡面的檔案
+      document.querySelectorAll('input[type=file]').forEach(item => {
+        item.value = ''
+      })
       // 清空文字&變回原樣
       this.fundTitle = ''
       this.fundEndDate = ''
@@ -579,16 +583,17 @@ export default {
     }
   },
   async created () {
-    const formGet = new FormData()
-    formGet.append('initiator', this.$store.getters.memberIdState)
-    const response = await fetch('http://localhost/DropbeatBackend/FileUpload/funds_single_files_get.php', {
-      method: 'POST',
-      body: formGet
-    })
-    const responseData = await response.json()
     // 操作
     // 判斷是否有登入
     if (this.$store.getters.memberIdState) {
+      const formGet = new FormData()
+      formGet.append('initiator', this.$store.getters.memberIdState)
+      const response = await fetch('http://localhost/DropbeatBackend/FileUpload/funds_single_files_get.php', {
+        method: 'POST',
+        body: formGet
+      })
+      // 回傳
+      const responseData = await response.json()
       this.defaultEdit = false
       responseData.forEach((item) => {
         this.nowFundArray.unshift(item)

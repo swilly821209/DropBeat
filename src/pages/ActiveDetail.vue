@@ -37,17 +37,6 @@
         </div>
       </div>
     </div>
-    <div class="block02">
-      <h4>活動介紹</h4>
-      <div class="content"><p>{{activeContent}}</p></div>
-      <ul class="text-gray-dark list-disc text-[14px] mt-20 list-inside">
-        <li>演出日期: {{activeDate}}</li>
-        <li>演出時間: {{activeTime}}</li>
-        <li class="truncate">演出地點: {{activeLocation}}</li>
-        <li>演出者: {{singer}}</li>
-        <li>票價: {{price}}</li>
-      </ul>
-    </div>
     <message-board
       class="message"
       :outerArray='displayMessageData'
@@ -79,11 +68,7 @@ export default {
 大象體操2021年度單曲《穿過夜晚》，創作始於與日本樂團toe在疫情期間舉辦的線上合作演出。
 與toe的團員討論後，取樣其經典曲目 “Two Moons” 的木吉他音軌重新創作，為探討夢境作為主題的下一張專輯揭開序幕。
 
-● 演出日期：2021 年 10 月 10 日（日）
-● 演出時間：19:30進場 20:00演出
-● 演出地點：台北 海邊的卡夫卡（台北市中正區羅斯福路三段244巷2號2樓）
-● 演出者：大象體操
-● 票價：預售票700元 / 現場票800元`,
+`,
       moreButton: true,
       displayNum: 2,
       nowArray: [],

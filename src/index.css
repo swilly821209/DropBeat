@@ -1042,10 +1042,6 @@ video {
   margin-right: 0.25rem;
 }
 
-.mt-20 {
-  margin-top: 5rem;
-}
-
 .mt-\[-80px\] {
   margin-top: -80px;
 }
@@ -1188,6 +1184,10 @@ video {
 
 .mr-\[2px\] {
   margin-right: 2px;
+}
+
+.mt-20 {
+  margin-top: 5rem;
 }
 
 .mr-\[20px\] {
@@ -1654,6 +1654,10 @@ video {
   width: 1px;
 }
 
+.w-\[1000px\] {
+  width: 1000px;
+}
+
 .min-w-\[1000px\] {
   min-width: 1000px;
 }
@@ -1722,10 +1726,6 @@ video {
 
 .resize {
   resize: both;
-}
-
-.list-inside {
-  list-style-position: inside;
 }
 
 .list-disc {

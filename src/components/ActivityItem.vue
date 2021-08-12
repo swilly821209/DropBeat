@@ -1,11 +1,11 @@
 <template>
   <div class="item flex space-x-0 sm:space-x-5 sm:flex-row flex-col sm:w-auto sm:h-auto w-[345px]" :col="col">
     <div v-if="edit" class="flex sm:justify-end justify-start mt-4 ml-6 pr-8 sm:pr-16 w-[350px] sm:w-full h-[200] cursor-pointer editclass" :style="imgWidth">
-      <div class="h5_icon flex flex-col items-center mr-3 pb-2">
+      <div class="h5_icon flex flex-col items-center mr-3 pb-2" @click="edidFund">
           <span class="editIcon"></span>
           <h5>編輯</h5>
       </div>
-      <div class="h5_icon flex flex-col items-center">
+      <div class="h5_icon flex flex-col items-center" @click="deleteDialogFun">
           <span class="deleteIcon"></span>
           <h5>刪除</h5>
       </div>
@@ -16,12 +16,12 @@
     <div class="activeContent flex flex-col justify-center">
       <h3 class="text-lg text-black-backdrop hover:underline cursor-pointer truncate">{{ title }}</h3>
       <div class="time_location text-xs text-gray-dark sm:hidden block">{{year}}年{{month}}月{{date}}日 ・ 星期{{day}} ・ {{ inputTime }} ・ {{ city }}</div>
-      <div class="time_location text-sm text-gray-dark sm:block hidden">{{ inputTime }}・{{ city }}・{{ location }}</div>
+      <div class="time_location text-sm text-gray-dark sm:block hidden">{{ time }}・{{ city }}・{{ location }}</div>
       <div class="flex justify-between items-center">
         <base-badge v-if="singer" class="mt-0 sm:mt-2" :image="singerImg" :singer="singer"></base-badge>
         <div class="activeJoin sm:hidden flex justify-center items-center border-2 bg-orange hover:bg-transparent border-orange  rounded-[20px] w-[65px] h-[25px] text-[14px] text-white hover:text-orange pt-[1px] join">想參加</div>
       </div>
-      <div >
+      <div>
         <button v-if="check" class="checkBtn rounded-xl text-sm border-blue-light bg-blue-light text-white">審核ing...</button>
       </div>
     </div>
@@ -30,7 +30,7 @@
 
 <script>
 export default {
-  props: ['img', 'title', 'time', 'city', 'location', 'singerImg', 'singer', 'col', 'edit', 'check', 'imgWidth'],
+  props: ['img', 'title', 'time', 'city', 'location', 'singerImg', 'singer', 'col', 'edit', 'check', 'imgWidth', 'edidFund', 'deleteDialogFun'],
   data () {
     return {
       activityTime: new Date(this.time)
