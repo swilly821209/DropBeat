@@ -24,14 +24,14 @@
         </div>
         <div class="parent">
             <fund-item class="child"
-                v-for="item in fundItems"
-                :title="item.title"
-                :img="item.img"
-                :singer="item.singer"
-                :progress="item.progress"
-                :date="item.date"
-                :money="item.money"
-                :key="item.title">
+                v-for="item in randerFuns"
+                :title="item.donate_name"
+                :img="item.donate_photo"
+                :singer="item.initiator"
+                :progress="'50%'"
+                :date="item.countdownDate"
+                :money="item.goal"
+                :key="item.donate_id">
             </fund-item>
         </div>
     </div>
@@ -49,73 +49,15 @@ export default {
       selectFundsProgress: '進行中計畫',
       fundsType: ['最新', '結束日期', '募資金額', '贊助人數'],
       selectFundsType: '最新',
-      fundItems: [
-        {
-          title: '運氣來的若有似無 專輯募資',
-          img: 'https://akstatic.streetvoice.com/audition/2021/06/16/6c24a3f3d1794ce896a1e0a56ba9597d.jpg?x-oss-process=image/resize,m_fill,h_396,w_396,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
-          singer: '告五人',
-          progress: '50%',
-          money: 888888,
-          date: 29
-        },
-        {
-          title: '運氣來的若有似無 專輯募資',
-          img: 'https://akstatic.streetvoice.com/audition/2021/06/16/6c24a3f3d1794ce896a1e0a56ba9597d.jpg?x-oss-process=image/resize,m_fill,h_396,w_396,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
-          singer: '告五人',
-          progress: '50%',
-          money: 882288,
-          date: 29
-        },
-        {
-          title: '運氣來的若有似無 專輯募資',
-          img: 'https://akstatic.streetvoice.com/audition/2021/06/16/6c24a3f3d1794ce896a1e0a56ba9597d.jpg?x-oss-process=image/resize,m_fill,h_396,w_396,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
-          singer: '告五人',
-          progress: '80%',
-          money: 888888,
-          date: 25
-        },
-        {
-          title: '運氣來的若有似無 專輯募資',
-          img: 'https://akstatic.streetvoice.com/audition/2021/06/16/6c24a3f3d1794ce896a1e0a56ba9597d.jpg?x-oss-process=image/resize,m_fill,h_396,w_396,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
-          singer: '告五人',
-          progress: '30%',
-          money: 8888338,
-          date: 22
-        },
-        {
-          title: '運氣來的若有似無 專輯募資',
-          img: 'https://akstatic.streetvoice.com/audition/2021/06/16/6c24a3f3d1794ce896a1e0a56ba9597d.jpg?x-oss-process=image/resize,m_fill,h_396,w_396,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
-          singer: '告五人',
-          progress: '50%',
-          money: 888888,
-          date: 29
-        },
-        {
-          title: '運氣來的若有似無 專輯募資',
-          img: 'https://akstatic.streetvoice.com/audition/2021/06/16/6c24a3f3d1794ce896a1e0a56ba9597d.jpg?x-oss-process=image/resize,m_fill,h_396,w_396,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
-          singer: '告五人',
-          progress: '50%',
-          money: 882288,
-          date: 29
-        },
-        {
-          title: '運氣來的若有似無 專輯募資',
-          img: 'https://akstatic.streetvoice.com/audition/2021/06/16/6c24a3f3d1794ce896a1e0a56ba9597d.jpg?x-oss-process=image/resize,m_fill,h_396,w_396,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
-          singer: '告五人',
-          progress: '80%',
-          money: 888888,
-          date: 25
-        },
-        {
-          title: '運氣來的若有似無 專輯募資',
-          img: 'https://akstatic.streetvoice.com/audition/2021/06/16/6c24a3f3d1794ce896a1e0a56ba9597d.jpg?x-oss-process=image/resize,m_fill,h_396,w_396,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
-          singer: '告五人',
-          progress: '30%',
-          money: 8888338,
-          date: 22
-        }
-      ]
+      randerFuns: [] // 一開始渲染user的全部募資資料
     }
+  },
+  async created () {
+    const response = await fetch('http://localhost/DropbeatBackend/funds_page_get.php')
+    const responseData = await response.json()
+    responseData.forEach((item) => {
+      this.randerFuns.unshift(item)
+    })
   }
 }
 </script>
