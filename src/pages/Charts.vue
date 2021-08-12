@@ -1,4 +1,7 @@
 <template>
+<base-dialog :show="showDialog">
+  <share-social-media @close-social="closeSocialDialog" :imgSrc="shareImg" :music="shareMusic" :singer="shareSinger"></share-social-media>
+</base-dialog>
     <div class="range">
         <base-title title="排行榜"></base-title>
         <div class="space-x-3">
@@ -169,6 +172,17 @@ export default {
           color: 'gray'
         }
       ]
+    }
+  },
+  methods: {
+    shareSocial (img, music, singer) {
+      this.showDialog = true
+      this.shareImg = img
+      this.shareMusic = music
+      this.shareSinger = singer
+    },
+    closeSocialDialog () {
+      this.showDialog = false
     }
   }
 }
