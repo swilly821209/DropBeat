@@ -52,7 +52,7 @@
           :img="item.donate_photo"
           :singer="item.initiator"
           :progress="'20%'"
-          :date="'20'"
+          :date="item.countdownDate"
           :money="item.goal"
           :edidFund="edidFund"
           :deleteDialogFun="deleteDialogFun">
@@ -517,8 +517,8 @@ export default {
         body: form
       })
       this.deleteDialog = !this.deleteDialog
-      this.$router.replace('/Funds')
-      window.scrollTo(0, 0)
+      // this.$router.replace('/Funds')
+      // window.scrollTo(0, 0)
     },
     cancleFun () {
       this.cancleDialog = !this.cancleDialog
