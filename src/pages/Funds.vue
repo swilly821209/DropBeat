@@ -4,20 +4,20 @@
         <div class="space-x-3">
             <base-button
             class="my-8 selectBtn"
-            v-for="item in fundsProgress"
+            v-for="(item, index) in fundsProgress"
             :key="item"
             :active="{active: selectFundsProgress === item}"
-            @click="selectFundsProgress = item"
+            @click="switchProgress(index)"
             mode="under-line">
             {{ item }}
             </base-button>
         </div>
         <div class="sm:space-x-3 space-x-1 space-y-1 sm:space-y-2">
             <base-button
-            v-for="item in fundsType"
+            v-for="(item, index) in fundsType"
             :key="item"
             :active="{active: selectFundsType === item}"
-            @click="selectFundsType = item"
+            @click="switchTyep(index)"
             mode="outline">
             {{ item }}
             </base-button>
@@ -28,7 +28,7 @@
                 :title="item.donate_name"
                 :img="item.donate_photo"
                 :singer="item.initiator"
-                :progress="'50%'"
+                :progress="item.goal_percent"
                 :date="item.countdownDate"
                 :money="item.goal"
                 :key="item.donate_id">
@@ -52,12 +52,53 @@ export default {
       randerFuns: [] // 一開始渲染user的全部募資資料
     }
   },
+  methods: {
+    async switchProgress (index) {
+      this.selectFundsProgress = this.fundsProgress[index]
+      this.randerFuns = []
+      const form = new FormData()
+      const progress = `progress${index}`
+      form.append('progressed', progress)
+      const response = await fetch('http://localhost/DropbeatBackend/funds_page_selectProgress.php', {
+        method: 'POST',
+        body: form
+      })
+      const responseData = await response.json()
+      responseData.forEach((item) => {
+        item.goal_percent = `${item.goal_percent}%` // 將回傳的數值加上百分比
+        this.randerFuns.unshift(item)
+      })
+      console.log(this.randerFuns)
+    },
+    async switchTyep (index) {
+      this.selectFundsType = this.fundsType[index]
+      if (index === 0) {
+        this.randerFuns.sort((a, b) => {
+          return a.setup_date > b.setup_date ? 1 : -1
+        })
+      } else if (index === 1) {
+        this.randerFuns.sort((a, b) => {
+          return parseInt(a.countdownDate) > parseInt(b.countdownDate) ? 1 : -1
+        })
+      } else if (index === 2) {
+        this.randerFuns.sort((a, b) => {
+          return parseInt(a.goal) < parseInt(b.goal) ? 1 : -1
+        })
+      } else if (index === 3) {
+        this.randerFuns.sort((a, b) => {
+          return parseInt(a.donate_num) > parseInt(b.donate_num) ? 1 : -1
+        })
+      }
+    }
+  },
   async created () {
     const response = await fetch('http://localhost/DropbeatBackend/funds_page_get.php')
     const responseData = await response.json()
     responseData.forEach((item) => {
+      item.goal_percent = `${item.goal_percent}%` // 將回傳的數值加上百分比
       this.randerFuns.unshift(item)
     })
+    console.log(this.randerFuns)
   }
 }
 </script>

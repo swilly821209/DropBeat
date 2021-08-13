@@ -236,19 +236,20 @@ export default {
         image.style.backgroundImage = `url('${readFile.result}')`
       })
       this.showImg = file
+      console.log(this.showImg)
     },
     sendData () {
       if (this.$store.getters.loginState !== false) {
         const form = new FormData()
-        const activityId = Math.floor(Math.random() * 9999)
+        // const activityId = Math.floor(Math.random() * 9999)
         // 傳後端(發起募資)======================================================
         form.append('file', this.showImg) // 存照片 活動代表圖 file進去 轉activity_photo
-        form.append('activity_id', activityId) // donate_id
+        // form.append('activity_id', activityId) // donate_id
         form.append('initiator', this.$store.getters.memberIdState) // initiator (活動發起人))
         form.append('activity_name', this.showTopic) // 活動名稱
         form.append('activity_date', this.showDate) // 活動日期
         form.append('activity_time', this.showTime) // 活動時間
-        form.append('area', this.showArea) // 活動區域(縣市)
+        form.append('activity_area', this.showArea) // 活動區域(縣市)
         form.append('place', this.showPlace) // 活動地點
         form.append('info', this.showInfo) // 活動簡介
         fetch('http://localhost/DropbeatBackend/FileUpload/activity_files_send.php', {
