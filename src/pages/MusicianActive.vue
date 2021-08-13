@@ -1,37 +1,37 @@
 <template>
   <div class="range">
     <base-dialog :show="cancleDialog">
-      <div class="flex flex-col items-center py-10 px-40">
-        <p class="text-[#383838]">您先前編輯的內容都將不會儲存</p>
-        <p class="text-[#383838]">確定離開？</p>
+      <div class="flex flex-col items-center py-4 sm:py-10 px-3 sm:px-40">
+        <p class="text-[#383838] text-xl sm:text-2xl mb-[4px]">您先前編輯的內容都將不會儲存</p>
+        <p class="text-[#383838] text-xl sm:text-2xl">確定離開？</p>
         <div class="flex mt-[20px]">
-          <button @click="cancleFun" class="mr-[20px] text-white bg-orange border-2 border-orange rounded-2xl w-[60px]">取消</button>
-          <button @click="cancleDialog = !cancleDialog" class="text-[#7B7B7B] bg-white border-2 border-[#B5B5B5] rounded-2xl w-[60px]">離開</button>
+          <button @click="cancleFun" class="mr-[12px] text-white text-[16px] bg-orange border-2 border-orange rounded-2xl w-[55px] h-[25px] hover:bg-blue-light hover:border-blue-light">取消</button>
+          <button @click="cancleDialog = !cancleDialog" class="text-[#7B7B7B] text-[16px] bg-white border-2 border-[#B5B5B5] border-gray-default rounded-2xl w-[55px] h-[25px] hover:border-orange hover:text-orange">離開</button>
         </div>
       </div>
     </base-dialog>
     <base-dialog :show="submitDialog">
-      <div class="flex flex-col items-center py-10 px-20">
-        <p class="text-[#383838] text-2xl">活動審核需要3個工作天！</p>
-        <p class="text-[#383838] text-2xl">活動狀態將顯示在活動管理頁面</p>
-        <ul class="mt-[40px]">
+      <div class="flex flex-col items-center py-4 sm:py-10 px-3 sm:px-20">
+        <p class="text-[#383838] text-2xl mb-[2px]">活動審核需要3個工作天！</p>
+        <p class="text-[#383838] text-xl sm:text-2xl">活動狀態將顯示在活動管理頁面</p>
+        <ul class="mt-[30px] sm:mt-[40px] text-sm sm:text-base text-gray-dark">
           <li class="mb-[5px]">・活動提案必須為可以履行的計劃目標且資訊內容清楚，不可涉及
     爭議性內容且不違反中華民國現行法律之提案。</li>
         </ul>
-        <div class="flex mt-[20px]">
-          <button @click="submitDialog = !submitDialog" class="mr-[20px] text-[#7B7B7B] bg-white border-2 border-[#B5B5B5] rounded-2xl w-[60px]">取消</button>
-          <button @click="sendData" class="text-white bg-orange border-2 border-orange rounded-2xl w-[60px]">提交</button>
+        <div class="flex mt-[30px] text-base">
+          <button @click="submitDialog = !submitDialog" class="mr-[12px] text-[#7B7B7B] bg-white border-2 border-gray-default rounded-2xl w-[55px] h-[25px] hover:text-orange hover:border-orange">取消</button>
+          <button @click="sendData" class="text-white bg-orange border-2 border-orange rounded-2xl w-[55px] h-[25px] hover:border-blue-light hover:bg-blue-light">提交</button>
         </div>
       </div>
     </base-dialog>
     <base-dialog :show="deleteDialog">
-      <div class="flex flex-col items-center py-10 px-40">
-        <p class="text-[#383838] text-2xl">刪除此募資提案後不可復原，您確定刪除？</p>
-        <p class="text-[#383838] text-sm">若您有問題請聯繫管理員</p>
-        <p class="text-[#383838]">・若期限屆滿前刪除募資提案，所有的贊助款項均將交還給贊助者。</p>
+      <div class="flex flex-col items-center py-4 sm:py-10 px-3 sm:px-40">
+        <p class="text-[#383838] text-xl sm:text-2xl">刪除此募資提案後不可復原，您確定刪除？</p>
+        <p class="text-[#383838] text-xs">若您有問題請聯繫管理員</p>
+        <p class="text-[#383838] text-sm sm:text-base">・若期限屆滿前刪除募資提案，所有的贊助款項均將交還給贊助者。</p>
         <div class="flex mt-[20px]">
-          <button @click="deleteDialog = !deleteDialog" class="mr-[20px] text-white bg-orange border-2 border-orange rounded-2xl w-[60px]">取消</button>
-          <button @click="deleteFun" class="text-[#7B7B7B] bg-white border-2 border-[#B5B5B5] rounded-2xl w-[60px]">刪除</button>
+          <button @click="deleteDialog = !deleteDialog" class="mr-[12px] text-white text-[16px] bg-orange border-2 border-orange rounded-2xl w-[55px] h-[25px] hover:bg-blue-light hover:border-blue-light">取消</button>
+          <button @click="deleteFun" class="text-[#7B7B7B] text-[16px] bg-white border-2 border-gray-default rounded-2xl w-[55px] h-[25px] hover:border-orange hover:text-orange">刪除</button>
         </div>
       </div>
     </base-dialog>
@@ -60,13 +60,17 @@
       <svg xmlns="http://www.w3.org/2000/svg" class="nextArrow block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
     </div>
     <!-- 640以下顯示 -->
-    <div class="sm:hidden block mt-5">
-      <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="mr-0 sm:mr-4">
-        <svg xmlns="http://www.w3.org/2000/svg" class="preIcon preArrow" width="20" height="23.077" viewBox="0 0 15 23.077"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(0 23.077) rotate(-90)" fill="currentColor"/></svg>
+    <div class="sm:hidden block mt-[-10px]">
+      <div class=" flex mr-3 mt-3 absolute right-0 z-10" >
+        <svg xmlns="http://www.w3.org/2000/svg" class="preIcon preArrow mr-3 block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="nextIcon nextArrow block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
+      </div>
+      <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="mr-0">
+        <!-- <svg xmlns="http://www.w3.org/2000/svg" class="preIcon preArrow" width="20" height="23.077" viewBox="0 0 15 23.077"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(0 23.077) rotate(-90)" fill="currentColor"/></svg> -->
         <swiper-slide v-for="item in activeDatas" :key="item.title" class="flex justify-center">
           <activity-item
             :edit="'edit'"
-            class="max-w-[340px] mr-[2px]"
+            class=" m-auto"
             :img="item.imgSrc"
             :title="item.title"
             :time="item.time"
@@ -76,7 +80,7 @@
             :singer="item.singer">
           </activity-item>
         </swiper-slide>
-        <svg xmlns="http://www.w3.org/2000/svg" class="nextIcon nextArrow" width="20" height="18.961" viewBox="0 0 13.72 18.961"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(15 -2.058) rotate(90)" fill="currentColor"/></svg>
+        <!-- <svg xmlns="http://www.w3.org/2000/svg" class="nextIcon nextArrow" width="20" height="18.961" viewBox="0 0 13.72 18.961"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(15 -2.058) rotate(90)" fill="currentColor"/></svg> -->
       </swiper>
     </div>
     <h4 id="doActive">發起活動</h4>
@@ -88,41 +92,41 @@
         :sendFun="fileChange"
         :inputImg="'border-2 border-white bg-white incircle'"
       ></select-img>
-      <div class="content flex flex-col justify-center">
-        <div class=" flex mt-3 sm:mt-0 w-[320px] sm:w-full">
+      <div class="content flex flex-col justify-center mt-2 sm:mt-0">
+        <div class=" flex mt-3 sm:mt-0 w-full sm:w-full">
           <label for="topicName" class="textTitle text-right text-gray-dark text-lg mr-3">活動主題：</label>
-          <input v-model="showTopic" name="topicName" id="topicName" type="text" style="color:#7b7b7b" class="textLine border-b-2 border-gray-default focus:outline-none focus:border-orange text-gray-light">
+          <input v-model="showTopic" name="topicName" id="topicName" type="text" style="color:#7b7b7b" class="textLine border-b-2 border-gray-light focus:outline-none focus:border-orange text-gray-light">
         </div>
-        <div class="flex mt-4 w-[320px] sm:w-full">
+        <div class="flex mt-4 w-full sm:w-full">
           <label for="date" class="textTitle text-right text-gray-dark text-lg mr-3">活動日期：</label>
-          <input v-model="showDate" name="date" id="date" type="date" @change="changeColor" style="color:#7b7b7b" class="bg-white sm:bg-opacity-0 textLine border-b-2 border-gray-default focus:outline-none focus:border-orange text-transparent font-bold">
+          <input v-model="showDate" name="date" id="date" type="date" @change="changeColor" style="color:#7b7b7b" class="bg-white sm:bg-opacity-0 textLine border-b-2 border-gray-light focus:outline-none focus:border-orange text-transparent font-bold">
         </div>
-        <div class="flex mt-4 w-[320px] sm:w-full">
+        <div class="flex mt-4 w-full sm:w-full">
           <label for="time" class="textTitle text-right text-gray-dark text-lg mr-3">活動時間：</label>
-          <input v-model="showTime" name="time" id="time" type="time" @change="changeColor" style="color:#7b7b7b" class="bg-white sm:bg-opacity-0 textLine border-b-2 border-gray-default focus:outline-none focus:border-orange text-transparent font-bold">
+          <input v-model="showTime" name="time" id="time" type="time" @change="changeColor" style="color:#7b7b7b" class="bg-white sm:bg-opacity-0 textLine border-b-2 border-gray-light focus:outline-none focus:border-orange text-transparent font-bold">
         </div>
-        <div class="flex mt-4 w-[320px] sm:w-full">
+        <div class="flex mt-4 w-full sm:w-full">
           <label for="placeArea" class="textTitle text-right text-gray-dark text-lg mr-3">活動地點：</label>
-          <select v-model="showArea" name="placeArea" id="placeArea" style="color:#7b7b7b" class="bg-white sm:bg-opacity-0 textLine border-b-2 border-gray-default focus:outline-none focus:border-orange text-gray-light" >
+          <select v-model="showArea" name="placeArea" id="placeArea" style="color:#7b7b7b" class="bg-white sm:bg-opacity-0 textLine border-b-2 border-gray-light focus:outline-none focus:border-orange text-gray-light" >
             <option v-for="item in area" :key="item" :value="item">{{item}}</option>
           </select>
         </div>
-        <div class="flex mt-4  w-[320px] sm:w-full relative">
+        <div class="flex mt-4  w-full sm:w-full relative">
           <label class="textTitle mr-3"></label>
           <label for="place" class="textLine">
-            <input v-model="showPlace" name="place" id="place" type="text" class="w-full border-b-2 border-gray-default text-gray-dark focus:outline-none focus:border-orange text-gray-light pl-1">
+            <input v-model="showPlace" name="place" id="place" type="text" class="w-full border-b-2 border-gray-light text-gray-dark focus:outline-none focus:border-orange text-gray-light pl-1">
           </label>
         </div>
       </div>
     </div>
     <!-- <base-title title="活動介紹" class="mt-20  mb-5" :second="'second'"></base-title> -->
-    <h5 class="text-xl text-black-backdrop">活動介紹：</h5>
-    <textarea v-model="showInfo" name="projectInfo" class="w-full h-56 border-2 border-gray-light text-gray-dark rounded-2xl resize-none pl-2 pt-2 focus:border-orange"></textarea>
+    <h5 class="text-[22px] text-black-backdrop">活動介紹：</h5>
+    <textarea v-model="showInfo" name="projectInfo" class="w-full h-[200px] sm:h-64 border-2 border-gray-light text-gray-dark rounded-2xl resize-none pl-2 pt-2 focus:border-orange"></textarea>
     <div class="flex justify-end mt-4">
       <div class="flex">
-        <button @click="cancleDialog = !cancleDialog" class="cancelBtn border-2 border-gray-default text-gray-dark  rounded-2xl hover:border-orange hover:text-orange">取消</button>
-        <button v-if="sendStatus" @click="submitDialog = !submitDialog" class="submitBtn border-2 border-orange bg-orange text-white rounded-2xl hover:bg-blue-light hover:border-opacity-0">提交審核</button>
-        <button v-else @click="sendEdit" class="submitBtn border-2 border-orange bg-orange text-white rounded-2xl hover:bg-blue-light hover:border-opacity-0">確認編輯</button>
+        <button @click="cancleDialog = !cancleDialog" class="cancelBtn w-[55px] h-[25px] border-2 border-gray-default text-gray-dark mr-4 sm:mr-5 rounded-2xl hover:border-orange hover:text-orange">取消</button>
+        <button v-if="sendStatus" @click="submitDialog = !submitDialog" class="submitBtn w-[85px] h-[25px] border border-orange bg-orange text-white rounded-2xl hover:bg-blue-light hover:border-blue-light">提交審核</button>
+        <button v-else @click="sendEdit" class="submitBtn w-[85px] h-[25px] border border-orange bg-orange text-white rounded-2xl hover:bg-blue-light hover:border-blue-light">確認編輯</button>
       </div>
     </div>
   </div>
@@ -406,15 +410,6 @@ export default {
   .textLine{
       width: calc(100% - 120px);
   }
-  .cancelBtn{
-    height: 30px;
-    width: 55px;
-  }
-  .submitBtn{
-    height: 30px;
-    width: 90px;
-    margin: 0 0 0 10px;
-  }
   div[col=col]{
     flex-direction: column;
     width: 100%;
@@ -448,37 +443,72 @@ export default {
     position: absolute;
     /* transform: translateX(-50%); */
   }
-  ::v-deep .imgWidth{
+  :deep .imgWidth{
     width: 95%;
   }
   @media screen and (max-width:640px) {
-    .preIcon {
-      @apply text-gray-light absolute top-1/2 z-10 left-0 cursor-pointer
+    :deep .item{
+      /* border:1px solid red; */
+      width: 100%;
     }
-    .nextIcon{
-      @apply text-gray-light absolute top-1/2 z-10 right-0 cursor-pointer
+    :deep .editclass{
+      width: 270px;
+      margin-left: 5px;
     }
+    :deep .activeImg{
+      /* border: 1px solid red; */
+      width: 100%;
+      height: 100%;
+      background-size: cover ;
+    }
+    :deep .activeContent{
+      width: 100%;
+      padding:12px 5px 0;
+    }
+    /* .preIcon {
+      @apply text-gray-light absolute top-[42%] sm:top-1/2 z-10 left-0 cursor-pointer
+    } */
+    /* .nextIcon{
+      @apply text-gray-light absolute top-[42%] sm:top-1/2 z-10 right-0 cursor-pointer
+    } */
     .swiper-button-disabled {
       @apply text-gray-default
     }
-    ::v-deep .join{
+    :deep .join{
       display: none;
     }
-    ::v-deep .editclass{
-      width: 270px;
-      padding-right: 0px;
-    }
-    ::v-deep .title00{
+    :deep .title00{
       justify-content: space-between;
       margin-bottom: 20px;
     }
-    ::v-deep .titleNline h2{
-      font-size:30px;
-      font-weight: bold;
+    :deep .titleNline h2{
+      font-size:28px;
     }
-    ::v-deep .outer{
+    h4{
+      font-size: 28px;
+      font-weight: 500;
+      color:#383838;
+      cursor:default;
+      margin: 40px 0 15px 0;
+    }
+    :deep .outer{
       width: 100%;
       height: 200px;
+    }
+    :deep .circle{
+      width: 65px;
+      height: 65px;
+    }
+    :deep .cameraIcom{
+      width: 40px;
+      height: 40px;
+    }
+    :deep .content{
+      width: 300px;
+    }
+    .content{
+      width: 100%;
+      padding: 0 0 0 0;
     }
   }
 </style>

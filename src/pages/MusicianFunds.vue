@@ -1,6 +1,6 @@
 <template>
   <div class="range">
-    <base-dialog :show="cancleDialog" class="relative z-[100]">
+    <base-dialog :show="cancleDialog" class="relative ">
       <div class="flex flex-col items-center py-4 sm:py-10 px-3 sm:px-40 ">
         <p class="text-[#383838] text-xl sm:text-2xl mb-[4px]">您先前編輯的內容都將不會儲存</p>
         <p class="text-[#383838] text-xl sm:text-2xl">確定離開？</p>
@@ -10,7 +10,7 @@
         </div>
       </div>
     </base-dialog>
-    <base-dialog :show="submitDialog" class="relative z-[100]">
+    <base-dialog :show="submitDialog" class="relative ">
       <div class="flex flex-col items-center py-4 sm:py-10 px-3 sm:px-20">
         <p class="text-[#383838] text-2xl mb-[2px]">募資審核需要7個工作天！</p>
         <p class="text-[#383838] text-xl sm:text-2xl">審核狀態將顯示在募資管理頁面</p>
@@ -21,18 +21,18 @@
         </ul>
         <div class="flex mt-[30px] text-base">
           <button @click="submitDialog = !submitDialog" class="mr-[12px] text-[#7B7B7B] bg-white border-2 border-gray-default rounded-2xl w-[55px] h-[25px] hover:text-orange hover:border-orange">取消</button>
-          <button @click="sendData" class="text-white bg-orange border-2 border-orange rounded-2xl w-[60px] w-[55px] h-[25px] hover:border-blue-light hover:bg-blue-light ">提交</button>
+          <button @click="sendData" class="text-white bg-orange border-2 border-orange rounded-2xl w-[55px] h-[25px] hover:border-blue-light hover:bg-blue-light ">提交</button>
         </div>
       </div>
     </base-dialog>
     <base-dialog :show="deleteDialog">
-      <div class="flex flex-col items-center py-10 px-40">
-        <p class="text-[#383838] text-2xl">刪除此募資提案後不可復原，您確定刪除？</p>
-        <p class="text-[#383838] text-sm">若您有問題請聯繫管理員</p>
-        <p class="text-[#383838]">・若期限屆滿前刪除募資提案，所有的贊助款項均將交還給贊助者。</p>
+      <div class="flex flex-col items-center py-4 sm:py-10 px-3 sm:px-40">
+        <p class="text-[#383838] text-xl sm:text-2xl">刪除此提案後不可復原，確定刪除？</p>
+        <p class="text-[#383838] text-xs">若您有問題請聯繫管理員</p>
+        <p class="text-[#383838] text-sm sm:text-base">・若期限屆滿前刪除募資提案，所有的贊助款項均將交還給贊助者。</p>
         <div class="flex mt-[20px]">
-          <button @click="deleteDialog = !deleteDialog" class="mr-[20px] text-white bg-orange border-2 border-orange rounded-2xl w-[60px]">取消</button>
-          <button @click="deleteFun" class="text-[#7B7B7B] bg-white border-2 border-[#B5B5B5] rounded-2xl w-[60px]">刪除</button>
+          <button @click="deleteDialog = !deleteDialog" class="mr-[12px] text-white text-[16px] bg-orange border-2 border-orange rounded-2xl w-[55px] h-[25px] hover:bg-blue-light hover:border-blue-light">取消</button>
+          <button @click="deleteFun" class="text-[#7B7B7B] text-[16px] bg-white border-2 border-gray-default rounded-2xl w-[55px] h-[25px] hover:border-orange hover:text-orange">刪除</button>
         </div>
       </div>
     </base-dialog>
@@ -61,12 +61,16 @@
     </swiper>
     <!-- 640px以下顯示 -->
     <div class="sm:hidden block mt-[-30px]">
+      <div class=" flex mr-3 mt-8 absolute right-0 z-10" >
+        <svg xmlns="http://www.w3.org/2000/svg" class="preIcon preArrow mr-3 block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="nextIcon nextArrow block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
+      </div>
       <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" >
-        <svg xmlns="http://www.w3.org/2000/svg" class="preIcon preArrow " width="20" height="23.077" viewBox="0 0 15 23.077"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(0 23.077) rotate(-90)" fill="currentColor"/></svg>
+        <!-- <svg xmlns="http://www.w3.org/2000/svg" class="preIcon preArrow " width="20" height="23.077" viewBox="0 0 15 23.077"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(0 23.077) rotate(-90)" fill="currentColor"/></svg> -->
         <swiper-slide v-for="item in fundItems" :key="item.title" class="flex justify-center ">
           <fund-item
             edit
-            class="max-w-[300px] m-auto"
+            class=" m-auto"
             :title="item.title"
             :img="item.img"
             :singer="item.singer"
@@ -75,13 +79,13 @@
             :money="item.money">
           </fund-item>
         </swiper-slide>
-        <svg xmlns="http://www.w3.org/2000/svg" class="nextIcon nextArrow" width="20" height="18.961" viewBox="0 0 13.72 18.961"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(15 -2.058) rotate(90)" fill="currentColor"/></svg>
+        <!-- <svg xmlns="http://www.w3.org/2000/svg" class="nextIcon nextArrow" width="20" height="18.961" viewBox="0 0 13.72 18.961"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(15 -2.058) rotate(90)" fill="currentColor"/></svg> -->
       </swiper>
     </div>
     <base-title id="activeFund" title="發起募資" class="text-[22px] mt-12 sm:mt-20 mb-5"></base-title>
     <div class="flex flex-col w-full items-center sm:flex-row ">
       <select-img
-        class="w-[345px] h-48 sm:w-8/12 sm:h-[400px] sm:mr-6"
+        class="w-full h-48 sm:w-8/12 sm:h-[400px] sm:mr-6"
         :radius="'rounded-2xl sm:rounded-3xl'"
         :camera="true"
         :text="'選取圖片'"
@@ -103,12 +107,12 @@
         </div>
       </div>
     </div>
-    <h3  class="text-[22px] sm:text-[24px] text-black-backdrop font-medium mt-10 sm:mt-16 sm:mb-5 mb-3" :second="'second'">計畫介紹</h3>
+    <h3  class="text-[22px] sm:text-[24px] text-black-backdrop font-medium mt-10 sm:mt-16 sm:mb-5 mb-3" :second="'second'">計畫介紹：</h3>
     <div class="flex justify-center mb-12">
       <textarea v-model="fundInfo" name="projectInfo" class="w-full ml-[5px] sm:ml-[0px] h-[200px] sm:h-72 border-2 border-gray-light rounded-2xl resize-none pl-2 pt-2 focus:border-orange"></textarea>
     </div>
     <div class="flex justify-between">
-      <h3 :second="'second'" class="text-[22px] sm:text-[24px] text-black-backdrop font-medium sm:mb-5 mb-0">募資方案</h3>
+      <h3 :second="'second'" class="text-[22px] sm:text-[24px] text-black-backdrop font-medium sm:mb-5 mb-0">募資方案：</h3>
       <div class="hidden arrow cursor-pointer sm:block">
         <svg @click="leftPlan" class="mr-3" xmlns="http://www.w3.org/2000/svg" width="25" height="40" viewBox="0 0 25 40">
           <path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" :fill="planL"/>
@@ -669,8 +673,24 @@ export default {
     margin-right: 20px;
   }
   @media screen and (max-width:640px) {
+    :deep .fundBlock{
+        /* border: 1px solid red; */
+        width: 100%;
+    }
+    :deep .homeActivity{
+      /* border: 1px solid red; */
+      width: 100%;
+      height: 180px;
+      background-position: center;
+    }
     .theItem{
       padding-left: 0;
+    }
+    :deep .edit{
+      justify-content:flex-start;
+    }
+    :deep .content{
+      width: 100%;
     }
     .outers{
       width: 100%;
@@ -717,29 +737,20 @@ export default {
       height: 300px;
       object-fit: cover;
     }
-    :deep .fundBlock{
-      margin: 0;
-    }
     :deep .circle{
-      width: 60px;
-      height: 60px;
+      width: 65px;
+      height: 65px;
     }
     :deep .cameraIcom{
       width: 40px;
       height: 40px;
     }
-    :deep .content{
-      width: 300px;
-    }
-    :deep .fundBlock{
-      margin-top: 0;
-    }
-    .preIcon {
-      @apply text-gray-light absolute top-1/2 z-10 left-0 cursor-pointer
+    /* .preIcon {
+      @apply text-gray-light absolute top-[42%] sm:top-1/2 z-10 left-0 cursor-pointer
     }
     .nextIcon{
-      @apply text-gray-light absolute top-1/2 z-10 right-0 cursor-pointer
-    }
+      @apply text-gray-light absolute top-[42%] sm:top-1/2 z-10 right-0 cursor-pointer
+    } */
     .swiper-button-disabled {
       @apply text-gray-default
     }

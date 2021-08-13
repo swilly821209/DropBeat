@@ -10,7 +10,7 @@
           <h5>刪除</h5>
       </div>
     </div>
-    <router-link to="/Active/:id">
+    <router-link to="/Active/:id ">
       <img :src="img" class="activeImg w-[345px] h-[200px] rounded-2xl  cursor-pointer imgWidth" :style="imgWidth">
     </router-link>
     <div class="activeContent flex flex-col justify-center">
