@@ -406,6 +406,7 @@ export default {
       max-width: 320px;
     }
     :deep .homeActivity{
+      /* border:1px solid red; */
       height: 155px;
     }
   }
@@ -419,16 +420,16 @@ export default {
     }
   }
 .preIcon1 {
-  @apply text-gray-light absolute top-1/4 z-10 left-0 cursor-pointer
+  @apply text-gray-light absolute top-[30%] z-10 left-0 cursor-pointer
 }
 .nextIcon1{
-  @apply text-gray-light absolute top-1/4 z-10 right-0 cursor-pointer
+  @apply text-gray-light absolute top-[30%] z-10 right-0 cursor-pointer
 }
 .preIcon2 {
-  @apply text-gray-light absolute top-[100px] z-10 left-0 cursor-pointer
+  @apply text-gray-light absolute top-[33%] z-10 left-0 cursor-pointer
 }
 .nextIcon2{
-  @apply text-gray-light absolute top-[100px] z-10 right-0 cursor-pointer
+  @apply text-gray-light absolute top-[33%] z-10 right-0 cursor-pointer
 }
 .swiper-button-disabled {
   @apply text-gray-default

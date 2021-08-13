@@ -85,7 +85,7 @@
     <base-title id="activeFund" title="發起募資" class="text-[22px] mt-12 sm:mt-20 mb-5"></base-title>
     <div class="flex flex-col w-full items-center sm:flex-row ">
       <select-img
-        class="w-[345px] h-48 sm:w-8/12 sm:h-[400px] sm:mr-6"
+        class="w-full h-48 sm:w-8/12 sm:h-[400px] sm:mr-6"
         :radius="'rounded-2xl sm:rounded-3xl'"
         :camera="true"
         :text="'選取圖片'"

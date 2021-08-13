@@ -31,6 +31,7 @@
         <div class="date_N_info">
           <base-date :time="item.time" week="true" class="date sm:block hidden"></base-date>
           <activity-item
+            class="m-auto"
             :img="item.imgSrc"
             :title="item.title"
             :time="item.time"
@@ -185,13 +186,17 @@ export default {
   background-color: #FF9D83;
   color:#ffffff;
 }
-@media (max-width: 640px) {
+@media screen and (max-width: 640px) {
   .range{
     padding: 60px 15px 0 15px;
   }
   .singleActive {
+    /* border:1px solid red; */
+    margin:0 auto;
+    width: 100%;
     justify-content: center;
     padding: 30px 0 10px 0;
   }
 }
+
 </style>
