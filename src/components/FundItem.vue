@@ -16,12 +16,12 @@
       <img :src="img" class="sm:w-[269px] sm:h-[269px] w-[300px] h-[150px]"> -->
     </router-link>
     <div class="content sm:order-2 order-3 sm:w-auto w-[345px]">
-      <h4 class=" text-base text-black">{{ title }}</h4>
+      <h4 class=" text-base text-black-backdrop">{{ title }}</h4>
       <p class="text-sm text-gray-dark">{{singer}}</p>
       <div class="donateline">
         <div class="donateNow" :style="`width: ${progress}`"></div>
       </div>
-      <div class="donate_content">
+      <div class="donate_content text-black-backdrop">
         <p>$ {{ money }} | {{ progress }}</p>
         <p>還剩 {{ date }} 天</p>
       </div>
