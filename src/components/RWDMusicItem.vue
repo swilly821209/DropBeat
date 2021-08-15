@@ -157,7 +157,6 @@ export default {
     responseData.forEach((item) => {
       this.nowArray.unshift(item)
     })
-    console.log(this.nowArray)
   }
 }
 </script>

@@ -750,12 +750,12 @@ video {
   top: 3rem;
 }
 
-.top-1\/4 {
-  top: 25%;
+.top-\[30\%\] {
+  top: 30%;
 }
 
-.top-\[100px\] {
-  top: 100px;
+.top-\[33\%\] {
+  top: 33%;
 }
 
 .top-14 {
@@ -780,6 +780,10 @@ video {
 
 .top-\[10px\] {
   top: 10px;
+}
+
+.top-\[42\%\] {
+  top: 42%;
 }
 
 .top-5 {
@@ -816,46 +820,6 @@ video {
 
 .top-auto {
   top: auto;
-}
-
-.top-\[20px\] {
-  top: 20px;
-}
-
-.top-\[50px\] {
-  top: 50px;
-}
-
-.top-\[40\%\] {
-  top: 40%;
-}
-
-.top-\[38\%\] {
-  top: 38%;
-}
-
-.top-\[42\%\] {
-  top: 42%;
-}
-
-.top-\[50\%\] {
-  top: 50%;
-}
-
-.top-\[20\%\] {
-  top: 20%;
-}
-
-.top-\[30\%\] {
-  top: 30%;
-}
-
-.top-\[32\%\] {
-  top: 32%;
-}
-
-.top-\[33\%\] {
-  top: 33%;
 }
 
 .z-10 {
@@ -1058,20 +1022,20 @@ video {
   margin-right: 1rem;
 }
 
-.mt-\[-20px\] {
-  margin-top: -20px;
-}
-
-.mb-8 {
-  margin-bottom: 2rem;
-}
-
 .mb-6 {
   margin-bottom: 1.5rem;
 }
 
 .mt-6 {
   margin-top: 1.5rem;
+}
+
+.mt-\[-20px\] {
+  margin-top: -20px;
+}
+
+.mb-8 {
+  margin-bottom: 2rem;
 }
 
 .mb-3 {
@@ -1226,22 +1190,6 @@ video {
   margin-bottom: 8rem;
 }
 
-.mr-\[20px\] {
-  margin-right: 20px;
-}
-
-.mb-\[5px\] {
-  margin-bottom: 5px;
-}
-
-.mr-\[2px\] {
-  margin-right: 2px;
-}
-
-.mt-20 {
-  margin-top: 5rem;
-}
-
 .mb-\[4px\] {
   margin-bottom: 4px;
 }
@@ -1252,6 +1200,14 @@ video {
 
 .mt-\[30px\] {
   margin-top: 30px;
+}
+
+.mb-\[5px\] {
+  margin-bottom: 5px;
+}
+
+.mt-20 {
+  margin-top: 5rem;
 }
 
 .mt-\[-30px\] {
@@ -1272,14 +1228,6 @@ video {
 
 .mr-\[4px\] {
   margin-right: 4px;
-}
-
-.mr-auto {
-  margin-right: auto;
-}
-
-.mt-\[-2px\] {
-  margin-top: -2px;
 }
 
 .block {
@@ -1338,6 +1286,10 @@ video {
   height: 12rem;
 }
 
+.h-20 {
+  height: 5rem;
+}
+
 .h-\[28px\] {
   height: 28px;
 }
@@ -1386,10 +1338,6 @@ video {
   height: 8rem;
 }
 
-.h-20 {
-  height: 5rem;
-}
-
 .h-80 {
   height: 20rem;
 }
@@ -1430,6 +1378,10 @@ video {
   height: 1rem;
 }
 
+.h-16 {
+  height: 4rem;
+}
+
 .h-\[30px\] {
   height: 30px;
 }
@@ -1462,24 +1414,12 @@ video {
   height: 250px;
 }
 
-.h-56 {
-  height: 14rem;
-}
-
-.h-16 {
-  height: 4rem;
-}
-
 .h-\[80px\] {
   height: 80px;
 }
 
 .h-screen {
   height: 100vh;
-}
-
-.h-\[170px\] {
-  height: 170px;
 }
 
 .w-\[345px\] {
@@ -1626,6 +1566,10 @@ video {
   width: 33.333333%;
 }
 
+.w-\[60px\] {
+  width: 60px;
+}
+
 .w-\[30px\] {
   width: 30px;
 }
@@ -1650,16 +1594,12 @@ video {
   width: 120px;
 }
 
-.w-\[60px\] {
-  width: 60px;
-}
-
-.w-\[320px\] {
-  width: 320px;
-}
-
 .w-\[55px\] {
   width: 55px;
+}
+
+.w-\[85px\] {
+  width: 85px;
 }
 
 .w-6\/12 {
@@ -1676,10 +1616,6 @@ video {
 
 .w-\[80px\] {
   width: 80px;
-}
-
-.w-\[85px\] {
-  width: 85px;
 }
 
 .w-9 {
@@ -1712,14 +1648,6 @@ video {
 
 .min-w-\[25\%\] {
   min-width: 25%;
-}
-
-.max-w-\[340px\] {
-  max-width: 340px;
-}
-
-.max-w-\[300px\] {
-  max-width: 300px;
 }
 
 .max-w-\[90\%\] {
@@ -1962,6 +1890,10 @@ video {
 
 .rounded-md {
   border-radius: 0.375rem;
+}
+
+.rounded-sm {
+  border-radius: 0.125rem;
 }
 
 .rounded-\[30px\] {
@@ -2253,21 +2185,6 @@ video {
   padding-right: 1.25rem;
 }
 
-.py-10 {
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
-}
-
-.px-40 {
-  padding-left: 10rem;
-  padding-right: 10rem;
-}
-
-.px-20 {
-  padding-left: 5rem;
-  padding-right: 5rem;
-}
-
 .pr-8 {
   padding-right: 2rem;
 }
@@ -2406,12 +2323,12 @@ video {
   line-height: 2.25rem;
 }
 
-.text-\[18px\] {
-  font-size: 18px;
-}
-
 .text-\[28px\] {
   font-size: 28px;
+}
+
+.text-\[18px\] {
+  font-size: 18px;
 }
 
 .text-\[32px\] {
@@ -2929,12 +2846,12 @@ textarea {
     top: auto;
   }
 
-  .sm\:top-\[20vh\] {
-    top: 20vh;
-  }
-
   .sm\:top-1\/2 {
     top: 50%;
+  }
+
+  .sm\:top-\[20vh\] {
+    top: 20vh;
   }
 
   .sm\:order-1 {
@@ -3095,16 +3012,16 @@ textarea {
     margin-top: 40px;
   }
 
+  .sm\:mr-5 {
+    margin-right: 1.25rem;
+  }
+
   .sm\:mt-20 {
     margin-top: 5rem;
   }
 
   .sm\:ml-\[0px\] {
     margin-left: 0px;
-  }
-
-  .sm\:mr-5 {
-    margin-right: 1.25rem;
   }
 
   .sm\:block {
@@ -3159,16 +3076,16 @@ textarea {
     height: 260px;
   }
 
+  .sm\:h-64 {
+    height: 16rem;
+  }
+
   .sm\:h-\[400px\] {
     height: 400px;
   }
 
   .sm\:h-72 {
     height: 18rem;
-  }
-
-  .sm\:h-64 {
-    height: 16rem;
   }
 
   .sm\:w-auto {

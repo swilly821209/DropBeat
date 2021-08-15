@@ -3,7 +3,7 @@
     <div class="pre">
       <div class="preicon"></div>
       <div class="title00">
-        <h2><router-link to="/Funds/:id" class="text-[18px] sm:text-3xl">更改募資方案</router-link></h2>
+        <h2><router-link :to="lastUrl" class="text-[18px] sm:text-3xl">更改募資方案</router-link></h2>
         <div class="under hidden sm:block"></div>
       </div>
     </div>
@@ -13,26 +13,26 @@
         <div class="aa px-3 sm:px-8 py-4 my-4 mr-0 sm:mr-8 border-2 rounded-md shadow-md">
           <div class="flex flex-col sm:mb-4 mb-5">
             <label for="name" class="text-gray-dark text-base mb-1 ml-1 mt-2">收件人姓名：</label>
-            <input type="text" id="name" placeholder="請填寫真實姓名" class="border-2 border-gray-default rounded-md w-6/6 p-1 pl-2  text-base text-gray-dark focus:border-orange outline-none cursor-pointer">
+            <input v-model="realName" type="text" id="name" placeholder="請填寫真實姓名" class="border-2 border-gray-default rounded-md w-6/6 p-1 pl-2  text-base text-gray-dark focus:border-orange outline-none cursor-pointer">
           </div>
           <div class="flex flex-col sm:mb-4 mb-5">
             <label for="address" class="text-gray-dark text-base mb-1 ml-1">收件人地址：</label>
             <div class="flex">
-              <input type="text" id="address" placeholder="郵遞區號" class="border-2 border-gray-default w-2/6 sm:w-1/6 rounded-md p-1 pl-2  mr-4 text-base text-gray-dark focus:border-orange outline-none cursor-pointer">
-              <input type="text" placeholder="回饋方案將寄至此地址" class="border-2 border-gray-default w-4/6 sm:w-5/6 rounded-md p-1 pl-2  text-base text-gray-dark focus:border-orange outline-none cursor-pointer">
+              <input v-model="zipCode" type="text" id="address" placeholder="郵遞區號" class="border-2 border-gray-default w-2/6 sm:w-1/6 rounded-md p-1 pl-2  mr-4 text-base text-gray-dark focus:border-orange outline-none cursor-pointer">
+              <input v-model="address" type="text" placeholder="回饋方案將寄至此地址" class="border-2 border-gray-default w-4/6 sm:w-5/6 rounded-md p-1 pl-2  text-base text-gray-dark focus:border-orange outline-none cursor-pointer">
             </div>
           </div>
           <div class="flex flex-col sm:mb-4 mb-5">
             <label for="phone" class="text-gray-dark text-base mb-1 ml-1">聯絡電話：</label>
-            <input type="text" id="phone" placeholder="請填寫常用手機號碼" class="border-2 border-gray-default w-6/6 rounded-md p-1 pl-2 text-base text-gray-dark focus:border-orange outline-none cursor-pointer">
+            <input v-model="phone" type="text" id="phone" placeholder="請填寫常用手機號碼" class="border-2 border-gray-default w-6/6 rounded-md p-1 pl-2 text-base text-gray-dark focus:border-orange outline-none cursor-pointer">
           </div>
           <div class="flex flex-col sm:mb-4 mb-5">
             <label for="email" class="text-gray-dark text-base mb-1 ml-1">聯絡信箱：</label>
-            <input type="email" id="email" placeholder="請填寫常用電子信箱" class="border-2 border-gray-default w-6/6 rounded-md p-1 pl-2 text-base text-gray-dark focus:border-orange outline-none cursor-pointer">
+            <input v-model="email" type="email" id="email" placeholder="請填寫常用電子信箱" class="border-2 border-gray-default w-6/6 rounded-md p-1 pl-2 text-base text-gray-dark focus:border-orange outline-none cursor-pointer">
           </div>
           <div class="flex flex-col mb-4">
             <label for="note" class="text-gray-dark text-base mb-1 ml-1">備註：</label>
-            <input type="text" id="note" placeholder="如有特殊需求請填寫在此" class="border-2 border-gray-default w-6/6 rounded-md p-1 pl-2 text-base text-gray-dark focus:border-orange outline-none cursor-pointer">
+            <input v-model="note" type="text" id="note" placeholder="如有特殊需求請填寫在此" class="border-2 border-gray-default w-6/6 rounded-md p-1 pl-2 text-base text-gray-dark focus:border-orange outline-none cursor-pointer">
           </div>
         </div>
         <h2 class="title mt-10">付款資訊</h2>
@@ -48,6 +48,22 @@
               </div>
               <span class="text-gray-dark text-xs pt-2 sm:pt-8 pl-1 sm:pl-2">可用卡別：VISA / MASTERCARD / JCB / 銀聯卡，無手續費</span>
             </div>
+            <div class="flex flex-col mt-2 ml-1">
+              <label for="cardName" class="text-gray-dark">持卡人姓名(英文)：</label>
+              <input type="text" id="cardName" class="border-2 border-gray-default outline-none rounded-sm focus:border-orange w-[300px]">
+            </div>
+            <div class="flex flex-col mt-2 ml-1">
+              <label for="cardId" class="text-gray-dark">卡號：</label>
+              <input type="text" id="cardId" class="border-2 border-gray-default outline-none rounded-sm focus:border-orange w-[300px]">
+            </div>
+            <div class="flex flex-col mt-2 ml-1">
+              <label for="cardExp" class="text-gray-dark">到期日：</label>
+              <input type="date" id="cardExp" class="border-2 border-gray-default outline-none rounded-sm focus:border-orange w-[300px]">
+            </div>
+            <div class="flex flex-col mt-2 ml-1">
+              <label for="cardCode" class="text-gray-dark">安全驗證：</label>
+              <input type="text" id="cardCode" class="border-2 border-gray-default outline-none rounded-sm focus:border-orange w-[300px]">
+            </div>
           </div>
           <div class="flex flex-col mb-4">
             <label for="address" class="text-gray-dark text-base mb-1 ml-1">贊助總金額：</label>
@@ -55,7 +71,7 @@
               <div class="flex justify-between sm:space-x-7 items-center sm:items-end justify-center sm:justify-start sm:ml-4 w-full sm:w-5/6">
                 <div class="flex flex-col">
                   <p class="text-gray-dark text-sm">贊助金額</p>
-                  <span class="text-xl text-gray-dark font-bold">$ 450</span>
+                  <span class="text-xl text-gray-dark font-bold">${{fundDatas.option_price}}</span>
                 </div>
                 <div class="flex flex-col mx-4">
                   <p class="invisible">.</p>
@@ -69,9 +85,9 @@
                   <p class="invisible">.</p>
                   <span class="text-xl text-gray-dark font-bold">+</span>
                 </div>
-                <div class="flex flex-col">
+                <div class="flex flex-col items-center">
                   <p class="text-gray-dark text-sm pl-3">額外支持</p>
-                  <span class="text-xl text-gray-dark font-bold">$<input v-model="money" type="text" placeholder="0" class="border-b-2 border-orange outline-none w-16 pl-1 text-xl text-orange font-bold"></span>
+                  <span class="text-xl text-gray-dark font-bold">$<input v-model="extraFunds" type="text" placeholder="0" class="border-b-2 border-orange outline-none w-20 pl-1 text-xl text-orange font-bold"></span>
                 </div>
               </div>
               <div class=" mr-0 sm:mr-4 flex self-end">
@@ -79,9 +95,12 @@
                   <p class="invisible">.</p>
                   <span class="text-xl text-gray-dark font-bold">=</span>
                 </div>
-                <div class="flex flex-row sm:flex-col items-end ">
+                <div class="flex flex-row sm:flex-col items-center">
                   <p class="text-lg text-gray-dark mr-2 sm:mr-0">總金額</p>
-                  <span class="text-xl text-gray-dark font-bold">$ 450</span>
+                  <div class="flex">
+                    <span class="text-xl text-gray-dark font-bold mr-1">$</span>
+                    <input type="text" class="text-xl text-gray-dark font-bold w-[80px] outline-none" v-model="totalPrice" readonly>
+                  </div>
                 </div>
               </div>
             </div>
@@ -92,47 +111,119 @@
             <input type="checkbox" name="agree" class="w-[30px] h-[30px] sm:w-[20px] sm:h-[20px] p-16 border-2 border-gray-light rounded-[30px] cursor-pointer">
             <div class=" flex flex-col sm:flex-row items-start sm:items-center sm:mt-0 mt-[-3px]">
               <label for="agree" class="ml-2 sm:ml-2 sm:text-lg text-gray-dark">匿名贊助</label>
-              <span span class="ml-2 sm:ml-4 text-xs sm:text-gray-dark text-gray-light">勾選後您的姓名將不會出現在支持者區塊及公開的會員資料中</span>
+              <span class="ml-2 sm:ml-4 text-xs sm:text-gray-dark text-gray-light">勾選後您的姓名將不會出現在支持者區塊及公開的會員資料中</span>
             </div>
           </div>
           <div class="flex justify-center sm:justify-end">
-            <button class="text-center text-base text-white bg-orange rounded-2xl w-full sm:w-64 h-[30px] mt-10 sm:mt-8 py-1 hover:bg-blue-light">前往付款</button>
+            <button @click="sendData" class="text-center text-base text-white bg-orange rounded-2xl w-full sm:w-64 h-[30px] mt-10 sm:mt-8 py-1 hover:bg-blue-light">前往付款</button>
           </div>
         </div>
       </form>
       <!-- 贊助方案放這裡 -->
       <div class="w-3/12 hidden sm:block">
         <h2 class="title mb-4">贊助方案</h2>
-        <fund-detail-item
-          :money="fundDatas.money"
-          :fundDesc="fundDatas.fundDesc"
-          :people="fundDatas.people"
-          :gifts="fundDatas.gifts"
-          :productNum="fundDatas.productNum"
-          :time="fundDatas.time">
-        </fund-detail-item>
+        <div>
+          <img class=' rounded-2xl mb-4 w-full h-[200px] object-cover' :src="fundDatas.option_img">
+          <p class="text-orange text-3xl font-medium tracking-[2px] pl-1">${{fundDatas.option_price}}</p>
+          <p class="text-sm sm:text-base text-black-backdrop mt-1 pl-1">{{fundDatas.option_name}}</p>
+          <div class="mt-3">
+            <textarea class="w-full h-20 resize-none text-gray-dark sm:text-sm text-xs pl-1 reward" :value="fundDatas.option_reward" readonly></textarea>
+          </div>
+        </div>
+        <div>
+          <div class="border-gray-light border-t pt-5 mt-5 inline-block w-full text-gray-dark text-xs sm:text-sm">
+            <div class="flex sm:flex-row flex-col-reverse sm:justify-between">
+              <p class="pl-1">贊助人數 <span class="text-sm sm:text-base font-bold">{{donate_num}}</span>人</p>
+              <p class="sm:pr-1 pl-1">限量 <span class="text-sm sm:text-base font-bold">{{fundDatas.num}}</span> 個</p>
+            </div>
+            <p class="pl-1">預計寄送 <span class="text-sm sm:text-base font-bold">2週內</span></p>
+            <p class="pl-1">寄送地點 <span class="text-sm sm:text-base">只寄台灣本島</span></p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import FundDetailItem from '../components/FundDetailItem.vue'
 export default {
-  components: {
-    FundDetailItem
-  },
   data () {
     return {
-      fundDatas: {
-        money: 100,
-        fundDesc: '為愛贊助, 不需回饋',
-        gifts: ['專輯x1', '內含：CD、寫真歌詞本、小卡'],
-        people: 25,
-        productNum: 800,
-        time: '2021/11'
-      },
-      money: ''
+      // lastUrl: `/Funds/${this.fundDatas.donate}`,
+      // lastUrl: this.fundDatas.donate,
+      donate_num: 0,
+      fundDatas: {},
+      realName: '',
+      zipCode: '',
+      address: '',
+      oneph: '',
+      email: '',
+      note: '',
+      extraFunds: 0,
+      suppor: 0
+    }
+  },
+  computed: {
+    totalPrice () {
+      if (this.extraFunds === '') {
+        return this.fundDatas.option_price
+      } else {
+        return parseInt(this.fundDatas.option_price) + parseInt(this.extraFunds)
+      }
+    },
+    lastUrl () {
+      return `/Funds/${this.fundDatas.donate}`
+    }
+  },
+  methods: {
+    sendData (e) {
+      e.preventDefault()
+      const form = new FormData()
+      form.append('donate', this.fundDatas.donate)
+      form.append('member', this.$store.getters.memberIdState)
+      form.append('donate_option', this.$route.params.id)
+      form.append('else_donate_price', this.extraFunds)
+      form.append('total_price', this.totalPrice)
+      form.append('real_name', this.realName)
+      form.append('postalcode', this.zipCode)
+      form.append('address', this.address)
+      form.append('cellphone', this.phone)
+      form.append('email', this.email)
+      form.append('remark', this.note)
+      fetch('http://localhost/DropbeatBackend/funds_page_form_send.php', {
+        method: 'POST',
+        body: form
+      })
+      this.$router.replace('/')
+      window.scrollTo(0, 0)
+    }
+  },
+  async created () {
+    const form = new FormData()
+    form.append('donate_option_id', this.$route.params.id)
+    const response = await fetch('http://localhost/DropbeatBackend/funds_page_form_get.php', {
+      method: 'POST',
+      body: form
+    })
+    // 回傳
+    const responseData = await response.json()
+    this.fundDatas = responseData[0]
+    console.log(this.fundDatas.donate)
+    // 取贊助人數
+    const forms = new FormData()
+    forms.append('donate_id', this.fundDatas.donate)
+    const responses = await fetch('http://localhost/DropbeatBackend/funds_page_total_price_single.php', {
+      method: 'POST',
+      body: forms
+    })
+    // 回傳
+    const responseDatas = await responses.json()
+    if (responseDatas === 1) {
+      console.log('cc')
+      this.donate_num = 0
+    } else {
+      console.log('tt')
+      this.donate_num = responseDatas[0].donate_num
     }
   }
 }

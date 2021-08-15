@@ -31,6 +31,7 @@
                 :progress="item.goal_percent"
                 :date="item.countdownDate"
                 :money="item.goal"
+                :toFunds="item.toTheDonate"
                 :key="item.donate_id">
             </fund-item>
         </div>
@@ -65,10 +66,23 @@ export default {
       })
       const responseData = await response.json()
       responseData.forEach((item) => {
-        item.goal_percent = `${item.goal_percent}%` // 將回傳的數值加上百分比
+        item.toTheDonate = `/Funds/${item.toTheDonate}` // router設定
+        item.total_price = ''
+        item.donate_num = ''
         this.randerFuns.unshift(item)
       })
-      console.log(this.randerFuns)
+      // 獲取total_price
+      const responses = await fetch('http://localhost/DropbeatBackend/funds_page_total_price.php')
+      const responseDatas = await responses.json()
+      this.randerFuns.forEach((item) => {
+        responseDatas.forEach((items) => {
+          if (items.donate_id === item.donate_id) {
+            item.total_price = items.total_price
+            item.donate_num = items.donate_num
+          }
+          item.goal_percent = `${Math.round((item.total_price / item.goal) * 100)}%`
+        })
+      })
     },
     async switchTyep (index) {
       this.selectFundsType = this.fundsType[index]
@@ -86,8 +100,9 @@ export default {
         })
       } else if (index === 3) {
         this.randerFuns.sort((a, b) => {
-          return parseInt(a.donate_num) > parseInt(b.donate_num) ? 1 : -1
+          return parseInt(a.donate_num) < parseInt(b.donate_num) ? 1 : -1
         })
+        console.log(this.randerFuns)
       }
     }
   },
@@ -95,10 +110,24 @@ export default {
     const response = await fetch('http://localhost/DropbeatBackend/funds_page_get.php')
     const responseData = await response.json()
     responseData.forEach((item) => {
-      item.goal_percent = `${item.goal_percent}%` // 將回傳的數值加上百分比
+      item.toTheDonate = `/Funds/${item.toTheDonate}` // router設定
+      item.total_price = 0
+      item.donate_num = 0
       this.randerFuns.unshift(item)
     })
-    console.log(this.randerFuns)
+    // 獲取總金額跟贊助人數
+    const responses = await fetch('http://localhost/DropbeatBackend/funds_page_total_price.php')
+    const responseDatas = await responses.json()
+    // console.log(responseDatas)
+    this.randerFuns.forEach((item) => {
+      responseDatas.forEach((items) => {
+        if (items.donate_id === item.donate_id) {
+          item.total_price = items.total_price
+          item.donate_num = items.donate_num
+        }
+        item.goal_percent = `${Math.round((item.total_price / item.goal) * 100)}%`
+      })
+    })
   }
 }
 </script>
@@ -110,7 +139,7 @@ export default {
     .parent {
         /* border:1px solid red; */
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         flex-wrap: wrap;
     }
     ::v-deep .fundBlock{

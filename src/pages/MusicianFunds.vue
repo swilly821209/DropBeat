@@ -398,11 +398,9 @@ export default {
           if (getId > this.editDonateArray.length - 1) {
             this.editDonateArray.push({ option_img: file }) // push當下換的圖片file格式資料
             this.nowChange[getId] = 1
-            console.log(this.nowChange)
           } else {
             this.editDonateArray[getId].option_img = file // 修改裡面圖片變file格式資料
             this.nowChange[getId] = 1
-            console.log(this.nowChange)
           }
         // 修改上半部(單筆)
         } else {
@@ -487,7 +485,9 @@ export default {
       this.fundId = this.nowFundArray[arrayIndex].donate_id
       this.fundTitle = this.nowFundArray[arrayIndex].donate_name
       this.fundInfo = this.nowFundArray[arrayIndex].info
+      console.log(this.nowFundArray[arrayIndex].end_date)
       this.fundEndDate = this.nowFundArray[arrayIndex].end_date
+      console.log(this.fundEndDate)
       this.fundMoney = this.nowFundArray[arrayIndex].goal
       document.querySelector('#date').value = this.fundEndDate
       this.changeColor() // 日期顯示
@@ -586,8 +586,8 @@ export default {
         method: 'POST',
         body: forms
       })
-      this.$router.replace('/Funds')
-      window.scrollTo(0, 0)
+      // this.$router.replace('/Funds')
+      // window.scrollTo(0, 0)
     }
   },
   async created () {
