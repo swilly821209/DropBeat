@@ -88,7 +88,7 @@ export default {
       this.selectFundsType = this.fundsType[index]
       if (index === 0) {
         this.randerFuns.sort((a, b) => {
-          return a.setup_date > b.setup_date ? 1 : -1
+          return a.setup_date < b.setup_date ? 1 : -1
         })
       } else if (index === 1) {
         this.randerFuns.sort((a, b) => {
@@ -102,7 +102,6 @@ export default {
         this.randerFuns.sort((a, b) => {
           return parseInt(a.donate_num) < parseInt(b.donate_num) ? 1 : -1
         })
-        console.log(this.randerFuns)
       }
     }
   },
@@ -118,7 +117,6 @@ export default {
     // 獲取總金額跟贊助人數
     const responses = await fetch('http://localhost/DropbeatBackend/funds_page_total_price.php')
     const responseDatas = await responses.json()
-    // console.log(responseDatas)
     this.randerFuns.forEach((item) => {
       responseDatas.forEach((items) => {
         if (items.donate_id === item.donate_id) {

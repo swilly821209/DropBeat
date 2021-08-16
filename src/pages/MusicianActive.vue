@@ -36,7 +36,7 @@
       </div>
     </base-dialog>
     <div class="flex justify-between mt-5 ml">
-      <base-title title="活動管理" admin></base-title>
+      <base-title title="活動管理"></base-title>
     </div>
     <!-- 640以上顯示 -->
     <div class="hidden sm:flex items-center justify-start">

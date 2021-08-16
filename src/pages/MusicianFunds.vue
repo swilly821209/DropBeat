@@ -37,7 +37,7 @@
       </div>
     </base-dialog>
     <div class="flex justify-between items-center mt-5">
-      <base-title title="募資管理" admin></base-title>
+      <base-title title="募資管理"></base-title>
       <div class="cursor-pointer hidden sm:flex sm:mr-3" >
         <svg xmlns="http://www.w3.org/2000/svg" class="preArrow mr-3 block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" class="nextArrow block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
@@ -234,6 +234,7 @@ export default {
   },
   data () {
     return {
+      oldLength: 0,
       cancleDialog: false,
       submitDialog: false,
       deleteDialog: false,
@@ -457,7 +458,7 @@ export default {
     },
     async edidFund (e) {
       window.location.hash = '#activeFund'
-      this.sendStatus = !this.sendStatus
+      this.sendStatus = false
       // 先將圖片與文字清空
       document.querySelectorAll('.outer').forEach(item => {
         item.style.backgroundImage = 'none'
@@ -485,9 +486,7 @@ export default {
       this.fundId = this.nowFundArray[arrayIndex].donate_id
       this.fundTitle = this.nowFundArray[arrayIndex].donate_name
       this.fundInfo = this.nowFundArray[arrayIndex].info
-      console.log(this.nowFundArray[arrayIndex].end_date)
       this.fundEndDate = this.nowFundArray[arrayIndex].end_date
-      console.log(this.fundEndDate)
       this.fundMoney = this.nowFundArray[arrayIndex].goal
       document.querySelector('#date').value = this.fundEndDate
       this.changeColor() // 日期顯示
@@ -497,6 +496,7 @@ export default {
       this.editDonateArray = responseData
       console.log(this.editDonateArray)
       const donateIndex = this.editDonateArray.length
+      this.oldLength = this.editDonateArray.length // 紀錄原本的陣列數，傳到php做判斷
       const donateImage = document.querySelectorAll('.outer')
       for (let i = 0; i < donateIndex; i++) {
         this.fundsList[i].money = this.editDonateArray[i].option_price
@@ -572,7 +572,8 @@ export default {
       const index = this.editDonateArray.length
       const forms = new FormData()
       forms.append('nowChange', this.nowChange) // 傳改變的圖片數量
-      forms.append('length', index) // 陣列長度
+      forms.append('length', index) // 新的陣列長度
+      forms.append('oldLength', this.oldLength) // 紀錄原本的陣列數，傳到php做判斷
       forms.append('donate', this.editDonateArray[0].donate) // 該donate編號(取一個即可)
       for (let i = 0; i < index; i++) {
         forms.append(`donate_option_id${i}`, `${optionId}${i}`)
@@ -586,8 +587,8 @@ export default {
         method: 'POST',
         body: forms
       })
-      // this.$router.replace('/Funds')
-      // window.scrollTo(0, 0)
+      this.$router.replace('/Funds')
+      window.scrollTo(0, 0)
     }
   },
   async created () {

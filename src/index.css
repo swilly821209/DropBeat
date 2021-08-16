@@ -1566,8 +1566,8 @@ video {
   width: 33.333333%;
 }
 
-.w-\[60px\] {
-  width: 60px;
+.w-\[80px\] {
+  width: 80px;
 }
 
 .w-\[30px\] {
@@ -1612,10 +1612,6 @@ video {
 
 .w-\[90px\] {
   width: 90px;
-}
-
-.w-\[80px\] {
-  width: 80px;
 }
 
 .w-9 {
