@@ -405,9 +405,13 @@ export default {
       /* border:1px solid red; */
       max-width: 320px;
     }
+    :deep .activeImg{
+      /* border:1px solid red; */
+      height: 165px;
+    }
     :deep .homeActivity{
       /* border:1px solid red; */
-      height: 155px;
+      height: 165px;
     }
   }
   @media screen and (max-width: 400px) {

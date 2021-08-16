@@ -11,7 +11,7 @@
       </div>
     </div>
     <router-link to="/Active/:id ">
-      <img :src="img" class="activeImg w-[345px] h-[200px] rounded-2xl  cursor-pointer imgWidth" :style="imgWidth">
+      <img :src="img" class="activeImg w-[345px] h-[200px] rounded-2xl  cursor-pointer imgWidth object-center object-cover" :style="imgWidth">
     </router-link>
     <div class="activeContent flex flex-col justify-center">
       <h3 class="text-lg text-black-backdrop hover:underline cursor-pointer truncate">{{ title }}</h3>

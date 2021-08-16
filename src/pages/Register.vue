@@ -227,6 +227,7 @@ select {
   background-repeat: no-repeat;
   background-position: 48px 10px;
   background-size: 25%;
+  background-color: transparent;
   color: #b5b5b5;
   font-size: 16px;
   /* margin: 5px; */
