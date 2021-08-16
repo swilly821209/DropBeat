@@ -10,7 +10,7 @@
       <div class="flex sm:flex-row flex-col">
         <div class="mb-5 sm:hidden block">
           <div>
-            <h1 class="text-black-backdrop text-[22px] ml-[5px]"> 運氣來的若有似無 專輯募資</h1>
+            <h1 class="text-black-backdrop text-[22px] ml-[5px]"> 運氣來的若有似無 </h1>
           </div>
           <div class="ml-[5px] flex items-center">
             <p class="text-gray-dark text-sm">大象體操 Elephant Gym</p>
@@ -23,11 +23,11 @@
           </div>
         </div>
         <div class="sm:mr-[30px] m-auto">
-          <img class="sm:min-w-[580px] sm:max-w-[580px] w-full sm:h-[330px] h-full sm:rounded-[20px] rounded-[10px]" src="https://akstatic.streetvoice.com/features/2021/07/23/e053e36ad38d43f0818b33e7a9d4b108.png?x-oss-process=image/resize,m_fill,h_480,w_1250,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg">
+          <img class="sm:min-w-[580px] sm:max-w-[580px] w-full sm:h-[330px] h-full sm:rounded-[20px] rounded-[10px]" :src="donate_photo">
           <div class=" sm:mt-[28px] mt-[20px]">
               <div class="flex w-2/3 justify-between text-base text-orange">
                   <p>$0</p>
-                  <p>$300,000</p>
+                  <p>${{goal_now}}</p>
               </div>
               <div class="bg-gray-default w-full h-[6px] rounded-3xl relative my-2">
                 <div class=" w-7/12 h-full bg-orange rounded-3xl"></div>
@@ -35,17 +35,18 @@
               </div>
               <div class="flex w-2/3 justify-between sm:text-base text-sm text-gray-dark">
                 <p>募資開始</p>
-                <p>募資成功</p>
+                <p v-if="goal_now >= goal">募資成功</p>
+                <p v-else>募資進行中...</p>
               </div>
           </div>
         </div>
         <div class="w-full">
           <div class="pb-[10px] border-b border-gray-light w-full sm:block hidden">
-            <h1 class="text-black-backdrop text-[22px] ml-[10px]"> 運氣來的若有似無 專輯募資</h1>
+            <h1 class="text-black-backdrop text-[22px] ml-[10px]"> {{donate_name}}</h1>
             <div class="artist">
               <img class="artistImg" src="../assets/images/artist/artist001.jpg">
               <div class="artistname">
-                <p>大象體操 Elephant Gym</p>
+                <p>{{initiator}}</p>
                 <div class="undername"></div>
               </div>
               <button
@@ -58,22 +59,22 @@
           </div>
           <div class=" sm:ml-[10px] ml-0 sm:mt-[20px] mt-[25px]  flex sm:flex-col flex-row justify-between">
             <div class="text-gray-dark">
-              <p class="sm:text-base text-sm">目標 $300,000</p>
-              <p class="sm:text-[32px] text-[30px] font-semibold tracking-[2px] sm:mt-[-5px] mt-[-3px]">$88,888</p>
+              <p class="sm:text-base text-sm">目標 ${{goal}}</p>
+              <p class="sm:text-[32px] text-[30px] font-semibold tracking-[2px] sm:mt-[-5px] mt-[-3px]">${{goal_now}}</p>
             </div>
             <div class="text-gray-dark">
               <p class="sm:text-base text-sm">贊助人數</p>
-              <p class=" sm:text-[32px] text-[30px] font-semibold tracking-[2px] sm:mt-[-5px] mt-[-3px]">57人</p>
+              <p class=" sm:text-[32px] text-[30px] font-semibold tracking-[2px] sm:mt-[-5px] mt-[-3px]">{{donate_num}}人</p>
             </div>
             <div class="text-gray-dark">
               <p class="sm:text-base text-sm">募資倒數</p>
-              <p class="sm:text-[32px] text-[30px] font-semibold tracking-[2px] sm:mt-[-5px] mt-[-3px]">12天</p>
+              <p class="sm:text-[32px] text-[30px] font-semibold tracking-[2px] sm:mt-[-5px] mt-[-3px]">{{countdownDate}}天</p>
             </div>
             <div class="sm:block hidden">
-              <p class="text-sm text-gray-dark mt-[15px] mb-[15px]">結束時間 2021 年 10 月 10 日     23:59 </p>
+              <p class="text-sm text-gray-dark mt-[15px] mb-[15px]">結束時間 {{end_date}} </p>
             </div>
           </div>
-          <div class="text-xs text-gray-dark sm:hidden block my-5">2021 年 10 月 10 日  23:59 結束 </div>
+          <div class="text-xs text-gray-dark sm:hidden block my-5">{{end_date}} 結束 </div>
           <div class="sm:mt-5 mt-[-10px] flex sm:ml-2 ml-0">
             <!-- <router-link to="/Funds/:id/Form"> -->
               <a href="#program" class=" bg-orange text-white rounded-3xl sm:w-[230px] w-full  py-[2px] hover:bg-blue-light sm:items-start items-center text-center">贊助此計畫</a>
@@ -83,7 +84,8 @@
       </div>
       <div class="sm:mt-16 mt-14 mb-20">
         <h3 class="text-black-backdrop text-[22px] font-medium mb-3">計畫介紹</h3>
-        <p class="text-sm text-gray-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, nulla corporis vitae excepturi sunt, animi explicabo quos amet adipisci ad odio sit perspiciatis, qui laudantium dolorem? Beatae quod explicabo esse.Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, nulla corporis vitae excepturi sunt, animi explicabo quos amet adipisci ad odio sit perspiciatis, qui laudantium dolorem? Beatae quod explicabo esse.Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, nulla corporis vitae excepturi sunt, animi explicabo quos amet adipisci ad odio sit perspiciatis, qui laudantium dolorem? Beatae quod explicabo esse.</p>
+        <!-- <p class="text-sm text-gray-dark">{{info}}</p> -->
+        <textarea class="w-full h-16 text-sm text-gray-dark resize-none" readonly :value="info"></textarea>
       </div>
       <div>
         <div id="program" class="flex justify-between mt-[-20px]" >
@@ -109,12 +111,14 @@
 }' :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="allFund mt-[-35px]">
           <swiper-slide v-for="item in fundDatas" :key="item" class="singleFund top-12">
             <fund-detail-item
-              :money="item.money"
-              :fundDesc="item.fundDesc"
-              :people="item.people"
-              :gifts="item.gifts"
-              :productNum="item.productNum"
-              :time="item.time">
+              :toFundOption="`/Funds/${item.donate_option_id}/Form`"
+              :money="item.option_price"
+              :fundDesc="item.option_name"
+              :people="donate_num"
+              :gifts="item.option_reward"
+              :productNum="item.option_num"
+              :time="'2週內'"
+              :img="item.option_img">
             </fund-detail-item>
           </swiper-slide>
         </swiper>
@@ -138,56 +142,66 @@ export default {
   },
   data () {
     return {
+      initiator: '',
+      end_date: '',
+      countdownDate: '',
+      donate_name: '',
+      donate_num: '',
+      donate_photo: '',
+      goal: '',
+      goal_now: '',
+      info: '',
       follow: false,
-      fundDatas: [
-        {
-          money: 100,
-          fundDesc: '為愛贊助，不需回饋',
-          people: 15,
-          time: '2021/12'
-        },
-        {
-          money: 450,
-          fundDesc: '只想要專輯',
-          gifts: ['專輯x1', '內含：CD、寫真歌詞本、小卡'],
-          people: 25,
-          productNum: 800,
-          time: '2021/11'
-        },
-        {
-          money: 450,
-          fundDesc: '只想要專輯',
-          gifts: ['專輯x1', '內含：CD、寫真歌詞本、小卡'],
-          people: 25,
-          productNum: 800,
-          time: '2021/11'
-        },
-        {
-          money: 600,
-          fundDesc: '專輯海報組',
-          gifts: ['專輯x1', '內含：CD、寫真歌詞本、小卡', 'A2 親簽海報'],
-          people: 25,
-          productNum: 800,
-          time: '2021/11'
-        },
-        {
-          money: 100,
-          fundDesc: '為愛贊助, 不需回饋',
-          gifts: ['專輯x1', '內含：CD、寫真歌詞本、小卡'],
-          people: 25,
-          productNum: 800,
-          time: '2021/11'
-        },
-        {
-          money: 100,
-          fundDesc: '為愛贊助, 不需回饋',
-          gifts: ['專輯x1', '內含：CD、寫真歌詞本、小卡'],
-          people: 25,
-          productNum: 800,
-          time: '2021/11'
-        }
-      ]
+      nowFundArray: [],
+      fundDatas: []
     }
+  },
+  async created () {
+    const form = new FormData()
+    form.append('donate_id', this.$route.params.id)
+    const response = await fetch('http://localhost/DropbeatBackend/funds_page_detailMain_get.php', {
+      method: 'POST',
+      body: form
+    })
+    // 回傳
+    const responseData = await response.json()
+    this.goal = parseInt(responseData[0].goal)
+    // this.goal_now = parseInt(responseData[0].goal_now)
+    this.end_date = responseData[0].end_date
+    this.countdownDate = responseData[0].countdownDate
+    this.donate_name = responseData[0].donate_name
+    // this.donate_num = responseData[0].donate_num
+    this.info = responseData[0].info
+    this.donate_photo = responseData[0].donate_photo
+    this.initiator = responseData[0].initiator
+    // 回傳目前總募款與募款人數
+    const formNow = new FormData()
+    formNow.append('donate_id', this.$route.params.id)
+    const responseNow = await fetch('http://localhost/DropbeatBackend/funds_page_total_price_single.php', {
+      method: 'POST',
+      body: formNow
+    })
+    const responseNowDatas = await responseNow.json()
+    console.log(responseNowDatas)
+    // 判斷是否為空值 1為空給0
+    if (responseNowDatas === 1) {
+      console.log('cc')
+      this.donate_num = 0
+      this.goal_now = 0
+    } else {
+      console.log('tt')
+      this.donate_num = responseNowDatas[0].donate_num
+      this.goal_now = responseNowDatas[0].total_price
+    }
+    // 下半部
+    const forms = new FormData()
+    forms.append('donate_id', this.$route.params.id)
+    const responses = await fetch('http://localhost/DropbeatBackend/funds_page_detailOption_get.php', {
+      method: 'POST',
+      body: forms
+    })
+    const responseDatas = await responses.json()
+    this.fundDatas = responseDatas
   }
 }
 </script>
@@ -293,6 +307,9 @@ h2 {
 
 .swiper-button-disabled {
   @apply text-gray-default
+}
+:deep .singleItem{
+  height: 300px;
 }
 @media screen and (max-width: 640px) {
     .range{

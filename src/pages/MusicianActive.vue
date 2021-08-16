@@ -41,8 +41,8 @@
     <!-- 640以上顯示 -->
     <div class="hidden sm:flex items-center justify-start">
       <svg xmlns="http://www.w3.org/2000/svg" class="preArrow mr-3 block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
-        <swiper :slidesPerView="2" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="flex">
-          <swiper-slide v-for="(item, index) in nowActivityArr" :key="item">
+        <swiper :slidesPerView="2" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="flex" observeParents>
+          <swiper-slide v-for="(item, index) in nowActivityArr" :key="item" observer>
             <activity-item class="theItemMenegerSpe" :id = index
                 :check="true"
                 :edit="true"
@@ -240,19 +240,20 @@ export default {
         image.style.backgroundImage = `url('${readFile.result}')`
       })
       this.showImg = file
+      console.log(this.showImg)
     },
     sendData () {
       if (this.$store.getters.loginState !== false) {
         const form = new FormData()
-        const activityId = Math.floor(Math.random() * 9999)
+        // const activityId = Math.floor(Math.random() * 9999)
         // 傳後端(發起募資)======================================================
         form.append('file', this.showImg) // 存照片 活動代表圖 file進去 轉activity_photo
-        form.append('activity_id', activityId) // donate_id
+        // form.append('activity_id', activityId) // donate_id
         form.append('initiator', this.$store.getters.memberIdState) // initiator (活動發起人))
         form.append('activity_name', this.showTopic) // 活動名稱
         form.append('activity_date', this.showDate) // 活動日期
         form.append('activity_time', this.showTime) // 活動時間
-        form.append('area', this.showArea) // 活動區域(縣市)
+        form.append('activity_area', this.showArea) // 活動區域(縣市)
         form.append('place', this.showPlace) // 活動地點
         form.append('info', this.showInfo) // 活動簡介
         fetch('http://localhost/DropbeatBackend/FileUpload/activity_files_send.php', {

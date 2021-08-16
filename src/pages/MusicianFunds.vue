@@ -398,11 +398,9 @@ export default {
           if (getId > this.editDonateArray.length - 1) {
             this.editDonateArray.push({ option_img: file }) // push當下換的圖片file格式資料
             this.nowChange[getId] = 1
-            console.log(this.nowChange)
           } else {
             this.editDonateArray[getId].option_img = file // 修改裡面圖片變file格式資料
             this.nowChange[getId] = 1
-            console.log(this.nowChange)
           }
         // 修改上半部(單筆)
         } else {
@@ -413,40 +411,45 @@ export default {
     sendData () {
       if (this.$store.getters.loginState !== false) {
         const form = new FormData()
-        // 傳後端(發起募資)======================================================
-        form.append('file', this.fundImg) // 存照片
-        form.append('donate_id', this.donateId) // donate_id
-        form.append('initiator', this.$store.getters.memberIdState) // initiator (募款發起人)
-        form.append('donate_name', this.fundTitle) // donate_name
-        form.append('info', this.fundInfo) // info
-        form.append('goal', this.fundMoney) // goal
-        form.append('end_date', this.fundEndDate) // end_date
-        fetch('http://localhost/DropbeatBackend/FileUpload/funds_single_files_send.php', {
-          method: 'POST',
-          body: form
-        })
-        // 傳後端(募資方案)======================================================
-        const forms = new FormData()
-        const donateOptionId = Math.floor(Math.random() * 9999)
-        forms.append('length', this.donateImg.length)
-        for (let i = 0; i < this.donateImg.length; i++) {
-          forms.append(`file${i}`, this.donateImg[i]) // 存照片
-          forms.append(`donate_option_id${i}`, `${donateOptionId}${i}`) // 募款方案編號
-          forms.append('donate', this.donateId) // 募款編號
-          forms.append(`option_name${i}`, this.fundsList[i].title) // 方案名稱
-          forms.append(`option_reward${i}`, this.fundsList[i].content) // 方案回饋內容
-          forms.append(`option_price${i}`, this.fundsList[i].money) // 金額
-          forms.append(`num${i}`, this.fundsList[i].quantity) // 是否限量(填金額)
+        if (this.donateImg.length !== 0) {
+          // 傳後端(發起募資)======================================================
+          form.append('file', this.fundImg) // 存照片
+          form.append('donate_id', this.donateId) // donate_id
+          form.append('initiator', this.$store.getters.memberIdState) // initiator (募款發起人)
+          form.append('donate_name', this.fundTitle) // donate_name
+          form.append('info', this.fundInfo) // info
+          form.append('goal', this.fundMoney) // goal
+          form.append('end_date', this.fundEndDate) // end_date
+          fetch('http://localhost/DropbeatBackend/FileUpload/funds_single_files_send.php', {
+            method: 'POST',
+            body: form
+          })
+          // 傳後端(募資方案)======================================================
+          const forms = new FormData()
+          const donateOptionId = Math.floor(Math.random() * 9999)
+          forms.append('length', this.donateImg.length)
+          for (let i = 0; i < this.donateImg.length; i++) {
+            forms.append(`file${i}`, this.donateImg[i]) // 存照片
+            forms.append(`donate_option_id${i}`, `${donateOptionId}${i}`) // 募款方案編號
+            forms.append('donate', this.donateId) // 募款編號
+            forms.append(`option_name${i}`, this.fundsList[i].title) // 方案名稱
+            forms.append(`option_reward${i}`, this.fundsList[i].content) // 方案回饋內容
+            forms.append(`option_price${i}`, this.fundsList[i].money) // 金額
+            forms.append(`num${i}`, this.fundsList[i].quantity) // 是否限量(填金額)
+          }
+          fetch('http://localhost/DropbeatBackend/FileUpload/funds_multiple_files_send.php', {
+            method: 'POST',
+            body: forms
+          })
+          // 其他前台動作
+          this.submitDialog = !this.submitDialog
+          alert('成功新增募資！')
+          this.$router.replace('/Funds')
+          window.scrollTo(0, 0)
+        } else {
+          alert('請至少輸入一項目資方案！')
+          this.submitDialog = !this.submitDialog
         }
-        fetch('http://localhost/DropbeatBackend/FileUpload/funds_multiple_files_send.php', {
-          method: 'POST',
-          body: forms
-        })
-        // 其他前台動作
-        this.submitDialog = !this.submitDialog
-        alert('成功新增募資！')
-        this.$router.replace('/Funds')
-        window.scrollTo(0, 0)
       } else {
         alert('請先登入帳號！')
         this.$router.replace('/LoginIn')
@@ -482,7 +485,9 @@ export default {
       this.fundId = this.nowFundArray[arrayIndex].donate_id
       this.fundTitle = this.nowFundArray[arrayIndex].donate_name
       this.fundInfo = this.nowFundArray[arrayIndex].info
+      console.log(this.nowFundArray[arrayIndex].end_date)
       this.fundEndDate = this.nowFundArray[arrayIndex].end_date
+      console.log(this.fundEndDate)
       this.fundMoney = this.nowFundArray[arrayIndex].goal
       document.querySelector('#date').value = this.fundEndDate
       this.changeColor() // 日期顯示
@@ -490,7 +495,7 @@ export default {
       image.style.backgroundImage = `url('${this.fundImg}')`
       // DONATEOPTION
       this.editDonateArray = responseData
-      // console.log(this.editDonateArray)
+      console.log(this.editDonateArray)
       const donateIndex = this.editDonateArray.length
       const donateImage = document.querySelectorAll('.outer')
       for (let i = 0; i < donateIndex; i++) {
@@ -573,7 +578,6 @@ export default {
         forms.append(`donate_option_id${i}`, `${optionId}${i}`)
         forms.append(`option_name${i}`, this.fundsList[i].title)
         forms.append(`file${i}`, this.editDonateArray[i].option_img)
-        console.log(this.editDonateArray[i].option_img)
         forms.append(`option_reward${i}`, this.fundsList[i].content)
         forms.append(`option_price${i}`, this.fundsList[i].money)
         forms.append(`num${i}`, parseInt(this.fundsList[i].quantity))
@@ -582,8 +586,8 @@ export default {
         method: 'POST',
         body: forms
       })
-      this.$router.replace('/Funds')
-      window.scrollTo(0, 0)
+      // this.$router.replace('/Funds')
+      // window.scrollTo(0, 0)
     }
   },
   async created () {
