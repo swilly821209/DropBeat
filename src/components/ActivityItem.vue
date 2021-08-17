@@ -30,6 +30,7 @@
 
 <script>
 export default {
+  // props: ['img', 'title', 'time', 'city', 'location', 'singerImg', 'singer', 'col', 'edit', 'check', 'imgWidth', 'edidFund', 'deleteDialogFun', 'toActive'],
   props: ['img', 'title', 'time', 'city', 'location', 'singerImg', 'singer', 'col', 'edit', 'check', 'imgWidth', 'edidFund', 'deleteDialogFun', 'toActive'],
   data () {
     return {

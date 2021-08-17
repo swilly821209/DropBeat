@@ -13,7 +13,6 @@
     <div class="block01">
       <h3 class="sm:hidden block mb-5">{{activeTitle}}</h3>
       <div class="banner">
-        <img class="banner" :src="theImg">
       </div>
       <div class="title01">
         <h3 class="sm:block hidden">{{activeTitle}}</h3>
@@ -30,7 +29,7 @@
         <div class="hr sm:block hidden"></div>
         <div class="day"><div class="dayicon sm:block hidden"></div><p>{{theDay}}・星期日・{{theTime}}</p></div>
         <div class="location"><div class="loctionicon sm:block hidden"></div><p>台北市・海邊的卡夫卡 Kafka by the Sea</p></div>
-        <div class="artist"><img class="artistImg sm:block hidden" :src="theImg"><div class="artistname"><p>大象體操 Elephant Gym</p><div class="undername"></div></div>
+        <div class="artist"><img class="artistImg sm:block hidden" src="theImg"><div class="artistname"><p>大象體操 Elephant Gym</p><div class="undername"></div></div>
           <button
             class="follow"
             :class="{ clickfollow: follow }"
@@ -58,9 +57,6 @@ import ReportMessage from '../components/ReportMessage.vue'
 export default {
   data () {
     return {
-      theDay: '',
-      theTime: '',
-      theImg: '',
       activeTitle: '',
       active: false,
       follow: false,
@@ -140,10 +136,10 @@ export default {
     })
     const responseData = await response.json()
     console.log(responseData)
-    this.theImg = responseData[0].activity_photo
-    this.activeTitle = responseData[0].activity_name
-    this.theDay = responseData[0].activity_date
-    this.theTime = responseData[0].activity_time
+    // this.theImg = responseData[0].activity_photo
+    // this.activeTitle = responseData[0].activity_name
+    // this.theDay = responseData[0].activity_date
+    // this.theTime = responseData[0].activity_time
     // 獲取留言
     const responses = await fetch('http://localhost/DropbeatBackend/mussage_act_get.php')
     const responseDatas = await responses.json()
@@ -207,7 +203,7 @@ h2 {
   width: 580px;
   height: 330px;
   border-radius: 20px;
-  /* background-image: url("../assets/images/active/ac001.jpg"); */
+  background-image: url("../assets/images/active/ac001.jpg");
   margin: 0 30px 0 0;
 }
 .title01{
