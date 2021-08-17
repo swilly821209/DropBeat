@@ -5,10 +5,10 @@
     <div class="sm:space-x-3 space-x-1 ">
       <base-button
         class="my-8 selectBtn"
-        v-for="item in musicRange"
+        v-for="(item, index) in musicRange"
         :key="item"
         :active="{active: selectMusicRange === item}"
-        @click="selectMusicRange = item"
+        @click="switchRange(index)"
         mode="under-line">
         {{ item }}
       </base-button>
@@ -16,29 +16,30 @@
     <div class="sm:space-x-3 space-x-1 space-y-1 sm:space-y-2">
       <base-button
         class=" sm:last:inline-block last:hidden"
-        v-for="item in musicType"
+        v-for="(item, index) in musicType"
         :key="item"
         :active="{active: selectMusicType === item}"
-        @click="selectMusicType = item"
+        @click="switchType(index)"
         mode="outline">
         {{ item }}
       </base-button>
     </div>
     <div class="activeAll">
-      <div v-for="item in activeDatas"
+      <div v-for="item in nowActivityArr"
         :key="item"
         class="singleActive">
         <div class="date_N_info">
-          <base-date :time="item.time" week="true" class="date sm:block hidden"></base-date>
+          <base-date :time="item.activity_date" week="true" class="date sm:block hidden"></base-date>
           <activity-item
             class="m-auto"
-            :img="item.imgSrc"
-            :title="item.title"
-            :time="item.time"
-            :city="item.city"
-            :location="item.location"
-            :singerImg="item.singerImg"
-            :singer="item.singer"
+            :img="item.activity_photo"
+            :title="item.activity_name"
+            :time="item.activity_date"
+            :city="item.activity_area"
+            :location="item.place"
+            :singerImg="item.activity_photo"
+            :singer="item.initiator"
+            :toActive="item.toTheActive"
             >
           </activity-item>
         </div>
@@ -75,6 +76,9 @@ export default {
   },
   data () {
     return {
+      nowActivityArr: [],
+      temporarilyArr: [],
+      emptyArr: [],
       activeDatas: [
         {
           imgSrc: require('../assets/images/active/ac001.jpg'),
@@ -106,10 +110,99 @@ export default {
       ],
       musicRange: ['全部地區', '北部', '中部', '南部', '東部', '離島'],
       selectMusicRange: '全部地區',
-      musicType: ['不限時間', '本週', '下週', '這個月', '下個月', '選擇日期'],
+      musicType: ['不限時間', '本週', '下週', '這個月', '下個月'],
       selectMusicType: '不限時間',
       active: false
     }
+  },
+  methods: {
+    async switchRange (index) {
+      this.selectMusicRange = this.musicRange[index]
+      this.nowActivityArr = []
+      this.temporarilyArr = []
+      this.emptyArr = []
+      const form = new FormData()
+      const range = `range${index}`
+      form.append('rangeed', range)
+      const response = await fetch('http://localhost/DropbeatBackend/active_page_selectRange.php', {
+        method: 'POST',
+        body: form
+      })
+      const responseData = await response.json()
+      responseData.forEach((item) => {
+        item.toTheActive = `/Active/${item.activity_id}` // router設定
+        this.nowActivityArr.unshift(item)
+        this.emptyArr.unshift(item)
+        item.timeCompare = new Date(item.activity_date).getTime() / (1000 * 60 * 60 * 24) // 活動時間(秒)
+        item.thisMonth = new Date(item.activity_date).getMonth() + 1 // 活動月份
+      })
+    },
+    switchType (index) {
+      this.selectMusicType = this.musicType[index]
+      if (index === 0) {
+        console.log('不限時間')
+        this.nowActivityArr = this.emptyArr
+      } else if (index === 1) {
+        console.log('本周')
+        this.nowActivityArr = this.emptyArr
+        this.temporarilyArr = []
+        const nowTime = Math.floor(new Date().getTime() / (1000 * 60 * 60 * 24))
+        this.nowActivityArr.forEach((item) => {
+          if (item.timeCompare - nowTime < 7 && item.timeCompare - nowTime > 0) {
+            this.temporarilyArr.unshift(item)
+          }
+        })
+        this.nowActivityArr = this.temporarilyArr
+      } else if (index === 2) {
+        console.log('下周')
+        this.nowActivityArr = this.emptyArr
+        this.temporarilyArr = []
+        const nowTime = Math.floor(new Date().getTime() / (1000 * 60 * 60 * 24))
+        this.nowActivityArr.forEach((item) => {
+          if (item.timeCompare - nowTime > 7 && item.timeCompare - nowTime < 14) {
+            this.temporarilyArr.unshift(item)
+          }
+        })
+        this.nowActivityArr = this.temporarilyArr
+      } else if (index === 3) {
+        console.log('這個月')
+        this.nowActivityArr = this.emptyArr
+        this.temporarilyArr = []
+        const nowMonth = new Date().getMonth() + 1
+        this.nowActivityArr.forEach((item) => {
+          if (item.thisMonth === nowMonth) {
+            this.temporarilyArr.unshift(item)
+          }
+        })
+        this.nowActivityArr = this.temporarilyArr
+        console.log(this.nowActivityArr)
+      } else if (index === 4) {
+        console.log('下個月')
+        this.nowActivityArr = this.emptyArr
+        this.temporarilyArr = []
+        const nowMonth = new Date().getMonth() + 2
+        this.nowActivityArr.forEach((item) => {
+          if (item.thisMonth === nowMonth) {
+            this.temporarilyArr.unshift(item)
+          }
+        })
+        this.nowActivityArr = this.temporarilyArr
+        console.log(this.nowActivityArr)
+      }
+    }
+  },
+  async created () {
+    const response = await fetch('http://localhost/DropbeatBackend/active_page_get.php')
+    const responseData = await response.json()
+    responseData.forEach((item) => {
+      item.toTheActive = `/Active/${item.activity_id}` // router設定
+      this.nowActivityArr.unshift(item)
+      this.emptyArr.unshift(item)
+      item.timeCompare = new Date(item.activity_date).getTime() / (1000 * 60 * 60 * 24) // 活動時間(秒)
+      item.thisMonth = new Date(item.activity_date).getMonth() + 1 // 活動月份
+    })
+    console.log(this.nowActivityArr)
+    // console.log(Math.floor(new Date().getTime() / (1000 * 60 * 60 * 24))) // 現在時間(秒)
   }
 }
 </script>
@@ -198,5 +291,4 @@ export default {
     padding: 30px 0 10px 0;
   }
 }
-
 </style>

@@ -50,7 +50,7 @@
                 :img="item.activity_photo"
                 :title="item.activity_name"
                 :time="item.activity_date"
-                :city="item.area"
+                :city="item.activity_area"
                 :location="item.place"
                 :edidFund="edidFund"
                 :deleteDialogFun="deleteDialogFun">
@@ -240,7 +240,7 @@ export default {
         image.style.backgroundImage = `url('${readFile.result}')`
       })
       this.showImg = file
-      console.log(this.showImg)
+      // console.log(this.showImg)
     },
     sendData () {
       if (this.$store.getters.loginState !== false) {
@@ -310,7 +310,7 @@ export default {
       this.showTopic = responseData[0].activity_name
       this.showDate = responseData[0].activity_date
       this.showTime = responseData[0].activity_time
-      this.showArea = responseData[0].area
+      this.showArea = responseData[0].activity_area
       this.showPlace = responseData[0].place
       this.showInfo = responseData[0].info
       // this.changeColor() // 日期顯示
@@ -326,7 +326,7 @@ export default {
       form.append('activity_name', this.showTopic)
       form.append('activity_date', this.showDate)
       form.append('activity_time', this.showTime)
-      form.append('area', this.showArea)
+      form.append('activity_area', this.showArea)
       form.append('place', this.showPlace)
       form.append('info', this.showInfo)
       form.append('file', this.showImg) // 存照片
@@ -334,6 +334,7 @@ export default {
         method: 'POST',
         body: form
       })
+      this.$router.replace('/Active')
     },
     deleteDialogFun (e) {
       this.deleteDialog = !this.deleteDialog

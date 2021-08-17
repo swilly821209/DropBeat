@@ -12,7 +12,9 @@
     </div>
     <div class="block01">
       <h3 class="sm:hidden block mb-5">{{activeTitle}}</h3>
-      <div class="banner"></div>
+      <div class="banner">
+        <img class="banner" :src="theImg">
+      </div>
       <div class="title01">
         <h3 class="sm:block hidden">{{activeTitle}}</h3>
         <div class="share_join flex justify-between sm:justify-end ">
@@ -26,9 +28,9 @@
           </button>
         </div>
         <div class="hr sm:block hidden"></div>
-        <div class="day"><div class="dayicon sm:block hidden"></div><p>2021 年 10 月 10 日・星期日・20:00</p></div>
+        <div class="day"><div class="dayicon sm:block hidden"></div><p>{{theDay}}・星期日・{{theTime}}</p></div>
         <div class="location"><div class="loctionicon sm:block hidden"></div><p>台北市・海邊的卡夫卡 Kafka by the Sea</p></div>
-        <div class="artist"><img class="artistImg sm:block hidden" src="../assets/images/artist/artist001.jpg"><div class="artistname"><p>大象體操 Elephant Gym</p><div class="undername"></div></div>
+        <div class="artist"><img class="artistImg sm:block hidden" :src="theImg"><div class="artistname"><p>大象體操 Elephant Gym</p><div class="undername"></div></div>
           <button
             class="follow"
             :class="{ clickfollow: follow }"
@@ -56,7 +58,10 @@ import ReportMessage from '../components/ReportMessage.vue'
 export default {
   data () {
     return {
-      activeTitle: '2021 新歌巡迴《 穿過夜晚 Go Through the Night 》',
+      theDay: '',
+      theTime: '',
+      theImg: '',
+      activeTitle: '',
       active: false,
       follow: false,
       activeContent: `黑夜籠罩之後，熟悉的日常逐漸褪色。
@@ -126,13 +131,26 @@ export default {
     }
   },
   async created () {
-    const response = await fetch('http://localhost/DropbeatBackend/mussage_act_get.php')
+    // 獲取活動資訊
+    const form = new FormData()
+    form.append('activity_id', this.$route.params.id)
+    const response = await fetch('http://localhost/DropbeatBackend/active_page_detailMain_get.php', {
+      method: 'POST',
+      body: form
+    })
     const responseData = await response.json()
+    console.log(responseData)
+    this.theImg = responseData[0].activity_photo
+    this.activeTitle = responseData[0].activity_name
+    this.theDay = responseData[0].activity_date
+    this.theTime = responseData[0].activity_time
+    // 獲取留言
+    const responses = await fetch('http://localhost/DropbeatBackend/mussage_act_get.php')
+    const responseDatas = await responses.json()
     // 操作
-    responseData.forEach((item) => {
+    responseDatas.forEach((item) => {
       this.nowArray.unshift(item)
     })
-    console.log(this.nowArray)
   }
 }
 </script>
@@ -189,7 +207,7 @@ h2 {
   width: 580px;
   height: 330px;
   border-radius: 20px;
-  background-image: url("../assets/images/active/ac001.jpg");
+  /* background-image: url("../assets/images/active/ac001.jpg"); */
   margin: 0 30px 0 0;
 }
 .title01{

@@ -10,7 +10,7 @@
           <h5>刪除</h5>
       </div>
     </div>
-    <router-link to="/Active/:id ">
+    <router-link :to="toActive">
       <img :src="img" class="activeImg w-[345px] h-[200px] rounded-2xl  cursor-pointer imgWidth object-center object-cover" :style="imgWidth">
     </router-link>
     <div class="activeContent flex flex-col justify-center">
@@ -30,7 +30,7 @@
 
 <script>
 export default {
-  props: ['img', 'title', 'time', 'city', 'location', 'singerImg', 'singer', 'col', 'edit', 'check', 'imgWidth', 'edidFund', 'deleteDialogFun'],
+  props: ['img', 'title', 'time', 'city', 'location', 'singerImg', 'singer', 'col', 'edit', 'check', 'imgWidth', 'edidFund', 'deleteDialogFun', 'toActive'],
   data () {
     return {
       activityTime: new Date(this.time)
