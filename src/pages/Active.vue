@@ -195,13 +195,13 @@ export default {
     const response = await fetch('http://localhost/DropbeatBackend/active_page_get.php')
     const responseData = await response.json()
     responseData.forEach((item) => {
-      item.toTheActive = `/Active/${item.activity_id}` // router設定
+      item.toTheActive = item.activity_id // router設定
       this.nowActivityArr.unshift(item)
       this.emptyArr.unshift(item)
       item.timeCompare = new Date(item.activity_date).getTime() / (1000 * 60 * 60 * 24) // 活動時間(秒)
       item.thisMonth = new Date(item.activity_date).getMonth() + 1 // 活動月份
     })
-    console.log(this.nowActivityArr)
+    // console.log(typeof this.nowActivityArr[0].toTheActive)
     // console.log(Math.floor(new Date().getTime() / (1000 * 60 * 60 * 24))) // 現在時間(秒)
   }
 }

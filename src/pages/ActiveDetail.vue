@@ -13,6 +13,7 @@
     <div class="block01">
       <h3 class="sm:hidden block mb-5">{{activeTitle}}</h3>
       <div class="banner">
+        <img :src="theImg" :alt="theImg" class="banner">
       </div>
       <div class="title01">
         <h3 class="sm:block hidden">{{activeTitle}}</h3>
@@ -27,9 +28,9 @@
           </button>
         </div>
         <div class="hr sm:block hidden"></div>
-        <div class="day"><div class="dayicon sm:block hidden"></div><p>{{theDay}}・星期日・{{theTime}}</p></div>
-        <div class="location"><div class="loctionicon sm:block hidden"></div><p>台北市・海邊的卡夫卡 Kafka by the Sea</p></div>
-        <div class="artist"><img class="artistImg sm:block hidden" src="theImg"><div class="artistname"><p>大象體操 Elephant Gym</p><div class="undername"></div></div>
+        <div class="day"><div class="dayicon sm:block hidden"></div><p>{{theDay}}・{{getDay}}・{{theTime}}</p></div>
+        <div class="location"><div class="loctionicon sm:block hidden"></div><p>{{theArea}}・{{thePlace}}</p></div>
+        <div class="artist"><img class="artistImg sm:block hidden" :src="theImg"><div class="artistname"><p>{{theId}}</p><div class="undername"></div></div>
           <button
             class="follow"
             :class="{ clickfollow: follow }"
@@ -37,6 +38,10 @@
           >{{follow ? '正在關注' : '關注'}}</button>
         </div>
       </div>
+    </div>
+    <div class="mt-10">
+      <h1 class="text-[24px] mb-6">活動介紹</h1>
+      <textarea class="w-full h-[100px] text-gray-dark" :value="theInfo"></textarea>
     </div>
     <message-board
       class="message"
@@ -57,6 +62,14 @@ import ReportMessage from '../components/ReportMessage.vue'
 export default {
   data () {
     return {
+      theInfo: '',
+      theId: '',
+      theArea: '',
+      thePlace: '',
+      theWeek: '',
+      theDay: '',
+      theTime: '',
+      theImg: '',
       activeTitle: '',
       active: false,
       follow: false,
@@ -124,6 +137,34 @@ export default {
     },
     displayMessageData () {
       return this.nowArray.slice(0, this.displayNum)
+    },
+    getDay () {
+      const week = this.theWeek
+      let day = ''
+      switch (week) {
+        case 1 :
+          day = '星期一'
+          break
+        case 2 :
+          day = '星期二'
+          break
+        case 3 :
+          day = '星期三'
+          break
+        case 4 :
+          day = '星期四'
+          break
+        case 5 :
+          day = '星期五'
+          break
+        case 6 :
+          day = '星期六'
+          break
+        case 0 :
+          day = '星期日'
+          break
+      }
+      return day
     }
   },
   async created () {
@@ -136,10 +177,15 @@ export default {
     })
     const responseData = await response.json()
     console.log(responseData)
-    // this.theImg = responseData[0].activity_photo
-    // this.activeTitle = responseData[0].activity_name
-    // this.theDay = responseData[0].activity_date
-    // this.theTime = responseData[0].activity_time
+    this.theInfo = responseData[0].info
+    this.theId = responseData[0].initiator
+    this.theArea = responseData[0].activity_area
+    this.thePlace = responseData[0].place
+    this.theWeek = new Date(responseData[0].activity_date).getDay()
+    this.theImg = responseData[0].activity_photo
+    this.activeTitle = responseData[0].activity_name
+    this.theDay = responseData[0].activity_date
+    this.theTime = responseData[0].activity_time
     // 獲取留言
     const responses = await fetch('http://localhost/DropbeatBackend/mussage_act_get.php')
     const responseDatas = await responses.json()
@@ -203,7 +249,7 @@ h2 {
   width: 580px;
   height: 330px;
   border-radius: 20px;
-  background-image: url("../assets/images/active/ac001.jpg");
+  /* background-image: url("../assets/images/active/ac001.jpg"); */
   margin: 0 30px 0 0;
 }
 .title01{
