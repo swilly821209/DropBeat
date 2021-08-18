@@ -62,6 +62,7 @@ import ReportMessage from '../components/ReportMessage.vue'
 export default {
   data () {
     return {
+      theActiveId: '',
       theInfo: '',
       theId: '',
       theArea: '',
@@ -106,7 +107,7 @@ export default {
       // 判斷是否登入
       if (this.$store.getters.loginState !== false) {
         const messageData = {
-          member: 'willy',
+          member: this.$store.getters.memberIdState,
           setup_date: `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`,
           img: 'https://akstatic.streetvoice.com/profile_images/sa/nd/sandwichfail/3fT9Y92afyjdDbtNEFb2rh.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
           content: this.inputMessage
@@ -115,17 +116,14 @@ export default {
         this.nowArray.unshift(messageData)
         // 傳後端
         const form = new FormData()
-        const messageId = Math.floor(Math.random() * 9999)
-        form.append('message_id', messageId) // message_id (DB是INT)
-        form.append('member', this.$store.getters.memberIdState) // member_id (DB是INT)
-        form.append('musician', Math.floor(Math.random() * 9999)) // musician (DB是INT)
-        // form.append('setup_date', messageData.time)
+        form.append('member', this.$store.getters.memberIdState)
+        form.append('activity', this.$route.params.id)
         form.append('content', messageData.content)
         fetch('http://localhost/DropbeatBackend/mussage_act_send.php', {
           method: 'POST',
           body: form
         })
-        this.$store.dispatch('mesId', this.sendMessageId = messageId)
+        this.$store.dispatch('mesId', this.sendMessageId = this.$store.getters.memberIdState)
       } else {
         alert('請登入後留言！')
       }
@@ -176,7 +174,6 @@ export default {
       body: form
     })
     const responseData = await response.json()
-    console.log(responseData)
     this.theInfo = responseData[0].info
     this.theId = responseData[0].initiator
     this.theArea = responseData[0].activity_area
@@ -187,7 +184,12 @@ export default {
     this.theDay = responseData[0].activity_date
     this.theTime = responseData[0].activity_time
     // 獲取留言
-    const responses = await fetch('http://localhost/DropbeatBackend/mussage_act_get.php')
+    const forms = new FormData()
+    forms.append('activity', this.$route.params.id)
+    const responses = await fetch('http://localhost/DropbeatBackend/mussage_act_get.php', {
+      method: 'POST',
+      body: forms
+    })
     const responseDatas = await responses.json()
     // 操作
     responseDatas.forEach((item) => {
