@@ -2,7 +2,7 @@
   <div class="flex items-center space-x-5">
     <img :src="memberImg" class="w-20 h-20 rounded-full">
     <div>
-      <p class="text-sm text-gray-light">{{ memberName }}・{{ timeLag }}前</p>
+      <p class="text-sm text-gray-light">{{ memberName }}・{{ setUpdate }}</p>
       <div class="memberMessageText text-base text-gray-dark space-x-5 flex items-center ">
         <p>{{ memberMessage }}</p>
         <span @click="toggleReport" class="bit cursor-pointer hover:bg-gray-default w-6 h-6 flex justify-center items-center self-end rounded-full relative">
@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  props: ['memberImg', 'memberName', 'commentTime', 'memberMessage', 'mesId'],
+  props: ['memberImg', 'memberName', 'commentTime', 'memberMessage', 'mesId', 'setUpdate'],
   nowMember: '',
   data () {
     return {

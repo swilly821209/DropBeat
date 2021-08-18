@@ -38,7 +38,7 @@
             :city="item.activity_area"
             :location="item.place"
             :singerImg="item.activity_photo"
-            :singer="item.initiator"
+            :singer="item.account"
             :toActive="item.toTheActive"
             >
           </activity-item>
@@ -201,8 +201,6 @@ export default {
       item.timeCompare = new Date(item.activity_date).getTime() / (1000 * 60 * 60 * 24) // 活動時間(秒)
       item.thisMonth = new Date(item.activity_date).getMonth() + 1 // 活動月份
     })
-    // console.log(typeof this.nowActivityArr[0].toTheActive)
-    // console.log(Math.floor(new Date().getTime() / (1000 * 60 * 60 * 24))) // 現在時間(秒)
   }
 }
 </script>

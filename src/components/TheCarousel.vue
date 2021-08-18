@@ -7,7 +7,7 @@
               <p class="text-white text-sm">{{carouselActivity[0].date}} - {{carouselActivity[0].day}} - {{carouselActivity[0].location}}</p>
               <div class="mt-2 flex justify-between items-center">
                 <div class="space-x-2">
-                  <span class=" rounded-full border-2 border-gray-dark hover:border-white text-white hover:text-gray-dark px-3 py-1 hover:bg-white text-sm " v-for="singer in carouselActivity[0].singers" :key="singer">{{ singer }}</span>
+                  <span class=" rounded-full border-2 border-gray-dark hover:border-white text-white hover:text-gray-dark px-3 py-1 hover:bg-white text-sm " >{{ carouselActivity[0].singers }}</span>
                 </div>
                 <div class="share_join">
                   <div class="share"></div>
@@ -26,7 +26,7 @@
               <p class="text-white text-sm">{{carouselActivity[1].date}} - {{carouselActivity[1].day}} - {{carouselActivity[1].location}}</p>
               <div class="mt-2 flex justify-between items-center">
                 <div class="space-x-2">
-                  <span class=" rounded-full border-2 border-gray-dark hover:border-white text-white hover:text-gray-dark px-3 py-1 hover:bg-white text-sm " v-for="singer in carouselActivity[1].singers" :key="singer">{{ singer }}</span>
+                  <span class=" rounded-full border-2 border-gray-dark hover:border-white text-white hover:text-gray-dark px-3 py-1 hover:bg-white text-sm " >{{ carouselActivity[1].singers }}</span>
                 </div>
                 <div class="share_join">
                   <div class="share"></div>
@@ -45,7 +45,7 @@
               <p class="text-white text-sm">{{carouselActivity[2].date}} - {{carouselActivity[2].day}} - {{carouselActivity[2].location}}</p>
               <div class="mt-2 flex justify-between items-center">
                 <div class="space-x-2">
-                  <span class=" rounded-full border-2 border-gray-dark hover:border-white text-white hover:text-gray-dark px-2 py-1 hover:bg-white text-sm" v-for="singer in carouselActivity[2].singers" :key="singer">{{ singer }}</span>
+                  <span class=" rounded-full border-2 border-gray-dark hover:border-white text-white hover:text-gray-dark px-3 py-1 hover:bg-white text-sm " >{{ carouselActivity[2].singers }}</span>
                 </div>
                 <div class="share_join">
                   <div class="share"></div>
@@ -64,7 +64,7 @@
               <p class="text-white text-sm">{{carouselActivity[3].date}} - {{carouselActivity[3].day}} - {{carouselActivity[3].location}}</p>
               <div class="mt-2 flex justify-between items-center">
                 <div class="space-x-2">
-                  <span class=" rounded-full border-2 border-gray-dark hover:border-white text-white hover:text-gray-dark px-2 py-1 hover:bg-white text-sm" v-for="singer in carouselActivity[3].singers" :key="singer">{{ singer }}</span>
+                  <span class=" rounded-full border-2 border-gray-dark hover:border-white text-white hover:text-gray-dark px-3 py-1 hover:bg-white text-sm " >{{ carouselActivity[3].singers }}</span>
                 </div>
                 <div class="share_join">
                   <div class="share"></div>
@@ -83,7 +83,7 @@
               <p class="text-white text-sm">{{carouselActivity[4].date}} - {{carouselActivity[4].day}} - {{carouselActivity[4].location}}</p>
               <div class="mt-2 flex justify-between items-center">
                 <div class="space-x-2">
-                  <span class=" rounded-full border-2 border-gray-dark hover:border-white text-white hover:text-gray-dark px-3 py-1 hover:bg-white text-sm " v-for="singer in carouselActivity[4].singers" :key="singer">{{ singer }}</span>
+                  <span class=" rounded-full border-2 border-gray-dark hover:border-white text-white hover:text-gray-dark px-3 py-1 hover:bg-white text-sm " >{{ carouselActivity[4].singers }}</span>
                 </div>
                 <div class="share_join">
                   <div class="share"></div>
@@ -114,38 +114,38 @@ export default {
       carouselActivity: [
         {
           Image: 'https://picsum.photos/id/10/800/400',
-          title: 'Mary See the Future《梅雨季》2021 台北場',
-          date: '2017年12月10號・20:00',
-          location: '台北市',
-          singers: ['Second Wave 二手菸', '犯意成', 'willy']
+          title: '',
+          date: '',
+          location: '',
+          singers: ''
         },
         {
-          Image: 'https://picsum.photos/id/100/800/400',
-          title: 'Mary See the Future《梅雨季》2021 台北場',
-          date: '2017年12月10號・20:00',
-          location: '台北市',
-          singers: ['Second Wave 二手菸', 'willy']
+          Image: 'https://picsum.photos/id/10/800/400',
+          title: '',
+          date: '',
+          location: '',
+          singers: ''
         },
         {
-          Image: 'https://picsum.photos/id/1000/800/400',
-          title: 'Mary See the Future《梅雨季》2021 台北場',
-          date: '2017年12月10號・20:00',
-          location: '台北市',
-          singers: ['Second Wave 二手菸', 'willy']
+          Image: 'https://picsum.photos/id/10/800/400',
+          title: '',
+          date: '',
+          location: '',
+          singers: ''
         },
         {
-          Image: 'https://picsum.photos/id/200/800/400',
-          title: 'Mary See the Future《梅雨季》2021 台北場',
-          date: '2017年12月10號・星期日・20:00',
-          location: '台北市',
-          singers: ['Second Wave 二手菸', 'willy']
+          Image: 'https://picsum.photos/id/10/800/400',
+          title: '',
+          date: '',
+          location: '',
+          singers: ''
         },
         {
-          Image: 'https://picsum.photos/id/1001/800/400',
-          title: 'Mary See the Future《梅雨季》2021 台北場',
-          date: '2017年12月10號・20:00',
-          location: '台北市',
-          singers: ['Second Wave 二手菸', 'willy']
+          Image: 'https://picsum.photos/id/10/800/400',
+          title: '',
+          date: '',
+          location: '',
+          singers: ''
         }
       ],
       classItems: ['item1', 'item2', 'item3', 'item4', 'item5'],
@@ -195,7 +195,7 @@ export default {
   async created () {
     const response = await fetch('http://localhost/DropbeatBackend/carousel_component_get.php')
     const responseData = await response.json()
-    // console.log(responseData)
+    console.log(responseData)
     responseData.forEach((item, index) => {
       this.carouselActivity[index].Image = item.activity_photo
       this.carouselActivity[index].title = item.activity_name
@@ -227,7 +227,7 @@ export default {
       }
       this.carouselActivity[index].day = day
       this.carouselActivity[index].location = item.activity_area
-      this.carouselActivity[index].singers = item.initiator
+      this.carouselActivity[index].singers = item.account
     })
   }
 }

@@ -175,7 +175,7 @@ export default {
     })
     const responseData = await response.json()
     this.theInfo = responseData[0].info
-    this.theId = responseData[0].initiator
+    this.theId = responseData[0].account
     this.theArea = responseData[0].activity_area
     this.thePlace = responseData[0].place
     this.theWeek = new Date(responseData[0].activity_date).getDay()
@@ -195,6 +195,7 @@ export default {
     responseDatas.forEach((item) => {
       this.nowArray.unshift(item)
     })
+    console.log(this.nowArray)
   }
 }
 </script>

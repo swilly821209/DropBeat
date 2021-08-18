@@ -133,7 +133,7 @@ export default {
             account: responseAllData[0][2],
             memberId: responseAllData[0][0]
           })
-          this.$router.replace('/')
+          // this.$router.replace('/')
         }
       } else {
         alert('請確認輸入欄位')

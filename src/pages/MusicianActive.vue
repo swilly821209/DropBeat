@@ -39,9 +39,25 @@
       <base-title title="活動管理"></base-title>
     </div>
     <!-- 640以上顯示 -->
-    <div class="hidden sm:flex items-center justify-start">
+    <div class="flex items-center justify-start">
       <svg xmlns="http://www.w3.org/2000/svg" class="preArrow mr-3 block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
-        <swiper :slidesPerView="2" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="flex" observeParents>
+        <swiper :slidesPerView="2" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="hidden sm:flex" observeParents>
+          <swiper-slide v-for="(item, index) in nowActivityArr" :key="item" observer>
+            <activity-item class="theItemMenegerSpe" :id = index
+                :check="true"
+                :edit="true"
+                :col="'col'"
+                :img="item.activity_photo"
+                :title="item.activity_name"
+                :time="item.activity_date"
+                :city="item.activity_area"
+                :location="item.place"
+                :edidFund="edidFund"
+                :deleteDialogFun="deleteDialogFun">
+              </activity-item>
+          </swiper-slide>
+        </swiper>
+        <swiper :slidesPerView="1" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="flex sm:hidden" observeParents>
           <swiper-slide v-for="(item, index) in nowActivityArr" :key="item" observer>
             <activity-item class="theItemMenegerSpe" :id = index
                 :check="true"
@@ -58,30 +74,6 @@
           </swiper-slide>
         </swiper>
       <svg xmlns="http://www.w3.org/2000/svg" class="nextArrow block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
-    </div>
-    <!-- 640以下顯示 -->
-    <div class="sm:hidden block mt-[-10px]">
-      <div class=" flex mr-3 mt-3 absolute right-0 z-10" >
-        <svg xmlns="http://www.w3.org/2000/svg" class="preIcon preArrow mr-3 block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" class="nextIcon nextArrow block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
-      </div>
-      <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="mr-0">
-        <!-- <svg xmlns="http://www.w3.org/2000/svg" class="preIcon preArrow" width="20" height="23.077" viewBox="0 0 15 23.077"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(0 23.077) rotate(-90)" fill="currentColor"/></svg> -->
-        <swiper-slide v-for="item in activeDatas" :key="item.title" class="flex justify-center">
-          <activity-item
-            :edit="'edit'"
-            class=" m-auto"
-            :img="item.imgSrc"
-            :title="item.title"
-            :time="item.time"
-            :city="item.city"
-            :location="item.location"
-            :singerImg="item.singerImg"
-            :singer="item.singer">
-          </activity-item>
-        </swiper-slide>
-        <!-- <svg xmlns="http://www.w3.org/2000/svg" class="nextIcon nextArrow" width="20" height="18.961" viewBox="0 0 13.72 18.961"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(15 -2.058) rotate(90)" fill="currentColor"/></svg> -->
-      </swiper>
     </div>
     <h4 id="doActive">發起活動</h4>
     <div class="flex flex-col sm:flex-row">
