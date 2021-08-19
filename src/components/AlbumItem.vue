@@ -6,7 +6,7 @@
           <span class="editIcon"></span>
           <h5>編輯</h5>
         </div>
-        <div class="h5_icon flex flex-col items-center sm:mr-3 ml-0 cursor-pointer">
+        <div @click="delectItem" class="h5_icon flex flex-col items-center sm:mr-3 ml-0 cursor-pointer">
           <span class="deleteIcon"></span>
           <h5>刪除</h5>
         </div>
@@ -40,7 +40,7 @@
           <span class="editIcon"></span>
           <h5>編輯</h5>
         </div>
-        <div class="h5_icon flex flex-col items-center cursor-pointer">
+        <div @click="delectItem" class="h5_icon flex flex-col items-center cursor-pointer">
           <span class="deleteIcon"></span>
           <h5>刪除</h5>
         </div>
@@ -53,11 +53,14 @@
 <script>
 export default {
   props: ['img', 'albumName', 'year', 'num', 'totalTime', 'edit', 'editDraft', 'editAlbum', 'editMusic'],
-  emits: ['edit-draft'],
+  emits: ['edit-draft', 'delect-item'],
   methods: {
     editDraftAlbum () {
       console.log('HO')
       this.$emit('edit-draft')
+    },
+    delectItem () {
+      this.$emit('delect-item')
     }
   }
 }

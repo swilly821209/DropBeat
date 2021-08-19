@@ -1,7 +1,8 @@
 <template>
+  <audio ref="audio" :src="musicFile" @timeupdate="musicProgress"></audio>
   <div class="fixed bottom-[0vh] w-full z-[100]">
-    <div class="donateline">
-      <div class="donateNow" :style="`width: ${progress}`"></div>
+    <div class="playingline cursor-pointer" @click="changeTime">
+      <div class="playingNow pointer-events-none" :style="`width: ${progress}`"></div>
     </div>
     <div class="flex justify-between items-center bg-black-backdrop h-[70px]">
       <div class="img_title_author flex items-center flex-shrink-0 ml-4 sm:ml-11 ">
@@ -22,7 +23,7 @@
           <button
             class="play"
             :class="{ clickplay: playing }"
-            @click="playing = !playing"
+            @click="musicControl"
           ></button>
           <button class="next"></button>
         </div>
@@ -40,7 +41,7 @@
           @click="like = !like"
         ></button>
         <span class="add hidden sm:block"></span>
-        <div class="block sm:hidden">
+        <div class="block cursor-pointer sm:hidden" @click="rwdMusicitem">
           <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-light" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
         </div>
       </div>
@@ -64,27 +65,55 @@ export default {
     }
   },
   computed: {
+    musicFile () {
+      const music = this.$store.getters.getNowMusic
+      return music
+    },
     playtime () {
-      const minute = parseInt(this.playSecond / 60)
-      const seconds = this.playSecond % 60
+      const minute = parseInt(this.playSecond / 60).toString().padStart(2, '0')
+      const seconds = parseInt(this.playSecond % 60).toString().padStart(2, '0')
       return `${minute} : ${seconds}`
     },
     totaltime () {
-      const minute = parseInt(this.totalSecond / 60)
-      const seconds = this.totalSecond % 60
+      const minute = parseInt(this.totalSecond / 60).toString().padStart(2, '0')
+      const seconds = parseInt(this.totalSecond % 60).toString().padStart(2, '0')
       return `${minute} : ${seconds}`
+    }
+  },
+  methods: {
+    changeTime (e) {
+      console.dir(e.target)
+    },
+    musicProgress () {
+      const totalSecond = this.$refs.audio.duration
+      this.playSecond = this.$refs.audio.currentTime
+      const progress = (this.playSecond / totalSecond) * 100
+      this.progress = `${progress.toFixed(2)}%`
+      console.log(this.progress)
+    },
+    rwdMusicitem () {
+      this.$store.dispatch('rwdMusicitem', true)
+    },
+    musicControl () {
+      this.playing = !this.playing
+      this.totalSecond = this.$refs.audio.duration
+      if (this.playing) {
+        this.$refs.audio.play()
+      } else {
+        this.$refs.audio.pause()
+      }
     }
   }
 }
 </script>
 
 <style scoped>
-  .donateline{
+  .playingline{
     height: 5px;
     background-color: #ededed;
     border-radius: 5px;
   }
-  .donateNow{
+  .playingNow{
     height: 5px;
     background-image: linear-gradient(to right, #31BDC5 30%, #A6ff00);
     border-radius: 5px;

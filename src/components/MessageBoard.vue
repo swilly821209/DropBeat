@@ -15,12 +15,12 @@
 留言內容含有污辱謾罵、人身攻擊、色情...等不當字眼字眼，管理員有權利刪除留言！"></textarea>
             <div class="space-x-2 sm:flex hidden">
               <button @click="nowClear" class="rounded-3xl border-2 border-gray-default  text-sm text-gray-dark hover:text-orange hover:border-orange">取消</button>
-              <button @click="nowMessage" class="rounded-3xl border border-orange  text-sm text-white bg-orange hover:bg-blue-light hover:border-opacity-0">留言</button>
+              <button @click="nowMessage" class=" rounded-3xl border border-orange  text-sm text-white bg-orange hover:bg-blue-light hover:border-opacity-0">留言</button>
             </div>
         </div>
         <div class="space-x-2 justify-end  flex sm:hidden ">
-            <button @click="nowClear" class="rounded-3xl border-2 border-gray-default  text-sm text-gray-dark hover:text-orange hover:border-orange">取消</button>
-            <button @click="nowMessage" class="rounded-3xl border border-orange  text-sm text-white bg-orange hover:bg-blue-light hover:border-opacity-0">留言</button>
+            <button @click="nowClear" class="cancel rounded-3xl border-2 border-gray-default  text-sm text-gray-dark hover:text-orange hover:border-orange">取消</button>
+            <button @click="nowMessage" class="check rounded-3xl border border-orange  text-sm text-white bg-orange hover:bg-blue-light hover:border-opacity-0">留言</button>
         </div>
     </div>
     <div class="space-y-5">
@@ -35,7 +35,7 @@
       </the-message>
     </div>
     <div class="flex justify-end">
-      <div @click="nowDisplay" v-if="nowButton" class="text-base sm:text-lg text-gray-dark mt-3 text-right hover:text-blue-light cursor-pointer">... 查看全部留言</div>
+      <div @click="nowDisplay" v-if="nowButton" class="moreMessage text-base sm:text-lg text-gray-dark mt-3 text-right hover:text-blue-light cursor-pointer">... 查看全部留言</div>
     </div>
     <!-- <hr> -->
   </div>

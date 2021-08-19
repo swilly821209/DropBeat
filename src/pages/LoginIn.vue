@@ -10,7 +10,7 @@
         <div class="first">
           <!-- <img class="uncheckbox" src="https://img.icons8.com/ios/50/000000/unchecked-checkbox.png"/>
           <p>保持登入狀態</p> -->
-          <input type="checkbox" name="keep" class="checkbox  border-2 border-gray-light rounded-md ">
+          <input type="checkbox" v-model="keepLogin" name="keep" class="checkbox  border-2 border-gray-light rounded-md ">
           <label for="keep" class=" text-sm text-gray-dark ">保持登入狀態</label>
         </div>
         <div class="second">
@@ -41,6 +41,7 @@
 export default {
   data () {
     return {
+      keepLogin: true,
       warn: false,
       member: {
         account: '',
@@ -62,13 +63,21 @@ export default {
       const responseData = await response.json()
       if (responseData.length > 0) {
         this.$store.dispatch('login', {
-          account: responseData[0].account,
-          memberId: responseData[0].member_id
+          account: responseData[0].account, // 存localStorage
+          memberId: responseData[0].member_id // 存localStorage
         })
+        if (this.keepLogin) {
+          localStorage.setItem('member', JSON.stringify({
+            account: responseData[0].account,
+            memberId: responseData[0].member_id
+          }))
+        }
         this.$router.replace('/')
       } else {
         this.warn = true
       }
+      // console.log(this.$store.getters.loginState) // 這是user account
+      // console.log(this.$store.getters.memberIdState) // 這是user id
     }
   }
 }

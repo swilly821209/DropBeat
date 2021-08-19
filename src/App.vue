@@ -23,6 +23,12 @@ export default {
     TheFooter,
     MusicPlayer,
     RwdMusicitem
+  },
+  created () {
+    const getMember = JSON.parse(localStorage.getItem('member'))
+    if (getMember) {
+      this.$store.dispatch('login', getMember)
+    }
   }
 }
 </script>

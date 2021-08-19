@@ -2,13 +2,14 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
+    nowMusic: '/musicFile/Digital Ghosts - Unicorn Heads.mp3',
     uploadAlbumState: false,
     reportDialog: false,
     deleteMusicDialog: true,
     uploadMusicDialog: false,
     isLogin: false,
     memberId: false,
-    idLogin: 'ddddd',
+    // idLogin: 'ddddd',
     mesId: 'fffff',
     rwdmusic: false
   },
@@ -26,9 +27,9 @@ export default createStore({
       state.isLogin = payload.account
       state.memberId = payload.memberId
     },
-    loginId (state, payload) {
-      state.idLogin = payload
-    },
+    // loginId (state, payload) {
+    //   state.idLogin = payload
+    // },
     setUploadMusicDialog (state, payload) {
       state.uploadMusicDialog = payload
     },
@@ -55,9 +56,9 @@ export default createStore({
     login (context, payload) {
       context.commit('login', payload)
     },
-    loginId (context, payload) {
-      context.commit('loginId', payload)
-    },
+    // loginId (context, payload) {
+    //   context.commit('loginId', payload)
+    // },
     uploadMusicDialog (context, payload) {
       context.commit('setUploadMusicDialog', payload)
     },
@@ -66,6 +67,9 @@ export default createStore({
     }
   },
   getters: {
+    getNowMusic (state) {
+      return state.nowMusic
+    },
     rwdMusicState (state) {
       return state.rwdmusic
     },
@@ -84,9 +88,9 @@ export default createStore({
     memberIdState (state) {
       return state.memberId
     },
-    loginIdState (state) {
-      return state.idLogin
-    },
+    // loginIdState (state) {
+    //   return state.idLogin
+    // },
     mesIdState (state) {
       return state.mesId
     },

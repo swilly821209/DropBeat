@@ -5,11 +5,11 @@
       <textarea class="lyricsH" :value="lyrics" readonly>
       </textarea>
     </div>
-    <div class="cursor-pointer self">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17" @click="up">
+    <div class=" self ">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17" @click="up" class="cursor-pointer up">
         <path id="up" d="M9.138,1.465a1,1,0,0,1,1.724,0l8.252,14.028A1,1,0,0,1,18.252,17H1.748a1,1,0,0,1-.862-1.507Z" :fill="upColor"/>
       </svg>
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17" @mousedown="down">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17" @mousedown="down" class="cursor-pointer down">
         <path id="up" d="M9.138,1.465a1,1,0,0,1,1.724,0l8.252,14.028A1,1,0,0,1,18.252,17H1.748a1,1,0,0,1-.862-1.507Z" transform="translate(20 17) rotate(180)" :fill="downColor"/>
       </svg>
     </div>
@@ -128,6 +128,7 @@ export default {
     font-size: 18px;
   }
   .lyricsContainer{
+    /* border:1px solid blue; */
     width: 280px;
     height: 250px;
   }
@@ -135,6 +136,7 @@ export default {
     resize: none;
   }
   .lyricsH{
+    /* border:1px solid red; */
     width: 270px;
     height: 250px;
     font-size: 16px;
