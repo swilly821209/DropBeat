@@ -173,7 +173,7 @@ export default {
     // this.donate_num = responseData[0].donate_num
     this.info = responseData[0].info
     this.donate_photo = responseData[0].donate_photo
-    this.initiator = responseData[0].initiator
+    this.initiator = responseData[0].account
     // 回傳目前總募款與募款人數
     const formNow = new FormData()
     formNow.append('donate_id', this.$route.params.id)

@@ -445,7 +445,7 @@ export default {
       }
     },
     async edidFund (e) {
-      window.location.hash = '#activeFund'
+      window.location.href = '#activeFund'
       this.sendStatus = false
       // 先將圖片與文字清空
       document.querySelectorAll('.outer').forEach(item => {
