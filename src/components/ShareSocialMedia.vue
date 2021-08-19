@@ -12,12 +12,12 @@
       </div>
     </div>
     <div class="flex space-x-3 justify-end items-center sm:mt-3 mt-6">
-      <div class="cursor-pointer">
+      <div @click="toFB" class="cursor-pointer">
           <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="30px" width="30px" viewBox="0 0 24 24" fill="#3b5998"><rect fill="none" height="24" width="24"/><path d="M22,12c0-5.52-4.48-10-10-10S2,6.48,2,12c0,4.84,3.44,8.87,8,9.8V15H8v-3h2V9.5C10,7.57,11.57,6,13.5,6H16v3h-2 c-0.55,0-1,0.45-1,1v2h3v3h-3v6.95C18.05,21.45,22,17.19,22,12z"/></svg>
       </div>
       <div class="flex border rounded-xl w-8/12 sm:w-7/12 justify-end items-center border-gray-light">
-        <p class="text-sm  w-10/12 text-center px-3 text-gray-light truncate">https://dropbeet/accusefive/3333</p>
-        <button class='flex-shrink-0 rounded-lg border-2 px-2 text-white border-orange bg-orange hover:border-blue-light hover:bg-blue-light hover:text-white'>複製</button>
+        <p id="copy" class="text-sm  w-10/12 text-center px-3 text-gray-light truncate">{{url}}</p>
+        <button @click="copyFun" class='flex-shrink-0 rounded-lg border-2 px-2 text-white border-orange bg-orange hover:border-blue-light hover:bg-blue-light hover:text-white'>複製</button>
       </div>
     </div>
   </div>
@@ -25,11 +25,20 @@
 
 <script>
 export default {
-  props: ['imgSrc', 'music', 'singer'],
+  props: ['imgSrc', 'music', 'singer', 'url'],
   emits: ['close-social'],
   methods: {
     closeDialog () {
       this.$emit('close-social')
+    },
+    copyFun () {
+      const str = document.getElementById('copy')
+      window.getSelection().selectAllChildren(str)
+      document.execCommand('copy')
+      alert('連結已複製!')
+    },
+    toFB () {
+      window.open('https://www.facebook.com', 'Facebook')
     }
   }
 }

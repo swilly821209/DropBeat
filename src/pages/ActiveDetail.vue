@@ -3,6 +3,9 @@
     <report-message></report-message>
   </base-dialog>
   <div class="range">
+    <base-dialog :show="showDialog">
+      <share-social-media @close-social="closeSocialDialog" :imgSrc="shareImg" :music="shareMusic" :singer="shareSinger" :url="shareUrl"></share-social-media>
+    </base-dialog>
     <div class="pre">
       <div class="preicon"></div>
       <div class="title00">
@@ -19,7 +22,7 @@
         <h3 class="sm:block hidden">{{activeTitle}}</h3>
         <div class="share_join flex justify-between sm:justify-end ">
           <div class="block sm:hidden border-b border-gray-default w-4/6 mb-3 mr-3 ml-1"></div>
-          <div class="share"></div>
+          <div class="share" @click="shareSocial(theImg, activeTitle, theId, shareUrl)"></div>
           <button
             class="join"
             :class="{ clickjoin: active }"
@@ -62,6 +65,11 @@ import ReportMessage from '../components/ReportMessage.vue'
 export default {
   data () {
     return {
+      shareUrl: '',
+      shareImg: '',
+      shareMusic: '',
+      shareSinger: '',
+      showDialog: false,
       theActiveId: '',
       theInfo: '',
       theId: '',
@@ -96,6 +104,16 @@ export default {
     ReportMessage
   },
   methods: {
+    shareSocial (img, music, singer, url) {
+      this.showDialog = true
+      this.shareImg = img
+      this.shareMusic = music
+      this.shareSinger = singer
+      this.shareUrl = url
+    },
+    closeSocialDialog () {
+      this.showDialog = false
+    },
     displayMore () {
       this.displayNum = this.nowArray.length
       this.moreButton = false
@@ -183,6 +201,7 @@ export default {
     this.activeTitle = responseData[0].activity_name
     this.theDay = responseData[0].activity_date
     this.theTime = responseData[0].activity_time
+    this.shareUrl = window.location.href
     // 獲取留言
     const forms = new FormData()
     forms.append('activity', this.$route.params.id)
