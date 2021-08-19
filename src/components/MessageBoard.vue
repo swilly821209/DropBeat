@@ -6,7 +6,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="24px" fill="gray"><path d="M0 0h24v24H0z" fill="none"/><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg>
         </div>
         <div class="flex items-center sm:space-x-5 space-x-1">
-            <img class=" rounded-full mr-2 sm:mr-0" src="https://akstatic.streetvoice.com/profile_images/sa/nd/sandwichfail/3fT9Y92afyjdDbtNEFb2rh.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg">
+            <img class=" rounded-full mr-2 sm:mr-0" :src="thisPhoto">
             <textarea
             :value="modelValue"
             @input="$emit('update:modelValue', $event.target.value)"
@@ -27,7 +27,7 @@
       <the-message
         v-for="item in outerArray"
         :key="item.content"
-        :memberImg="'https://akstatic.streetvoice.com/profile_images/sa/nd/sandwichfail/3fT9Y92afyjdDbtNEFb2rh.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg'"
+        :memberImg="item.member_photo"
         :commentTime="item.setup_data"
         :memberName="item.account"
         :setUpdate="item.setup_date"
@@ -53,7 +53,8 @@ export default {
   data () {
     return {
       // moreButton: true,
-      thisInput: ''
+      thisInput: '',
+      thisPhoto: ''
       // displayNum: 2,
       // nowArray: []
     }
@@ -71,15 +72,17 @@ export default {
     // clearInput () {
     //   this.inputMessage = ''
     // }
+  },
+  async created () {
+    const form = new FormData()
+    form.append('id', this.$store.getters.memberIdState)
+    const response = await fetch('http://localhost/DropbeatBackend/mussage_act_getImg.php', {
+      method: 'POST',
+      body: form
+    })
+    const responseData = await response.json()
+    this.thisPhoto = responseData[0].member_photo
   }
-  // async created () {
-  //   const response = await fetch('http://localhost/DropbeatBackend/mussage_mus_get.php')
-  //   const responseData = await response.json()
-  //   // 操作
-  //   responseData.forEach((item) => {
-  //     this.nowArray.unshift(item)
-  //   })
-  // }
 }
 </script>
 <style scoped>

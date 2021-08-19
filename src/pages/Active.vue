@@ -219,7 +219,6 @@ export default {
       item.thisMonth = new Date(item.activity_date).getMonth() + 1 // 活動月份
       item.shareUrl = `${window.location.href}/${item.activity_id}`
     })
-    console.log(this.nowActivityArr)
   }
 }
 </script>

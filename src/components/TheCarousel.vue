@@ -17,7 +17,7 @@
                   <button
                   class="join"
                   :class="{ clickjoin: active }"
-                  @click="active = !active"
+                  @click="activeFun"
                   >{{active ? '參加' : '想參加'}}</button>
                 </div>
               </div>
@@ -36,7 +36,7 @@
                   <button
                   class="join"
                   :class="{ clickjoin: active }"
-                  @click="active = !active"
+                  @click="activeFun"
                   >{{active ? '參加' : '想參加'}}</button>
                 </div>
               </div>
@@ -55,7 +55,7 @@
                   <button
                   class="join"
                   :class="{ clickjoin: active }"
-                  @click="active = !active"
+                  @click="activeFun"
                   >{{active ? '參加' : '想參加'}}</button>
                 </div>
               </div>
@@ -74,7 +74,7 @@
                   <button
                   class="join"
                   :class="{ clickjoin: active }"
-                  @click="active = !active"
+                  @click="activeFun"
                   >{{active ? '參加' : '想參加'}}</button>
                 </div>
               </div>
@@ -93,7 +93,7 @@
                   <button
                   class="join"
                   :class="{ clickjoin: active }"
-                  @click="active = !active"
+                  @click="activeFun"
                   >{{active ? '參加' : '想參加'}}</button>
                 </div>
               </div>
@@ -101,11 +101,6 @@
         </div>
       </div>
       <div class=" w-1/6 m-auto flex justify-around mt-2 pointAll">
-        <!-- <div class="point" :class="{activeing: currentItem == 1}" @click="changeCarousel(1)"></div>
-        <div class="point" :class="{activeing: currentItem == 2}" @click="changeCarousel(2)"></div>
-        <div class="point" :class="{activeing: currentItem == 3}" @click="changeCarousel(3)"></div>
-        <div class="point" :class="{activeing: currentItem == 4}" @click="changeCarousel(4)"></div>
-        <div class="point" :class="{activeing: currentItem == 5}" @click="changeCarousel(5)"></div> -->
         <div class="point" v-for="(n, index) of 5" :key="n" :class="{activeing: currentItem == index + 1}" @click="changeCarousel(index + 1)"></div>
       </div>
 </div>
@@ -115,6 +110,7 @@
 export default {
   data () {
     return {
+      active: false,
       shareUrl: '',
       shareImg: '',
       shareMusic: '',
@@ -163,6 +159,9 @@ export default {
     }
   },
   methods: {
+    activeFun () {
+      this.active = !this.active
+    },
     linkTo (index) {
       this.$router.replace(this.carouselActivity[index].shareUrls)
     },
