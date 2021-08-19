@@ -1,7 +1,8 @@
 <template>
+  <audio ref="audio" :src="musicFile" @timeupdate="musicProgress"></audio>
   <div class="fixed bottom-[0vh] w-full z-[100]">
-    <div class="playingline">
-      <div class="playingNow" :style="`width: ${progress}`"></div>
+    <div class="playingline cursor-pointer" @click="changeTime">
+      <div class="playingNow pointer-events-none" :style="`width: ${progress}`"></div>
     </div>
     <div class="flex justify-between items-center bg-black-backdrop h-[70px]">
       <div class="img_title_author flex items-center flex-shrink-0 ml-4 sm:ml-11 ">
@@ -22,7 +23,7 @@
           <button
             class="play"
             :class="{ clickplay: playing }"
-            @click="playing = !playing"
+            @click="musicControl"
           ></button>
           <button class="next"></button>
         </div>
@@ -64,20 +65,43 @@ export default {
     }
   },
   computed: {
+    musicFile () {
+      const music = this.$store.getters.getNowMusic
+      return music
+    },
     playtime () {
-      const minute = parseInt(this.playSecond / 60)
-      const seconds = this.playSecond % 60
+      const minute = parseInt(this.playSecond / 60).toString().padStart(2, '0')
+      const seconds = parseInt(this.playSecond % 60).toString().padStart(2, '0')
       return `${minute} : ${seconds}`
     },
     totaltime () {
-      const minute = parseInt(this.totalSecond / 60)
-      const seconds = this.totalSecond % 60
+      const minute = parseInt(this.totalSecond / 60).toString().padStart(2, '0')
+      const seconds = parseInt(this.totalSecond % 60).toString().padStart(2, '0')
       return `${minute} : ${seconds}`
     }
   },
   methods: {
+    changeTime (e) {
+      console.dir(e.target)
+    },
+    musicProgress () {
+      const totalSecond = this.$refs.audio.duration
+      this.playSecond = this.$refs.audio.currentTime
+      const progress = (this.playSecond / totalSecond) * 100
+      this.progress = `${progress.toFixed(2)}%`
+      console.log(this.progress)
+    },
     rwdMusicitem () {
       this.$store.dispatch('rwdMusicitem', true)
+    },
+    musicControl () {
+      this.playing = !this.playing
+      this.totalSecond = this.$refs.audio.duration
+      if (this.playing) {
+        this.$refs.audio.play()
+      } else {
+        this.$refs.audio.pause()
+      }
     }
   }
 }

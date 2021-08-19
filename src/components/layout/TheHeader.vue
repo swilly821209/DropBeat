@@ -18,7 +18,7 @@
         <li class=" hover:text-orange border-b border-gray-default">帳號管理</li>
       </router-link>
       <router-link to="/" @click="logout">
-        <li class="hover:text-orange">登出</li>
+        <li class=" hover:text-orange">登出</li>
       </router-link>
     </ul>
   </div>
@@ -52,6 +52,8 @@ export default {
         memberId: false
       })
       localStorage.clear()
+      this.$router.replace('/')
+      window.scrollTo(0, 0)
     }
   }
 }

@@ -23,7 +23,7 @@ export default {
       if (inputMonth < 10) {
         return `0${++inputMonth}`
       } else {
-        return inputMonth
+        return inputMonth + 1
       }
     },
     date () {

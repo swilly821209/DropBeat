@@ -37,21 +37,21 @@
       </div>
     </base-dialog>
     <div class="flex justify-between items-center mt-5">
-      <base-title title="募資管理" admin></base-title>
+      <base-title title="募資管理"></base-title>
       <div class="cursor-pointer hidden sm:flex sm:mr-3" >
         <svg xmlns="http://www.w3.org/2000/svg" class="preArrow mr-3 block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" class="nextArrow block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
       </div>
     </div>
-    <!-- 640px以上顯示 -->
+    <!-- 640以上 -->
     <swiper :slidesPerView="4" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="hidden sm:flex">
       <swiper-slide v-for="(item, index) in nowFundArray" :key="item.donate_name">
         <fund-item class="theItemMenegerSpe" :id = index
           edit
           :title="item.donate_name"
           :img="item.donate_photo"
-          :singer="item.initiator"
-          :progress="'20%'"
+          :singer="item.account"
+          :progress="item.goal_percent"
           :date="item.countdownDate"
           :money="item.goal"
           :edidFund="edidFund"
@@ -59,29 +59,23 @@
         </fund-item>
       </swiper-slide>
     </swiper>
-    <!-- 640px以下顯示 -->
-    <div class="sm:hidden block mt-[-30px]">
-      <div class=" flex mr-3 mt-8 absolute right-0 z-10" >
-        <svg xmlns="http://www.w3.org/2000/svg" class="preIcon preArrow mr-3 block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" class="nextIcon nextArrow block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
-      </div>
-      <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" >
-        <!-- <svg xmlns="http://www.w3.org/2000/svg" class="preIcon preArrow " width="20" height="23.077" viewBox="0 0 15 23.077"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(0 23.077) rotate(-90)" fill="currentColor"/></svg> -->
-        <swiper-slide v-for="item in fundItems" :key="item.title" class="flex justify-center ">
-          <fund-item
-            edit
-            class=" m-auto"
-            :title="item.title"
-            :img="item.img"
-            :singer="item.singer"
-            :progress="item.progress"
-            :date="item.date"
-            :money="item.money">
-          </fund-item>
-        </swiper-slide>
-        <!-- <svg xmlns="http://www.w3.org/2000/svg" class="nextIcon nextArrow" width="20" height="18.961" viewBox="0 0 13.72 18.961"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(15 -2.058) rotate(90)" fill="currentColor"/></svg> -->
-      </swiper>
-    </div>
+    <!-- 640以下 -->
+    <swiper :slidesPerView="1" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="flex sm:hidden">
+      <swiper-slide v-for="(item, index) in nowFundArray" :key="item.donate_name">
+        <fund-item class="theItemMenegerSpe" :id = index
+          edit
+          :title="item.donate_name"
+          :img="item.donate_photo"
+          :singer="item.account"
+          :progress="item.goal_percent"
+          :date="item.countdownDate"
+          :money="item.goal"
+          :edidFund="edidFund"
+          :deleteDialogFun="deleteDialogFun">
+        </fund-item>
+      </swiper-slide>
+    </swiper>
+    <!-- 下半部 -->
     <base-title id="activeFund" title="發起募資" class="text-[22px] mt-12 sm:mt-20 mb-5"></base-title>
     <div class="flex flex-col w-full items-center sm:flex-row ">
       <select-img
@@ -124,7 +118,7 @@
     </div>
     <div class="flex outers ">
       <div class="flex inners items-center ">
-        <div v-for="(item, index) in fundsList" :key="item" class="hidden flex theItem sm:flex theOption">
+        <div v-for="(item, index) in fundsList" :key="item" class="flex theItem sm:flex theOption">
           <select-img
             :id="index"
             class="w-6/12 p-10 mr-5"
@@ -154,22 +148,19 @@
           </div>
         </div>
         <!-- 640px以下顯示 -->
-        <div class="block flex theItem sm:hidden">
+        <!-- <div class="block flex theItem sm:hidden">
           <div class="w-full">
             <div class="flex justify-center items-center">
               <div class=" mr-4">
-                <!-- 金額 -->
                 <div class="flex mt-4 ">
                   <label class="w-[90px] text-left text-lg text-gray-dark">金額：</label>
                   <input :value="fundsList[0].money" class="w-full border-2 border-gray-lighten text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
                 </div>
-                <!-- 標題 -->
                 <div class="flex mt-4 ">
                   <label class="w-[90px] text-left text-lg text-gray-dark">標題：</label>
                   <input :value="fundsList[0].title" class="w-full border-2 border-gray-lighten text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
                 </div>
               </div>
-              <!-- img -->
               <div class="w-[80px]  pt-3">
                 <select-img
                   class="w-[80px] h-[80px] pt-3"
@@ -180,17 +171,14 @@
                 ></select-img>
               </div>
             </div>
-            <!-- 內容 -->
             <div class="flex mt-4 mx-auto w-full">
               <label class="w-[90px] text-left text-lg text-gray-dark h-16">內容：</label>
               <textarea :value="fundsList[0].content" class="w-full ml-[-8px] mr-[4px] h-32 border-2 border-gray-lighten text-gray-light focus:outline-none resize-none rounded-lg pl-2 focus:border-orange"></textarea>
             </div>
-            <!-- 限量 -->
             <div class="flex mt-4 mx-auto w-full">
               <label class="w-[90px] text-left text-lg text-gray-dark">限量：</label>
               <input :value="fundsList[0].quantity" class="w-full ml-[-8px] mr-[4px] border-2 border-gray-lighten text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
             </div>
-            <!-- 新增方案 -->
             <div class="flex items-center mt-5 ">
               <svg id="new" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
                 <g id="play" fill="none" stroke="#ff9d83" stroke-width="2">
@@ -203,7 +191,7 @@
               <span class="text-orange align-baseline ml-2">新增方案</span>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
     <div class="flex justify-end mt-12 ">
@@ -234,6 +222,7 @@ export default {
   },
   data () {
     return {
+      oldLength: 0,
       cancleDialog: false,
       submitDialog: false,
       deleteDialog: false,
@@ -457,7 +446,7 @@ export default {
     },
     async edidFund (e) {
       window.location.hash = '#activeFund'
-      this.sendStatus = !this.sendStatus
+      this.sendStatus = false
       // 先將圖片與文字清空
       document.querySelectorAll('.outer').forEach(item => {
         item.style.backgroundImage = 'none'
@@ -485,9 +474,7 @@ export default {
       this.fundId = this.nowFundArray[arrayIndex].donate_id
       this.fundTitle = this.nowFundArray[arrayIndex].donate_name
       this.fundInfo = this.nowFundArray[arrayIndex].info
-      console.log(this.nowFundArray[arrayIndex].end_date)
       this.fundEndDate = this.nowFundArray[arrayIndex].end_date
-      console.log(this.fundEndDate)
       this.fundMoney = this.nowFundArray[arrayIndex].goal
       document.querySelector('#date').value = this.fundEndDate
       this.changeColor() // 日期顯示
@@ -497,6 +484,7 @@ export default {
       this.editDonateArray = responseData
       console.log(this.editDonateArray)
       const donateIndex = this.editDonateArray.length
+      this.oldLength = this.editDonateArray.length // 紀錄原本的陣列數，傳到php做判斷
       const donateImage = document.querySelectorAll('.outer')
       for (let i = 0; i < donateIndex; i++) {
         this.fundsList[i].money = this.editDonateArray[i].option_price
@@ -572,7 +560,8 @@ export default {
       const index = this.editDonateArray.length
       const forms = new FormData()
       forms.append('nowChange', this.nowChange) // 傳改變的圖片數量
-      forms.append('length', index) // 陣列長度
+      forms.append('length', index) // 新的陣列長度
+      forms.append('oldLength', this.oldLength) // 紀錄原本的陣列數，傳到php做判斷
       forms.append('donate', this.editDonateArray[0].donate) // 該donate編號(取一個即可)
       for (let i = 0; i < index; i++) {
         forms.append(`donate_option_id${i}`, `${optionId}${i}`)
@@ -586,8 +575,8 @@ export default {
         method: 'POST',
         body: forms
       })
-      // this.$router.replace('/Funds')
-      // window.scrollTo(0, 0)
+      this.$router.replace('/Funds')
+      window.scrollTo(0, 0)
     }
   },
   async created () {
@@ -607,6 +596,18 @@ export default {
         this.nowFundArray.unshift(item)
       })
       console.log(this.nowFundArray)
+      // 獲取total_price
+      const responses = await fetch('http://localhost/DropbeatBackend/funds_page_total_price.php')
+      const responseDatas = await responses.json()
+      this.nowFundArray.forEach((item) => {
+        responseDatas.forEach((items) => {
+          if (items.donate_id === item.donate_id) {
+            item.total_price = items.total_price
+            item.donate_num = items.donate_num
+          }
+          item.goal_percent = `${Math.round((item.total_price / item.goal) * 100)}%`
+        })
+      })
     }
   }
 }
