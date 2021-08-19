@@ -133,7 +133,7 @@ export default {
             account: responseAllData[0][2],
             memberId: responseAllData[0][0]
           })
-          this.$router.replace('/')
+          // this.$router.replace('/')
         }
       } else {
         alert('請確認輸入欄位')
@@ -227,6 +227,7 @@ select {
   background-repeat: no-repeat;
   background-position: 48px 10px;
   background-size: 25%;
+  background-color: transparent;
   color: #b5b5b5;
   font-size: 16px;
   /* margin: 5px; */

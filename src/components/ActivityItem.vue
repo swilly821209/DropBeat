@@ -10,8 +10,8 @@
           <h5>刪除</h5>
       </div>
     </div>
-    <router-link to="/Active/:id">
-      <img :src="img" class="activeImg w-[345px] h-[200px] rounded-2xl  cursor-pointer imgWidth" :style="imgWidth">
+    <router-link :to="thisRoute">
+      <img :src="img" class="activeImg w-[345px] h-[200px] rounded-2xl  cursor-pointer imgWidth object-center object-cover" :style="imgWidth">
     </router-link>
     <div class="activeContent flex flex-col justify-center">
       <h3 class="text-lg text-black-backdrop hover:underline cursor-pointer truncate">{{ title }}</h3>
@@ -30,13 +30,16 @@
 
 <script>
 export default {
-  props: ['img', 'title', 'time', 'city', 'location', 'singerImg', 'singer', 'col', 'edit', 'check', 'imgWidth', 'edidFund', 'deleteDialogFun'],
+  props: ['img', 'title', 'time', 'city', 'location', 'singerImg', 'singer', 'col', 'edit', 'check', 'imgWidth', 'edidFund', 'deleteDialogFun', 'toActive'],
   data () {
     return {
       activityTime: new Date(this.time)
     }
   },
   computed: {
+    thisRoute () {
+      return `/Active/${this.toActive}`
+    },
     inputTime () {
       const hour = this.activityTime.getHours().toString().padStart(2, '0')
       const minutes = this.activityTime.getMinutes().toString().padStart(2, '0')

@@ -12,7 +12,9 @@
     </div>
     <div class="block01">
       <h3 class="sm:hidden block mb-5">{{activeTitle}}</h3>
-      <div class="banner"></div>
+      <div class="banner">
+        <img :src="theImg" :alt="theImg" class="banner">
+      </div>
       <div class="title01">
         <h3 class="sm:block hidden">{{activeTitle}}</h3>
         <div class="share_join flex justify-between sm:justify-end ">
@@ -26,9 +28,9 @@
           </button>
         </div>
         <div class="hr sm:block hidden"></div>
-        <div class="day"><div class="dayicon sm:block hidden"></div><p>2021 年 10 月 10 日・星期日・20:00</p></div>
-        <div class="location"><div class="loctionicon sm:block hidden"></div><p>台北市・海邊的卡夫卡 Kafka by the Sea</p></div>
-        <div class="artist"><img class="artistImg sm:block hidden" src="../assets/images/artist/artist001.jpg"><div class="artistname"><p>大象體操 Elephant Gym</p><div class="undername"></div></div>
+        <div class="day"><div class="dayicon sm:block hidden"></div><p>{{theDay}}・{{getDay}}・{{theTime}}</p></div>
+        <div class="location"><div class="loctionicon sm:block hidden"></div><p>{{theArea}}・{{thePlace}}</p></div>
+        <div class="artist"><img class="artistImg sm:block hidden" :src="theImg"><div class="artistname"><p>{{theId}}</p><div class="undername"></div></div>
           <button
             class="follow"
             :class="{ clickfollow: follow }"
@@ -36,6 +38,10 @@
           >{{follow ? '正在關注' : '關注'}}</button>
         </div>
       </div>
+    </div>
+    <div class="mt-10">
+      <h1 class="text-[24px] mb-6">活動介紹</h1>
+      <textarea class="w-full h-[100px] text-gray-dark" :value="theInfo"></textarea>
     </div>
     <message-board
       class="message"
@@ -56,7 +62,16 @@ import ReportMessage from '../components/ReportMessage.vue'
 export default {
   data () {
     return {
-      activeTitle: '2021 新歌巡迴《 穿過夜晚 Go Through the Night 》',
+      theActiveId: '',
+      theInfo: '',
+      theId: '',
+      theArea: '',
+      thePlace: '',
+      theWeek: '',
+      theDay: '',
+      theTime: '',
+      theImg: '',
+      activeTitle: '',
       active: false,
       follow: false,
       activeContent: `黑夜籠罩之後，熟悉的日常逐漸褪色。
@@ -92,7 +107,7 @@ export default {
       // 判斷是否登入
       if (this.$store.getters.loginState !== false) {
         const messageData = {
-          member: 'willy',
+          member: this.$store.getters.memberIdState,
           setup_date: `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`,
           img: 'https://akstatic.streetvoice.com/profile_images/sa/nd/sandwichfail/3fT9Y92afyjdDbtNEFb2rh.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
           content: this.inputMessage
@@ -101,17 +116,14 @@ export default {
         this.nowArray.unshift(messageData)
         // 傳後端
         const form = new FormData()
-        const messageId = Math.floor(Math.random() * 9999)
-        form.append('message_id', messageId) // message_id (DB是INT)
-        form.append('member', this.$store.getters.memberIdState) // member_id (DB是INT)
-        form.append('musician', Math.floor(Math.random() * 9999)) // musician (DB是INT)
-        // form.append('setup_date', messageData.time)
+        form.append('member', this.$store.getters.memberIdState)
+        form.append('activity', this.$route.params.id)
         form.append('content', messageData.content)
         fetch('http://localhost/DropbeatBackend/mussage_act_send.php', {
           method: 'POST',
           body: form
         })
-        this.$store.dispatch('mesId', this.sendMessageId = messageId)
+        this.$store.dispatch('mesId', this.sendMessageId = this.$store.getters.memberIdState)
       } else {
         alert('請登入後留言！')
       }
@@ -123,13 +135,64 @@ export default {
     },
     displayMessageData () {
       return this.nowArray.slice(0, this.displayNum)
+    },
+    getDay () {
+      const week = this.theWeek
+      let day = ''
+      switch (week) {
+        case 1 :
+          day = '星期一'
+          break
+        case 2 :
+          day = '星期二'
+          break
+        case 3 :
+          day = '星期三'
+          break
+        case 4 :
+          day = '星期四'
+          break
+        case 5 :
+          day = '星期五'
+          break
+        case 6 :
+          day = '星期六'
+          break
+        case 0 :
+          day = '星期日'
+          break
+      }
+      return day
     }
   },
   async created () {
-    const response = await fetch('http://localhost/DropbeatBackend/mussage_act_get.php')
+    // 獲取活動資訊
+    const form = new FormData()
+    form.append('activity_id', this.$route.params.id)
+    const response = await fetch('http://localhost/DropbeatBackend/active_page_detailMain_get.php', {
+      method: 'POST',
+      body: form
+    })
     const responseData = await response.json()
+    this.theInfo = responseData[0].info
+    this.theId = responseData[0].account
+    this.theArea = responseData[0].activity_area
+    this.thePlace = responseData[0].place
+    this.theWeek = new Date(responseData[0].activity_date).getDay()
+    this.theImg = responseData[0].activity_photo
+    this.activeTitle = responseData[0].activity_name
+    this.theDay = responseData[0].activity_date
+    this.theTime = responseData[0].activity_time
+    // 獲取留言
+    const forms = new FormData()
+    forms.append('activity', this.$route.params.id)
+    const responses = await fetch('http://localhost/DropbeatBackend/mussage_act_get.php', {
+      method: 'POST',
+      body: forms
+    })
+    const responseDatas = await responses.json()
     // 操作
-    responseData.forEach((item) => {
+    responseDatas.forEach((item) => {
       this.nowArray.unshift(item)
     })
     console.log(this.nowArray)
@@ -189,7 +252,7 @@ h2 {
   width: 580px;
   height: 330px;
   border-radius: 20px;
-  background-image: url("../assets/images/active/ac001.jpg");
+  /* background-image: url("../assets/images/active/ac001.jpg"); */
   margin: 0 30px 0 0;
 }
 .title01{

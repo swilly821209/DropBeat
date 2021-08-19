@@ -122,7 +122,7 @@
     <base-title title="Crowdfunding 募資計畫" link to="/Funds"></base-title>
     <!-- <div class="flex justify-evenly"> -->
     <div class="flex justify-between">
-      <fund-item
+      <!-- <fund-item
         v-for="item in fundItems"
         :title="item.title"
         :img="item.img"
@@ -131,6 +131,17 @@
         :date="item.date"
         :money="item.money"
         :key="item.title">
+      </fund-item> -->
+      <fund-item
+        v-for="item in randerFuns"
+        :title="item.donate_name"
+        :img="item.donate_photo"
+        :singer="item.initiator"
+        :progress="item.goal_percent"
+        :date="item.countdownDate"
+        :money="item.goal"
+        :toFunds="item.toTheDonate"
+        :key="item.donate_id">
       </fund-item>
     </div>
   </div>
@@ -165,6 +176,7 @@ export default {
   },
   data () {
     return {
+      randerFuns: [],
       activeDatas: [
         {
           imgSrc: require('../assets/images/active/ac001.jpg'),
@@ -324,6 +336,29 @@ export default {
       }
       this.artistList[index].play = !this.artistList[index].play
     }
+  },
+  async created () {
+    const response = await fetch('http://localhost/DropbeatBackend/funds_page_get.php')
+    const responseData = await response.json()
+    responseData.forEach((item) => {
+      item.toTheDonate = `/Funds/${item.toTheDonate}` // router設定
+      item.total_price = 0
+      item.donate_num = 0
+      this.randerFuns.unshift(item)
+    })
+    // 獲取總金額跟贊助人數
+    const responses = await fetch('http://localhost/DropbeatBackend/funds_page_total_price.php')
+    const responseDatas = await responses.json()
+    this.randerFuns.forEach((item) => {
+      responseDatas.forEach((items) => {
+        if (items.donate_id === item.donate_id) {
+          item.total_price = items.total_price
+          item.donate_num = items.donate_num
+        }
+        item.goal_percent = `${Math.round((item.total_price / item.goal) * 100)}%`
+      })
+    })
+    this.randerFuns.splice(4)
   }
 }
 </script>
@@ -405,8 +440,13 @@ export default {
       /* border:1px solid red; */
       max-width: 320px;
     }
+    :deep .activeImg{
+      /* border:1px solid red; */
+      height: 165px;
+    }
     :deep .homeActivity{
-      height: 155px;
+      /* border:1px solid red; */
+      height: 165px;
     }
   }
   @media screen and (max-width: 400px) {
@@ -419,16 +459,16 @@ export default {
     }
   }
 .preIcon1 {
-  @apply text-gray-light absolute top-1/4 z-10 left-0 cursor-pointer
+  @apply text-gray-light absolute top-[30%] z-10 left-0 cursor-pointer
 }
 .nextIcon1{
-  @apply text-gray-light absolute top-1/4 z-10 right-0 cursor-pointer
+  @apply text-gray-light absolute top-[30%] z-10 right-0 cursor-pointer
 }
 .preIcon2 {
-  @apply text-gray-light absolute top-[100px] z-10 left-0 cursor-pointer
+  @apply text-gray-light absolute top-[33%] z-10 left-0 cursor-pointer
 }
 .nextIcon2{
-  @apply text-gray-light absolute top-[100px] z-10 right-0 cursor-pointer
+  @apply text-gray-light absolute top-[33%] z-10 right-0 cursor-pointer
 }
 .swiper-button-disabled {
   @apply text-gray-default

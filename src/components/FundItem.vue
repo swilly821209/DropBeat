@@ -10,18 +10,18 @@
           <h5>刪除</h5>
       </div>
     </div>
-    <router-link to="/Funds/:id" class="sm:order-1 order-2 flex justify-center">
+    <router-link :to="toFunds" class="sm:order-1 order-2 flex justify-center">
       <img :src="img" class="homeActivity sm:w-[269px] sm:h-[269px] w-[345px] h-[195px] object-center object-cover m-auto">
     <!-- <router-link to="/Funds/:id" class="sm:order-1 order-2 ">
       <img :src="img" class="sm:w-[269px] sm:h-[269px] w-[300px] h-[150px]"> -->
     </router-link>
     <div class="content sm:order-2 order-3 sm:w-auto w-[345px]">
-      <h4 class=" text-base text-black">{{ title }}</h4>
+      <h4 class=" text-base text-black-backdrop">{{ title }}</h4>
       <p class="text-sm text-gray-dark">{{singer}}</p>
       <div class="donateline">
         <div class="donateNow" :style="`width: ${progress}`"></div>
       </div>
-      <div class="donate_content">
+      <div class="donate_content text-black-backdrop">
         <p>$ {{ money }} | {{ progress }}</p>
         <p>還剩 {{ date }} 天</p>
       </div>
@@ -91,7 +91,13 @@ export default {
       type: String,
       required: false,
       default: ''
+    },
+    toFunds: {
+      type: String,
+      required: false,
+      default: ''
     }
+    // /Funds/1
   }
 }
 </script>

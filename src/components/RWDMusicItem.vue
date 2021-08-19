@@ -157,7 +157,6 @@ export default {
     responseData.forEach((item) => {
       this.nowArray.unshift(item)
     })
-    console.log(this.nowArray)
   }
 }
 </script>
@@ -283,6 +282,18 @@ export default {
   @media screen and (max-width: 640px){
     :deep .lyricsContainer{
       margin-left: 110px;
+    }
+    :deep .memberMessageText p{
+      color:#ededed;
+    }
+    :deep .cardBg{
+      background-color: #ededed;
+    }
+    :deep .report{
+      color: #383838;
+    }
+    :deep .bit:hover{
+      background-color: transparent;
     }
   }
   @media screen and (max-width: 580px){

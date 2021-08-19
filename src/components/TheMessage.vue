@@ -2,11 +2,11 @@
   <div class="flex items-center space-x-5">
     <img :src="memberImg" class="w-20 h-20 rounded-full">
     <div>
-      <p class="text-sm text-gray-light">{{ memberName }}・{{ timeLag }}前</p>
-      <div class="text-base text-gray-dark space-x-5 flex items-center ">
+      <p class="text-sm text-gray-light">{{ memberName }}・{{ setUpdate }}</p>
+      <div class="memberMessageText text-base text-gray-dark space-x-5 flex items-center ">
         <p>{{ memberMessage }}</p>
-        <span @click="toggleReport" class=" cursor-pointer hover:bg-gray-default w-6 h-6 flex justify-center items-center self-end rounded-full relative">
-          <base-card v-if="report" :id="mesId" @click="reportMessage" class="absolute text-sm py-1 px-1 bottom-[-70px] w-32 text-center my-0 hover:bg-gray-light hover:text-white transition-all">檢舉此留言</base-card>
+        <span @click="toggleReport" class="bit cursor-pointer hover:bg-gray-default w-6 h-6 flex justify-center items-center self-end rounded-full relative">
+          <base-card v-if="report" :id="mesId" @click="reportMessage" class="report absolute text-sm py-1 px-1 bottom-[-70px] w-32 text-center my-0 hover:bg-gray-light hover:text-white transition-all ">檢舉此留言</base-card>
           <svg xmlns="http://www.w3.org/2000/svg" class="align-bottom" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
         </span>
       </div>
@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  props: ['memberImg', 'memberName', 'commentTime', 'memberMessage', 'mesId'],
+  props: ['memberImg', 'memberName', 'commentTime', 'memberMessage', 'mesId', 'setUpdate'],
   nowMember: '',
   data () {
     return {

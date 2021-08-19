@@ -1,6 +1,6 @@
 <template>
   <div class="range">
-    <base-dialog :show="cancleDialog" class="relative z-[100]">
+    <base-dialog :show="cancleDialog" class="relative ">
       <div class="flex flex-col items-center py-4 sm:py-10 px-3 sm:px-40 ">
         <p class="text-[#383838] text-xl sm:text-2xl mb-[4px]">您先前編輯的內容都將不會儲存</p>
         <p class="text-[#383838] text-xl sm:text-2xl">確定離開？</p>
@@ -10,7 +10,7 @@
         </div>
       </div>
     </base-dialog>
-    <base-dialog :show="submitDialog" class="relative z-[100]">
+    <base-dialog :show="submitDialog" class="relative ">
       <div class="flex flex-col items-center py-4 sm:py-10 px-3 sm:px-20">
         <p class="text-[#383838] text-2xl mb-[2px]">募資審核需要7個工作天！</p>
         <p class="text-[#383838] text-xl sm:text-2xl">審核狀態將顯示在募資管理頁面</p>
@@ -21,67 +21,65 @@
         </ul>
         <div class="flex mt-[30px] text-base">
           <button @click="submitDialog = !submitDialog" class="mr-[12px] text-[#7B7B7B] bg-white border-2 border-gray-default rounded-2xl w-[55px] h-[25px] hover:text-orange hover:border-orange">取消</button>
-          <button @click="sendData" class="text-white bg-orange border-2 border-orange rounded-2xl w-[60px] w-[55px] h-[25px] hover:border-blue-light hover:bg-blue-light ">提交</button>
+          <button @click="sendData" class="text-white bg-orange border-2 border-orange rounded-2xl w-[55px] h-[25px] hover:border-blue-light hover:bg-blue-light ">提交</button>
         </div>
       </div>
     </base-dialog>
     <base-dialog :show="deleteDialog">
-      <div class="flex flex-col items-center py-10 px-40">
-        <p class="text-[#383838] text-2xl">刪除此募資提案後不可復原，您確定刪除？</p>
-        <p class="text-[#383838] text-sm">若您有問題請聯繫管理員</p>
-        <p class="text-[#383838]">・若期限屆滿前刪除募資提案，所有的贊助款項均將交還給贊助者。</p>
+      <div class="flex flex-col items-center py-4 sm:py-10 px-3 sm:px-40">
+        <p class="text-[#383838] text-xl sm:text-2xl">刪除此提案後不可復原，確定刪除？</p>
+        <p class="text-[#383838] text-xs">若您有問題請聯繫管理員</p>
+        <p class="text-[#383838] text-sm sm:text-base">・若期限屆滿前刪除募資提案，所有的贊助款項均將交還給贊助者。</p>
         <div class="flex mt-[20px]">
-          <button @click="deleteDialog = !deleteDialog" class="mr-[20px] text-white bg-orange border-2 border-orange rounded-2xl w-[60px]">取消</button>
-          <button @click="deleteFun" class="text-[#7B7B7B] bg-white border-2 border-[#B5B5B5] rounded-2xl w-[60px]">刪除</button>
+          <button @click="deleteDialog = !deleteDialog" class="mr-[12px] text-white text-[16px] bg-orange border-2 border-orange rounded-2xl w-[55px] h-[25px] hover:bg-blue-light hover:border-blue-light">取消</button>
+          <button @click="deleteFun" class="text-[#7B7B7B] text-[16px] bg-white border-2 border-gray-default rounded-2xl w-[55px] h-[25px] hover:border-orange hover:text-orange">刪除</button>
         </div>
       </div>
     </base-dialog>
     <div class="flex justify-between items-center mt-5">
-      <base-title title="募資管理" admin></base-title>
+      <base-title title="募資管理"></base-title>
       <div class="cursor-pointer hidden sm:flex sm:mr-3" >
         <svg xmlns="http://www.w3.org/2000/svg" class="preArrow mr-3 block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" class="nextArrow block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
       </div>
     </div>
-    <!-- 640px以上顯示 -->
+    <!-- 640以上 -->
     <swiper :slidesPerView="4" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="hidden sm:flex">
       <swiper-slide v-for="(item, index) in nowFundArray" :key="item.donate_name">
         <fund-item class="theItemMenegerSpe" :id = index
           edit
           :title="item.donate_name"
           :img="item.donate_photo"
-          :singer="item.initiator"
-          :progress="'20%'"
-          :date="'20'"
+          :singer="item.account"
+          :progress="item.goal_percent"
+          :date="item.countdownDate"
           :money="item.goal"
           :edidFund="edidFund"
           :deleteDialogFun="deleteDialogFun">
         </fund-item>
       </swiper-slide>
     </swiper>
-    <!-- 640px以下顯示 -->
-    <div class="sm:hidden block mt-[-30px]">
-      <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" >
-        <svg xmlns="http://www.w3.org/2000/svg" class="preIcon preArrow " width="20" height="23.077" viewBox="0 0 15 23.077"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(0 23.077) rotate(-90)" fill="currentColor"/></svg>
-        <swiper-slide v-for="item in fundItems" :key="item.title" class="flex justify-center ">
-          <fund-item
-            edit
-            class="max-w-[300px] m-auto"
-            :title="item.title"
-            :img="item.img"
-            :singer="item.singer"
-            :progress="item.progress"
-            :date="item.date"
-            :money="item.money">
-          </fund-item>
-        </swiper-slide>
-        <svg xmlns="http://www.w3.org/2000/svg" class="nextIcon nextArrow" width="20" height="18.961" viewBox="0 0 13.72 18.961"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(15 -2.058) rotate(90)" fill="currentColor"/></svg>
-      </swiper>
-    </div>
+    <!-- 640以下 -->
+    <swiper :slidesPerView="1" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="flex sm:hidden">
+      <swiper-slide v-for="(item, index) in nowFundArray" :key="item.donate_name">
+        <fund-item class="theItemMenegerSpe" :id = index
+          edit
+          :title="item.donate_name"
+          :img="item.donate_photo"
+          :singer="item.account"
+          :progress="item.goal_percent"
+          :date="item.countdownDate"
+          :money="item.goal"
+          :edidFund="edidFund"
+          :deleteDialogFun="deleteDialogFun">
+        </fund-item>
+      </swiper-slide>
+    </swiper>
+    <!-- 下半部 -->
     <base-title id="activeFund" title="發起募資" class="text-[22px] mt-12 sm:mt-20 mb-5"></base-title>
     <div class="flex flex-col w-full items-center sm:flex-row ">
       <select-img
-        class="w-[345px] h-48 sm:w-8/12 sm:h-[400px] sm:mr-6"
+        class="w-full h-48 sm:w-8/12 sm:h-[400px] sm:mr-6"
         :radius="'rounded-2xl sm:rounded-3xl'"
         :camera="true"
         :text="'選取圖片'"
@@ -103,12 +101,12 @@
         </div>
       </div>
     </div>
-    <h3  class="text-[22px] sm:text-[24px] text-black-backdrop font-medium mt-10 sm:mt-16 sm:mb-5 mb-3" :second="'second'">計畫介紹</h3>
+    <h3  class="text-[22px] sm:text-[24px] text-black-backdrop font-medium mt-10 sm:mt-16 sm:mb-5 mb-3" :second="'second'">計畫介紹：</h3>
     <div class="flex justify-center mb-12">
       <textarea v-model="fundInfo" name="projectInfo" class="w-full ml-[5px] sm:ml-[0px] h-[200px] sm:h-72 border-2 border-gray-light rounded-2xl resize-none pl-2 pt-2 focus:border-orange"></textarea>
     </div>
     <div class="flex justify-between">
-      <h3 :second="'second'" class="text-[22px] sm:text-[24px] text-black-backdrop font-medium sm:mb-5 mb-0">募資方案</h3>
+      <h3 :second="'second'" class="text-[22px] sm:text-[24px] text-black-backdrop font-medium sm:mb-5 mb-0">募資方案：</h3>
       <div class="hidden arrow cursor-pointer sm:block">
         <svg @click="leftPlan" class="mr-3" xmlns="http://www.w3.org/2000/svg" width="25" height="40" viewBox="0 0 25 40">
           <path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" :fill="planL"/>
@@ -120,7 +118,7 @@
     </div>
     <div class="flex outers ">
       <div class="flex inners items-center ">
-        <div v-for="(item, index) in fundsList" :key="item" class="hidden flex theItem sm:flex theOption">
+        <div v-for="(item, index) in fundsList" :key="item" class="flex theItem sm:flex theOption">
           <select-img
             :id="index"
             class="w-6/12 p-10 mr-5"
@@ -150,22 +148,19 @@
           </div>
         </div>
         <!-- 640px以下顯示 -->
-        <div class="block flex theItem sm:hidden">
+        <!-- <div class="block flex theItem sm:hidden">
           <div class="w-full">
             <div class="flex justify-center items-center">
               <div class=" mr-4">
-                <!-- 金額 -->
                 <div class="flex mt-4 ">
                   <label class="w-[90px] text-left text-lg text-gray-dark">金額：</label>
                   <input :value="fundsList[0].money" class="w-full border-2 border-gray-lighten text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
                 </div>
-                <!-- 標題 -->
                 <div class="flex mt-4 ">
                   <label class="w-[90px] text-left text-lg text-gray-dark">標題：</label>
                   <input :value="fundsList[0].title" class="w-full border-2 border-gray-lighten text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
                 </div>
               </div>
-              <!-- img -->
               <div class="w-[80px]  pt-3">
                 <select-img
                   class="w-[80px] h-[80px] pt-3"
@@ -176,17 +171,14 @@
                 ></select-img>
               </div>
             </div>
-            <!-- 內容 -->
             <div class="flex mt-4 mx-auto w-full">
               <label class="w-[90px] text-left text-lg text-gray-dark h-16">內容：</label>
               <textarea :value="fundsList[0].content" class="w-full ml-[-8px] mr-[4px] h-32 border-2 border-gray-lighten text-gray-light focus:outline-none resize-none rounded-lg pl-2 focus:border-orange"></textarea>
             </div>
-            <!-- 限量 -->
             <div class="flex mt-4 mx-auto w-full">
               <label class="w-[90px] text-left text-lg text-gray-dark">限量：</label>
               <input :value="fundsList[0].quantity" class="w-full ml-[-8px] mr-[4px] border-2 border-gray-lighten text-gray-light focus:outline-none rounded-lg pl-2 focus:border-orange">
             </div>
-            <!-- 新增方案 -->
             <div class="flex items-center mt-5 ">
               <svg id="new" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
                 <g id="play" fill="none" stroke="#ff9d83" stroke-width="2">
@@ -199,7 +191,7 @@
               <span class="text-orange align-baseline ml-2">新增方案</span>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
     <div class="flex justify-end mt-12 ">
@@ -230,6 +222,7 @@ export default {
   },
   data () {
     return {
+      oldLength: 0,
       cancleDialog: false,
       submitDialog: false,
       deleteDialog: false,
@@ -394,11 +387,9 @@ export default {
           if (getId > this.editDonateArray.length - 1) {
             this.editDonateArray.push({ option_img: file }) // push當下換的圖片file格式資料
             this.nowChange[getId] = 1
-            console.log(this.nowChange)
           } else {
             this.editDonateArray[getId].option_img = file // 修改裡面圖片變file格式資料
             this.nowChange[getId] = 1
-            console.log(this.nowChange)
           }
         // 修改上半部(單筆)
         } else {
@@ -409,40 +400,45 @@ export default {
     sendData () {
       if (this.$store.getters.loginState !== false) {
         const form = new FormData()
-        // 傳後端(發起募資)======================================================
-        form.append('file', this.fundImg) // 存照片
-        form.append('donate_id', this.donateId) // donate_id
-        form.append('initiator', this.$store.getters.memberIdState) // initiator (募款發起人)
-        form.append('donate_name', this.fundTitle) // donate_name
-        form.append('info', this.fundInfo) // info
-        form.append('goal', this.fundMoney) // goal
-        form.append('end_date', this.fundEndDate) // end_date
-        fetch('http://localhost/DropbeatBackend/FileUpload/funds_single_files_send.php', {
-          method: 'POST',
-          body: form
-        })
-        // 傳後端(募資方案)======================================================
-        const forms = new FormData()
-        const donateOptionId = Math.floor(Math.random() * 9999)
-        forms.append('length', this.donateImg.length)
-        for (let i = 0; i < this.donateImg.length; i++) {
-          forms.append(`file${i}`, this.donateImg[i]) // 存照片
-          forms.append(`donate_option_id${i}`, `${donateOptionId}${i}`) // 募款方案編號
-          forms.append('donate', this.donateId) // 募款編號
-          forms.append(`option_name${i}`, this.fundsList[i].title) // 方案名稱
-          forms.append(`option_reward${i}`, this.fundsList[i].content) // 方案回饋內容
-          forms.append(`option_price${i}`, this.fundsList[i].money) // 金額
-          forms.append(`num${i}`, this.fundsList[i].quantity) // 是否限量(填金額)
+        if (this.donateImg.length !== 0) {
+          // 傳後端(發起募資)======================================================
+          form.append('file', this.fundImg) // 存照片
+          form.append('donate_id', this.donateId) // donate_id
+          form.append('initiator', this.$store.getters.memberIdState) // initiator (募款發起人)
+          form.append('donate_name', this.fundTitle) // donate_name
+          form.append('info', this.fundInfo) // info
+          form.append('goal', this.fundMoney) // goal
+          form.append('end_date', this.fundEndDate) // end_date
+          fetch('http://localhost/DropbeatBackend/FileUpload/funds_single_files_send.php', {
+            method: 'POST',
+            body: form
+          })
+          // 傳後端(募資方案)======================================================
+          const forms = new FormData()
+          const donateOptionId = Math.floor(Math.random() * 9999)
+          forms.append('length', this.donateImg.length)
+          for (let i = 0; i < this.donateImg.length; i++) {
+            forms.append(`file${i}`, this.donateImg[i]) // 存照片
+            forms.append(`donate_option_id${i}`, `${donateOptionId}${i}`) // 募款方案編號
+            forms.append('donate', this.donateId) // 募款編號
+            forms.append(`option_name${i}`, this.fundsList[i].title) // 方案名稱
+            forms.append(`option_reward${i}`, this.fundsList[i].content) // 方案回饋內容
+            forms.append(`option_price${i}`, this.fundsList[i].money) // 金額
+            forms.append(`num${i}`, this.fundsList[i].quantity) // 是否限量(填金額)
+          }
+          fetch('http://localhost/DropbeatBackend/FileUpload/funds_multiple_files_send.php', {
+            method: 'POST',
+            body: forms
+          })
+          // 其他前台動作
+          this.submitDialog = !this.submitDialog
+          alert('成功新增募資！')
+          this.$router.replace('/Funds')
+          window.scrollTo(0, 0)
+        } else {
+          alert('請至少輸入一項目資方案！')
+          this.submitDialog = !this.submitDialog
         }
-        fetch('http://localhost/DropbeatBackend/FileUpload/funds_multiple_files_send.php', {
-          method: 'POST',
-          body: forms
-        })
-        // 其他前台動作
-        this.submitDialog = !this.submitDialog
-        alert('成功新增募資！')
-        this.$router.replace('/Funds')
-        window.scrollTo(0, 0)
       } else {
         alert('請先登入帳號！')
         this.$router.replace('/LoginIn')
@@ -450,7 +446,7 @@ export default {
     },
     async edidFund (e) {
       window.location.hash = '#activeFund'
-      this.sendStatus = !this.sendStatus
+      this.sendStatus = false
       // 先將圖片與文字清空
       document.querySelectorAll('.outer').forEach(item => {
         item.style.backgroundImage = 'none'
@@ -486,8 +482,9 @@ export default {
       image.style.backgroundImage = `url('${this.fundImg}')`
       // DONATEOPTION
       this.editDonateArray = responseData
-      // console.log(this.editDonateArray)
+      console.log(this.editDonateArray)
       const donateIndex = this.editDonateArray.length
+      this.oldLength = this.editDonateArray.length // 紀錄原本的陣列數，傳到php做判斷
       const donateImage = document.querySelectorAll('.outer')
       for (let i = 0; i < donateIndex; i++) {
         this.fundsList[i].money = this.editDonateArray[i].option_price
@@ -513,8 +510,8 @@ export default {
         body: form
       })
       this.deleteDialog = !this.deleteDialog
-      this.$router.replace('/Funds')
-      window.scrollTo(0, 0)
+      // this.$router.replace('/Funds')
+      // window.scrollTo(0, 0)
     },
     cancleFun () {
       this.cancleDialog = !this.cancleDialog
@@ -563,13 +560,13 @@ export default {
       const index = this.editDonateArray.length
       const forms = new FormData()
       forms.append('nowChange', this.nowChange) // 傳改變的圖片數量
-      forms.append('length', index) // 陣列長度
+      forms.append('length', index) // 新的陣列長度
+      forms.append('oldLength', this.oldLength) // 紀錄原本的陣列數，傳到php做判斷
       forms.append('donate', this.editDonateArray[0].donate) // 該donate編號(取一個即可)
       for (let i = 0; i < index; i++) {
         forms.append(`donate_option_id${i}`, `${optionId}${i}`)
         forms.append(`option_name${i}`, this.fundsList[i].title)
         forms.append(`file${i}`, this.editDonateArray[i].option_img)
-        console.log(this.editDonateArray[i].option_img)
         forms.append(`option_reward${i}`, this.fundsList[i].content)
         forms.append(`option_price${i}`, this.fundsList[i].money)
         forms.append(`num${i}`, parseInt(this.fundsList[i].quantity))
@@ -599,6 +596,18 @@ export default {
         this.nowFundArray.unshift(item)
       })
       console.log(this.nowFundArray)
+      // 獲取total_price
+      const responses = await fetch('http://localhost/DropbeatBackend/funds_page_total_price.php')
+      const responseDatas = await responses.json()
+      this.nowFundArray.forEach((item) => {
+        responseDatas.forEach((items) => {
+          if (items.donate_id === item.donate_id) {
+            item.total_price = items.total_price
+            item.donate_num = items.donate_num
+          }
+          item.goal_percent = `${Math.round((item.total_price / item.goal) * 100)}%`
+        })
+      })
     }
   }
 }
@@ -665,8 +674,24 @@ export default {
     margin-right: 20px;
   }
   @media screen and (max-width:640px) {
+    :deep .fundBlock{
+        /* border: 1px solid red; */
+        width: 100%;
+    }
+    :deep .homeActivity{
+      /* border: 1px solid red; */
+      width: 100%;
+      height: 180px;
+      background-position: center;
+    }
     .theItem{
       padding-left: 0;
+    }
+    :deep .edit{
+      justify-content:flex-start;
+    }
+    :deep .content{
+      width: 100%;
     }
     .outers{
       width: 100%;
@@ -713,29 +738,20 @@ export default {
       height: 300px;
       object-fit: cover;
     }
-    :deep .fundBlock{
-      margin: 0;
-    }
     :deep .circle{
-      width: 60px;
-      height: 60px;
+      width: 65px;
+      height: 65px;
     }
     :deep .cameraIcom{
       width: 40px;
       height: 40px;
     }
-    :deep .content{
-      width: 300px;
-    }
-    :deep .fundBlock{
-      margin-top: 0;
-    }
-    .preIcon {
-      @apply text-gray-light absolute top-1/2 z-10 left-0 cursor-pointer
+    /* .preIcon {
+      @apply text-gray-light absolute top-[42%] sm:top-1/2 z-10 left-0 cursor-pointer
     }
     .nextIcon{
-      @apply text-gray-light absolute top-1/2 z-10 right-0 cursor-pointer
-    }
+      @apply text-gray-light absolute top-[42%] sm:top-1/2 z-10 right-0 cursor-pointer
+    } */
     .swiper-button-disabled {
       @apply text-gray-default
     }

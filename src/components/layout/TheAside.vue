@@ -51,9 +51,29 @@
       </svg>
       <ul>
         <li class="li_area_one login">
-          <router-link to="/LoginIn">
+          <!-- <router-link to="/LoginIn">
             <button @click="lock" class="border-2 bg-white border-gray-medium w-52 py-1 rounded-3xl  text-gray-dark hover:text-white hover:bg-orange hover:border-opacity-0">登入 / 註冊</button>
+          </router-link> -->
+          <router-link to="/LoginIn" v-if="!isLogin" @click="lock">
+            <button class="border-2 bg-white border-gray-light w-44 h-10 rounded-3xl  text-gray-dark hover:text-white hover:bg-orange hover:border-opacity-0  ">登入 / 註冊</button>
           </router-link>
+          <div v-else class="relative w-44 flex justify-between items-center border-2 border-current bg-white text-gray-light rounded-3xl inline-block hover:text-orange" :class="{'text-orange': detail}">
+            <img class="w-9 h-9 rounded-full" src="https://akstatic.streetvoice.com/playlist_images/sv/mu/svmusic/EMGVjwN9cWkwgEFFKawTrh.jpeg?x-oss-process=image/resize,m_fill,h_380,w_380,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg">
+            <p class="text-gray-dark">{{accountName}}</p>
+            <div class="mr-3 cursor-pointer transition-all" @click="openDetail" :class="[{'rotate-180': detail}, {'text-orange': detail}]">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="12.5" viewBox="0 0 20 12.5"><path id="next" d="M8.438,1.952a2,2,0,0,1,3.123,0l5.839,7.3A2,2,0,0,1,15.839,12.5H4.161A2,2,0,0,1,2.6,9.251Z" transform="translate(20 12.5) rotate(180)" fill="currentColor"/></svg>
+            </div>
+            <ul v-if="detail" class="bg-white text-gray-dark absolute w-36 top-10 right-0 text-center p-2 border-2 border-gray-default shadow-md rounded-2xl leading-8">
+              <div class="flex flex-col items-center transform translate-x-[45%]">
+                <router-link to="/AccountManage" @click="openDetail">
+                  <li class="text-gray-dark hover:text-orange border-b border-gray-default">帳號管理</li>
+                </router-link>
+                <router-link to="/" @click="logout">
+                  <li class="text-gray-dark hover:text-orange" @click="lock">登出</li>
+                </router-link>
+              </div>
+            </ul>
+          </div>
         </li>
         <li class="li_area_one" ref="find">
           <svg class="img_icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20.005" viewBox="0 0 20 20.005">
@@ -140,12 +160,35 @@
 export default {
   data () {
     return {
+      detail: false,
       mCollapse: true,
       cCollapse: true,
       color: ['#a6ff00', '#7de845', '#5cd57c', '#45c8a4', '#36c0bc', '#31bdc5', '#a6ff00', '#31bdc5']
     }
   },
+  computed: {
+    isLogin () {
+      return this.$store.getters.loginState
+    },
+    accountName () {
+      return this.$store.getters.loginState
+    }
+  },
   methods: {
+    openDetail () {
+      this.detail = !this.detail
+    },
+    logout () {
+      this.openDetail()
+      this.accountName = ''
+      this.$store.dispatch('login', {
+        account: false,
+        memberId: false
+      })
+      localStorage.clear()
+      this.$router.replace('/')
+      window.scrollTo(0, 0)
+    },
     mCollapseFun (e) {
       if (this.mCollapse === true) {
         e.target.setAttribute('class', 'triangleOff')
@@ -239,6 +282,14 @@ export default {
           this.$refs.member.querySelector('span').style.color = '#A6FF00'
           break
         case '/Musician' :
+          this.$refs.musician.querySelector('path').style.fill = '#A6FF00'
+          this.$refs.musician.querySelector('span').style.color = '#A6FF00'
+          break
+        case '/MusicianActive' :
+          this.$refs.musician.querySelector('path').style.fill = '#A6FF00'
+          this.$refs.musician.querySelector('span').style.color = '#A6FF00'
+          break
+        case '/MusicianFunds' :
           this.$refs.musician.querySelector('path').style.fill = '#A6FF00'
           this.$refs.musician.querySelector('span').style.color = '#A6FF00'
           break

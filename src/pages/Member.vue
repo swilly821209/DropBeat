@@ -276,7 +276,7 @@ export default {
 .swiper-button-disabled {
   @apply text-gray-default
 }
-@media (max-width: 640px) {
+@media screen and (max-width: 640px) {
   .preIcon{
     @apply top-0 left-auto right-10
   }
@@ -299,6 +299,14 @@ export default {
   }
   .artistRange{
     margin-bottom: -15px;
+  }
+  :deep .item{
+    /* border:1px solid red; */
+    width: 100%;
+  }
+  :deep .activeImg{
+    width: 100%;
+    height: 100%;
   }
   .fundDetail{
     width: 100%;
