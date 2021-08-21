@@ -64,6 +64,13 @@ export default {
       like: false
     }
   },
+  watch: {
+    musicFile () {
+      this.$refs.audio.addEventListener('canplay', () => {
+        this.musicControl()
+      })
+    }
+  },
   computed: {
     musicFile () {
       const music = this.$store.getters.getNowMusic
@@ -96,6 +103,7 @@ export default {
     },
     musicControl () {
       this.playing = !this.playing
+      console.dir(this.$refs.audio)
       this.totalSecond = this.$refs.audio.duration
       if (this.playing) {
         this.$refs.audio.play()

@@ -17,7 +17,7 @@
             :class="{'invisible' : !playing}"
             :style="`background-image: url(${backdropImg})`"></div>
       </div> -->
-      <div class="musicImage relative " @click="playing = !playing" v-if="imgSrc">
+      <div class="musicImage relative " @click="playMusic" v-if="imgSrc">
         <img :src="imgSrc" :alt="imgSrc"  class=" rounded-2xl w-full h-full" >
         <div v-if="playing" class="playPauseIcon01 absolute bg-black-backdrop bg-opacity-60 rounded-2xl top-0  group-hover:visible bg-no-repeat bg-center z-10"
             :style="`background-image: url(${backdropImg})`"></div>
@@ -66,21 +66,24 @@
 import AudioIcon from './AudioIcon.vue'
 export default {
   emits: ['share-social'],
-  props: ['num', 'imgSrc', 'musicName', 'singer', 'totalSecond', 'playCounter', 'likeCounter', 'status', 'color'],
+  props: ['num', 'imgSrc', 'musicName', 'singer', 'totalSecond', 'playCounter', 'likeCounter', 'status', 'color', 'musicFile'],
   components: {
     AudioIcon
   },
   data () {
     return {
-      playing: false,
       like: false,
       likeNum: this.likeCounter
     }
   },
   computed: {
+    playing () {
+      const music = this.$store.getters.getNowMusic
+      return music === this.musicFile
+    },
     time () {
-      const minute = parseInt(this.totalSecond / 60)
-      const seconds = this.totalSecond % 60
+      const minute = parseInt(this.totalSecond / 60).toString().padStart(2, '0')
+      const seconds = (this.totalSecond % 60).toString().padStart(2, '0')
       return `${minute} : ${seconds}`
     },
     playCounterString () {
@@ -95,6 +98,10 @@ export default {
     }
   },
   methods: {
+    playMusic () {
+      console.log(this.musicFile)
+      this.$store.dispatch('playMusic', this.musicFile)
+    },
     rwdMusicitem () {
       this.$store.dispatch('rwdMusicitem', true)
     },

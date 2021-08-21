@@ -334,16 +334,25 @@ export default {
     UploadMusic,
     UploadAlbum
   },
-  created () {
-    this.fetchData()
-    this.fetchMusician()
-  },
-  updated () {
+  mounted () {
+    // this.fetchMusician()
     this.myAlbum = []
     this.draftAblum = []
     this.myMusic = []
     this.draftMusic = []
+    console.log('created')
     this.fetchData()
+    // this.fetchMusician()
+  },
+  updated () {
+    this.myAlbum = []
+    console.log('dddd', this.myAlbum)
+    this.draftAblum = []
+    this.myMusic = []
+    this.draftMusic = []
+    console.log('update')
+    this.fetchData()
+    console.log(this.myMusic)
   },
   data () {
     return {
@@ -396,21 +405,12 @@ export default {
     }
   },
   methods: {
-    async fetchMusician () {
-      const form = new FormData()
-      form.append('id', this.$store.getters.memberIdState)
-      const musician = await fetch('http://localhost/DropBeatBackend/getMusician.php', {
-        method: 'POST',
-        body: form
-      })
-      const musicianData = await musician.json()
-      this.musician = musicianData.musician_name
-      this.previewMusicianImg = musicianData.musicial_photo
-      this.musicNum = musicianData.num
-      this.musicianInfo = musicianData.info
-      console.log(this.musician)
-      console.log(musicianData)
-    },
+    // async fetchMusician () {
+    //   const form = new FormData()
+    //   form.append('id', this.$store.getters.memberIdState)
+    //   console.log(this.musician)
+    //   console.log(musicianData)
+    // },
     async fetchData () {
       const form = new FormData()
       form.append('id', this.$store.getters.memberIdState)
@@ -419,10 +419,10 @@ export default {
         body: form
       })
       const albumResponse = await album.json()
-      albumResponse.forEach((e) => {
+      await albumResponse.forEach((e) => {
         if (e.publish === '1') {
           const time = this.transformSecond(e.totalTime)
-          this.myAlbum.push({
+          this.myAlbum.unshift({
             id: e.album_id,
             img: e.albumImg,
             albumName: e.album_name,
@@ -432,7 +432,7 @@ export default {
           })
         } else {
           const time = this.transformSecond(e.totalTime)
-          this.draftAblum.push({
+          this.draftAblum.unshift({
             id: e.album_id,
             img: e.albumImg,
             albumName: e.album_name,
@@ -447,10 +447,10 @@ export default {
         body: form
       })
       const musicResponse = await music.json()
-      musicResponse.forEach((e) => {
+      await musicResponse.forEach((e) => {
         if (e.publish === '1') {
           const time = this.transformSecond(e.music_long)
-          this.myMusic.push({
+          this.myMusic.unshift({
             id: e.music_id,
             img: e.music_photo,
             albumName: e.music_name,
@@ -459,7 +459,7 @@ export default {
           })
         } else {
           const time = this.transformSecond(e.music_long)
-          this.draftMusic.push({
+          this.draftMusic.unshift({
             id: e.music_id,
             img: e.music_photo,
             albumName: e.music_name,
@@ -468,6 +468,15 @@ export default {
           })
         }
       })
+      const musician = await fetch('http://localhost/DropBeatBackend/getMusician.php', {
+        method: 'POST',
+        body: form
+      })
+      const musicianData = await musician.json()
+      this.musician = musicianData.musician_name
+      this.previewMusicianImg = musicianData.musicial_photo
+      this.musicNum = musicianData.num
+      this.musicianInfo = musicianData.info
     },
     cancel () {
       this.delectDialog = false
@@ -510,7 +519,7 @@ export default {
           body: form
         })
       }
-      await this.cancel()
+      this.cancel()
     },
     resetAlbum () {
       this.editAlbum = false

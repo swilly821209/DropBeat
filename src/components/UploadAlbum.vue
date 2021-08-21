@@ -143,7 +143,6 @@ export default {
           body: form
         })
         if (typeof this.albumPhoto !== 'string') {
-          console.log('hhhhhhhhhhhhhhhhh')
           await fetch('http://localhost/DropBeatBackend/changeAlbumImg.php', {
             method: 'POST',
             body: form

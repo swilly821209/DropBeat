@@ -73,7 +73,7 @@ export default {
     // }
   }
   // async created () {
-  //   const response = await fetch('http://localhost/DropbeatBackend/mussage_mus_get.php')
+  //   const response = await fetch('http://localhost/DropBeatBackend/mussage_mus_get.php')
   //   const responseData = await response.json()
   //   // 操作
   //   responseData.forEach((item) => {

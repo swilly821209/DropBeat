@@ -124,7 +124,7 @@ export default {
       const form = new FormData()
       const range = `range${index}`
       form.append('rangeed', range)
-      const response = await fetch('http://localhost/DropbeatBackend/active_page_selectRange.php', {
+      const response = await fetch('http://localhost/DropBeatBackend/active_page_selectRange.php', {
         method: 'POST',
         body: form
       })
@@ -192,7 +192,7 @@ export default {
     }
   },
   async created () {
-    const response = await fetch('http://localhost/DropbeatBackend/active_page_get.php')
+    const response = await fetch('http://localhost/DropBeatBackend/active_page_get.php')
     const responseData = await response.json()
     responseData.forEach((item) => {
       item.toTheActive = item.activity_id // router設定
