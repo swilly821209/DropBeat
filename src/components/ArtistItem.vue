@@ -18,7 +18,7 @@
 export default {
   computed: {
     router () {
-      return `/Active/${this.more}`
+      return `/Artist/${this.more}/ArtistHome`
     }
   },
   props: {
