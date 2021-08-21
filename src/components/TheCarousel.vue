@@ -2,7 +2,7 @@
 <base-dialog :show="showDialog">
   <share-social-media @close-social="closeSocialDialog" :imgSrc="shareImg" :music="shareMusic" :singer="shareSinger" :url="shareUrl"></share-social-media>
 </base-dialog>
-<div @mouseleave="autoCarousel" @mouseenter="cancelCarousel" class="w-full m-auto min-w-[1000px] lg:min-w-[800px]">
+<div @mouseleave="autoCarousel" @mouseenter="cancelCarousel" class="w-full m-auto min-w-[1000px] lg:min-w-[800px] hidden sm:flex">
       <div class="relative flex justify-center h-80">
         <div class="carousel-item" :class="classItems[0]" @click="changeCarousel(3)" :style="`background-image: url(${carouselActivity[0].Image})`">
             <div class="p-2 px-10 h-1/3 bg-black-backdrop  mt-48 bg-opacity-80">
