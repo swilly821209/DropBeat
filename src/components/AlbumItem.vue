@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="relative">
-      <div v-if="edit" class=" flex mt-4 absolute sm:-top-16 -top-14 sm:left-0 right-0">
-        <div @click="editDraftAlbum" class="h5_icon flex flex-col items-center sm:mr-3 ml-0 cursor-pointer">
+      <div v-if="edit" class=" flex flex-shrink-0 sm:mt-4 absolute sm:-top-16  bottom-[-3px] sm:left-0 right-0">
+        <div @click="editDraftAlbum" class="h5_icon flex flex-col items-center mr-3 ml-0 cursor-pointer">
           <span class="editIcon"></span>
           <h5>編輯</h5>
         </div>
@@ -16,33 +16,36 @@
         </div> -->
       </div>
       <img class="singleAlbum" :src="img">
-      <div class="mt-2 text-gray-dark">
-      <h3 class="sm:text-base text-sm text-black-backdrop">{{ albumName }}</h3>
-      <p v-if="editAlbum" class="text-xs sm:text-sm text-gray-dark">{{ year }}・{{ num }}首歌・{{ totalTime }}</p>
-      <p v-if="editMusic" class="text-xs sm:text-sm text-gray-dark">{{ year }}・{{ totalTime }}</p>
-      </div>
-      <!-- <div v-if="editDraft" class=" flex mt-4 absolute sm:top-[-60px] top-[-58px] right-0 sm:hidden"> -->
-      <!-- <div v-if="editDraft" class=" flex mt-4 absolute top-[-60px] left-0 sm:hidden"> -->
-        <!-- <div class="h5_icon flex flex-col items-center mr-3 cursor-pointer">
-          <span class="editIcon"></span>
-          <h5>編輯</h5>
+      <div class=" flex items-end justify-between ">
+        <div class="mt-2 text-gray-dark ">
+          <h3 v-if="editDraft" class="title_range sm:text-base text-sm text-black-backdrop sm:w-[180px]  truncate ">{{ albumName }}</h3>
+          <h3 v-else class="title_range sm:text-base text-sm text-black-backdrop sm:w-[250px]  truncate ">{{ albumName }}</h3>
+          <p v-if="editAlbum" class="text-xs sm:text-sm text-gray-dark">{{ year }}・{{ num }}首歌・{{ totalTime }}</p>
+          <p v-if="editMusic" class="text-xs sm:text-sm text-gray-dark">{{ year }}・{{ totalTime }}</p>
         </div>
-        <div class="h5_icon flex flex-col items-center cursor-pointer">
-          <span class="deleteIcon"></span>
-          <h5>刪除</h5>
-        </div>
-      </div> -->
-      <!-- <div v-if="editDraft" class=" hidden mt-4 absolute bottom-0 right-0 sm:flex">
-        <div class="h5_icon flex flex-col items-center mr-3 cursor-pointer">
-      </div> -->
-      <div v-if="editDraft" class="flex mt-4 absolute sm:top-[-60px] top-[-58px] bottom-0 right-0">
-        <div @click="editDraftAlbum"  class="h5_icon flex flex-col items-center mr-3 cursor-pointer">
-          <span class="editIcon"></span>
-          <h5>編輯</h5>
-        </div>
-        <div @click="delectItem" class="h5_icon flex flex-col items-center cursor-pointer">
-          <span class="deleteIcon"></span>
-          <h5>刪除</h5>
+        <!-- <div v-if="editDraft" class=" flex mt-4 absolute sm:top-[-60px] top-[-58px] right-0 sm:hidden"> -->
+        <!-- <div v-if="editDraft" class=" flex mt-4 absolute top-[-60px] left-0 sm:hidden"> -->
+          <!-- <div class="h5_icon flex flex-col items-center mr-3 cursor-pointer">
+            <span class="editIcon"></span>
+            <h5>編輯</h5>
+          </div>
+          <div class="h5_icon flex flex-col items-center cursor-pointer">
+            <span class="deleteIcon"></span>
+            <h5>刪除</h5>
+          </div>
+        </div> -->
+        <!-- <div v-if="editDraft" class=" hidden mt-4 absolute bottom-0 right-0 sm:flex">
+          <div class="h5_icon flex flex-col items-center mr-3 cursor-pointer">
+        </div> -->
+        <div v-if="editDraft" class="flex flex-shrink-0 sm:mt-4 absolute  sm:bottom-0 bottom-[-3px] right-0">
+          <div @click="editDraftAlbum"  class="h5_icon flex flex-col items-center mr-3 cursor-pointer">
+            <span class="editIcon"></span>
+            <h5>編輯</h5>
+          </div>
+          <div @click="delectItem" class="h5_icon flex flex-col items-center cursor-pointer">
+            <span class="deleteIcon"></span>
+            <h5>刪除</h5>
+          </div>
         </div>
       </div>
     </div>
@@ -130,6 +133,14 @@ h5{
   }
   h5{
     font-size: 12px;
+  }
+  .title_range{
+    width: 100px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .title_range{
+    width: 90px;
   }
 }
 
