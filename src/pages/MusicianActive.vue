@@ -355,7 +355,7 @@ export default {
     if (this.$store.getters.memberIdState) {
       const form = new FormData()
       form.append('initiator', this.$store.getters.memberIdState)
-      const response = await fetch('http://localhost/DropbeatBackend/FileUpload/activity_files_get.php', {
+      const response = await fetch('http://:8080/DropbeatBackend/FileUpload/activity_files_get.php', {
         method: 'POST',
         body: form
       })

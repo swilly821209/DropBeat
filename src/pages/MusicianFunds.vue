@@ -426,7 +426,7 @@ export default {
             forms.append(`option_price${i}`, this.fundsList[i].money) // 金額
             forms.append(`num${i}`, this.fundsList[i].quantity) // 是否限量(填金額)
           }
-          fetch('http://localhost/DropbeatBackend/FileUpload/funds_multiple_files_send.php', {
+          fetch('http://:8080/DropbeatBackend/FileUpload/funds_multiple_files_send.php', {
             method: 'POST',
             body: forms
           })
@@ -585,7 +585,7 @@ export default {
     if (this.$store.getters.memberIdState) {
       const formGet = new FormData()
       formGet.append('initiator', this.$store.getters.memberIdState)
-      const response = await fetch('http://localhost/DropbeatBackend/FileUpload/funds_single_files_get.php', {
+      const response = await fetch('http://:8080/DropbeatBackend/FileUpload/funds_single_files_get.php', {
         method: 'POST',
         body: formGet
       })
@@ -597,7 +597,7 @@ export default {
       })
       console.log(this.nowFundArray)
       // 獲取total_price
-      const responses = await fetch('http://localhost/DropbeatBackend/funds_page_total_price.php')
+      const responses = await fetch('http://:8080/DropbeatBackend/funds_page_total_price.php')
       const responseDatas = await responses.json()
       this.nowFundArray.forEach((item) => {
         responseDatas.forEach((items) => {

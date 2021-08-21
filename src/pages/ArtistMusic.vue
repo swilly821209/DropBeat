@@ -356,7 +356,7 @@ export default {
     }
   },
   async created () {
-    const response = await fetch('http://localhost/DropbeatBackend/mussage_mus_get.php')
+    const response = await fetch('http://:8080/DropbeatBackend/mussage_mus_get.php')
     const responseData = await response.json()
     // 操作
     responseData.forEach((item) => {

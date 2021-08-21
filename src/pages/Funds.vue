@@ -72,7 +72,7 @@ export default {
         this.randerFuns.unshift(item)
       })
       // 獲取total_price
-      const responses = await fetch('http://localhost/DropbeatBackend/funds_page_total_price.php')
+      const responses = await fetch('http://:8080/DropbeatBackend/funds_page_total_price.php')
       const responseDatas = await responses.json()
       this.randerFuns.forEach((item) => {
         responseDatas.forEach((items) => {

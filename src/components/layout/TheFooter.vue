@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <p >本網站為緯育TibaMe前端設計工程師班第67期第一組學員專題成果作品，本平台僅供學習、展示之用</p>
+    <p >本網站為緯育TibaMe前端設計工程師班第68期第一組學員專題成果作品，本平台僅供學習、展示之用</p>
     <p >參考資源 : Freepik | <a href="https://hsiangting1025.github.io/CC-List/dropbeat_cc_list.html">FMA</a> | StreetVoice | Spotify | LINE MUSIC | flyingV</p>
     <p >若有侵權疑慮，您可以私訊<a href="https://www.facebook.com/webindex/">TibaMe-前端設計工程師養成班</a>，後續會由專人協助處理</p>
   </footer>
