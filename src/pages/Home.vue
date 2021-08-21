@@ -344,7 +344,7 @@ export default {
     }
   },
   async created () {
-    const response = await fetch('http://localhost/DropBeatBackend/funds_page_get.php')
+    const response = await fetch('http://localhost/DropbeatBackend/funds_page_get.php')
     const responseData = await response.json()
     responseData.forEach((item) => {
       item.toTheDonate = `/Funds/${item.toTheDonate}` // router設定
@@ -353,7 +353,7 @@ export default {
       this.randerFuns.unshift(item)
     })
     // 獲取總金額跟贊助人數
-    const responses = await fetch('http://localhost/DropBeatBackend/funds_page_total_price.php')
+    const responses = await fetch('http://localhost/DropbeatBackend/funds_page_total_price.php')
     const responseDatas = await responses.json()
     this.randerFuns.forEach((item) => {
       responseDatas.forEach((items) => {

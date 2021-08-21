@@ -1,4 +1,4 @@
 
-module.exports = {
-  publicPath: '/tfd102/project/g1/'
-}
+// module.exports = {
+//   publicPath: '/tfd102/project/g1/'
+// }

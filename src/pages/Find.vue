@@ -4,7 +4,7 @@
 </base-dialog>
 <div class="range">
   <base-title title="發現音樂人"></base-title>
-  <div class="space-x-3">
+  <!-- <div class="space-x-3">
     <base-button
       class="my-8 selectBtn"
       v-for="item in singerRange"
@@ -25,8 +25,8 @@
       mode="outline">
       {{ item }}
     </base-button>
-  </div>
-  <find-carousel class="artistCarousel "></find-carousel>
+  </div> -->
+  <find-carousel class="artistCarousel " :allArtist="artistList"></find-carousel>
   <base-title title="發現音樂" class="mt-[-20px] sm:mt-0"></base-title>
   <div class="space-x-3">
     <base-button
@@ -101,13 +101,14 @@ export default {
       shareMusic: '',
       shareSinger: '',
       showDialog: false,
-      singerRange: ['最新歌曲', '最多播放', '最多喜歡'],
-      selectSingerRange: '最新歌曲',
-      singerType: ['全部類型', 'Rock', 'Hip hop / Rap', 'Electronic', 'Classical', 'Jazz'],
-      selectSingerType: '全部類型',
+      artistList: [],
+      // singerRange: ['最新歌曲', '最多播放', '最多喜歡'],
+      // selectSingerRange: '最新歌曲',
+      // singerType: ['全部類型', 'Rock', 'Hip hop / Rap', 'Electronic', 'Classical', 'Jazz'],
+      // selectSingerType: '全部類型',
       musicRange: ['最新歌曲', '最多播放', '最多喜歡'],
       selectMusicRange: '最新歌曲',
-      musicType: ['全部類型', 'Classical', 'Electronic', 'Hip Hop', 'Jazz', 'POP', 'Soul R&B'],
+      musicType: ['全部類型', 'Classical', 'Electronic', 'Hip Hop', 'Jazz', 'POP', 'Soul RnB'],
       selectMusicType: '全部類型',
       AllMusciItems: [],
       musicItems: [
@@ -188,8 +189,20 @@ export default {
   },
   created () {
     this.music('最新歌曲')
+    this.getMusician()
   },
   methods: {
+    async getMusician () {
+      const fetchMusician = await fetch('http://localhost/DropbeatBackend/GetAllMusician.php')
+      const fetchMusicianResponse = await fetchMusician.json()
+      fetchMusicianResponse.map((item) => {
+        this.artistList.push({
+          img: item.musicial_photo,
+          author: item.musician_name,
+          more: item.musician_id
+        })
+      })
+    },
     selectType (type) {
       this.selectMusicType = type
       let selectTypeArr = this.AllMusicItems.filter((item) => item.musicType === type)
@@ -216,7 +229,7 @@ export default {
       this.selectMusicRange = range
       const form = new FormData()
       form.append('range', range)
-      const fetchMusic = await fetch('http://localhost/DropBeatBackend/NewMusic.php', {
+      const fetchMusic = await fetch('http://localhost/DropbeatBackend/NewMusic.php', {
         method: 'POST',
         body: form
       })

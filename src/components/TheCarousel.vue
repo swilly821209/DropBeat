@@ -214,7 +214,7 @@ export default {
     }
   },
   async created () {
-    const response = await fetch('http://localhost/DropBeatBackend/carousel_component_get.php')
+    const response = await fetch('http://localhost/DropbeatBackend/carousel_component_get.php')
     const responseData = await response.json()
     responseData.forEach((item, index) => {
       this.carouselActivity[index].Image = item.activity_photo

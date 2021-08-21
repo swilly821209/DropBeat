@@ -190,7 +190,7 @@ export default {
       form.append('cellphone', this.phone)
       form.append('email', this.email)
       form.append('remark', this.note)
-      fetch('http://localhost/DropBeatBackend/funds_page_form_send.php', {
+      fetch('http://localhost/DropbeatBackend/funds_page_form_send.php', {
         method: 'POST',
         body: form
       })
@@ -201,7 +201,7 @@ export default {
   async created () {
     const form = new FormData()
     form.append('donate_option_id', this.$route.params.id)
-    const response = await fetch('http://localhost/DropBeatBackend/funds_page_form_get.php', {
+    const response = await fetch('http://localhost/DropbeatBackend/funds_page_form_get.php', {
       method: 'POST',
       body: form
     })
@@ -212,7 +212,7 @@ export default {
     // 取贊助人數
     const forms = new FormData()
     forms.append('donate_id', this.fundDatas.donate)
-    const responses = await fetch('http://localhost/DropBeatBackend/funds_page_total_price_single.php', {
+    const responses = await fetch('http://localhost/DropbeatBackend/funds_page_total_price_single.php', {
       method: 'POST',
       body: forms
     })

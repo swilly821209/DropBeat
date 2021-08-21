@@ -70,7 +70,7 @@ export default {
     form.append('memberId', memberId)
     form.append('albumId', this.edit)
     if (this.edit) {
-      const editAlbum = await fetch('http://localhost/DropBeatBackend/editAlbum.php', {
+      const editAlbum = await fetch('http://localhost/DropbeatBackend/editAlbum.php', {
         method: 'POST',
         body: form
       })
@@ -93,7 +93,7 @@ export default {
       this.albumImg = responseEdit[0].album_photo
       this.albumPhoto = responseEdit[0].album_photo
     } else {
-      const musics = await fetch('http://localhost/DropBeatBackend/MemberMusic.php', {
+      const musics = await fetch('http://localhost/DropbeatBackend/MemberMusic.php', {
         method: 'POST',
         body: form
       })
@@ -138,18 +138,18 @@ export default {
       form.append('albumDate', this.albumDate)
       form.append('albumImg', this.albumPhoto)
       if (this.edit) {
-        await fetch('http://localhost/DropBeatBackend/SetEditAlbum.php', {
+        await fetch('http://localhost/DropbeatBackend/SetEditAlbum.php', {
           method: 'POST',
           body: form
         })
         if (typeof this.albumPhoto !== 'string') {
-          await fetch('http://localhost/DropBeatBackend/changeAlbumImg.php', {
+          await fetch('http://localhost/DropbeatBackend/changeAlbumImg.php', {
             method: 'POST',
             body: form
           })
         }
       } else {
-        await fetch('http://localhost/DropBeatBackend/SetAlbum.php', {
+        await fetch('http://localhost/DropbeatBackend/SetAlbum.php', {
           method: 'POST',
           body: form
         })

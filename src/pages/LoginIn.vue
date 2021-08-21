@@ -56,7 +56,7 @@ export default {
       const form = new FormData()
       form.append('account', this.member.account)
       form.append('password', this.member.pwd)
-      const response = await fetch('http://localhost/DropBeatBackend/login.php', {
+      const response = await fetch('http://localhost/DropbeatBackend/login.php', {
         method: 'POST',
         body: form
       })

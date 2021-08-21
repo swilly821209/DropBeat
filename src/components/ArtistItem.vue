@@ -10,12 +10,17 @@
       </div>
     </div>
     <span class="span_author">{{ author }}</span>
-    <router-link class="a_more" to="/Artist/:id">more</router-link>
+    <router-link class="a_more" :to="router">more</router-link>
   </div>
 </template>
 
 <script>
 export default {
+  computed: {
+    router () {
+      return `/Active/${this.more}`
+    }
+  },
   props: {
     listen: {
       type: Boolean,

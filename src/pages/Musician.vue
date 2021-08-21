@@ -414,7 +414,7 @@ export default {
     async fetchData () {
       const form = new FormData()
       form.append('id', this.$store.getters.memberIdState)
-      const album = await fetch('http://localhost/DropBeatBackend/MusicianAlbum.php', {
+      const album = await fetch('http://localhost/DropbeatBackend/MusicianAlbum.php', {
         method: 'POST',
         body: form
       })
@@ -442,7 +442,7 @@ export default {
           })
         }
       })
-      const music = await fetch('http://localhost/DropBeatBackend/MusicianMusic.php', {
+      const music = await fetch('http://localhost/DropbeatBackend/MusicianMusic.php', {
         method: 'POST',
         body: form
       })
@@ -468,7 +468,7 @@ export default {
           })
         }
       })
-      const musician = await fetch('http://localhost/DropBeatBackend/getMusician.php', {
+      const musician = await fetch('http://localhost/DropbeatBackend/getMusician.php', {
         method: 'POST',
         body: form
       })
@@ -489,7 +489,7 @@ export default {
       form.append('id', this.$store.getters.memberIdState)
       console.log(this.musicianInfo)
       form.append('info', this.musicianInfo)
-      fetch('http://localhost/DropBeatBackend/setMusicianInfo.php', {
+      fetch('http://localhost/DropbeatBackend/setMusicianInfo.php', {
         method: 'POST',
         body: form
       })
@@ -509,12 +509,12 @@ export default {
       const form = new FormData()
       form.append('id', this.deleteId)
       if (this.deleteItem === 'music') {
-        await fetch('http://localhost/DropBeatBackend/DeleteMusic.php', {
+        await fetch('http://localhost/DropbeatBackend/DeleteMusic.php', {
           method: 'POST',
           body: form
         })
       } else {
-        await fetch('http://localhost/DropBeatBackend/DeleteAlbum.php', {
+        await fetch('http://localhost/DropbeatBackend/DeleteAlbum.php', {
           method: 'POST',
           body: form
         })
@@ -557,7 +557,7 @@ export default {
       console.log('dddddddddddd')
       form.append('id', this.$store.getters.memberIdState)
       form.append('img', e.target.files[0])
-      fetch('http://localhost/DropBeatBackend/setMusicianImg.php', {
+      fetch('http://localhost/DropbeatBackend/setMusicianImg.php', {
         method: 'POST',
         body: form
       })
