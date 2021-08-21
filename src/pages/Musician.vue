@@ -75,15 +75,14 @@
     <!-- 640以下 -->
     <div class=" block sm:hidden">
       <div class="flex items-center justify-center mt-[-15px] mb-[30px]">
-        <h1 class="text-center text-[28px] mr-2 sm:text-5xl text-gray-700 sm:text-white font-medium ">告五人 Accusefive</h1>
-        <span class="editIcon01"></span>
+        <h1 class="text-center text-[28px] mr-2 sm:text-5xl text-gray-700 sm:text-white font-medium ">{{ musician }}</h1>
       </div>
       <div>
         <div class="count_contact flex items-start w-full justify-between">
-          <div class="flex w-full justify-between items-center mt-[20px]">
-            <div>
+          <div class="flex w-full justify-start items-center mt-[20px]">
+            <div class="mr-8">
               <p class="text-[14px] text-black-backdrop">音樂</p>
-              <div class="countNum text-black-backdrop font-bold tracking-wider">16</div>
+              <div class="countNum text-black-backdrop font-bold tracking-wider">{{musicNum}}</div>
             </div>
             <div>
               <p class="text-[14px] text-black-backdrop">粉絲</p>
@@ -95,9 +94,9 @@
                 <span class="text-base text-orange">3%</span>
               </div>
             </div>
-            <div>
+            <!-- <div>
               <button class="btn text-sm">聯絡管理員</button>
-            </div>
+            </div> -->
           </div>
         </div>
         <!-- <p class="detail text-sm text-gray-dark">
@@ -109,7 +108,7 @@
           <span @click="editInfo = !editInfo" class="editIcon02"></span>
         </p>
         <div v-else class="flex w-full sm:flex-row flex-col">
-          <textarea v-model="musicianInfo" class=" border-2 h-20 rounded-xl border-orange w-full p-2 resize-none text-sm text-gray-dark" ></textarea>
+          <textarea v-model="musicianInfo" class=" border-2 h-20 rounded-xl border-orange w-full p-2 resize-none text-sm text-gray-dark mb-3" ></textarea>
           <button @click="fetchInfo" class=" self-end  text-sm text-white bg-orange rounded-2xl w-[50px] h-[25px] ml-3 hover:bg-blue-light">儲存</button>
         </div>
       </div>
