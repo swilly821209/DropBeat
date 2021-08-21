@@ -27,7 +27,7 @@
                 v-for="item in randerFuns"
                 :title="item.donate_name"
                 :img="item.donate_photo"
-                :singer="item.initiator"
+                :singer="item.account"
                 :progress="item.goal_percent"
                 :date="item.countdownDate"
                 :money="item.goal"
@@ -60,7 +60,7 @@ export default {
       const form = new FormData()
       const progress = `progress${index}`
       form.append('progressed', progress)
-      const response = await fetch('http://localhost/DropbeatBackend/funds_page_selectProgress.php', {
+      const response = await fetch('http://localhost/DropBeatBackend/funds_page_selectProgress.php', {
         method: 'POST',
         body: form
       })
@@ -72,7 +72,7 @@ export default {
         this.randerFuns.unshift(item)
       })
       // 獲取total_price
-      const responses = await fetch('http://:8080/DropbeatBackend/funds_page_total_price.php')
+      const responses = await fetch('http://localhost/DropBeatBackend/funds_page_total_price.php')
       const responseDatas = await responses.json()
       this.randerFuns.forEach((item) => {
         responseDatas.forEach((items) => {
@@ -106,7 +106,7 @@ export default {
     }
   },
   async created () {
-    const response = await fetch('http://localhost/DropbeatBackend/funds_page_get.php')
+    const response = await fetch('http://localhost/DropBeatBackend/funds_page_get.php')
     const responseData = await response.json()
     responseData.forEach((item) => {
       item.toTheDonate = `/Funds/${item.toTheDonate}` // router設定
@@ -115,7 +115,7 @@ export default {
       this.randerFuns.unshift(item)
     })
     // 獲取總金額跟贊助人數
-    const responses = await fetch('http://localhost/DropbeatBackend/funds_page_total_price.php')
+    const responses = await fetch('http://localhost/DropBeatBackend/funds_page_total_price.php')
     const responseDatas = await responses.json()
     this.randerFuns.forEach((item) => {
       responseDatas.forEach((items) => {
@@ -126,6 +126,7 @@ export default {
         item.goal_percent = `${Math.round((item.total_price / item.goal) * 100)}%`
       })
     })
+    console.log(this.randerFuns)
   }
 }
 </script>

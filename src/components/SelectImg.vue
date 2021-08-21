@@ -38,7 +38,7 @@ export default {
   //     const form = new FormData()
   //     // console.log(t)
   //     form.append('file', e.target.files[0])
-  //     await fetch('http://localhost/DropbeatBackend/FileUpload/funds_files.php', {
+  //     await fetch('http://localhost/DropBeatBackend/FileUpload/funds_files.php', {
   //       method: 'POST',
   //       body: form
   //     })

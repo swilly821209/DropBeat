@@ -248,7 +248,7 @@ export default {
         form.append('activity_area', this.showArea) // 活動區域(縣市)
         form.append('place', this.showPlace) // 活動地點
         form.append('info', this.showInfo) // 活動簡介
-        fetch('http://localhost/DropbeatBackend/FileUpload/activity_files_send.php', {
+        fetch('http://localhost/DropBeatBackend/FileUpload/activity_files_send.php', {
           method: 'POST',
           body: form
         })
@@ -279,7 +279,7 @@ export default {
       window.scrollTo(0, 0)
     },
     async edidFund (e) {
-      window.location.hash = '#doActive'
+      window.location.href = '#doActive'
       this.sendStatus = !this.sendStatus
       // 先將圖片與文字清空
       document.querySelector('.outer').style.backgroundImage = 'none'
@@ -290,7 +290,7 @@ export default {
       // 獲取該募資的id->再用id去DB找募資方案內容
       const form = new FormData()
       form.append('activity_id', this.nowActivityArr[arrayIndex].activity_id)
-      const response = await fetch('http://localhost/DropbeatBackend/FileUpload/activity_files_edit_get.php', {
+      const response = await fetch('http://localhost/DropBeatBackend/FileUpload/activity_files_edit_get.php', {
         method: 'POST',
         body: form
       })
@@ -322,7 +322,7 @@ export default {
       form.append('place', this.showPlace)
       form.append('info', this.showInfo)
       form.append('file', this.showImg) // 存照片
-      fetch('http://localhost/DropbeatBackend/FileUpload/activity_files_edit_send.php', {
+      fetch('http://localhost/DropBeatBackend/FileUpload/activity_files_edit_send.php', {
         method: 'POST',
         body: form
       })
@@ -339,7 +339,7 @@ export default {
       // 獲取該募資的id->再用id去DB找募資方案內容
       const form = new FormData()
       form.append('activity_id', this.nowActivityArr[this.arrayIndex].activity_id)
-      fetch('http://localhost/DropbeatBackend/FileUpload/activity_delete.php', {
+      fetch('http://localhost/DropBeatBackend/FileUpload/activity_delete.php', {
         method: 'POST',
         body: form
       })
@@ -355,7 +355,7 @@ export default {
     if (this.$store.getters.memberIdState) {
       const form = new FormData()
       form.append('initiator', this.$store.getters.memberIdState)
-      const response = await fetch('http://:8080/DropbeatBackend/FileUpload/activity_files_get.php', {
+      const response = await fetch('http://localhost/DropBeatBackend/FileUpload/activity_files_get.php', {
         method: 'POST',
         body: form
       })

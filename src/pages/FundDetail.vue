@@ -159,7 +159,7 @@ export default {
   async created () {
     const form = new FormData()
     form.append('donate_id', this.$route.params.id)
-    const response = await fetch('http://localhost/DropbeatBackend/funds_page_detailMain_get.php', {
+    const response = await fetch('http://localhost/DropBeatBackend/funds_page_detailMain_get.php', {
       method: 'POST',
       body: form
     })
@@ -173,11 +173,11 @@ export default {
     // this.donate_num = responseData[0].donate_num
     this.info = responseData[0].info
     this.donate_photo = responseData[0].donate_photo
-    this.initiator = responseData[0].initiator
+    this.initiator = responseData[0].account
     // 回傳目前總募款與募款人數
     const formNow = new FormData()
     formNow.append('donate_id', this.$route.params.id)
-    const responseNow = await fetch('http://localhost/DropbeatBackend/funds_page_total_price_single.php', {
+    const responseNow = await fetch('http://localhost/DropBeatBackend/funds_page_total_price_single.php', {
       method: 'POST',
       body: formNow
     })
@@ -196,7 +196,7 @@ export default {
     // 下半部
     const forms = new FormData()
     forms.append('donate_id', this.$route.params.id)
-    const responses = await fetch('http://localhost/DropbeatBackend/funds_page_detailOption_get.php', {
+    const responses = await fetch('http://localhost/DropBeatBackend/funds_page_detailOption_get.php', {
       method: 'POST',
       body: forms
     })

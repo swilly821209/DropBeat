@@ -42,6 +42,7 @@
       </div>
     </div>
   </div>
+  <!-- 640以下 -->
   <div class="sm:hidden block mt-8">
     <base-title title="HOT 即時熱門" link to="/Charts"></base-title>
       <music-item
@@ -74,43 +75,7 @@
       </artist-item>
     </div>
   </div>
-  <div class="sm:hidden block mt-14">
-    <base-title title="Showcase 演出活動" link to="/Find"></base-title>
-     <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="mt-[20px]">
-       <svg xmlns="http://www.w3.org/2000/svg" class="preIcon1 preArrow " width="15" height="23" viewBox="0 0 15 23.077"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(0 23.077) rotate(-90)" fill="currentColor"/></svg>
-       <svg xmlns="http://www.w3.org/2000/svg" class="nextIcon1 nextArrow" width="13.72" height="23" viewBox="0 0 13.72 18.961"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(15 -2.058) rotate(90)" fill="currentColor"/></svg>
-       <swiper-slide v-for="item in activeDatas" :key="item">
-         <activity-item
-            class="singleSwipe m-auto"
-            :img="item.imgSrc"
-            :title="item.title"
-            :time="item.time"
-            :city="item.city"
-            :location="item.location"
-            :singerImg="item.singerImg"
-            :singer="item.singer">
-          </activity-item>
-       </swiper-slide>
-     </swiper>
-  </div>
-  <div class="sm:hidden block mt-10">
-    <base-title title="Crowdfunding 募資" link to="/Funds"></base-title>
-      <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="mt-[-10px]">
-       <svg xmlns="http://www.w3.org/2000/svg" class="preIcon2 preArrow" width="15" height="23" viewBox="0 0 15 23.077"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(0 23.077) rotate(-90)" fill="currentColor"/></svg>
-       <svg xmlns="http://www.w3.org/2000/svg" class="nextIcon2 nextArrow" width="13.72" height="23" viewBox="0 0 13.72 18.961"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(15 -2.058) rotate(90)" fill="currentColor"/></svg>
-       <swiper-slide v-for="item in fundItems"  :key="item.title">
-         <fund-item
-          class="singleSwipe m-auto "
-          :title="item.title"
-          :img="item.img"
-          :singer="item.singer"
-          :progress="item.progress"
-          :date="item.date"
-          :money="item.money">
-        </fund-item>
-       </swiper-slide>
-     </swiper>
-  </div>
+  <!-- 640以上 -->
   <div class="w-full my-20 m-auto sm:block hidden">
     <div class="my-12">
       <base-title title="Showcase 演出活動" link to="/Find"></base-title>
@@ -136,7 +101,7 @@
         v-for="item in randerFuns"
         :title="item.donate_name"
         :img="item.donate_photo"
-        :singer="item.initiator"
+        :singer="item.account"
         :progress="item.goal_percent"
         :date="item.countdownDate"
         :money="item.goal"
@@ -144,6 +109,46 @@
         :key="item.donate_id">
       </fund-item>
     </div>
+  </div>
+  <!-- 640以下 -->
+  <div class="sm:hidden block mt-14">
+    <base-title title="Showcase 演出活動" link to="/Find"></base-title>
+     <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="mt-[20px]">
+       <svg xmlns="http://www.w3.org/2000/svg" class="preIcon1 preArrow " width="15" height="23" viewBox="0 0 15 23.077"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(0 23.077) rotate(-90)" fill="currentColor"/></svg>
+       <svg xmlns="http://www.w3.org/2000/svg" class="nextIcon1 nextArrow" width="13.72" height="23" viewBox="0 0 13.72 18.961"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(15 -2.058) rotate(90)" fill="currentColor"/></svg>
+       <swiper-slide v-for="item in activeDatas" :key="item">
+         <activity-item
+            class="singleSwipe m-auto"
+            :img="item.Image"
+            :title="item.title"
+            :time="item.date"
+            :city="item.area"
+            :location="item.location"
+            :singerImg="item.Image"
+            :singer="item.account">
+          </activity-item>
+       </swiper-slide>
+     </swiper>
+  </div>
+  <div class="sm:hidden block mt-10">
+    <base-title title="Crowdfunding 募資計畫" link to="/Funds"></base-title>
+      <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="mt-[-10px]">
+       <svg xmlns="http://www.w3.org/2000/svg" class="preIcon2 preArrow" width="15" height="23" viewBox="0 0 15 23.077"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(0 23.077) rotate(-90)" fill="currentColor"/></svg>
+       <svg xmlns="http://www.w3.org/2000/svg" class="nextIcon2 nextArrow" width="13.72" height="23" viewBox="0 0 13.72 18.961"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(15 -2.058) rotate(90)" fill="currentColor"/></svg>
+       <swiper-slide v-for="item in randerFuns" :key="item">
+         <fund-item
+          class="singleSwipe m-auto "
+          :title="item.donate_name"
+          :img="item.donate_photo"
+          :singer="item.account"
+          :progress="item.goal_percent"
+          :date="item.countdownDate"
+          :money="item.goal"
+          :toFunds="item.toTheDonate"
+          :key="item.donate_id">
+        </fund-item>
+       </swiper-slide>
+     </swiper>
   </div>
 </div>
 </template>
@@ -176,6 +181,7 @@ export default {
   },
   data () {
     return {
+      carouselActivity: [],
       randerFuns: [],
       activeDatas: [
         {
@@ -338,7 +344,7 @@ export default {
     }
   },
   async created () {
-    const response = await fetch('http://localhost/DropbeatBackend/funds_page_get.php')
+    const response = await fetch('http://localhost/DropBeatBackend/funds_page_get.php')
     const responseData = await response.json()
     responseData.forEach((item) => {
       item.toTheDonate = `/Funds/${item.toTheDonate}` // router設定
@@ -347,7 +353,7 @@ export default {
       this.randerFuns.unshift(item)
     })
     // 獲取總金額跟贊助人數
-    const responses = await fetch('http://:8080/DropbeatBackend/funds_page_total_price.php')
+    const responses = await fetch('http://localhost/DropBeatBackend/funds_page_total_price.php')
     const responseDatas = await responses.json()
     this.randerFuns.forEach((item) => {
       responseDatas.forEach((items) => {
@@ -359,6 +365,48 @@ export default {
       })
     })
     this.randerFuns.splice(4)
+    // 演出活動資料
+    const responseAc = await fetch('http://localhost/DropbeatBackend/carousel_component_get.php')
+    const responseDataAc = await responseAc.json()
+    responseDataAc.forEach((item, index) => {
+      this.carouselActivity[index].Image = item.activity_photo
+      this.carouselActivity[index].title = item.activity_name
+      this.carouselActivity[index].date = item.activity_date
+      const week = new Date(item.activity_date).getDay()
+      let day = ''
+      switch (week) {
+        case 1 :
+          day = '星期一'
+          break
+        case 2 :
+          day = '星期二'
+          break
+        case 3 :
+          day = '星期三'
+          break
+        case 4 :
+          day = '星期四'
+          break
+        case 5 :
+          day = '星期五'
+          break
+        case 6 :
+          day = '星期六'
+          break
+        case 0 :
+          day = '星期日'
+          break
+      }
+      this.carouselActivity[index].day = day
+      this.carouselActivity[index].location = item.activity_area
+      this.carouselActivity[index].singers = item.account
+      if (this.$route.path === '/') {
+        this.carouselActivity[index].shareUrl = `${window.location.href}Active/${item.activity_id}`
+      } else {
+        this.carouselActivity[index].shareUrl = `${window.location.href}/${item.activity_id}`
+      }
+      this.carouselActivity[index].shareUrls = `/Active/${item.activity_id}`
+    })
   }
 }
 </script>

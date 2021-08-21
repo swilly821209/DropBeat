@@ -3493,6 +3493,10 @@ textarea {
     min-width: 320px;
   }
 
+  .sm\:min-w-\[650px\] {
+    min-width: 650px;
+  }
+
   .sm\:max-w-\[580px\] {
     max-width: 580px;
   }
