@@ -58,6 +58,7 @@ import ArtistItem from '../components/ArtistItem.vue'
 
 SwiperCore.use([Navigation])
 export default {
+  props: ['allArtist'],
   components: {
     Swiper,
     SwiperSlide,
@@ -65,26 +66,26 @@ export default {
   },
   data () {
     return {
-      artistList: [
-        { play: false, img: 'https://picsum.photos/100', author: '告零人', more: '#' },
-        { play: false, img: 'https://picsum.photos/200', author: '告一人', more: '#' },
-        { play: false, img: 'https://picsum.photos/300', author: '告二人', more: '#' },
-        { play: false, img: 'https://picsum.photos/400', author: '告三人', more: '#' },
-        { play: false, img: 'https://picsum.photos/500', author: '告四人', more: '#' },
-        { play: false, img: 'https://picsum.photos/600', author: '告五人', more: '#' },
-        { play: false, img: 'https://picsum.photos/400', author: '告六人', more: '#' },
-        { play: false, img: 'https://picsum.photos/500', author: '告七人', more: '#' },
-        { play: false, img: 'https://picsum.photos/600', author: '告八人', more: '#' },
-        { play: false, img: 'https://picsum.photos/100', author: '告零人', more: '#' },
-        { play: false, img: 'https://picsum.photos/200', author: '告一人', more: '#' },
-        { play: false, img: 'https://picsum.photos/300', author: '告二人', more: '#' },
-        { play: false, img: 'https://picsum.photos/400', author: '告三人', more: '#' },
-        { play: false, img: 'https://picsum.photos/500', author: '告四人', more: '#' },
-        { play: false, img: 'https://picsum.photos/600', author: '告五人', more: '#' },
-        { play: false, img: 'https://picsum.photos/400', author: '告六人', more: '#' },
-        { play: false, img: 'https://picsum.photos/500', author: '告七人', more: '#' },
-        { play: false, img: 'https://picsum.photos/600', author: '告八人', more: '#' }
-      ],
+      // artistList: [
+      //   { play: false, img: 'https://picsum.photos/100', author: '告零人', more: '#' },
+      //   { play: false, img: 'https://picsum.photos/200', author: '告一人', more: '#' },
+      //   { play: false, img: 'https://picsum.photos/300', author: '告二人', more: '#' },
+      //   { play: false, img: 'https://picsum.photos/400', author: '告三人', more: '#' },
+      //   { play: false, img: 'https://picsum.photos/500', author: '告四人', more: '#' },
+      //   { play: false, img: 'https://picsum.photos/600', author: '告五人', more: '#' },
+      //   { play: false, img: 'https://picsum.photos/400', author: '告六人', more: '#' },
+      //   { play: false, img: 'https://picsum.photos/500', author: '告七人', more: '#' },
+      //   { play: false, img: 'https://picsum.photos/600', author: '告八人', more: '#' },
+      //   { play: false, img: 'https://picsum.photos/100', author: '告零人', more: '#' },
+      //   { play: false, img: 'https://picsum.photos/200', author: '告一人', more: '#' },
+      //   { play: false, img: 'https://picsum.photos/300', author: '告二人', more: '#' },
+      //   { play: false, img: 'https://picsum.photos/400', author: '告三人', more: '#' },
+      //   { play: false, img: 'https://picsum.photos/500', author: '告四人', more: '#' },
+      //   { play: false, img: 'https://picsum.photos/600', author: '告五人', more: '#' },
+      //   { play: false, img: 'https://picsum.photos/400', author: '告六人', more: '#' },
+      //   { play: false, img: 'https://picsum.photos/500', author: '告七人', more: '#' },
+      //   { play: false, img: 'https://picsum.photos/600', author: '告八人', more: '#' }
+      //  ],
       position: 0,
       arrLeftColor: '#ededed',
       arrRightColor: '#b5b5b5',
@@ -95,6 +96,11 @@ export default {
         width: 0,
         height: 0
       }
+    }
+  },
+  computed: {
+    artistList () {
+      return this.allArtist
     }
   },
   methods: {

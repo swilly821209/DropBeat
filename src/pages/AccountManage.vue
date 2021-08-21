@@ -45,7 +45,7 @@ export default {
     const form = new FormData()
     form.append('account', this.$store.getters.loginState)
     console.log(this.$store)
-    const response = await fetch('http://localhost/DropBeatBackend/AccountManage.php', {
+    const response = await fetch('http://localhost/DropbeatBackend/AccountManage.php', {
       method: 'POST',
       body: form
     })

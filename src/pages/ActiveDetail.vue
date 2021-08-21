@@ -137,7 +137,7 @@ export default {
         form.append('member', this.$store.getters.memberIdState)
         form.append('activity', this.$route.params.id)
         form.append('content', messageData.content)
-        fetch('http://localhost/DropBeatBackend/mussage_act_send.php', {
+        fetch('http://localhost/DropbeatBackend/mussage_act_send.php', {
           method: 'POST',
           body: form
         })
@@ -187,7 +187,7 @@ export default {
     // 獲取活動資訊
     const form = new FormData()
     form.append('activity_id', this.$route.params.id)
-    const response = await fetch('http://localhost/DropBeatBackend/active_page_detailMain_get.php', {
+    const response = await fetch('http://localhost/DropbeatBackend/active_page_detailMain_get.php', {
       method: 'POST',
       body: form
     })
@@ -205,7 +205,7 @@ export default {
     // 獲取留言
     const forms = new FormData()
     forms.append('activity', this.$route.params.id)
-    const responses = await fetch('http://localhost/DropBeatBackend/mussage_act_get.php', {
+    const responses = await fetch('http://localhost/DropbeatBackend/mussage_act_get.php', {
       method: 'POST',
       body: forms
     })
