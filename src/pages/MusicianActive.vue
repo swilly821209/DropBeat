@@ -279,7 +279,7 @@ export default {
       window.scrollTo(0, 0)
     },
     async edidFund (e) {
-      window.location.hash = '#doActive'
+      window.location.href = '#doActive'
       this.sendStatus = !this.sendStatus
       // 先將圖片與文字清空
       document.querySelector('.outer').style.backgroundImage = 'none'

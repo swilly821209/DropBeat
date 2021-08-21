@@ -1,5 +1,8 @@
 <template>
   <div class="range">
+    <base-dialog :show="showDialog">
+      <share-social-media @close-social="closeSocialDialog" :imgSrc="shareImg" :music="shareMusic" :singer="shareSinger" :url="shareUrl"></share-social-media>
+    </base-dialog>
     <base-title title="演出活動"></base-title>
     <the-carousel class="carousel sm:block hidden"></the-carousel>
     <div class="sm:space-x-3 space-x-1 ">
@@ -52,7 +55,7 @@
           </button>
         </div> -->
         <div class="sm:flex  self-end  hidden">
-          <div class="share "></div>
+          <div class="share" @click="shareSocial(item.activity_photo, item.activity_name, item.account, item.shareUrl)"></div>
           <button
             class="join"
             :class="{ clickjoin: active }"
@@ -76,6 +79,11 @@ export default {
   },
   data () {
     return {
+      shareUrl: '',
+      shareImg: '',
+      shareMusic: '',
+      shareSinger: '',
+      showDialog: false,
       nowActivityArr: [],
       temporarilyArr: [],
       emptyArr: [],
@@ -116,6 +124,16 @@ export default {
     }
   },
   methods: {
+    shareSocial (img, music, singer, url) {
+      this.showDialog = true
+      this.shareImg = img
+      this.shareMusic = music
+      this.shareSinger = singer
+      this.shareUrl = url
+    },
+    closeSocialDialog () {
+      this.showDialog = false
+    },
     async switchRange (index) {
       this.selectMusicRange = this.musicRange[index]
       this.nowActivityArr = []
@@ -187,7 +205,6 @@ export default {
           }
         })
         this.nowActivityArr = this.temporarilyArr
-        console.log(this.nowActivityArr)
       }
     }
   },
@@ -200,6 +217,7 @@ export default {
       this.emptyArr.unshift(item)
       item.timeCompare = new Date(item.activity_date).getTime() / (1000 * 60 * 60 * 24) // 活動時間(秒)
       item.thisMonth = new Date(item.activity_date).getMonth() + 1 // 活動月份
+      item.shareUrl = `${window.location.href}/${item.activity_id}`
     })
   }
 }

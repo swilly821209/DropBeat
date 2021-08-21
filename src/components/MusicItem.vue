@@ -1,7 +1,7 @@
 <template>
   <!-- <div class=" h-40 m-auto flex justify-between items-center cursor-pointer"> -->
   <div class="music_item group">
-    <div class="flex items-center  justify-evenly">
+    <div class="flex items-center justify-evenly">
       <div class="audio_N_num">
     <!-- <div class="music_N_name"> -->
       <div class="w-7 h-9">

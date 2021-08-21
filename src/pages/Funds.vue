@@ -27,7 +27,7 @@
                 v-for="item in randerFuns"
                 :title="item.donate_name"
                 :img="item.donate_photo"
-                :singer="item.initiator"
+                :singer="item.account"
                 :progress="item.goal_percent"
                 :date="item.countdownDate"
                 :money="item.goal"
@@ -126,6 +126,7 @@ export default {
         item.goal_percent = `${Math.round((item.total_price / item.goal) * 100)}%`
       })
     })
+    console.log(this.randerFuns)
   }
 }
 </script>
