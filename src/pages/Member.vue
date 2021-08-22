@@ -19,16 +19,16 @@
         <swiper-slide v-for="item in activeDatas" :key="item" class="flex justify-center items-center sm:top-auto top-14">
           <div class="activeRange sm:flex block items-center sm:justify-between">
             <activity-item
-                :img="item.imgSrc"
-                :title="item.title"
-                :time="item.time"
-                :city="item.city"
-                :location="item.location"
-                :singerImg="item.singerImg"
-                :singer="item.singer"
+                :img="item.activity_photo"
+                :title="item.activity_name"
+                :time="item.activity_date"
+                :city="item.activity_area"
+                :location="item.place"
+                :singerImg="item.activity_photo"
+                :singer="item.account"
                 >
             </activity-item>
-            <base-date :time="item.time" week="true" class="date"></base-date>
+            <base-date :time="item.activity_date" week="true" class="date"></base-date>
           </div>
         </swiper-slide>
       </swiper>
@@ -41,19 +41,19 @@
       <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="sm:my-10 sm:pb-0  my-0 -mt-8 pb-16">
         <svg xmlns="http://www.w3.org/2000/svg"  class="preIcon  preArrow" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" class="nextIcon nextArrow"  width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
-        <swiper-slide v-for="item in activeDatas" :key="item" class="flex justify-center items-center sm:top-auto top-14">
+        <swiper-slide v-for="item in activeDatasPast" :key="item" class="flex justify-center items-center sm:top-auto top-14">
           <div class="activeRange sm:flex block items-center justify-between ">
             <activity-item
-                :img="item.imgSrc"
-                :title="item.title"
-                :time="item.time"
-                :city="item.city"
-                :location="item.location"
-                :singerImg="item.singerImg"
-                :singer="item.singer"
+                :img="item.activity_photo"
+                :title="item.activity_name"
+                :time="item.activity_date"
+                :city="item.activity_area"
+                :location="item.place"
+                :singerImg="item.activity_photo"
+                :singer="item.account"
                 >
             </activity-item>
-            <base-date :time="item.time" week="true" class="date"></base-date>
+            <base-date :time="item.activity_date" week="true" class="date"></base-date>
           </div>
         </swiper-slide>
       </swiper>
@@ -142,6 +142,8 @@ export default {
   },
   data () {
     return {
+      activeDatas: [],
+      activeDatasPast: [],
       musicItems: [
         {
           num: '01',
@@ -198,28 +200,46 @@ export default {
           status: '▼',
           color: 'gray'
         }
-      ],
-      activeDatas: [
-        {
-          imgSrc: require('../assets/images/active/ac001.jpg'),
-          title: '2021 新歌巡迴《 穿過夜晚 Go Through the Night 》',
-          time: '2021-7-19 20:00',
-          city: '台北市',
-          location: '海邊的卡夫卡 Kafka by the Sea',
-          singerImg: 'https://akstatic.streetvoice.com/profile_images/ju/ne/junepan/U54Pf3WxjfvgWArGdTnKav.jpg?x-oss-process=image/resize,m_fill,h_600,w_600,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
-          singer: '大象體操 Elephant Gym'
-        },
-        {
-          imgSrc: require('../assets/images/active/ac001.jpg'),
-          title: '2021 新歌巡迴《 穿過夜晚 Go Through the Night 》',
-          time: '2021-7-19 20:00',
-          city: '台北市',
-          location: '海邊的卡夫卡 Kafka by the Sea',
-          singerImg: 'https://akstatic.streetvoice.com/profile_images/ju/ne/junepan/U54Pf3WxjfvgWArGdTnKav.jpg?x-oss-process=image/resize,m_fill,h_600,w_600,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
-          singer: '大象體操 Elephant Gym'
-        }
       ]
+      // activeDatas: [
+      //   {
+      //     imgSrc: require('../assets/images/active/ac001.jpg'),
+      //     title: '2021 新歌巡迴《 穿過夜晚 Go Through the Night 》',
+      //     time: '2021-7-19 20:00',
+      //     city: '台北市',
+      //     location: '海邊的卡夫卡 Kafka by the Sea',
+      //     singerImg: 'https://akstatic.streetvoice.com/profile_images/ju/ne/junepan/U54Pf3WxjfvgWArGdTnKav.jpg?x-oss-process=image/resize,m_fill,h_600,w_600,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
+      //     singer: '大象體操 Elephant Gym'
+      //   },
+      //   {
+      //     imgSrc: require('../assets/images/active/ac001.jpg'),
+      //     title: '2021 新歌巡迴《 穿過夜晚 Go Through the Night 》',
+      //     time: '2021-7-19 20:00',
+      //     city: '台北市',
+      //     location: '海邊的卡夫卡 Kafka by the Sea',
+      //     singerImg: 'https://akstatic.streetvoice.com/profile_images/ju/ne/junepan/U54Pf3WxjfvgWArGdTnKav.jpg?x-oss-process=image/resize,m_fill,h_600,w_600,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
+      //     singer: '大象體操 Elephant Gym'
+      //   }
+      // ]
     }
+  },
+  async created () {
+    const form = new FormData()
+    form.append('member_id', this.$store.getters.memberIdState)
+    const response = await fetch('http://localhost/DropbeatBackend/member_page_activity_get.php', {
+      method: 'POST',
+      body: form
+    })
+    const nowTime = Math.floor(new Date().getTime() / (1000 * 60 * 60 * 24))
+    const responseData = await response.json()
+    responseData.forEach((item) => {
+      item.timeCompare = new Date(item.activity_date).getTime() / (1000 * 60 * 60 * 24) // 活動時間(秒)
+      if (item.timeCompare - nowTime < 0) {
+        this.activeDatasPast.unshift(item)
+      } else {
+        this.activeDatas.unshift(item)
+      }
+    })
   }
 }
 </script>

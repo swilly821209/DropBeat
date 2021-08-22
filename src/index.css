@@ -1,4 +1,4 @@
-/*! tailwindcss v2.2.6 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v2.2.7 | MIT License | https://tailwindcss.com */
 
 /*! modern-normalize v1.1.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
 
@@ -583,7 +583,7 @@ video {
   display: none;
 }
 
-.translate-x-\[45\%\], .rotate-180, .rotate-45, .transform, .item1, .item2, .item4, .item5, .hover\:-translate-x-0\.5, .hover\:-translate-x-0, .hover\:translate-x-0\.5, .hover\:translate-x-0 {
+*, ::before, ::after {
   --tw-translate-x: 0;
   --tw-translate-y: 0;
   --tw-rotate: 0;
@@ -592,20 +592,11 @@ video {
   --tw-scale-x: 1;
   --tw-scale-y: 1;
   --tw-transform: translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.border-2, .border, .border-\[3px\], .border-4, .border-t, .border-b, .border-b-2, .border-l-\[5px\], .outline, .under-line, .focus\:border-b-2, .sm\:border-l, .sm\:border-b-0 {
   --tw-border-opacity: 1;
   border-color: rgba(229, 231, 235, var(--tw-border-opacity));
-}
-
-.shadow-md, .carousel-item, .hover\:shadow-md {
   --tw-ring-offset-shadow: 0 0 #0000;
   --tw-ring-shadow: 0 0 #0000;
   --tw-shadow: 0 0 #0000;
-}
-
-.ring-1 {
   --tw-ring-inset: var(--tw-empty,/*!*/ /*!*/);
   --tw-ring-offset-width: 0px;
   --tw-ring-offset-color: #fff;
@@ -613,9 +604,6 @@ video {
   --tw-ring-offset-shadow: 0 0 #0000;
   --tw-ring-shadow: 0 0 #0000;
   --tw-shadow: 0 0 #0000;
-}
-
-.blur, .filter, .item1, .item2, .item4, .item5 {
   --tw-blur: var(--tw-empty,/*!*/ /*!*/);
   --tw-brightness: var(--tw-empty,/*!*/ /*!*/);
   --tw-contrast: var(--tw-empty,/*!*/ /*!*/);
@@ -664,6 +652,10 @@ video {
 
 .pointer-events-none {
   pointer-events: none;
+}
+
+.pointer-events-auto {
+  pointer-events: auto;
 }
 
 .invisible {
@@ -798,8 +790,8 @@ video {
   top: 10px;
 }
 
-.top-\[20px\] {
-  top: 20px;
+.top-\[0px\] {
+  top: 0px;
 }
 
 .top-\[42\%\] {
@@ -1202,24 +1194,16 @@ video {
   margin-bottom: 30px;
 }
 
+.mb-32 {
+  margin-bottom: 8rem;
+}
+
 .mt-\[-48px\] {
   margin-top: -48px;
 }
 
-.mt-\[35px\] {
-  margin-top: 35px;
-}
-
-.mb-16 {
-  margin-bottom: 4rem;
-}
-
-.mt-\[50px\] {
-  margin-top: 50px;
-}
-
-.mb-32 {
-  margin-bottom: 8rem;
+.mt-\[-60px\] {
+  margin-top: -60px;
 }
 
 .mb-\[4px\] {
@@ -1252,6 +1236,26 @@ video {
 
 .mr-\[4px\] {
   margin-right: 4px;
+}
+
+.ml-\[20px\] {
+  margin-left: 20px;
+}
+
+.ml-\[40px\] {
+  margin-left: 40px;
+}
+
+.ml-\[60px\] {
+  margin-left: 60px;
+}
+
+.ml-\[80px\] {
+  margin-left: 80px;
+}
+
+.ml-\[100px\] {
+  margin-left: 100px;
 }
 
 .block {
@@ -1430,12 +1434,8 @@ video {
   height: 120px;
 }
 
-.h-\[370px\] {
-  height: 370px;
-}
-
-.h-\[250px\] {
-  height: 250px;
+.h-\[290px\] {
+  height: 290px;
 }
 
 .h-\[270px\] {
@@ -1452,6 +1452,10 @@ video {
 
 .h-screen {
   height: 100vh;
+}
+
+.h-24 {
+  height: 6rem;
 }
 
 .w-\[345px\] {
@@ -1660,6 +1664,19 @@ video {
 
 .w-\[1px\] {
   width: 1px;
+}
+
+<<<<<<< HEAD
+.w-\[20px\] {
+  width: 20px;
+=======
+.w-\[255px\] {
+  width: 255px;
+}
+
+.w-auto {
+  width: auto;
+>>>>>>> aafe59761debf99c2fe913de496e5f28e2164b52
 }
 
 .min-w-\[1000px\] {
@@ -2426,6 +2443,10 @@ video {
   font-weight: 600;
 }
 
+.font-light {
+  font-weight: 300;
+}
+
 .leading-8 {
   line-height: 2rem;
 }
@@ -2499,6 +2520,11 @@ video {
 
 .text-transparent {
   color: transparent;
+}
+
+.text-\[\#7b7b7b\] {
+  --tw-text-opacity: 1;
+  color: rgba(123, 123, 123, var(--tw-text-opacity));
 }
 
 .placeholder-gray-light::-moz-placeholder {
@@ -2926,10 +2952,6 @@ textarea {
     top: auto;
   }
 
-  .sm\:top-\[10px\] {
-    top: 10px;
-  }
-
   .sm\:top-1\/2 {
     top: 50%;
   }
@@ -3088,10 +3110,6 @@ textarea {
     margin-bottom: 0px;
   }
 
-  .sm\:mr-6 {
-    margin-right: 1.5rem;
-  }
-
   .sm\:mt-\[-48px\] {
     margin-top: -48px;
   }
@@ -3106,6 +3124,10 @@ textarea {
 
   .sm\:mt-20 {
     margin-top: 5rem;
+  }
+
+  .sm\:mr-6 {
+    margin-right: 1.5rem;
   }
 
   .sm\:ml-\[0px\] {
@@ -3298,6 +3320,10 @@ textarea {
 
   .sm\:w-2\/6 {
     width: 33.333333%;
+  }
+
+  .sm\:w-\[255px\] {
+    width: 255px;
   }
 
   .sm\:min-w-\[400px\] {
@@ -3524,6 +3550,10 @@ textarea {
 
   .sm\:pl-5 {
     padding-left: 1.25rem;
+  }
+
+  .sm\:pl-3 {
+    padding-left: 0.75rem;
   }
 
   .sm\:text-base {

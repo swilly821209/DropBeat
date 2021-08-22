@@ -28,9 +28,16 @@
           <button class="next"></button>
         </div>
         <div class="volumeAll flex items-center">
-          <div class="volumeIcon"></div>
-          <div class="volumeline cursor-pointer">
-            <div class="volumeNow" :style="`width: ${volumeUpDown}`"></div>
+          <div :class="volumeI"  @click="switchVol('0px')"></div>
+          <div class="volumeline flex cursor-pointer">
+            <div class="w-[20px]" @click="switchVol('20px')"></div>
+            <div class="w-[20px]" @click="switchVol('40px')" ></div>
+            <div class="w-[20px]" @click="switchVol('60px')"></div>
+            <div class="w-[20px]" @click="switchVol('80px')"></div>
+            <div class="w-[20px]" @click="switchVol('100px')"></div>
+            <div class="absolute pointer-events-none">
+              <div class="volumeNow" :style="`width: ${volumeUpDown}`"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -53,6 +60,7 @@
 export default {
   data () {
     return {
+      volumeI: 'volumeIcon',
       progress: '70%',
       playImg: require('../assets/images/singlemusic/s_002.jpg'),
       title: '在這座城市遺失了你',
@@ -60,7 +68,7 @@ export default {
       playSecond: '207',
       totalSecond: '357',
       playing: false,
-      volumeUpDown: '60%',
+      volumeUpDown: '60px',
       like: false
     }
   },
@@ -88,6 +96,35 @@ export default {
     }
   },
   methods: {
+    switchVol (vol) {
+      this.volumeUpDown = vol
+      switch (this.volumeUpDown) {
+        case '0px':
+          this.$refs.audio.volume = 0
+          this.volumeI = 'volumeIcons'
+          break
+        case '20px':
+          this.$refs.audio.volume = 0.2
+          this.volumeI = 'volumeIcon'
+          break
+        case '40px':
+          this.$refs.audio.volume = 0.4
+          this.volumeI = 'volumeIcon'
+          break
+        case '60px':
+          this.$refs.audio.volume = 0.6
+          this.volumeI = 'volumeIcon'
+          break
+        case '80px':
+          this.$refs.audio.volume = 0.8
+          this.volumeI = 'volumeIcon'
+          break
+        case '100px':
+          this.$refs.audio.volume = 1
+          this.volumeI = 'volumeIcon'
+          break
+      }
+    },
     changeTime (e) {
       console.dir(e.target)
     },
@@ -166,17 +203,28 @@ export default {
     background-image: url("../assets/icon/volume_b5.svg");
     background-repeat: no-repeat;
     margin-right: 8px;
+    cursor: pointer;
+  }
+  .volumeIcons{
+    width: 20px;
+    height: 20px;
+    background-image: url("../assets/icon/mute_b5.svg");
+    background-repeat: no-repeat;
+    margin-right: 8px;
+    cursor: pointer;
   }
   .volumeline{
     height: 4px;
     width: 100px;
     background-color: #b5b5b5;
     border-radius: 5px;
+    pointer-events: auto;
   }
   .volumeNow{
     height: 4px;
     background-color: #ffffff;
     border-radius: 5px;
+    width: 20px;
   }
   .volumeAll:hover .volumeNow{
     background-image: linear-gradient(to right, #31BDC5 30%, #A6ff00);

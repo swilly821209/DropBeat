@@ -28,7 +28,7 @@
       </base-button>
     </div>
     <div class="activeAll">
-      <div v-for="item in nowActivityArr"
+      <div v-for="(item, index) in nowActivityArr"
         :key="item"
         class="singleActive">
         <div class="date_N_info">
@@ -59,8 +59,8 @@
           <button
             class="join"
             :class="{ clickjoin: active }"
-            @click="active = !active"
-            >{{active ? '參加' : '想參加'}}</button>
+            @click="activeFun(index)"
+            >{{ joinDeside[index] ? '參加' : '想參加'}}</button>
         </div>
       </div>
     </div>
@@ -79,6 +79,7 @@ export default {
   },
   data () {
     return {
+      joinDeside: [],
       shareUrl: '',
       shareImg: '',
       shareMusic: '',
@@ -124,6 +125,16 @@ export default {
     }
   },
   methods: {
+    activeFun (index) {
+      this.joinDeside[index] = !this.joinDeside[index]
+      const form = new FormData()
+      form.append('member_id', this.$store.getters.memberIdState) // memeberID
+      form.append('activity_id', this.nowActivityArr[index].activity_id) // activityID
+      fetch('http://localhost/DropbeatBackend/active_page_joinDeside_send.php', {
+        method: 'POST',
+        body: form
+      })
+    },
     shareSocial (img, music, singer, url) {
       this.showDialog = true
       this.shareImg = img
@@ -154,14 +165,28 @@ export default {
         item.timeCompare = new Date(item.activity_date).getTime() / (1000 * 60 * 60 * 24) // 活動時間(秒)
         item.thisMonth = new Date(item.activity_date).getMonth() + 1 // 活動月份
       })
+      const forms = new FormData()
+      forms.append('memberId', this.$store.getters.memberIdState)
+      const responseses = await fetch('http://localhost/DropbeatBackend/carousel_join_get.php', {
+        method: 'POST',
+        body: forms
+      })
+      const responseDatass = await responseses.json()
+      console.log(responseDatass)
+      console.log(this.nowActivityArr)
+      for (let i = 0; i < responseDatass.length; i++) {
+        for (let j = 0; j < this.nowActivityArr.length; j++) {
+          if (this.nowActivityArr[j].activity_id === responseDatass[i].activity_id) {
+            this.joinDeside[j] = !this.joinDeside[j]
+          }
+        }
+      }
     },
     switchType (index) {
       this.selectMusicType = this.musicType[index]
       if (index === 0) {
-        console.log('不限時間')
         this.nowActivityArr = this.emptyArr
       } else if (index === 1) {
-        console.log('本周')
         this.nowActivityArr = this.emptyArr
         this.temporarilyArr = []
         const nowTime = Math.floor(new Date().getTime() / (1000 * 60 * 60 * 24))
@@ -172,7 +197,6 @@ export default {
         })
         this.nowActivityArr = this.temporarilyArr
       } else if (index === 2) {
-        console.log('下周')
         this.nowActivityArr = this.emptyArr
         this.temporarilyArr = []
         const nowTime = Math.floor(new Date().getTime() / (1000 * 60 * 60 * 24))
@@ -183,7 +207,6 @@ export default {
         })
         this.nowActivityArr = this.temporarilyArr
       } else if (index === 3) {
-        console.log('這個月')
         this.nowActivityArr = this.emptyArr
         this.temporarilyArr = []
         const nowMonth = new Date().getMonth() + 1
@@ -195,7 +218,6 @@ export default {
         this.nowActivityArr = this.temporarilyArr
         console.log(this.nowActivityArr)
       } else if (index === 4) {
-        console.log('下個月')
         this.nowActivityArr = this.emptyArr
         this.temporarilyArr = []
         const nowMonth = new Date().getMonth() + 2
@@ -219,6 +241,24 @@ export default {
       item.thisMonth = new Date(item.activity_date).getMonth() + 1 // 活動月份
       item.shareUrl = `${window.location.href}/${item.activity_id}`
     })
+    const maxLength = this.nowActivityArr.length // 長度
+    for (let i = 0; i < maxLength; i++) {
+      this.joinDeside.unshift(false)
+    }
+    const form = new FormData()
+    form.append('memberId', this.$store.getters.memberIdState)
+    const responses = await fetch('http://localhost/DropbeatBackend/carousel_join_get.php', {
+      method: 'POST',
+      body: form
+    })
+    const responseDatas = await responses.json()
+    for (let i = 0; i < responseDatas.length; i++) {
+      for (let j = 0; j < this.nowActivityArr.length; j++) {
+        if (this.nowActivityArr[j].activity_id === responseDatas[i].activity_id) {
+          this.joinDeside[j] = !this.joinDeside[j]
+        }
+      }
+    }
   }
 }
 </script>

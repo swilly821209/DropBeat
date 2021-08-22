@@ -36,10 +36,10 @@
           </div>
         </div>
         <h2 class="title mt-10">付款資訊</h2>
-        <div class="sm:px-2 px-3 sm:px-8 py-4 my-4 mr-0 sm:mr-8 border-2 rounded-md shadow-md">
+        <div class="px-3 sm:px-8 py-4 my-4 mr-0 sm:mr-8 border-2 rounded-md shadow-md">
           <div class="flex flex-col sm:mb-4 mb-5">
             <label class="text-gray-dark text-base mb-1 ml-1 mt-1">付款方式：</label>
-            <div class="flex flex-col sm:flex-row cursor-default">
+            <div class="flex flex-col sm:flex-row cursor-default sm:mb-4 mb-5">
               <div class="flex flex-row justify-center sm:justify-around items-center bg-gray-light w-full sm:w-64 py-2 pl-5 pr-2 rounded-lg">
                 <svg xmlns="http://www.w3.org/2000/svg" width="25.714" height="20" viewBox="0 0 25.714 20">
                   <path id="Icon_awesome-credit-card" data-name="Icon awesome-credit-card" d="M0,20.107A2.143,2.143,0,0,0,2.143,22.25H23.571a2.143,2.143,0,0,0,2.143-2.143V12.25H0Zm8.571-3.036a.537.537,0,0,1,.536-.536h6.071a.537.537,0,0,1,.536.536v1.786a.537.537,0,0,1-.536.536H9.107a.537.537,0,0,1-.536-.536Zm-5.714,0a.537.537,0,0,1,.536-.536H6.607a.537.537,0,0,1,.536.536v1.786a.537.537,0,0,1-.536.536H3.393a.537.537,0,0,1-.536-.536ZM25.714,4.393V6.536H0V4.393A2.143,2.143,0,0,1,2.143,2.25H23.571A2.143,2.143,0,0,1,25.714,4.393Z" transform="translate(0 -2.25)" fill="#fff"/>
@@ -48,58 +48,58 @@
               </div>
               <span class="text-gray-dark text-xs pt-2 sm:pt-8 pl-1 sm:pl-2">可用卡別：VISA / MASTERCARD / JCB / 銀聯卡，無手續費</span>
             </div>
-            <div class="flex flex-col mt-2 ml-1">
-              <label for="cardName" class="text-gray-dark">持卡人姓名(英文)：</label>
-              <input type="text" id="cardName" class="border-2 border-gray-default outline-none rounded-sm focus:border-orange w-[300px]">
+            <div class="flex flex-col sm:mb-4 mb-5">
+              <label for="cardName" class="text-gray-dark text-base mb-1 ml-1">持卡人姓名(英文)：</label>
+              <input type="text" id="cardName" class="border-2 border-gray-default w-full sm:w-[255px] rounded-md p-1 pl-2 text-base text-gray-dark focus:border-orange outline-none cursor-pointer">
+            </div>
+            <div class="flex flex-col  sm:mb-4 mb-5">
+              <label for="cardId" class="text-gray-dark text-base mb-1 ml-1">卡號：</label>
+              <input type="text" id="cardId" class="border-2 border-gray-default w-full sm:w-[255px] rounded-md p-1 pl-2 text-base text-gray-dark focus:border-orange outline-none cursor-pointer">
+            </div>
+            <div class="flex flex-col sm:mb-4 mb-5">
+              <label for="cardExp" class="text-gray-dark text-base mb-1 ml-1">到期日：</label>
+              <input type="date" id="cardExp" class="border-2 border-gray-default w-full sm:w-[255px] rounded-md p-1 pl-2 text-base text-gray-dark focus:border-orange outline-none cursor-pointer">
             </div>
             <div class="flex flex-col mt-2 ml-1">
-              <label for="cardId" class="text-gray-dark">卡號：</label>
-              <input type="text" id="cardId" class="border-2 border-gray-default outline-none rounded-sm focus:border-orange w-[300px]">
-            </div>
-            <div class="flex flex-col mt-2 ml-1">
-              <label for="cardExp" class="text-gray-dark">到期日：</label>
-              <input type="date" id="cardExp" class="border-2 border-gray-default outline-none rounded-sm focus:border-orange w-[300px]">
-            </div>
-            <div class="flex flex-col mt-2 ml-1">
-              <label for="cardCode" class="text-gray-dark">安全驗證：</label>
-              <input type="text" id="cardCode" class="border-2 border-gray-default outline-none rounded-sm focus:border-orange w-[300px]">
+              <label for="cardCode" class="text-gray-dark text-base mb-1 ml-1">安全驗證碼：</label>
+              <input type="text" id="cardCode" class="border-2 border-gray-default w-full sm:w-[255px] rounded-md p-1 pl-2 text-base text-gray-dark focus:border-orange outline-none cursor-pointer">
             </div>
           </div>
           <div class="flex flex-col mb-4">
             <label for="address" class="text-gray-dark text-base mb-1 ml-1">贊助總金額：</label>
-            <div class="flex flex-col sm:flex-row items-center justify-between border-2 border-gray-default py-2 sm:py-6 px-4 sm:px-2 rounded-md">
+            <div class="flex flex-col sm:flex-row items-start justify-between border-2 border-gray-default py-2 sm:py-6 px-4 sm:px-2 rounded-md">
               <div class="flex justify-between sm:space-x-7 items-center sm:items-end justify-center sm:justify-start sm:ml-4 w-full sm:w-5/6">
                 <div class="flex flex-col">
-                  <p class="text-gray-dark text-sm">贊助金額</p>
-                  <span class="text-xl text-gray-dark font-bold">${{fundDatas.option_price}}</span>
+                  <p class="text-gray-dark text-sm pl-3">贊助金額</p>
+                  <span class="text-xl text-gray-dark font-bold">$ {{fundDatas.option_price}}</span>
                 </div>
                 <div class="flex flex-col mx-4">
                   <p class="invisible">.</p>
                   <span class="text-xl text-gray-dark font-bold">+</span>
                 </div>
                 <div class="flex flex-col">
-                  <p class="text-gray-dark text-sm">運費</p>
+                  <p class="text-gray-dark text-sm pl-3">運費</p>
                   <span class="text-xl text-gray-dark font-bold">$ 0</span>
                 </div>
                 <div class="flex flex-col mx-4 ">
                   <p class="invisible">.</p>
                   <span class="text-xl text-gray-dark font-bold">+</span>
                 </div>
-                <div class="flex flex-col items-center">
+                <div class="flex flex-col ">
                   <p class="text-gray-dark text-sm pl-3">額外支持</p>
                   <span class="text-xl text-gray-dark font-bold">$<input v-model="extraFunds" type="text" placeholder="0" class="border-b-2 border-orange outline-none w-20 pl-1 text-xl text-orange font-bold"></span>
                 </div>
               </div>
-              <div class=" mr-0 sm:mr-4 flex self-end">
-                <div class="flex flex-col mr-4">
-                  <p class="invisible">.</p>
+              <div class=" mr-0 sm:mr-4 flex self-start  mt-3 sm:mt-0">
+                <div class="flex flex-col sm:mr-4 mr-2">
+                  <p class="hidden sm:flex invisible">.</p>
                   <span class="text-xl text-gray-dark font-bold">=</span>
                 </div>
-                <div class="flex flex-row sm:flex-col items-center">
-                  <p class="text-lg text-gray-dark mr-2 sm:mr-0">總金額</p>
+                <div class="flex flex-row sm:flex-col sm:items-start justify-center items-center">
+                  <p class="text-lg sm:text-sm text-gray-dark mr-2 sm:mr-0 sm:pl-3 pl-0">總金額</p>
                   <div class="flex">
                     <span class="text-xl text-gray-dark font-bold mr-1">$</span>
-                    <input type="text" class="text-xl text-gray-dark font-bold w-[80px] outline-none" v-model="totalPrice" readonly>
+                    <input type="text" class="text-xl text-gray-dark font-bold w-[80px] outline-none self-end" v-model="totalPrice" readonly>
                   </div>
                 </div>
               </div>

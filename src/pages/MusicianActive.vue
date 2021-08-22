@@ -91,11 +91,11 @@
         </div>
         <div class="flex mt-4 w-full sm:w-full">
           <label for="date" class="textTitle text-right text-gray-dark text-lg mr-3">活動日期：</label>
-          <input v-model="showDate" name="date" id="date" type="date" @change="changeColor" style="color:#7b7b7b" class="bg-white sm:bg-opacity-0 textLine border-b-2 border-gray-light focus:outline-none focus:border-orange text-transparent font-bold">
+          <input v-model="showDate" name="date" id="date" type="date" @change="changeColor" style="color:#7b7b7b" class="bg-white sm:bg-opacity-0 textLine border-b-2 border-gray-light focus:outline-none focus:border-orange text-transparent ">
         </div>
         <div class="flex mt-4 w-full sm:w-full">
           <label for="time" class="textTitle text-right text-gray-dark text-lg mr-3">活動時間：</label>
-          <input v-model="showTime" name="time" id="time" type="time" @change="changeColor" style="color:#7b7b7b" class="bg-white sm:bg-opacity-0 textLine border-b-2 border-gray-light focus:outline-none focus:border-orange text-transparent font-bold">
+          <input v-model="showTime" name="time" id="time" type="time" @change="changeColor" style="color:#7b7b7b" class="bg-white sm:bg-opacity-0 textLine border-b-2 border-gray-light focus:outline-none focus:border-orange text-transparent">
         </div>
         <div class="flex mt-4 w-full sm:w-full">
           <label for="placeArea" class="textTitle text-right text-gray-dark text-lg mr-3">活動地點：</label>
@@ -106,7 +106,7 @@
         <div class="flex mt-4  w-full sm:w-full relative">
           <label class="textTitle mr-3"></label>
           <label for="place" class="textLine">
-            <input v-model="showPlace" name="place" id="place" type="text" class="w-full border-b-2 border-gray-light text-gray-dark focus:outline-none focus:border-orange text-gray-light pl-1">
+            <input v-model="showPlace" name="place" id="place" type="text" style="color:#7b7b7b" class="w-full border-b-2 border-gray-light text-gray-dark focus:outline-none focus:border-orange text-gray-light pl-1">
           </label>
         </div>
       </div>
@@ -232,12 +232,10 @@ export default {
         image.style.backgroundImage = `url('${readFile.result}')`
       })
       this.showImg = file
-      // console.log(this.showImg)
     },
     sendData () {
       if (this.$store.getters.loginState !== false) {
         const form = new FormData()
-        // const activityId = Math.floor(Math.random() * 9999)
         // 傳後端(發起募資)======================================================
         form.append('file', this.showImg) // 存照片 活動代表圖 file進去 轉activity_photo
         // form.append('activity_id', activityId) // donate_id
@@ -361,7 +359,6 @@ export default {
       })
       // 回傳
       const responseData = await response.json()
-      // this.defaultEdit = false
       responseData.forEach((item) => {
         this.nowActivityArr.unshift(item)
       })

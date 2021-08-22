@@ -20,7 +20,11 @@
         <div class="mt-2 text-gray-dark ">
           <h3 v-if="editDraft" class="title_range sm:text-base text-sm text-black-backdrop sm:w-[180px]  truncate ">{{ albumName }}</h3>
           <h3 v-else class="title_range sm:text-base text-sm text-black-backdrop sm:w-[250px]  truncate ">{{ albumName }}</h3>
-          <p v-if="editAlbum" class="text-xs sm:text-sm text-gray-dark">{{ year }}・{{ num }}首歌・{{ totalTime }}</p>
+          <div v-if="editAlbum" class="flex sm:flex-row flex-col">
+            <p  class="text-xs sm:text-sm text-gray-dark">{{ year }}・{{ num }}首歌</p>
+            <p  class="hidden sm:block text-xs sm:text-sm text-gray-dark">・{{ totalTime }}</p>
+            <p  class="block sm:hidden text-xs sm:text-sm text-gray-dark">{{ totalTime }}</p>
+          </div>
           <p v-if="editMusic" class="text-xs sm:text-sm text-gray-dark">{{ year }}・{{ totalTime }}</p>
         </div>
         <!-- <div v-if="editDraft" class=" flex mt-4 absolute sm:top-[-60px] top-[-58px] right-0 sm:hidden"> -->
