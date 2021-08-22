@@ -232,12 +232,10 @@ export default {
         image.style.backgroundImage = `url('${readFile.result}')`
       })
       this.showImg = file
-      // console.log(this.showImg)
     },
     sendData () {
       if (this.$store.getters.loginState !== false) {
         const form = new FormData()
-        // const activityId = Math.floor(Math.random() * 9999)
         // 傳後端(發起募資)======================================================
         form.append('file', this.showImg) // 存照片 活動代表圖 file進去 轉activity_photo
         // form.append('activity_id', activityId) // donate_id
@@ -361,7 +359,6 @@ export default {
       })
       // 回傳
       const responseData = await response.json()
-      // this.defaultEdit = false
       responseData.forEach((item) => {
         this.nowActivityArr.unshift(item)
       })

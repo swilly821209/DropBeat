@@ -304,7 +304,7 @@ export default {
         }
       ],
       artistList: [
-        { play: false, img: 'https://picsum.photos/100', author: '告五人', more: '#' },
+        { play: false, img: 'https://images.unsplash.com/photo-1579649554660-463ed1d72831?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=635&q=80', author: '告五人', more: '#' },
         { play: false, img: 'https://picsum.photos/200', author: '告五人', more: '#' },
         { play: false, img: 'https://picsum.photos/300', author: '告五人', more: '#' },
         { play: false, img: 'https://picsum.photos/400', author: '告五人', more: '#' },

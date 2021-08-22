@@ -26,8 +26,8 @@
           <button
             class="join"
             :class="{ clickjoin: active }"
-            @click="active = !active">
-            {{active ? '參加' : '想參加'}}
+            @click="activeFun()">
+            {{joinDeside ? '參加' : '想參加'}}
           </button>
         </div>
         <div class="hr sm:block hidden"></div>
@@ -65,6 +65,7 @@ import ReportMessage from '../components/ReportMessage.vue'
 export default {
   data () {
     return {
+      joinDeside: false,
       shareUrl: '',
       shareImg: '',
       shareMusic: '',
@@ -104,6 +105,17 @@ export default {
     ReportMessage
   },
   methods: {
+    activeFun () {
+      this.joinDeside = !this.joinDeside
+      const form = new FormData()
+      form.append('member_id', this.$store.getters.memberIdState) // memeberID
+      form.append('activity_id', this.$route.params.id) // activityID
+      fetch('http://localhost/DropbeatBackend/active_page_joinDeside_send.php', {
+        method: 'POST',
+        body: form
+      })
+      console.log(this.$route.params.id)
+    },
     shareSocial (img, music, singer, url) {
       this.showDialog = true
       this.shareImg = img
@@ -214,7 +226,20 @@ export default {
     responseDatas.forEach((item) => {
       this.nowArray.unshift(item)
     })
-    console.log(this.nowArray)
+    const formes = new FormData()
+    formes.append('memberId', this.$store.getters.memberIdState)
+    formes.append('activityId', this.$route.params.id)
+    const responseses = await fetch('http://localhost/DropbeatBackend/active_page_detailMain_join_get.php', {
+      method: 'POST',
+      body: formes
+    })
+    const responseDatases = await responseses.json()
+    console.log(responseDatases)
+    if (responseDatases.length === 0) {
+      this.joinDeside = false
+    } else {
+      this.joinDeside = !this.joinDeside
+    }
   }
 }
 </script>
