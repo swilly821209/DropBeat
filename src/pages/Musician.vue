@@ -52,7 +52,7 @@
               <div>
                 <p class="text-bas text-black-backdrop">粉絲</p>
                 <div class="countNum text-black-backdrop font-bold tracking-wider">
-                  68,250
+                  {{ followNum }}
                   <svg class="pt-2" xmlns="http://www.w3.org/2000/svg" width="25" height="22" viewBox="0 0 20 12.5">
                     <path id="_" data-name="%" d="M8.438,1.952a2,2,0,0,1,3.123,0l5.839,7.3A2,2,0,0,1,15.839,12.5H4.161A2,2,0,0,1,2.6,9.251Z" fill="#fe9f8a"/>
                   </svg>
@@ -87,7 +87,7 @@
             <div>
               <p class="text-[14px] text-black-backdrop">粉絲</p>
               <div class="countNum text-black-backdrop font-bold tracking-wider">
-                68,250
+                {{ followNum }}
                 <svg class="pt-1" xmlns="http://www.w3.org/2000/svg" width="15" height="20" viewBox="0 0 20 12.5">
                   <path id="_" data-name="%" d="M8.438,1.952a2,2,0,0,1,3.123,0l5.839,7.3A2,2,0,0,1,15.839,12.5H4.161A2,2,0,0,1,2.6,9.251Z" fill="#fe9f8a"/>
                 </svg>
@@ -328,6 +328,7 @@ export default {
   },
   data () {
     return {
+      followNum: 0,
       musicNum: '0',
       musician: '1',
       previewMusicianImg: 'https://akstatic.streetvoice.com/profile_images/er/ic/eric198853/Y3w4tbHRLXMLzFxUmW9bb7.jpg?x-oss-process=image/resize,m_fill,h_380,w_380,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
@@ -449,6 +450,7 @@ export default {
       this.previewMusicianImg = musicianData.musicial_photo
       this.musicNum = musicianData.num
       this.musicianInfo = musicianData.info
+      this.followNum = musicianData.followNum
     },
     cancel () {
       this.delectDialog = false
