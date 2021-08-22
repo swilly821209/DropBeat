@@ -85,7 +85,7 @@ const routes = [
   },
   {
     path: '/Artist/:id',
-    redirect: '/Artist/:id/ArtistHome',
+    // redirect: '/Artist/:id/ArtistHome',
     name: 'Artist',
     component: Artist,
     children: [

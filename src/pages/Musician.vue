@@ -2,15 +2,15 @@
   <base-dialog>
     <delete-music></delete-music>
   </base-dialog>
-  <base-dialog :show="uploadMusicDialog">
+  <base-dialog :show="uploadMusicDialog" class="my-2">
     <upload-music @edit-name="editName = false" :musicFile="musicFile" :duration="duration" :edit="editName"></upload-music>
   </base-dialog>
   <base-dialog :show="delectDialog">
     <div class="p-5">
-      <p class="text-xl text-black-backdrop">刪除後不可復原，您確定刪除？</p>
-      <div class="mt-5 mx-auto w-36 space-x-2">
-        <button @click="cancel" class="hover:bg-blue-light text-white bg-orange px-3 rounded-xl px-2">取消</button>
-        <button @click="confirm" class=" text-black-backdrop hover:text-orange rounded-xl border-current border px-2">刪除</button>
+      <p class="text-xl sm:text-2xl text-black-backdrop">刪除後不可復原，您確定刪除？</p>
+      <div class="flex mt-5 justify-center">
+        <button @click="cancel" class="mr-[12px] text-white text-base bg-orange border-2 border-orange rounded-2xl w-[55px] h-[25px] hover:bg-blue-light hover:border-blue-light">取消</button>
+        <button @click="confirm" class=" text-gray-dark text-base border-2 rounded-2xl border-gray-default w-[55px] h-[25px] hover:text-orange hover:border-orange">刪除</button>
       </div>
     </div>
   </base-dialog>
@@ -38,7 +38,7 @@
         </div>
       </div>
       <!-- 640以上 -->
-      <div class="h-1/2 hidden sm:block">
+      <div class="h-1/2 w-full hidden sm:block">
         <div class="flex items-end">
           <h1 class="text-[32px] sm:text-5xl text-gray-700 sm:text-white font-medium min-w-[400px] mb-12">{{ musician }}</h1>
         </div>
@@ -65,9 +65,9 @@
             {{ musicianInfo }}
             <span @click="editInfo = !editInfo" class="editIcon02"></span>
           </p>
-          <div v-else class="flex">
-            <textarea v-model="musicianInfo" class="border-2 h-20 rounded-xl border-orange w-[750px] p-2"></textarea>
-            <button @click="fetchInfo" class="ml-2 hover:bg-blue-light self-end px-2 bg-orange rounded-xl text-white text-sm">儲存</button>
+          <div v-else class="flex w-full">
+            <textarea v-model="musicianInfo" class=" border-2 h-20 rounded-xl border-orange w-full p-2 resize-none text-sm text-gray-dark" ></textarea>
+            <button @click="fetchInfo" class=" self-end  text-sm text-white bg-orange rounded-2xl w-[50px] h-[25px] ml-3 hover:bg-blue-light">儲存</button>
           </div>
         </div>
       </div>
@@ -75,15 +75,14 @@
     <!-- 640以下 -->
     <div class=" block sm:hidden">
       <div class="flex items-center justify-center mt-[-15px] mb-[30px]">
-        <h1 class="text-center text-[28px] mr-2 sm:text-5xl text-gray-700 sm:text-white font-medium ">告五人 Accusefive</h1>
-        <span class="editIcon01"></span>
+        <h1 class="text-center text-[28px] mr-2 sm:text-5xl text-gray-700 sm:text-white font-medium ">{{ musician }}</h1>
       </div>
       <div>
         <div class="count_contact flex items-start w-full justify-between">
-          <div class="flex w-full justify-between items-center mt-[20px]">
-            <div>
+          <div class="flex w-full justify-start items-center mt-[20px]">
+            <div class="mr-8">
               <p class="text-[14px] text-black-backdrop">音樂</p>
-              <div class="countNum text-black-backdrop font-bold tracking-wider">16</div>
+              <div class="countNum text-black-backdrop font-bold tracking-wider">{{musicNum}}</div>
             </div>
             <div>
               <p class="text-[14px] text-black-backdrop">粉絲</p>
@@ -95,15 +94,23 @@
                 <span class="text-base text-orange">3%</span>
               </div>
             </div>
-            <div>
+            <!-- <div>
               <button class="btn text-sm">聯絡管理員</button>
-            </div>
+            </div> -->
           </div>
         </div>
-        <p class="detail text-sm text-gray-dark">
+        <!-- <p class="detail text-sm text-gray-dark">
           告五人成立於2011年，2017年重新成團，2018年以首張EP《迷霧之子》獲得金音獎最佳新人。目前為主唱潘雲安、犬青及鼓手哲謙的三人編制， 男女雙主唱的迷人交錯聲線，帶給聽眾強烈的吸引力。
           <span class="editIcon02"></span>
+        </p> -->
+        <p v-if="editInfo" class="detail text-sm text-gray-dark">
+          {{ musicianInfo }}
+          <span @click="editInfo = !editInfo" class="editIcon02"></span>
         </p>
+        <div v-else class="flex w-full sm:flex-row flex-col">
+          <textarea v-model="musicianInfo" class=" border-2 h-20 rounded-xl border-orange w-full p-2 resize-none text-sm text-gray-dark mb-3" ></textarea>
+          <button @click="fetchInfo" class=" self-end  text-sm text-white bg-orange rounded-2xl w-[50px] h-[25px] ml-3 hover:bg-blue-light">儲存</button>
+        </div>
       </div>
     </div>
   </div>
@@ -116,7 +123,7 @@
       </div>
     </div>
     <div class="flex flex-col sm:flex-row justify-center sm:justify-start items-center w-full sm:items-start mb-20">
-      <div class=" flex flex-col justify-center items-center relative mr-0 sm:mr-6 sm:w-[260px] w-full sm:h-[260px] h-[100px] bg-[#B5B5B5]">
+      <div class=" flex flex-col justify-center items-center relative mr-0 sm:mr-8 sm:w-[260px] w-full sm:h-[260px] h-[100px] bg-[#B5B5B5]">
         <div @click="uploadAlbum" class="group hover:bg-gray-default cursor-pointer sm:w-[260px] w-full sm:h-[260px] h-[100px] flex sm:flex-col justify-center items-center">
           <div class="border-white rounded-full border-4 inline-block group-hover:border-gray-light">
             <svg class="group-hover:text-gray-light fill-current text-white sm:w-[105px] sm:h-[105px] w-10 h-10 sm:p-5 p-2" id="圖層_1" data-name="圖層 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><defs></defs><title>addmusic_d83</title><path id="Icon_awesome-plus" data-name="Icon awesome-plus" class="cls-1" d="M18.57,7.86H12.14V1.43A1.43,1.43,0,0,0,10.71,0H9.29A1.43,1.43,0,0,0,7.86,1.43h0V7.86H1.43A1.43,1.43,0,0,0,0,9.29v1.43a1.43,1.43,0,0,0,1.43,1.42H7.86v6.43A1.43,1.43,0,0,0,9.29,20h1.43a1.43,1.43,0,0,0,1.42-1.43h0V12.14h6.43A1.43,1.43,0,0,0,20,10.71V9.29a1.43,1.43,0,0,0-1.43-1.43Z"/></svg>
@@ -124,25 +131,17 @@
           <p class="text-white sm:mt-5 ml-2 group-hover:text-gray-light">建立專輯</p>
         </div>
       </div>
-      <!-- 640以上 -->
-      <swiper :slidesPerView="3" virtual observer observeParents :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="aa allFund h-[370px] mt-[-48px] hidden sm:flex w-full">
+      <swiper :slides-per-view="2" :spaceBetween="20" :breakpoints='{
+        "640": {
+        "slidesPerView": 2,
+        "spaceBetween": 20
+        },
+        "1024": {
+        "slidesPerView": 3,
+        "spaceBetween": 10
+        }
+      }' virtual observer observeParents :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class=" allFund sm:h-[370px] h-[290px] sm:mt-[-48px] mt-[-20px] w-full">
         <swiper-slide v-for="(item, index) in myAlbum" :key="index" :virtualIndex="index" class=" singleFund top-12">
-          <album-item class="singleAlbum"
-            @edit-draft="editDraftAlbum(item.id)"
-            @delect-item="deleteAlbum(item.id)"
-            :edit="true"
-            :editAlbum="true"
-            :img="item.img"
-            :albumName="item.albumName"
-            :year="item.year"
-            :num="item.num"
-            :totalTime="item.totalTime"
-          ></album-item>
-        </swiper-slide>
-      </swiper>
-      <!-- 640以下 -->
-      <swiper :slidesPerView="2" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="allFund h-[250px] mt-[35px] w-full sm:hidden">
-        <swiper-slide v-for="item in myAlbum" :key="item" class="singleFund top-12">
           <album-item class="singleAlbum"
             @edit-draft="editDraftAlbum(item.id)"
             @delect-item="deleteAlbum(item.id)"
@@ -169,28 +168,18 @@
         <svg xmlns="http://www.w3.org/2000/svg" class="nextArrowA block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
       </div>
     </div>
-    <div class="justify-start items-start mt-5 mb-20 ml-3 hidden sm:flex">
-      <swiper :slidesPerView="4" :navigation="{nextEl: '.nextArrowA', prevEl: '.preArrowA'}" class="allFund h-[370px] mt-[-48px] w-full">
+    <div class="flex justify-center items-center flex-col sm:flex-row sm:justify-start sm:items-start mt-5 mb-32 3">
+      <swiper :slidesPerView="2" :spaceBetween="20" :breakpoints='{
+        "640": {
+        "slidesPerView": 2,
+        "spaceBetween": 20
+        },
+        "1024": {
+        "slidesPerView": 4,
+        "spaceBetween": 10
+        }
+      }' :navigation="{nextEl: '.nextArrowA', prevEl: '.preArrowA'}" class="allFund sm:h-[370px] h-[290px] mt-[-48px] w-full">
         <swiper-slide v-for="item in draftAblum" :key="item" class="singleAlbum top-12">
-          <album-item class="singleAlbum"
-            @edit-draft="editDraftAlbum(item.id)"
-            @delect-item="deleteAlbum(item.id)"
-            :editDraft="true"
-            :editAlbum="true"
-            :size="'width:250px; height:250px'"
-            :img="item.img"
-            :albumName="item.albumName"
-            :year="item.year"
-            :num="item.num"
-            :totalTime="item.totalTime"
-          ></album-item>
-        </swiper-slide>
-      </swiper>
-    </div>
-    <!-- RWD  -->
-    <div class="justify-start flex-col items-center mb-16 flex sm:hidden mt-[50px]">
-      <swiper :slidesPerView="2" :navigation="{nextEl: '.nextArrowA', prevEl: '.preArrowA'}" class="allFund h-[250px] mt-[-48px] w-full">
-        <swiper-slide v-for="item in draftAblum" :key="item" class="singleFund top-12">
           <album-item class="singleAlbum"
             @edit-draft="editDraftAlbum(item.id)"
             @delect-item="deleteAlbum(item.id)"
@@ -210,15 +199,15 @@
         <svg xmlns="http://www.w3.org/2000/svg" class="nextArrowA block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
       </div>
     </div>
-    <div class="flex justify-between sm:mt-5 mt-2">
+    <div class="flex justify-between sm:mt-5 mt-[-60px]">
       <h4 class="t3">我的音樂</h4>
       <div class="relative hidden sm:flex items-center top-[-8px] z-10 justify-between w-16" >
-        <svg xmlns="http://www.w3.org/2000/svg" class="preArrowB block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" class="nextArrowB block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="preArrowsB block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="nextArrowsB block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
       </div>
     </div>
     <div class="flex flex-col sm:flex-row justify-center sm:justify-start items-center sm:items-start w-full mb-20">
-      <div class="flex flex-col justify-center items-center relative sm:mr-7  sm:w-[260px] w-full sm:h-[260px] h-[100px] pr-2 sm:pr-0 bg-[#B5B5B5]">
+      <div class="flex flex-col justify-center items-center relative sm:mr-8  sm:w-[260px] w-full sm:h-[260px] h-[100px] pr-2 sm:pr-0 bg-[#B5B5B5]">
         <select-img
           @change="uploadMusic"
           class=" addFile02"
@@ -227,8 +216,16 @@
           :inputImg="'bg-ligth'"
         ></select-img>
       </div>
-      <!-- 640以上 -->
-      <swiper :slides-per-view="3" :spaceBetween="10" :navigation="{nextEl: '.nextArrowB', prevEl: '.preArrowB'}" virtual observer observeParents class="allFund h-[370px] mt-[-48px] w-full hidden sm:flex">
+      <swiper :slides-per-view="2" :spaceBetween="20" :breakpoints='{
+        "640": {
+        "slidesPerView": 2,
+        "spaceBetween": 20
+        },
+        "1024": {
+        "slidesPerView": 3,
+        "spaceBetween": 10
+        }
+      }' virtual observer observeParents  :navigation="{nextEl: '.nextArrowsB', prevEl: '.preArrowsB'}" class="allFund sm:h-[370px] sm:mt-[-48px] h-[270px] mt-[-20px] w-full ">
         <swiper-slide v-for="(item, index) in myMusic" :key="index" :virtualIndex="index" class="singleFund top-12 ">
           <album-item class="singleAlbum"
             @edit-draft="editDraftMusic(item.albumName)"
@@ -243,25 +240,9 @@
           ></album-item>
         </swiper-slide>
       </swiper>
-      <!-- 640以下 -->
-      <swiper :slidesPerView="2" :navigation="{nextEl: '.nextArrowsB', prevEl: '.preArrowsB'}" class="allFund h-[250px] mt-[35px] w-full sm:hidden">
-        <swiper-slide v-for="item in myMusic" :key="item" class="singleFund top-12">
-          <album-item class="singleAlbum"
-            @edit-draft="editDraftMusic(item.albumName)"
-             @delect-item="deleteMusic(item.id)"
-            :edit="true"
-            :editMusic="true"
-            :img="item.img"
-            :albumName="item.albumName"
-            :year="item.year"
-            :num="item.num"
-            :totalTime="item.totalTime"
-          ></album-item>
-        </swiper-slide>
-      </swiper>
-      <div class="relative flex sm:hidden items-center top-[10px] z-10 justify-between w-16" >
-        <svg xmlns="http://www.w3.org/2000/svg" class="preArrows block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" class="nextArrows block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
+      <div class=" relative flex sm:hidden items-center top-[10px] z-10 justify-between w-16" >
+        <svg xmlns="http://www.w3.org/2000/svg" class="preArrowsB block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="nextArrowsB block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
       </div>
     </div>
     <!-- 音樂草稿  -->
@@ -272,8 +253,17 @@
           <svg xmlns="http://www.w3.org/2000/svg" class="nextArrowM block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
       </div>
     </div>
-    <div class="justify-start items-start mt-5 mb-32 hidden sm:flex">
-      <swiper :slidesPerView="4" virtual observer observeParents :navigation="{nextEl: '.nextArrowM', prevEl: '.preArrowM'}" class="allFund h-[370px] mt-[-48px] w-full">
+    <div class="flex justify-center items-center flex-col sm:flex-row sm:justify-start sm:items-start mt-5 mb-32 ">
+      <swiper :slidesPerView="2" :spaceBetween="20" :breakpoints='{
+        "640": {
+        "slidesPerView": 2,
+        "spaceBetween": 20
+        },
+        "1024": {
+        "slidesPerView": 4,
+        "spaceBetween": 10
+        }
+      }' virtual observer observeParents :navigation="{nextEl: '.nextArrowM', prevEl: '.preArrowM'}" class="allFund sm:h-[370px] h-[280px] mt-[-48px] w-full">
         <swiper-slide v-for="(item, index) in draftMusic" :key="index" :virtualIndex="index" class="singleFund top-12">
           <album-item class="singleAlbum"
             @edit-draft="editDraftMusic(item.albumName)"
@@ -288,25 +278,7 @@
           ></album-item>
         </swiper-slide>
       </swiper>
-    </div>
-    <!-- RWD  -->
-    <div class="justify-start flex-col items-center mb-0 flex sm:hidden mt-[50px]">
-      <swiper :slidesPerView="2" :navigation="{nextEl: '.nextArrowM', prevEl: '.preArrowM'}" class="allFund h-[250px] mt-[-48px] w-full">
-        <swiper-slide v-for="item in draftMusic" :key="item" class="singleFund top-12">
-          <album-item class="singleAlbum"
-            @edit-draft="editDraftMusic(item.albumName)"
-             @delect-item="deleteMusic(item.id)"
-            :editDraft="true"
-            :editMusic="true"
-            :img="item.img"
-            :albumName="item.albumName"
-            :year="item.year"
-            :num="item.num"
-            :totalTime="item.totalTime"
-          ></album-item>
-        </swiper-slide>
-      </swiper>
-      <div class="relative flex sm:hidden items-center top-[10px] z-10 justify-between w-16" >
+      <div class="relative flex sm:hidden items-center top-[0px] z-10 justify-between w-16" >
         <svg xmlns="http://www.w3.org/2000/svg" class="preArrowM block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" class="nextArrowM block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
       </div>
@@ -334,16 +306,25 @@ export default {
     UploadMusic,
     UploadAlbum
   },
-  created () {
-    this.fetchData()
-    this.fetchMusician()
-  },
-  updated () {
+  mounted () {
+    // this.fetchMusician()
     this.myAlbum = []
     this.draftAblum = []
     this.myMusic = []
     this.draftMusic = []
+    console.log('created')
     this.fetchData()
+    // this.fetchMusician()
+  },
+  updated () {
+    this.myAlbum = []
+    console.log('dddd', this.myAlbum)
+    this.draftAblum = []
+    this.myMusic = []
+    this.draftMusic = []
+    console.log('update')
+    this.fetchData()
+    console.log(this.myMusic)
   },
   data () {
     return {
@@ -396,10 +377,70 @@ export default {
     }
   },
   methods: {
-    async fetchMusician () {
+    // async fetchMusician () {
+    //   const form = new FormData()
+    //   form.append('id', this.$store.getters.memberIdState)
+    //   console.log(this.musician)
+    //   console.log(musicianData)
+    // },
+    async fetchData () {
       const form = new FormData()
       form.append('id', this.$store.getters.memberIdState)
-      const musician = await fetch('http://localhost/DropBeatBackend/getMusician.php', {
+      const album = await fetch('http://localhost/DropbeatBackend/MusicianAlbum.php', {
+        method: 'POST',
+        body: form
+      })
+      const albumResponse = await album.json()
+      await albumResponse.forEach((e) => {
+        if (e.publish === '1') {
+          const time = this.transformSecond(e.totalTime)
+          this.myAlbum.unshift({
+            id: e.album_id,
+            img: e.albumImg,
+            albumName: e.album_name,
+            year: e.albumYear,
+            num: e.musicAmount,
+            totalTime: time
+          })
+        } else {
+          const time = this.transformSecond(e.totalTime)
+          this.draftAblum.unshift({
+            id: e.album_id,
+            img: e.albumImg,
+            albumName: e.album_name,
+            year: e.albumYear,
+            num: e.musicAmount,
+            totalTime: time
+          })
+        }
+      })
+      const music = await fetch('http://localhost/DropbeatBackend/MusicianMusic.php', {
+        method: 'POST',
+        body: form
+      })
+      const musicResponse = await music.json()
+      await musicResponse.forEach((e) => {
+        if (e.publish === '1') {
+          const time = this.transformSecond(e.music_long)
+          this.myMusic.unshift({
+            id: e.music_id,
+            img: e.music_photo,
+            albumName: e.music_name,
+            year: new Date(e.setup_date).getFullYear(),
+            totalTime: time
+          })
+        } else {
+          const time = this.transformSecond(e.music_long)
+          this.draftMusic.unshift({
+            id: e.music_id,
+            img: e.music_photo,
+            albumName: e.music_name,
+            year: new Date(e.setup_date).getFullYear(),
+            totalTime: time
+          })
+        }
+      })
+      const musician = await fetch('http://localhost/DropbeatBackend/getMusician.php', {
         method: 'POST',
         body: form
       })
@@ -408,66 +449,6 @@ export default {
       this.previewMusicianImg = musicianData.musicial_photo
       this.musicNum = musicianData.num
       this.musicianInfo = musicianData.info
-      console.log(this.musician)
-      console.log(musicianData)
-    },
-    async fetchData () {
-      const form = new FormData()
-      form.append('id', this.$store.getters.memberIdState)
-      const album = await fetch('http://localhost/DropBeatBackend/MusicianAlbum.php', {
-        method: 'POST',
-        body: form
-      })
-      const albumResponse = await album.json()
-      albumResponse.forEach((e) => {
-        if (e.publish === '1') {
-          const time = this.transformSecond(e.totalTime)
-          this.myAlbum.push({
-            id: e.album_id,
-            img: e.albumImg,
-            albumName: e.album_name,
-            year: e.albumYear,
-            num: e.musicAmount,
-            totalTime: time
-          })
-        } else {
-          const time = this.transformSecond(e.totalTime)
-          this.draftAblum.push({
-            id: e.album_id,
-            img: e.albumImg,
-            albumName: e.album_name,
-            year: e.albumYear,
-            num: e.musicAmount,
-            totalTime: time
-          })
-        }
-      })
-      const music = await fetch('http://localhost/DropBeatBackend/MusicianMusic.php', {
-        method: 'POST',
-        body: form
-      })
-      const musicResponse = await music.json()
-      musicResponse.forEach((e) => {
-        if (e.publish === '1') {
-          const time = this.transformSecond(e.music_long)
-          this.myMusic.push({
-            id: e.music_id,
-            img: e.music_photo,
-            albumName: e.music_name,
-            year: new Date(e.setup_date).getFullYear(),
-            totalTime: time
-          })
-        } else {
-          const time = this.transformSecond(e.music_long)
-          this.draftMusic.push({
-            id: e.music_id,
-            img: e.music_photo,
-            albumName: e.music_name,
-            year: new Date(e.setup_date).getFullYear(),
-            totalTime: time
-          })
-        }
-      })
     },
     cancel () {
       this.delectDialog = false
@@ -480,7 +461,7 @@ export default {
       form.append('id', this.$store.getters.memberIdState)
       console.log(this.musicianInfo)
       form.append('info', this.musicianInfo)
-      fetch('http://localhost/DropBeatBackend/setMusicianInfo.php', {
+      fetch('http://localhost/DropbeatBackend/setMusicianInfo.php', {
         method: 'POST',
         body: form
       })
@@ -500,17 +481,17 @@ export default {
       const form = new FormData()
       form.append('id', this.deleteId)
       if (this.deleteItem === 'music') {
-        await fetch('http://localhost/DropBeatBackend/DeleteMusic.php', {
+        await fetch('http://localhost/DropbeatBackend/DeleteMusic.php', {
           method: 'POST',
           body: form
         })
       } else {
-        await fetch('http://localhost/DropBeatBackend/DeleteAlbum.php', {
+        await fetch('http://localhost/DropbeatBackend/DeleteAlbum.php', {
           method: 'POST',
           body: form
         })
       }
-      await this.cancel()
+      this.cancel()
     },
     resetAlbum () {
       this.editAlbum = false
@@ -548,7 +529,7 @@ export default {
       console.log('dddddddddddd')
       form.append('id', this.$store.getters.memberIdState)
       form.append('img', e.target.files[0])
-      fetch('http://localhost/DropBeatBackend/setMusicianImg.php', {
+      fetch('http://localhost/DropbeatBackend/setMusicianImg.php', {
         method: 'POST',
         body: form
       })
@@ -558,7 +539,14 @@ export default {
 </script>
 
 <style scoped>
-
+  .rangeTop{
+    /* border:1px solid red; */
+    width: 100%;
+    padding:60px 40px 0 40px;
+  }
+  .range{
+    padding:10px 40px 0 40px;
+  }
 .chooseBg{
   width: 35px;
   height: 35px;
@@ -740,6 +728,10 @@ h4{
 .draftMusic:nth-child(3){
   border-radius: 50px;
 }
+  :deep .singleAlbum{
+    /* border:1px solid red; */
+    margin: 0 0 0 0;
+  }
 @media screen and (max-width: 1300px) {
   .addFile01{
       width: 220px;
@@ -759,6 +751,7 @@ h4{
     padding:60px 20px 0 20px;
   }
   .range{
+    /* border:1px solid red; */
     padding:10px 20px 0 20px;
   }
   .editIcon01{
@@ -782,15 +775,17 @@ h4{
   .t3{
       margin: 30px 0 10px 0;
   }
-  ::v-deep .singleAlbum{
-    width: 150px;
-    height: 150px;
+  :deep .singleAlbum{
+    /* border:1px solid red; */
+    width: auto;
+    height: 100%;
   }
   .singleFund{
-    padding: 0 12px 0 12px;
-    width: 150px;
+    /* border:1px solid red; */
+    /* padding: 0 12px 0 12px; */
+    /* width: 150px; */
   }
-  ::v-deep .editDraft{
+  :deep .editDraft{
     top: 0;
     left: 0;
   }
@@ -818,15 +813,15 @@ h4{
       /* margin-top: 35px; */
       /* margin-left: 10px; */
   }
-  ::v-deep .circle{
+  :deep .circle{
     /* border:1px solid red; */
     width: 50px;
     height: 50px;
   }
-  ::v-deep .iconDerection{
+  :deep .iconDerection{
     flex-direction: row;
   }
-  ::v-deep .cameraText{
+  :deep .cameraText{
     margin-left: 10px;
   }
 }

@@ -58,6 +58,7 @@ import ArtistItem from '../components/ArtistItem.vue'
 
 SwiperCore.use([Navigation])
 export default {
+  props: ['allArtist'],
   components: {
     Swiper,
     SwiperSlide,
@@ -95,6 +96,11 @@ export default {
         width: 0,
         height: 0
       }
+    }
+  },
+  computed: {
+    artistList () {
+      return this.allArtist
     }
   },
   methods: {

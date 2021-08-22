@@ -60,7 +60,7 @@
       </swiper-slide>
     </swiper>
     <!-- 640以下 -->
-    <swiper :slidesPerView="1" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="flex sm:hidden">
+    <swiper :slidesPerView="1" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="flex sm:hidden ">
       <swiper-slide v-for="(item, index) in nowFundArray" :key="item.donate_name">
         <fund-item class="theItemMenegerSpe" :id = index
           edit

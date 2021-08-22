@@ -14,6 +14,9 @@ export default createStore({
     rwdmusic: false
   },
   mutations: {
+    setPlayMusic (state, payload) {
+      state.nowMusic = payload
+    },
     rwdMusic (state, payload) {
       state.rwdmusic = payload
     },
@@ -41,6 +44,9 @@ export default createStore({
     }
   },
   actions: {
+    playMusic (context, payload) {
+      context.commit('setPlayMusic', payload)
+    },
     uploadAlbumDialog (context, payload) {
       context.commit('setUploadAlbumDialog', payload)
     },
