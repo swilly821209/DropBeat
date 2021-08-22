@@ -4,47 +4,48 @@
       <!-- <router-link to="/Find">pre-arrow</router-link> -->
       <router-link to="/Find" class="preArrow"></router-link>
     </div>
-    <div class="artistContent flex flex-col sm:flex-row space-x-0 sm:space-x-10 items-center h-[360px]">
+    <div class="artistContent flex flex-col w-full sm:flex-row space-x-0 sm:space-x-10 items-center h-[360px]">
       <div class="flex flex-col justify-center items-center space-y-16 sm:space-y-4 ">
-        <img class="artistPhoto rounded-full w-80 h-80 min-w-[320px]" src="https://akstatic.streetvoice.com/profile_images/er/ic/eric198853/Y3w4tbHRLXMLzFxUmW9bb7.jpg?x-oss-process=image/resize,m_fill,h_380,w_380,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg">
+        <img class="artistPhoto rounded-full w-80 h-80 min-w-[320px]" :src="musicianImg">
         <div class="approve">
           <div class="approveIcon"></div>
           <p>已認證藝人</p>
         </div>
       </div>
       <div class=" h-1/2 mt-[-80px] sm:mt-0">
-        <h1 class="text-[32px] sm:text-5xl text-black-backdrop sm:text-white font-medium w-full sm:min-w-[400px] flex justify-center sm:justify-start">告五人 Accusefive</h1>
-        <div class=" w-[340px] sm:w-full py-4">
+        <h1 class="text-[32px] sm:text-5xl text-black-backdrop sm:text-white font-medium w-full sm:min-w-[400px] flex justify-center sm:justify-start">{{ musicianName }}</h1>
+        <div class="w-full py-4">
           <div class=" count_share_follow flex items-center sm:items-start w-full justify-between">
             <div class="flex w-[200px] sm:w-80 justify-between">
               <div>
                 <p class="text-sm sm:text-base text-black-backdrop">音樂</p>
-                <div class="countNum text-black-backdrop font-bold tracking-wider">16</div>
+                <div class="countNum text-black-backdrop font-bold tracking-wider">{{ musicNum }}</div>
               </div>
               <div>
                 <p class="text-sm sm:text-base text-black-backdrop">粉絲</p>
-                <div class="countNum text-black-backdrop font-bold tracking-wider">68,250</div>
+                <div class="countNum text-black-backdrop font-bold tracking-wider">{{ likeNum }}</div>
               </div>
             </div>
-            <div class="share_follow">
+            <div class="share_follow absolute right-10">
               <div class="share"></div>
               <button
                 class="follow"
                 :class="{ clickfollow: follow }"
-                @click="follow = !follow"
-              >{{follow ? '正在關注' : '關注'}}</button>
+                @click="followMusician"
+              >{{follow ? '正在關注' : '關注'}}
+              </button>
             </div>
           </div>
-          <p class="detail text-sm text-gray-dark ">告五人成立於2011年，2017年重新成團，2018年以首張EP《迷霧之子》獲得金音獎最佳新人。目前為主唱潘雲安、犬青及鼓手哲謙的三人編制， 男女雙主唱的迷人交錯聲線，帶給聽眾強烈的吸引力。</p>
         </div>
+        <p class="detail text-sm text-gray-dark ">{{ musicianInfo }}</p>
       </div>
     </div>
   </div>
   <div class="px-5 sm:px-10 flex items-center mt-[220px] sm:mt-0">
     <span class="border-t border-gray-light w-3/6 sm:w-20 text-xs"></span>
     <div class="min-w-[198px] px-5 flex justify-evenly">
-      <router-link to="/Artist/:id/ArtistHome" :class="{active: page === '主頁'}"  @click="active" class="bookmark rounded-2xl border-2 border-gray-default text-gray-dark hover:border-orange hover:text-orange">主頁</router-link>
-      <router-link to="/Artist/:id/ArtistMusic" :class="{active: page === '音樂'}"  @click="active" class="bookmark rounded-2xl border-2 border-gray-default text-gray-dark hover:border-orange hover:text-orange">音樂</router-link>
+      <router-link :to="home" :class="{active: page === '主頁'}"  @click="active" class="bookmark rounded-2xl border-2 border-gray-default text-gray-dark hover:border-orange hover:text-orange">主頁</router-link>
+      <router-link :to="music" :class="{active: page === '音樂'}"  @click="active" class="bookmark rounded-2xl border-2 border-gray-default text-gray-dark hover:border-orange hover:text-orange">音樂</router-link>
     </div>
     <span class="border-t border-gray-light w-3/6 sm:w-full"></span>
   </div>
@@ -53,13 +54,55 @@
 
 <script>
 export default {
+  async created () {
+    this.getMusician()
+  },
+  computed: {
+    home () {
+      return `/Artist/${this.$route.params.id}/ArtistHome`
+    },
+    music () {
+      return `/Artist/${this.$route.params.id}/ArtistMusic`
+    }
+  },
   data () {
     return {
+      musicianInfo: '',
+      musicianImg: '',
+      musicNum: '',
+      likeNum: 0,
       page: '主頁',
       follow: false
     }
   },
   methods: {
+    async getMusician () {
+      const form = new FormData()
+      form.append('id', this.$route.params.id)
+      const musician = await fetch('http://localhost/DropbeatBackend/getMusician.php', {
+        method: 'POST',
+        body: form
+      })
+      const musicianData = await musician.json()
+      console.log(musicianData)
+      this.musicianImg = musicianData.musicial_photo
+      this.musicNum = musicianData.num
+      this.musicianInfo = musicianData.info
+      this.musicianName = musicianData.musician_name
+      this.likeNum = musicianData.followNum
+    },
+    async followMusician () {
+      this.follow = !this.follow
+      const form = new FormData()
+      form.append('memberId', this.$store.getters.memberIdState)
+      form.append('musicianId', this.$route.params.id)
+      form.append('isFollow', this.follow)
+      await fetch('http://localhost/DropbeatBackend/followMusician.php', {
+        method: 'POST',
+        body: form
+      })
+      await this.getMusician()
+    },
     active (e) {
       this.page = e.target.text
     }

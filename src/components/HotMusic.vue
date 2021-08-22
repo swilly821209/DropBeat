@@ -97,20 +97,57 @@ export default {
   components: {
     AudioIcon
   },
+  async created () {
+    const form = new FormData()
+    form.append('range', '最多播放')
+    const fetchPlayrange = await fetch('http://localhost/DropbeatBackend/NewMusic.php', {
+      method: 'POST',
+      body: form
+    })
+    const fetchData = await fetchPlayrange.json()
+    for (let i = 0; i < 4; i++) {
+      console.log(fetchData.music_photo)
+      this.hotMusicListLeft.push({
+        play: false,
+        status: '－',
+        statusColor: 'gray',
+        img: fetchData[i].music_photo,
+        title: fetchData[i].music_name,
+        author: fetchData[i].musician_name,
+        likes: fetchData[i].likeNum,
+        heart: '#b5b5b5',
+        numColor: 'color:#FF9D83'
+      })
+    }
+    for (let i = 4; i < 9; i++) {
+      console.log(fetchData.music_photo)
+      this.hotMusicListRight.push({
+        play: false,
+        status: '－',
+        statusColor: 'gray',
+        img: fetchData[i].music_photo,
+        title: fetchData[i].music_name,
+        author: fetchData[i].musician_name,
+        likes: fetchData[i].likeNum,
+        heart: '#b5b5b5',
+        numColor: 'color:#FF9D83'
+      })
+    }
+  },
   data () {
     return {
       hotMusicListLeft: [
-        { play: false, status: '－', statusColor: 'gray', img: 'https://picsum.photos/100', title: '在這座城市遺失了你', author: '告五人', likes: '237', heart: '#FF9D83', numColor: 'color:#FF9D83;' },
-        { play: false, status: '▲', statusColor: 'blue', img: 'https://picsum.photos/200', title: '在這座城市遺失了你', author: '告五人', likes: '552', heart: '#b5b5b5', numColor: 'color:#b5b5b5;' },
-        { play: false, status: '▲', statusColor: 'blue', img: 'https://picsum.photos/300', title: '在這座城市遺失了你', author: '告五人', likes: '337', heart: '#b5b5b5', numColor: 'color:#b5b5b5;' },
-        { play: false, status: '▲', statusColor: 'blue', img: 'https://picsum.photos/400', title: '在這座城市遺失了你', author: '告五人', likes: '855', heart: '#FF9D83', numColor: 'color:#FF9D83;' }
+        // { play: false, status: '－', statusColor: 'gray', img: 'https://picsum.photos/100', title: '在這座城市遺失了你', author: '告五人', likes: '237', heart: '#FF9D83', numColor: 'color:#FF9D83;' },
+        // { play: false, status: '▲', statusColor: 'blue', img: 'https://picsum.photos/200', title: '在這座城市遺失了你', author: '告五人', likes: '552', heart: '#b5b5b5', numColor: 'color:#b5b5b5;' },
+        // { play: false, status: '▲', statusColor: 'blue', img: 'https://picsum.photos/300', title: '在這座城市遺失了你', author: '告五人', likes: '337', heart: '#b5b5b5', numColor: 'color:#b5b5b5;' },
+        // { play: false, status: '▲', statusColor: 'blue', img: 'https://picsum.photos/400', title: '在這座城市遺失了你', author: '告五人', likes: '855', heart: '#FF9D83', numColor: 'color:#FF9D83;' }
       ],
       hotMusicListRight: [
-        { play: false, status: '▼', statusColor: 'gray', img: 'https://picsum.photos/500', title: '在這座城市遺失了你', author: '告五人', likes: '234', heart: '#b5b5b5', numColor: 'color:#b5b5b5;' },
-        { play: false, status: '▼', statusColor: 'gray', img: 'https://picsum.photos/600', title: '在這座城市遺失了你', author: '告五人', likes: '817', heart: '#b5b5b5', numColor: 'color:#b5b5b5;' },
-        { play: false, status: '▲', statusColor: 'blue', img: 'https://picsum.photos/700', title: '在這座城市遺失了你', author: '告五人', likes: '427', heart: '#b5b5b5', numColor: 'color:#b5b5b5;' },
-        { play: false, status: '▼', statusColor: 'gray', img: 'https://picsum.photos/800', title: '在這座城市遺失了你', author: '告五人', likes: '873', heart: '#b5b5b5', numColor: 'color:#b5b5b5;' },
-        { play: false, status: '▼', statusColor: 'gray', img: 'https://picsum.photos/900', title: '在這座城市遺失了你', author: '告五人', likes: '822', heart: '#b5b5b5', numColor: 'color:#b5b5b5;' }
+        // { play: false, status: '▼', statusColor: 'gray', img: 'https://picsum.photos/500', title: '在這座城市遺失了你', author: '告五人', likes: '234', heart: '#b5b5b5', numColor: 'color:#b5b5b5;' },
+        // { play: false, status: '▼', statusColor: 'gray', img: 'https://picsum.photos/600', title: '在這座城市遺失了你', author: '告五人', likes: '817', heart: '#b5b5b5', numColor: 'color:#b5b5b5;' },
+        // { play: false, status: '▲', statusColor: 'blue', img: 'https://picsum.photos/700', title: '在這座城市遺失了你', author: '告五人', likes: '427', heart: '#b5b5b5', numColor: 'color:#b5b5b5;' },
+        // { play: false, status: '▼', statusColor: 'gray', img: 'https://picsum.photos/800', title: '在這座城市遺失了你', author: '告五人', likes: '873', heart: '#b5b5b5', numColor: 'color:#b5b5b5;' },
+        // { play: false, status: '▼', statusColor: 'gray', img: 'https://picsum.photos/900', title: '在這座城市遺失了你', author: '告五人', likes: '822', heart: '#b5b5b5', numColor: 'color:#b5b5b5;' }
       ]
     }
   },
