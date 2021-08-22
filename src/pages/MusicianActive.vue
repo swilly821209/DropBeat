@@ -91,11 +91,11 @@
         </div>
         <div class="flex mt-4 w-full sm:w-full">
           <label for="date" class="textTitle text-right text-gray-dark text-lg mr-3">活動日期：</label>
-          <input v-model="showDate" name="date" id="date" type="date" @change="changeColor" style="color:#7b7b7b" class="bg-white sm:bg-opacity-0 textLine border-b-2 border-gray-light focus:outline-none focus:border-orange text-transparent font-bold">
+          <input v-model="showDate" name="date" id="date" type="date" @change="changeColor" style="color:#7b7b7b" class="bg-white sm:bg-opacity-0 textLine border-b-2 border-gray-light focus:outline-none focus:border-orange text-transparent ">
         </div>
         <div class="flex mt-4 w-full sm:w-full">
           <label for="time" class="textTitle text-right text-gray-dark text-lg mr-3">活動時間：</label>
-          <input v-model="showTime" name="time" id="time" type="time" @change="changeColor" style="color:#7b7b7b" class="bg-white sm:bg-opacity-0 textLine border-b-2 border-gray-light focus:outline-none focus:border-orange text-transparent font-bold">
+          <input v-model="showTime" name="time" id="time" type="time" @change="changeColor" style="color:#7b7b7b" class="bg-white sm:bg-opacity-0 textLine border-b-2 border-gray-light focus:outline-none focus:border-orange text-transparent">
         </div>
         <div class="flex mt-4 w-full sm:w-full">
           <label for="placeArea" class="textTitle text-right text-gray-dark text-lg mr-3">活動地點：</label>
@@ -106,7 +106,7 @@
         <div class="flex mt-4  w-full sm:w-full relative">
           <label class="textTitle mr-3"></label>
           <label for="place" class="textLine">
-            <input v-model="showPlace" name="place" id="place" type="text" class="w-full border-b-2 border-gray-light text-gray-dark focus:outline-none focus:border-orange text-gray-light pl-1">
+            <input v-model="showPlace" name="place" id="place" type="text" style="color:#7b7b7b" class="w-full border-b-2 border-gray-light text-gray-dark focus:outline-none focus:border-orange text-gray-light pl-1">
           </label>
         </div>
       </div>

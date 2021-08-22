@@ -27,9 +27,9 @@
     </base-dialog>
     <base-dialog :show="deleteDialog">
       <div class="flex flex-col items-center py-4 sm:py-10 px-3 sm:px-40">
-        <p class="text-[#383838] text-xl sm:text-2xl">刪除此提案後不可復原，確定刪除？</p>
-        <p class="text-[#383838] text-xs">若您有問題請聯繫管理員</p>
-        <p class="text-[#383838] text-sm sm:text-base">・若期限屆滿前刪除募資提案，所有的贊助款項均將交還給贊助者。</p>
+        <p class="text-[#383838] text-xl sm:text-2xl mb-2">刪除此提案後不可復原，確定刪除？</p>
+        <p class="text-[#383838] text-xs mb-4">若您有問題請聯繫管理員</p>
+        <p class="text-[#7b7b7b] text-sm sm:text-base">・若期限屆滿前刪除募資提案，所有的贊助款項均將交還給贊助者。</p>
         <div class="flex mt-[20px]">
           <button @click="deleteDialog = !deleteDialog" class="mr-[12px] text-white text-[16px] bg-orange border-2 border-orange rounded-2xl w-[55px] h-[25px] hover:bg-blue-light hover:border-blue-light">取消</button>
           <button @click="deleteFun" class="text-[#7B7B7B] text-[16px] bg-white border-2 border-gray-default rounded-2xl w-[55px] h-[25px] hover:border-orange hover:text-orange">刪除</button>
@@ -89,21 +89,21 @@
       <div class="w-full sm:w-[340px] flex flex-col sm:w-4/12 mt-2 sm:mt-0">
         <div class="flex mt-4">
           <label for="topic" class="flex-shrink-0  sm:w-2/6 text-right text-gray-dark text-lg sm:text-xl mr-3">募資主題：</label>
-          <input v-model="fundTitle" id="topic" type="text" class="w-4/6 border-b-2 border-gray-light focus:outline-none focus:border-orange font-bold text-gray-dark">
+          <input v-model="fundTitle" id="topic" type="text" class="w-4/6 border-b-2 border-gray-light focus:outline-none focus:border-orange  text-gray-dark">
         </div>
         <div class="flex mt-4">
           <label for="date" class="flex-shrink-0  sm:w-2/6 text-right text-gray-dark text-lg sm:text-xl mr-3">結束日期：</label>
-          <input v-model="fundEndDate" id="date" type="date" @change="changeColor" class="w-4/6 border-b-2 border-gray-light focus:outline-none bg-white focus:border-orange text-transparent font-bold">
+          <input v-model="fundEndDate" id="date" type="date" @change="changeColor" style="color:#7b7b7b" class="w-4/6 border-b-2 border-gray-light focus:outline-none bg-white focus:border-orange text-transparent ">
         </div>
         <div class="flex mt-4">
           <label for="money" class="flex-shrink-0  sm:w-2/6 text-right text-gray-dark text-lg sm:text-xl mr-3  money">目標金額：</label>
-          <input v-model="fundMoney" id="money" type="text" class="w-8/12  border-b-2 border-gray-light focus:outline-none focus:border-orange font-bold text-gray-dark sm:ml-[10px] text-2xl">
+          <input v-model="fundMoney" id="money" type="text" class="w-8/12  border-b-2 border-gray-light focus:outline-none focus:border-orange  text-gray-dark sm:ml-[10px] text-2xl pl-1">
         </div>
       </div>
     </div>
     <h3  class="text-[22px] sm:text-[24px] text-black-backdrop font-medium mt-10 sm:mt-16 sm:mb-5 mb-3" :second="'second'">計畫介紹：</h3>
     <div class="flex justify-center mb-12">
-      <textarea v-model="fundInfo" name="projectInfo" class="w-full ml-[5px] sm:ml-[0px] h-[200px] sm:h-72 border-2 border-gray-light rounded-2xl resize-none pl-2 pt-2 focus:border-orange"></textarea>
+      <textarea v-model="fundInfo" name="projectInfo" style="color:#7b7b7b" class="w-full ml-[5px] sm:ml-[0px] h-[200px] sm:h-72 border-2 border-gray-light rounded-2xl resize-none pl-2 pt-2 focus:border-orange"></textarea>
     </div>
     <div class="flex justify-between">
       <h3 :second="'second'" class="text-[22px] sm:text-[24px] text-black-backdrop font-medium sm:mb-5 mb-0">募資方案：</h3>
@@ -118,7 +118,7 @@
     </div>
     <div class="flex outers ">
       <div class="flex inners items-center ">
-        <div v-for="(item, index) in fundsList" :key="item" class="flex theItem sm:flex theOption">
+        <div v-for="(item, index) in fundsList" :key="item" class="flex theItem hidden sm:flex theOption">
           <select-img
             :id="index"
             class="w-6/12 p-10 mr-5"
@@ -148,7 +148,7 @@
           </div>
         </div>
         <!-- 640px以下顯示 -->
-        <!-- <div class="block flex theItem sm:hidden">
+        <div class="block flex theItem sm:hidden">
           <div class="w-full">
             <div class="flex justify-center items-center">
               <div class=" mr-4">
@@ -191,7 +191,7 @@
               <span class="text-orange align-baseline ml-2">新增方案</span>
             </div>
           </div>
-        </div> -->
+        </div>
       </div>
     </div>
     <div class="flex justify-end mt-12 ">
@@ -673,6 +673,15 @@ export default {
     justify-content:flex-end;
     margin-right: 20px;
   }
+      :deep .fundBlock{
+        /* border: 1px solid red; */
+        width: 100%;
+    }
+    :deep .content{
+        /* border: 1px solid red; */
+        width: 96%;
+        margin-left: 5px;
+    }
   @media screen and (max-width:640px) {
     :deep .fundBlock{
         /* border: 1px solid red; */
