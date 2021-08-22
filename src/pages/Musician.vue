@@ -23,7 +23,7 @@
     <div class="artistContent flex flex-col sm:flex-row space-x-10 items-center h-[180px] sm:h-[360px]">
       <div class="flex flex-col justify-center items-center space-y-4 mt-[40px] sm:mt-[0]">
         <div class="artistSelectImg relative">
-        <img class="artistPhoto mb-[35px] sm:mb-[0px] rounded-full w-[120px] h-[120px] sm:w-80 sm:h-80 sm:min-w-[320px]" :src="previewMusicianImg">
+        <img class="artistPhoto mb-[35px] sm:mb-[0px] rounded-full w-[120px] h-[120px] sm:w-80 sm:h-80 sm:min-w-[320px] object-center object-cover" :src="previewMusicianImg">
         <select-img class="selectImg"
             @change="musicianImg"
             :radius="'rounded-3xl'"
