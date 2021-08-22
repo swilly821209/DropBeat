@@ -98,11 +98,11 @@ export default {
       }
     }
   },
-  computed: {
-    artistList () {
-      return this.allArtist
-    }
-  },
+  // computed: {
+  //   artistList () {
+  //     return this.allArtist
+  //   }
+  // },
   methods: {
     playFun (index) {
       if (this.artistList[index].play === false) {
