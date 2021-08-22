@@ -1430,6 +1430,10 @@ video {
   height: 100vh;
 }
 
+.h-24 {
+  height: 6rem;
+}
+
 .w-\[345px\] {
   width: 345px;
 }

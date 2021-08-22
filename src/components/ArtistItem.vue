@@ -1,7 +1,7 @@
 <template>
   <div class="div_artist_list">
     <div :class="relative">
-      <img :src="img" :class="width" class="rounded-full">
+      <img :src="img" class="rounded-full h-24" :class="width" >
       <div v-if="listen" class="div_certain_container">
         <div class="div_black rounded-full"></div>
         <div v-if="play === true" class="div_black02"></div>
@@ -165,7 +165,7 @@ export default {
   }
   /* 圖片大小控制 */
   .w150{width:150px;}
-  .w160{width:160px;}
+  .w160{width:160px; height: 160px;}
   .w170{width:170px;}
   .w180{width:180px;}
   .w190{width:190px;}
