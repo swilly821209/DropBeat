@@ -44,7 +44,7 @@
     </div>
     <div class="mt-10">
       <h1 class="text-[24px] mb-6">活動介紹</h1>
-      <textarea class="w-full h-[100px] text-gray-dark" :value="theInfo"></textarea>
+      <textarea class="w-full h-[100px] text-gray-dark resize-none" :value="theInfo"></textarea>
     </div>
     <message-board
       class="message"
