@@ -110,7 +110,7 @@ export default {
       const form = new FormData()
       form.append('member_id', this.$store.getters.memberIdState) // memeberID
       form.append('activity_id', this.$route.params.id) // activityID
-      fetch('http://localhost/DropbeatBackend/active_page_joinDeside_send.php', {
+      fetch('./DropbeatBackend/activePageJoinDesideSend.php', {
         method: 'POST',
         body: form
       })
@@ -149,7 +149,7 @@ export default {
         form.append('member', this.$store.getters.memberIdState)
         form.append('activity', this.$route.params.id)
         form.append('content', messageData.content)
-        fetch('http://localhost/DropbeatBackend/mussage_act_send.php', {
+        fetch('./DropbeatBackend/mussageActSend.php', {
           method: 'POST',
           body: form
         })
@@ -199,7 +199,7 @@ export default {
     // 獲取活動資訊
     const form = new FormData()
     form.append('activity_id', this.$route.params.id)
-    const response = await fetch('http://localhost/DropbeatBackend/active_page_detailMain_get.php', {
+    const response = await fetch('./DropbeatBackend/activePageDetailMainGet.php', {
       method: 'POST',
       body: form
     })
@@ -217,7 +217,7 @@ export default {
     // 獲取留言
     const forms = new FormData()
     forms.append('activity', this.$route.params.id)
-    const responses = await fetch('http://localhost/DropbeatBackend/mussage_act_get.php', {
+    const responses = await fetch('./DropbeatBackend/mussageActGet.php', {
       method: 'POST',
       body: forms
     })
@@ -229,7 +229,7 @@ export default {
     const formes = new FormData()
     formes.append('memberId', this.$store.getters.memberIdState)
     formes.append('activityId', this.$route.params.id)
-    const responseses = await fetch('http://localhost/DropbeatBackend/active_page_detailMain_join_get.php', {
+    const responseses = await fetch('./DropbeatBackend/activePageDetailMainJoinGet.php', {
       method: 'POST',
       body: formes
     })

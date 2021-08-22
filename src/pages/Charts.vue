@@ -206,7 +206,7 @@ export default {
       this.selectSingerRange = range
       const form = new FormData()
       form.append('range', range)
-      const fetchMusic = await fetch('http://localhost/DropbeatBackend/NewMusic.php', {
+      const fetchMusic = await fetch('./DropbeatBackend/NewMusic.php', {
         method: 'POST',
         body: form
       })

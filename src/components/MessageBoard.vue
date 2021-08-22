@@ -76,7 +76,7 @@ export default {
   async created () {
     const form = new FormData()
     form.append('id', this.$store.getters.memberIdState)
-    const response = await fetch('http://localhost/DropbeatBackend/mussage_act_getImg.php', {
+    const response = await fetch('./DropbeatBackend/mussageActGetImg.php', {
       method: 'POST',
       body: form
     })

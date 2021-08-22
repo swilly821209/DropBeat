@@ -54,6 +54,7 @@
     <music-item
       v-for="item in musicItems"
       @share-social="shareSocial(item.img, item.name, item.singer)"
+      :musicId="item.musicId"
       :musicFile="item.musicFileSrc"
       :key="item.num"
       :num="item.num"
@@ -193,7 +194,7 @@ export default {
   },
   methods: {
     async getMusician () {
-      const fetchMusician = await fetch('http://localhost/DropbeatBackend/GetAllMusician.php')
+      const fetchMusician = await fetch('./DropbeatBackend/GetAllMusician.php')
       const fetchMusicianResponse = await fetchMusician.json()
       fetchMusicianResponse.map((item) => {
         this.artistList.push({
@@ -229,13 +230,14 @@ export default {
       this.selectMusicRange = range
       const form = new FormData()
       form.append('range', range)
-      const fetchMusic = await fetch('http://localhost/DropbeatBackend/NewMusic.php', {
+      const fetchMusic = await fetch('./DropbeatBackend/NewMusic.php', {
         method: 'POST',
         body: form
       })
       const fetchResponse = await fetchMusic.json()
       fetchResponse.forEach((item, index) => {
         this.musicItems.push({
+          musicId: item.music_id,
           musicType: item.type_name,
           num: (++index).toString().padStart(2, '0'),
           musicFileSrc: item.music_data,

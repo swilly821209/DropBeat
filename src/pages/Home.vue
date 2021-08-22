@@ -344,7 +344,7 @@ export default {
     }
   },
   async created () {
-    const fetchMusician = await fetch('http://localhost/DropbeatBackend/GetAllMusician.php')
+    const fetchMusician = await fetch('./DropbeatBackend/GetAllMusician.php')
     const fetchMusicianResponse = await fetchMusician.json()
     console.log(fetchMusicianResponse)
     fetchMusicianResponse.map((item) => {
@@ -355,7 +355,7 @@ export default {
         more: item.musician_id
       })
     })
-    const response = await fetch('http://localhost/DropbeatBackend/funds_page_get.php')
+    const response = await fetch('./DropbeatBackend/fundsPageGet.php')
     const responseData = await response.json()
     responseData.forEach((item) => {
       item.toTheDonate = `/Funds/${item.toTheDonate}` // router設定
@@ -364,7 +364,7 @@ export default {
       this.randerFuns.unshift(item)
     })
     // 獲取總金額跟贊助人數
-    const responses = await fetch('http://localhost/DropbeatBackend/funds_page_total_price.php')
+    const responses = await fetch('./DropbeatBackend/fundsPageTotalPrice.php')
     const responseDatas = await responses.json()
     this.randerFuns.forEach((item) => {
       responseDatas.forEach((items) => {
@@ -377,7 +377,7 @@ export default {
     })
     this.randerFuns.splice(4)
     // 演出活動資料
-    const responseAc = await fetch('http://localhost/DropbeatBackend/carousel_component_get.php')
+    const responseAc = await fetch('./DropbeatBackend/carouselComponentGet.php')
     const responseDataAc = await responseAc.json()
     console.log(responseDataAc)
     this.carouselActivity = responseDataAc

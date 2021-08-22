@@ -52,7 +52,7 @@
               <div>
                 <p class="text-bas text-black-backdrop">粉絲</p>
                 <div class="countNum text-black-backdrop font-bold tracking-wider">
-                  68,250
+                  {{ followNum }}
                   <svg class="pt-2" xmlns="http://www.w3.org/2000/svg" width="25" height="22" viewBox="0 0 20 12.5">
                     <path id="_" data-name="%" d="M8.438,1.952a2,2,0,0,1,3.123,0l5.839,7.3A2,2,0,0,1,15.839,12.5H4.161A2,2,0,0,1,2.6,9.251Z" fill="#fe9f8a"/>
                   </svg>
@@ -87,7 +87,7 @@
             <div>
               <p class="text-[14px] text-black-backdrop">粉絲</p>
               <div class="countNum text-black-backdrop font-bold tracking-wider">
-                68,250
+                {{ followNum }}
                 <svg class="pt-1" xmlns="http://www.w3.org/2000/svg" width="15" height="20" viewBox="0 0 20 12.5">
                   <path id="_" data-name="%" d="M8.438,1.952a2,2,0,0,1,3.123,0l5.839,7.3A2,2,0,0,1,15.839,12.5H4.161A2,2,0,0,1,2.6,9.251Z" fill="#fe9f8a"/>
                 </svg>
@@ -328,6 +328,7 @@ export default {
   },
   data () {
     return {
+      followNum: 0,
       musicNum: '0',
       musician: '1',
       previewMusicianImg: 'https://akstatic.streetvoice.com/profile_images/er/ic/eric198853/Y3w4tbHRLXMLzFxUmW9bb7.jpg?x-oss-process=image/resize,m_fill,h_380,w_380,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
@@ -386,7 +387,7 @@ export default {
     async fetchData () {
       const form = new FormData()
       form.append('id', this.$store.getters.memberIdState)
-      const album = await fetch('http://localhost/DropbeatBackend/MusicianAlbum.php', {
+      const album = await fetch('./DropbeatBackend/MusicianAlbum.php', {
         method: 'POST',
         body: form
       })
@@ -414,7 +415,7 @@ export default {
           })
         }
       })
-      const music = await fetch('http://localhost/DropbeatBackend/MusicianMusic.php', {
+      const music = await fetch('./DropbeatBackend/MusicianMusic.php', {
         method: 'POST',
         body: form
       })
@@ -440,7 +441,7 @@ export default {
           })
         }
       })
-      const musician = await fetch('http://localhost/DropbeatBackend/getMusician.php', {
+      const musician = await fetch('./DropbeatBackend/getMusician.php', {
         method: 'POST',
         body: form
       })
@@ -449,6 +450,7 @@ export default {
       this.previewMusicianImg = musicianData.musicial_photo
       this.musicNum = musicianData.num
       this.musicianInfo = musicianData.info
+      this.followNum = musicianData.followNum
     },
     cancel () {
       this.delectDialog = false
@@ -461,7 +463,7 @@ export default {
       form.append('id', this.$store.getters.memberIdState)
       console.log(this.musicianInfo)
       form.append('info', this.musicianInfo)
-      fetch('http://localhost/DropbeatBackend/setMusicianInfo.php', {
+      fetch('./DropbeatBackend/setMusicianInfo.php', {
         method: 'POST',
         body: form
       })
@@ -481,12 +483,12 @@ export default {
       const form = new FormData()
       form.append('id', this.deleteId)
       if (this.deleteItem === 'music') {
-        await fetch('http://localhost/DropbeatBackend/DeleteMusic.php', {
+        await fetch('./DropbeatBackend/DeleteMusic.php', {
           method: 'POST',
           body: form
         })
       } else {
-        await fetch('http://localhost/DropbeatBackend/DeleteAlbum.php', {
+        await fetch('./DropbeatBackend/DeleteAlbum.php', {
           method: 'POST',
           body: form
         })
@@ -529,7 +531,7 @@ export default {
       console.log('dddddddddddd')
       form.append('id', this.$store.getters.memberIdState)
       form.append('img', e.target.files[0])
-      fetch('http://localhost/DropbeatBackend/setMusicianImg.php', {
+      fetch('./DropbeatBackend/setMusicianImg.php', {
         method: 'POST',
         body: form
       })

@@ -45,7 +45,7 @@ export default {
       const form = new FormData()
       form.append('report_id', this.$store.getters.mesIdState) // 被檢舉的id = 那篇留言的id
       form.append('report_option', this.selectReport) // 被檢舉類型
-      fetch('http://localhost/DropbeatBackend/report_send.php', {
+      fetch('./DropbeatBackend/reportSend.php', {
         method: 'POST',
         body: form
       })

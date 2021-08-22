@@ -100,7 +100,7 @@ export default {
   async created () {
     const form = new FormData()
     form.append('range', '最多播放')
-    const fetchPlayrange = await fetch('http://localhost/DropbeatBackend/NewMusic.php', {
+    const fetchPlayrange = await fetch('./DropbeatBackend/NewMusic.php', {
       method: 'POST',
       body: form
     })

@@ -66,7 +66,7 @@
 import AudioIcon from './AudioIcon.vue'
 export default {
   emits: ['share-social'],
-  props: ['num', 'imgSrc', 'musicName', 'singer', 'totalSecond', 'playCounter', 'likeCounter', 'status', 'color', 'musicFile'],
+  props: ['num', 'imgSrc', 'musicName', 'singer', 'totalSecond', 'playCounter', 'likeCounter', 'status', 'color', 'musicFile', 'musicId'],
   components: {
     AudioIcon
   },
@@ -112,6 +112,14 @@ export default {
         this.likeNum--
       }
       this.like = !this.like
+      // const form = new FormData()
+      // form.append('memberId', this.$store.getters.memberIdState)
+      // form.append('musicId', this.musicId)
+      // form.append('isLike', this.like)
+      // fetch('http://localhost/DropbeatBackend/IsLike.php', {
+      //   method: 'POST',
+      //   body: form
+      // })
     },
     shareSocial () {
       this.$emit('share-social')

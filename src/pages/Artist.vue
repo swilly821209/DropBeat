@@ -79,7 +79,7 @@ export default {
     async getMusician () {
       const form = new FormData()
       form.append('id', this.$route.params.id)
-      const musician = await fetch('http://localhost/DropbeatBackend/getMusician.php', {
+      const musician = await fetch('./DropbeatBackend/getMusician.php', {
         method: 'POST',
         body: form
       })
@@ -97,7 +97,7 @@ export default {
       form.append('memberId', this.$store.getters.memberIdState)
       form.append('musicianId', this.$route.params.id)
       form.append('isFollow', this.follow)
-      await fetch('http://localhost/DropbeatBackend/followMusician.php', {
+      await fetch('./DropbeatBackend/followMusician.php', {
         method: 'POST',
         body: form
       })

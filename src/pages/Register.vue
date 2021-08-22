@@ -110,14 +110,14 @@ export default {
         form.append('email', this.member.email)
         form.append('pwd', this.member.pwd)
         form.append('birthday', this.birthday)
-        const response = await fetch('http://localhost/DropbeatBackend/registerInsert.php', {
+        const response = await fetch('./DropbeatBackend/registerInsert.php', {
           method: 'POST',
           body: form
         })
         // 回傳註冊成功者資訊->登入
         const forms = new FormData()
         forms.append('accountThis', this.member.account)
-        const responseAll = await fetch('http://localhost/DropbeatBackend/registerSelect.php', {
+        const responseAll = await fetch('./DropbeatBackend/registerSelect.php', {
           method: 'POST',
           body: forms
         })
