@@ -38,7 +38,7 @@
     </base-dialog>
     <div class="flex justify-between items-center mt-5">
       <base-title title="募資管理"></base-title>
-      <div class="cursor-pointer hidden sm:flex sm:mr-3" >
+      <div class="flex sm:mr-3 z-10 absolute sm:right-[40px] right-[20px] sm:top-[80px] top-[150px]" >
         <svg xmlns="http://www.w3.org/2000/svg" class="preArrow mr-3 block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" class="nextArrow block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
       </div>
@@ -60,7 +60,7 @@
       </swiper-slide>
     </swiper>
     <!-- 640以下 -->
-    <swiper :slidesPerView="1" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="flex sm:hidden ">
+    <swiper :slidesPerView="1" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="flex sm:hidden mt-[-40px]">
       <swiper-slide v-for="(item, index) in nowFundArray" :key="item.donate_name">
         <fund-item class="theItemMenegerSpe" :id = index
           edit
@@ -150,7 +150,7 @@
         <!-- 640px以下顯示 -->
         <div class="block flex theItem sm:hidden">
           <div class="w-full">
-            <div class="flex justify-center items-center">
+            <div class="flex justify-between items-center">
               <div class=" mr-4">
                 <div class="flex mt-4 ">
                   <label class="w-[90px] text-left text-lg text-gray-dark">金額：</label>

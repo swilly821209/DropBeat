@@ -35,12 +35,16 @@
         </div>
       </div>
     </base-dialog>
-    <div class="flex justify-between mt-5 ml">
+    <div class="flex justify-between items-center mt-5 ">
       <base-title title="活動管理"></base-title>
+      <div class=" flex sm:mr-3 z-10 absolute sm:right-[40px] right-[20px] sm:top-[80px] top-[150px]" >
+        <svg xmlns="http://www.w3.org/2000/svg" class="preArrow mr-3 block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="nextArrow block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
+      </div>
     </div>
     <!-- 640以上顯示 -->
     <div class="flex items-center justify-start">
-      <svg xmlns="http://www.w3.org/2000/svg" class="preArrow mr-3 block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
+      <!-- <svg xmlns="http://www.w3.org/2000/svg" class="preArrow mr-3 block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg> -->
         <swiper :slidesPerView="2" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="hidden sm:flex" observeParents>
           <swiper-slide v-for="(item, index) in nowActivityArr" :key="item" observer>
             <activity-item class="theItemMenegerSpe" :id = index
@@ -57,7 +61,8 @@
               </activity-item>
           </swiper-slide>
         </swiper>
-        <swiper :slidesPerView="1" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="flex sm:hidden" observeParents>
+        <!-- 640以下顯示 -->
+        <swiper :slidesPerView="1" :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="flex sm:hidden mt-[-20px]" observeParents>
           <swiper-slide v-for="(item, index) in nowActivityArr" :key="item" observer>
             <activity-item class="theItemMenegerSpe" :id = index
                 :check="true"
@@ -73,7 +78,7 @@
               </activity-item>
           </swiper-slide>
         </swiper>
-      <svg xmlns="http://www.w3.org/2000/svg" class="nextArrow block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
+      <!-- <svg xmlns="http://www.w3.org/2000/svg" class="nextArrow block text-gray-light cursor-pointer" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg> -->
     </div>
     <h4 id="doActive">發起活動</h4>
     <div class="flex flex-col sm:flex-row">
@@ -448,7 +453,9 @@ export default {
     :deep .activeImg{
       /* border: 1px solid red; */
       width: 100%;
-      height: 100%;
+      height: 220px;
+      object-position:center;
+      object-fit:cover;
       background-size: cover ;
     }
     :deep .activeContent{

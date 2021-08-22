@@ -802,6 +802,14 @@ video {
   top: 0px;
 }
 
+.right-\[20px\] {
+  right: 20px;
+}
+
+.top-\[150px\] {
+  top: 150px;
+}
+
 .top-\[42\%\] {
   top: 42%;
 }
@@ -1230,6 +1238,10 @@ video {
   margin-top: 5rem;
 }
 
+.mt-\[-40px\] {
+  margin-top: -40px;
+}
+
 .mt-12 {
   margin-top: 3rem;
 }
@@ -1272,10 +1284,6 @@ video {
 
 .h-\[25px\] {
   height: 25px;
-}
-
-.h-24 {
-  height: 6rem;
 }
 
 .h-9 {
@@ -2921,6 +2929,14 @@ textarea {
 
   .sm\:top-auto {
     top: auto;
+  }
+
+  .sm\:right-\[40px\] {
+    right: 40px;
+  }
+
+  .sm\:top-\[80px\] {
+    top: 80px;
   }
 
   .sm\:top-1\/2 {

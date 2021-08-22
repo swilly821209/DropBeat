@@ -23,7 +23,7 @@
           </div>
         </div>
         <div class="sm:mr-[30px] m-auto">
-          <img class="sm:min-w-[580px] sm:max-w-[580px] w-full sm:h-[330px] h-full sm:rounded-[20px] rounded-[10px]" :src="donate_photo">
+          <img class="sm:min-w-[580px] sm:max-w-[580px] w-full sm:h-[330px] h-full sm:rounded-[20px] rounded-[10px] object-center object-cover " :src="donate_photo">
           <div class=" sm:mt-[28px] mt-[20px]">
               <div class="flex w-2/3 justify-between text-base text-orange">
                   <p>$0</p>
