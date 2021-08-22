@@ -1,7 +1,7 @@
 <template>
   <div class="div_artist_list">
     <div :class="relative">
-      <img :src="img" class="rounded-full h-24" :class="width" >
+      <img :src="img" class="rounded-full " :class="width" >
       <div v-if="listen" class="div_certain_container">
         <div class="div_black rounded-full"></div>
         <div v-if="play === true" class="div_black02"></div>
@@ -71,7 +71,11 @@ export default {
     /* border-radius: 50%; */
   }
   img{
+    /* border:1px solid red; */
     width:108px;
+    height: 108px;
+    object-position:center;
+    object-fit:cover;
     border-radius: 50%;
     box-shadow:  0px 4px 4px rgba(0, 0, 0, 0.25);
   }

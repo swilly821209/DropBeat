@@ -131,7 +131,7 @@
      </swiper>
   </div>
   <div class="sm:hidden block mt-10">
-    <base-title title="Crowdfunding 募資計畫" link to="/Funds"></base-title>
+    <base-title title="Crowdfunding 募資" link to="/Funds"></base-title>
       <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="mt-[-10px]">
        <svg xmlns="http://www.w3.org/2000/svg" class="preIcon2 preArrow" width="15" height="23" viewBox="0 0 15 23.077"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(0 23.077) rotate(-90)" fill="currentColor"/></svg>
        <svg xmlns="http://www.w3.org/2000/svg" class="nextIcon2 nextArrow" width="13.72" height="23" viewBox="0 0 13.72 18.961"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(15 -2.058) rotate(90)" fill="currentColor"/></svg>

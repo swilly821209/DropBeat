@@ -830,6 +830,42 @@ video {
   top: auto;
 }
 
+.right-\[40px\] {
+  right: 40px;
+}
+
+.right-\[20px\] {
+  right: 20px;
+}
+
+.top-\[100px\] {
+  top: 100px;
+}
+
+.top-\[80px\] {
+  top: 80px;
+}
+
+.top-\[1500px\] {
+  top: 1500px;
+}
+
+.top-\[150px\] {
+  top: 150px;
+}
+
+.top-\[120px\] {
+  top: 120px;
+}
+
+.top-\[130px\] {
+  top: 130px;
+}
+
+.top-\[140px\] {
+  top: 140px;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -1232,6 +1268,18 @@ video {
 
 .mr-\[4px\] {
   margin-right: 4px;
+}
+
+.mt-\[-50px\] {
+  margin-top: -50px;
+}
+
+.mt-\[-40px\] {
+  margin-top: -40px;
+}
+
+.mr-\[40px\] {
+  margin-right: 40px;
 }
 
 .block {
@@ -2933,6 +2981,14 @@ textarea {
 
   .sm\:top-\[20vh\] {
     top: 20vh;
+  }
+
+  .sm\:right-\[40px\] {
+    right: 40px;
+  }
+
+  .sm\:top-\[80px\] {
+    top: 80px;
   }
 
   .sm\:order-1 {
