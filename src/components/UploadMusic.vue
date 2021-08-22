@@ -52,7 +52,7 @@ export default {
   props: ['musicFile', 'duration', 'edit'],
   emits: ['edit-name'],
   async created () {
-    const response = await fetch('http://localhost/DropbeatBackend/MusicType.php')
+    const response = await fetch('./DropbeatBackend/MusicType.php')
     const responseData = await response.json()
     responseData.forEach((e) => {
       this.musicType.push(e.type_name)
@@ -60,7 +60,7 @@ export default {
     if (this.edit) {
       const form = new FormData()
       form.append('name', this.edit)
-      const responseEdit = await fetch('http://localhost/DropbeatBackend/UploadMusicEdit.php', {
+      const responseEdit = await fetch('./DropbeatBackend/UploadMusicEdit.php', {
         method: 'POST',
         body: form
       })
@@ -105,18 +105,18 @@ export default {
       form.append('lyrics', this.lyrics)
       form.append('musicId', this.musicId)
       if (this.edit) {
-        await fetch('http://localhost/DropbeatBackend/EditUploadMusic.php', {
+        await fetch('./DropbeatBackend/EditUploadMusic.php', {
           method: 'POST',
           body: form
         })
         if (typeof this.file !== 'string') {
-          await fetch('http://localhost/DropbeatBackend/EditChangeMusicImg.php', {
+          await fetch('./DropbeatBackend/EditChangeMusicImg.php', {
             method: 'POST',
             body: form
           })
         }
       } else {
-        await fetch('http://localhost/DropbeatBackend/UploadMusic.php', {
+        await fetch('./DropbeatBackend/UploadMusic.php', {
           method: 'POST',
           body: form
         })

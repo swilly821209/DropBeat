@@ -130,7 +130,7 @@ export default {
       const form = new FormData()
       form.append('member_id', this.$store.getters.memberIdState) // memeberID
       form.append('activity_id', this.nowActivityArr[index].activity_id) // activityID
-      fetch('http://localhost/DropbeatBackend/active_page_joinDeside_send.php', {
+      fetch('./DropbeatBackend/active_page_joinDeside_send.php', {
         method: 'POST',
         body: form
       })
@@ -153,7 +153,7 @@ export default {
       const form = new FormData()
       const range = `range${index}`
       form.append('rangeed', range)
-      const response = await fetch('http://localhost/DropbeatBackend/active_page_selectRange.php', {
+      const response = await fetch('./DropbeatBackend/active_page_selectRange.php', {
         method: 'POST',
         body: form
       })
@@ -167,13 +167,11 @@ export default {
       })
       const forms = new FormData()
       forms.append('memberId', this.$store.getters.memberIdState)
-      const responseses = await fetch('http://localhost/DropbeatBackend/carousel_join_get.php', {
+      const responseses = await fetch('./DropbeatBackend/carousel_join_get.php', {
         method: 'POST',
         body: forms
       })
       const responseDatass = await responseses.json()
-      console.log(responseDatass)
-      console.log(this.nowActivityArr)
       for (let i = 0; i < responseDatass.length; i++) {
         for (let j = 0; j < this.nowActivityArr.length; j++) {
           if (this.nowActivityArr[j].activity_id === responseDatass[i].activity_id) {
@@ -231,7 +229,7 @@ export default {
     }
   },
   async created () {
-    const response = await fetch('http://localhost/DropbeatBackend/active_page_get.php')
+    const response = await fetch('./DropbeatBackend/active_page_get.php')
     const responseData = await response.json()
     responseData.forEach((item) => {
       item.toTheActive = item.activity_id // router設定
@@ -247,7 +245,7 @@ export default {
     }
     const form = new FormData()
     form.append('memberId', this.$store.getters.memberIdState)
-    const responses = await fetch('http://localhost/DropbeatBackend/carousel_join_get.php', {
+    const responses = await fetch('./DropbeatBackend/carousel_join_get.php', {
       method: 'POST',
       body: form
     })

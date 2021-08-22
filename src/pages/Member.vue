@@ -26,6 +26,7 @@
                 :location="item.place"
                 :singerImg="item.activity_photo"
                 :singer="item.account"
+                :toActive="item.toTheActive"
                 >
             </activity-item>
             <base-date :time="item.activity_date" week="true" class="date"></base-date>
@@ -51,6 +52,7 @@
                 :location="item.place"
                 :singerImg="item.activity_photo"
                 :singer="item.account"
+                :toActive="item.toTheActive"
                 >
             </activity-item>
             <base-date :time="item.activity_date" week="true" class="date"></base-date>
@@ -66,32 +68,30 @@
       <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="sm:my-10 sm:pb-0  my-0 -mt-8 pb-16">
         <svg xmlns="http://www.w3.org/2000/svg"  class="preIcon preArrow" width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(0 40) rotate(-90)" fill="currentColor"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" class="nextIcon nextArrow"  width="25" height="40" viewBox="0 0 25 40"><path id="next" d="M17.657,2.928a3,3,0,0,1,4.685,0L36.1,20.126A3,3,0,0,1,33.758,25H6.242A3,3,0,0,1,3.9,20.126Z" transform="translate(25) rotate(90)" fill="currentColor"/></svg>
-        <swiper-slide v-for="item in 10" :key="item" class="flex justify-center items-center z-20 sm:flex-row flex-col sm:top-auto top-14">
+        <swiper-slide v-for="item in donateArr" :key="item" class="flex justify-center items-center z-20 sm:flex-row flex-col sm:top-auto top-14">
           <div class="activeRange flex items-center sm:justify-between ">
             <div class="flex sm:items-center sm:flex-row flex-col items-start flex-shrink-0">
-              <img class="sm:w-[345px] sm:h-[200px] w-32 h-32  rounded-2xl cursor-pointer object-cover object-center" src="https://akstatic.streetvoice.com/features/2021/07/23/e053e36ad38d43f0818b33e7a9d4b108.png?x-oss-process=image/resize,m_fill,h_480,w_1250,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg">
+              <img class="sm:w-[345px] sm:h-[200px] w-32 h-32  rounded-2xl cursor-pointer object-cover object-center" :src="item.donate_photo">
               <div class="fundContent sm:flex hidden flex-col ">
                 <div class="successIcon bg-orange text-white  rounded-3xl  self-end sm:block hidden">success</div>
-                <h4 class="text-lg text-black-backdrop ">運氣來的若有似無 專輯募資</h4>
-                <base-badge  class=" mt-2 inline-block" image="https://akstatic.streetvoice.com/profile_images/er/ic/eric198853/Y3w4tbHRLXMLzFxUmW9bb7.jpg?x-oss-process=image/resize,m_fill,h_200,w_200,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg" singer="KUNG 龔敬文"></base-badge>
+                <h4 class="text-lg text-black-backdrop ">{{item.donate_name}}</h4>
+                <base-badge  class=" mt-2 inline-block" :image="item.donate_photo" :singer="item.initiator"></base-badge>
               </div>
             </div>
             <div class="fundDetail flex flex-col justify-center h-full sm:border-l sm:border-b-0 border-b border-gray-default sm:pl-5 ml-5">
                 <div class="successIcon text-base bg-orange text-white  rounded-3xl sm:hidden block">success</div>
                 <div class="flex sm:flex-col flex-row sm:justify-start justify-between">
-                  <p class="sm:text-3xl text-2xl text-orange sm:mb-5 mb-0 sm:order-1 order-2">$600</p>
-                  <h5 class="my-1 text-black-backdrop text-base sm:mr-0 mr-8 sm:order-2 order-1">專輯海報組</h5>
+                  <p class="sm:text-3xl text-2xl text-orange sm:mb-5 mb-0 sm:order-1 order-2">${{item.total_price}}</p>
+                  <h5 class="my-1 text-black-backdrop text-base sm:mr-0 mr-8 sm:order-2 order-1">{{item.donate_name}}</h5>
                 </div>
-                <ul class="list-disc text-gray-dark sm:text-sm text-xs pl-4 sm:mb-0 mb-2">
-                  <li>專輯 x1</li>
-                  <li>內含：CD、寫真歌詞本、小卡</li>
-                  <li>A2 親簽海報</li>
+                <ul class="list-disc text-gray-dark sm:text-sm text-xs sm:mb-0 mb-2">
+                  <textarea class="w-[200px] h-[100px]" :value="item.info"></textarea>
                 </ul>
             </div>
           </div>
           <div class="mt-2 sm:hidden block self-start ml-0">
-            <h4 class="text-base text-black-backdrop ">運氣來的若有似無 專輯募資</h4>
-            <base-badge  class="text-xs mt-[-5px] inline-block" image="https://akstatic.streetvoice.com/profile_images/er/ic/eric198853/Y3w4tbHRLXMLzFxUmW9bb7.jpg?x-oss-process=image/resize,m_fill,h_200,w_200,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg" singer="KUNG 龔敬文"></base-badge>
+            <h4 class="text-base text-black-backdrop ">{{item.donate_name}}</h4>
+            <base-badge  class="text-xs mt-[-5px] inline-block" :image="item.donate_photo" :singer="item.initiator"></base-badge>
           </div>
         </swiper-slide>
       </swiper>
@@ -142,6 +142,7 @@ export default {
   },
   data () {
     return {
+      donateArr: [],
       activeDatas: [],
       activeDatasPast: [],
       musicItems: [
@@ -226,7 +227,7 @@ export default {
   async created () {
     const form = new FormData()
     form.append('member_id', this.$store.getters.memberIdState)
-    const response = await fetch('http://localhost/DropbeatBackend/member_page_activity_get.php', {
+    const response = await fetch('./DropbeatBackend/member_page_activity_get.php', {
       method: 'POST',
       body: form
     })
@@ -236,10 +237,21 @@ export default {
       item.timeCompare = new Date(item.activity_date).getTime() / (1000 * 60 * 60 * 24) // 活動時間(秒)
       if (item.timeCompare - nowTime < 0) {
         this.activeDatasPast.unshift(item)
+        item.toTheActive = item.activity_id // router設定
       } else {
         this.activeDatas.unshift(item)
+        item.toTheActive = item.activity_id // router設定
       }
     })
+    // donate
+    const forms = new FormData()
+    forms.append('member_id', this.$store.getters.memberIdState)
+    const responses = await fetch('./DropbeatBackend/member_page_donate_get.php', {
+      method: 'POST',
+      body: forms
+    })
+    const responseDatas = await responses.json()
+    this.donateArr = responseDatas
   }
 }
 </script>

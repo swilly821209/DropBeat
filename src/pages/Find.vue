@@ -193,7 +193,7 @@ export default {
   },
   methods: {
     async getMusician () {
-      const fetchMusician = await fetch('http://localhost/DropbeatBackend/GetAllMusician.php')
+      const fetchMusician = await fetch('./DropbeatBackend/GetAllMusician.php')
       const fetchMusicianResponse = await fetchMusician.json()
       fetchMusicianResponse.map((item) => {
         this.artistList.push({
@@ -229,7 +229,7 @@ export default {
       this.selectMusicRange = range
       const form = new FormData()
       form.append('range', range)
-      const fetchMusic = await fetch('http://localhost/DropbeatBackend/NewMusic.php', {
+      const fetchMusic = await fetch('./DropbeatBackend/NewMusic.php', {
         method: 'POST',
         body: form
       })

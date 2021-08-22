@@ -164,7 +164,7 @@ export default {
       const form = new FormData()
       form.append('member_id', this.$store.getters.memberIdState) // memeberID
       form.append('activity_id', this.carouselActivity[index].activity_id) // activityID
-      fetch('http://localhost/DropbeatBackend/active_page_joinDeside_send.php', {
+      fetch('./DropbeatBackend/active_page_joinDeside_send.php', {
         method: 'POST',
         body: form
       })
@@ -221,7 +221,7 @@ export default {
     }
   },
   async beforeCreate () {
-    const response = await fetch('http://localhost/DropbeatBackend/carousel_component_get.php')
+    const response = await fetch('./DropbeatBackend/carousel_component_get.php')
     const responseData = await response.json()
     responseData.forEach((item, index) => {
       this.carouselActivity[index].activity_id = item.activity_id
@@ -265,7 +265,7 @@ export default {
     })
     const form = new FormData()
     form.append('memberId', this.$store.getters.memberIdState)
-    const responses = await fetch('http://localhost/DropbeatBackend/carousel_join_get.php', {
+    const responses = await fetch('./DropbeatBackend/carousel_join_get.php', {
       method: 'POST',
       body: form
     })
