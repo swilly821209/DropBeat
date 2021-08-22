@@ -2,7 +2,7 @@
     <div class="range">
       <h3 class="text-2xl text-black-backdrop mb-5">最熱門作品</h3>
         <music-item class="singleMusic"
-          v-for="item in musicItems"
+          v-for="item in musicItems.slice(0, 5)"
           @share-social="shareSocial(item.img, item.name, item.singer)"
           :status="item.status"
           :color="item.color"
@@ -41,6 +41,30 @@ export default {
   components: {
     MusicItem,
     DynimicNews
+  },
+  async created () {
+    const form = new FormData()
+    form.append('id', this.$route.params.id)
+    const musicianMusic = await fetch('http://localhost/DropbeatBackend/GetMusicianMusic.php', {
+      method: 'POST',
+      body: form
+    })
+    const responseData = await musicianMusic.json()
+    responseData.forEach((item, index) => {
+      this.musicItems.push({
+        musicType: item.type_name,
+        num: (++index).toString().padStart(2, '0'),
+        musicFileSrc: item.music_data,
+        img: item.music_photo,
+        name: item.music_name,
+        singer: item.musician_name,
+        musicTime: item.music_long,
+        playCounter: +item.play_num,
+        likeCounter: item.likeNum,
+        status: '－',
+        color: 'gray'
+      })
+    })
   },
   data () {
     return {
@@ -81,61 +105,61 @@ export default {
         }
       ],
       musicItems: [
-        {
-          num: '01',
-          img: 'https://akstatic.streetvoice.com/song_covers/ju/ne/junepan/EKEn4VgY8S9H38jumNiVLA.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
-          name: '在這座城市遺失了你',
-          singer: '告五人',
-          musicTime: 287,
-          playCounter: 88888,
-          likeCounter: 744,
-          status: '▲',
-          color: 'blue'
-        },
-        {
-          num: '02',
-          img: 'https://akstatic.streetvoice.com/song_covers/ju/ne/junepan/EKEn4VgY8S9H38jumNiVLA.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
-          name: '在這座城市遺失了你',
-          singer: '告五人',
-          musicTime: 2837,
-          playCounter: 883888,
-          likeCounter: 7344,
-          status: '－',
-          color: 'gray'
-        },
-        {
-          num: '03',
-          img: 'https://akstatic.streetvoice.com/song_covers/ju/ne/junepan/EKEn4VgY8S9H38jumNiVLA.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
-          name: '在這座城市遺失了你',
-          singer: '告五人',
-          musicTime: 2227,
-          playCounter: 883388,
-          likeCounter: 7434,
-          status: '▲',
-          color: 'blue'
-        },
-        {
-          num: '04',
-          img: 'https://akstatic.streetvoice.com/song_covers/ju/ne/junepan/EKEn4VgY8S9H38jumNiVLA.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
-          name: '在這座城市找尋你',
-          singer: '告五人',
-          musicTime: 2827,
-          playCounter: 8833888,
-          likeCounter: 7434,
-          status: '－',
-          color: 'gray'
-        },
-        {
-          num: '05',
-          img: 'https://akstatic.streetvoice.com/song_covers/ju/ne/junepan/EKEn4VgY8S9H38jumNiVLA.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
-          name: '在這座城市遺失了我',
-          singer: '告很多人',
-          musicTime: 2837,
-          playCounter: 888888,
-          likeCounter: 724,
-          status: '▼',
-          color: 'gray'
-        }
+        // {
+        //   num: '01',
+        //   img: 'https://akstatic.streetvoice.com/song_covers/ju/ne/junepan/EKEn4VgY8S9H38jumNiVLA.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
+        //   name: '在這座城市遺失了你',
+        //   singer: '告五人',
+        //   musicTime: 287,
+        //   playCounter: 88888,
+        //   likeCounter: 744,
+        //   status: '▲',
+        //   color: 'blue'
+        // },
+        // {
+        //   num: '02',
+        //   img: 'https://akstatic.streetvoice.com/song_covers/ju/ne/junepan/EKEn4VgY8S9H38jumNiVLA.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
+        //   name: '在這座城市遺失了你',
+        //   singer: '告五人',
+        //   musicTime: 2837,
+        //   playCounter: 883888,
+        //   likeCounter: 7344,
+        //   status: '－',
+        //   color: 'gray'
+        // },
+        // {
+        //   num: '03',
+        //   img: 'https://akstatic.streetvoice.com/song_covers/ju/ne/junepan/EKEn4VgY8S9H38jumNiVLA.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
+        //   name: '在這座城市遺失了你',
+        //   singer: '告五人',
+        //   musicTime: 2227,
+        //   playCounter: 883388,
+        //   likeCounter: 7434,
+        //   status: '▲',
+        //   color: 'blue'
+        // },
+        // {
+        //   num: '04',
+        //   img: 'https://akstatic.streetvoice.com/song_covers/ju/ne/junepan/EKEn4VgY8S9H38jumNiVLA.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
+        //   name: '在這座城市找尋你',
+        //   singer: '告五人',
+        //   musicTime: 2827,
+        //   playCounter: 8833888,
+        //   likeCounter: 7434,
+        //   status: '－',
+        //   color: 'gray'
+        // },
+        // {
+        //   num: '05',
+        //   img: 'https://akstatic.streetvoice.com/song_covers/ju/ne/junepan/EKEn4VgY8S9H38jumNiVLA.png?x-oss-process=image/resize,m_fill,h_100,w_100,limit_0/interlace,1/quality,q_95/sharpen,80/format,jpg',
+        //   name: '在這座城市遺失了我',
+        //   singer: '告很多人',
+        //   musicTime: 2837,
+        //   playCounter: 888888,
+        //   likeCounter: 724,
+        //   status: '▼',
+        //   color: 'gray'
+        // }
       ]
     }
   }

@@ -31,7 +31,7 @@
       <div class="flex flex-wrap justify-between artcontain">
         <artist-item class=" aartist"
           :width="'w-24'"
-          v-for="(item, index) in artistList"
+          v-for="(item, index) in artistList.slice(0, 8)"
           @click="playFun(index)"
           :play="item.play"
           :img="item.img"
@@ -304,14 +304,14 @@ export default {
         }
       ],
       artistList: [
-        { play: false, img: 'https://picsum.photos/100', author: '告五人', more: '#' },
-        { play: false, img: 'https://picsum.photos/200', author: '告五人', more: '#' },
-        { play: false, img: 'https://picsum.photos/300', author: '告五人', more: '#' },
-        { play: false, img: 'https://picsum.photos/400', author: '告五人', more: '#' },
-        { play: false, img: 'https://picsum.photos/500', author: '告五人', more: '#' },
-        { play: false, img: 'https://picsum.photos/600', author: '告五人', more: '#' },
-        { play: false, img: 'https://picsum.photos/700', author: '告五人', more: '#' },
-        { play: false, img: 'https://picsum.photos/800', author: '告五人', more: '#' }
+        // { play: false, img: 'https://picsum.photos/100', author: '告五人', more: '#' },
+        // { play: false, img: 'https://picsum.photos/200', author: '告五人', more: '#' },
+        // { play: false, img: 'https://picsum.photos/300', author: '告五人', more: '#' },
+        // { play: false, img: 'https://picsum.photos/400', author: '告五人', more: '#' },
+        // { play: false, img: 'https://picsum.photos/500', author: '告五人', more: '#' },
+        // { play: false, img: 'https://picsum.photos/600', author: '告五人', more: '#' },
+        // { play: false, img: 'https://picsum.photos/700', author: '告五人', more: '#' },
+        // { play: false, img: 'https://picsum.photos/800', author: '告五人', more: '#' }
       ],
       theCDsong: {
         img: 'https://picsum.photos/900',
@@ -344,6 +344,17 @@ export default {
     }
   },
   async created () {
+    const fetchMusician = await fetch('http://localhost/DropbeatBackend/GetAllMusician.php')
+    const fetchMusicianResponse = await fetchMusician.json()
+    console.log(fetchMusicianResponse)
+    fetchMusicianResponse.map((item) => {
+      this.artistList.push({
+        play: false,
+        img: item.musicial_photo,
+        author: item.musician_name,
+        more: item.musician_id
+      })
+    })
     const response = await fetch('http://localhost/DropbeatBackend/funds_page_get.php')
     const responseData = await response.json()
     responseData.forEach((item) => {

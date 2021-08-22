@@ -738,6 +738,10 @@ video {
   right: 5px;
 }
 
+.right-10 {
+  right: 2.5rem;
+}
+
 .top-\[-40px\] {
   top: -40px;
 }
@@ -784,10 +788,6 @@ video {
 
 .left-auto {
   left: auto;
-}
-
-.right-10 {
-  right: 2.5rem;
 }
 
 .top-\[-160px\] {
@@ -1576,10 +1576,6 @@ video {
 
 .w-80 {
   width: 20rem;
-}
-
-.w-\[340px\] {
-  width: 340px;
 }
 
 .w-\[200px\] {
