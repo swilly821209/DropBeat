@@ -31,7 +31,7 @@
       <div class="flex flex-wrap justify-between artcontain">
         <artist-item class=" aartist"
           :width="'w-24'"
-          v-for="(item, index) in artistList"
+          v-for="(item, index) in artistList.slice(0, 8)"
           @click="playFun(index)"
           :play="item.play"
           :img="item.img"
@@ -131,7 +131,7 @@
      </swiper>
   </div>
   <div class="sm:hidden block mt-10">
-    <base-title title="Crowdfunding 募資計畫" link to="/Funds"></base-title>
+    <base-title title="Crowdfunding 募資" link to="/Funds"></base-title>
       <swiper :navigation="{nextEl: '.nextArrow', prevEl: '.preArrow'}" class="mt-[-10px]">
        <svg xmlns="http://www.w3.org/2000/svg" class="preIcon2 preArrow" width="15" height="23" viewBox="0 0 15 23.077"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(0 23.077) rotate(-90)" fill="currentColor"/></svg>
        <svg xmlns="http://www.w3.org/2000/svg" class="nextIcon2 nextArrow" width="13.72" height="23" viewBox="0 0 13.72 18.961"><path id="next" d="M9.953,2.061a2,2,0,0,1,3.17,0l7.477,9.72A2,2,0,0,1,19.015,15H4.062a2,2,0,0,1-1.585-3.219Z" transform="translate(15 -2.058) rotate(90)" fill="currentColor"/></svg>
@@ -304,14 +304,14 @@ export default {
         }
       ],
       artistList: [
-        { play: false, img: 'https://images.unsplash.com/photo-1579649554660-463ed1d72831?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=635&q=80', author: '告五人', more: '#' },
-        { play: false, img: 'https://picsum.photos/200', author: '告五人', more: '#' },
-        { play: false, img: 'https://picsum.photos/300', author: '告五人', more: '#' },
-        { play: false, img: 'https://picsum.photos/400', author: '告五人', more: '#' },
-        { play: false, img: 'https://picsum.photos/500', author: '告五人', more: '#' },
-        { play: false, img: 'https://picsum.photos/600', author: '告五人', more: '#' },
-        { play: false, img: 'https://picsum.photos/700', author: '告五人', more: '#' },
-        { play: false, img: 'https://picsum.photos/800', author: '告五人', more: '#' }
+        // { play: false, img: 'https://picsum.photos/100', author: '告五人', more: '#' },
+        // { play: false, img: 'https://picsum.photos/200', author: '告五人', more: '#' },
+        // { play: false, img: 'https://picsum.photos/300', author: '告五人', more: '#' },
+        // { play: false, img: 'https://picsum.photos/400', author: '告五人', more: '#' },
+        // { play: false, img: 'https://picsum.photos/500', author: '告五人', more: '#' },
+        // { play: false, img: 'https://picsum.photos/600', author: '告五人', more: '#' },
+        // { play: false, img: 'https://picsum.photos/700', author: '告五人', more: '#' },
+        // { play: false, img: 'https://picsum.photos/800', author: '告五人', more: '#' }
       ],
       theCDsong: {
         img: 'https://picsum.photos/900',
@@ -344,6 +344,17 @@ export default {
     }
   },
   async created () {
+    const fetchMusician = await fetch('http://localhost/DropbeatBackend/GetAllMusician.php')
+    const fetchMusicianResponse = await fetchMusician.json()
+    console.log(fetchMusicianResponse)
+    fetchMusicianResponse.map((item) => {
+      this.artistList.push({
+        play: false,
+        img: item.musicial_photo,
+        author: item.musician_name,
+        more: item.musician_id
+      })
+    })
     const response = await fetch('http://localhost/DropbeatBackend/funds_page_get.php')
     const responseData = await response.json()
     responseData.forEach((item) => {
