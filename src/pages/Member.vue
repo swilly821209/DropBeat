@@ -227,7 +227,7 @@ export default {
   async created () {
     const form = new FormData()
     form.append('member_id', this.$store.getters.memberIdState)
-    const response = await fetch('./DropbeatBackend/member_page_activity_get.php', {
+    const response = await fetch('./DropbeatBackend/memberPageActivityGet.php', {
       method: 'POST',
       body: form
     })
@@ -246,7 +246,7 @@ export default {
     // donate
     const forms = new FormData()
     forms.append('member_id', this.$store.getters.memberIdState)
-    const responses = await fetch('./DropbeatBackend/member_page_donate_get.php', {
+    const responses = await fetch('./DropbeatBackend/memberPageDonateGet.php', {
       method: 'POST',
       body: forms
     })

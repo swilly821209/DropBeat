@@ -60,7 +60,7 @@ export default {
       const form = new FormData()
       const progress = `progress${index}`
       form.append('progressed', progress)
-      const response = await fetch('./DropbeatBackend/funds_page_selectProgress.php', {
+      const response = await fetch('./DropbeatBackend/fundsPageSelectProgress.php', {
         method: 'POST',
         body: form
       })
@@ -72,7 +72,7 @@ export default {
         this.randerFuns.unshift(item)
       })
       // 獲取total_price
-      const responses = await fetch('./DropbeatBackend/funds_page_total_price.php')
+      const responses = await fetch('./DropbeatBackend/fundsPageTotalPrice.php')
       const responseDatas = await responses.json()
       this.randerFuns.forEach((item) => {
         responseDatas.forEach((items) => {
@@ -106,7 +106,7 @@ export default {
     }
   },
   async created () {
-    const response = await fetch('./DropbeatBackend/funds_page_get.php')
+    const response = await fetch('./DropbeatBackend/fundsPageGet.php')
     const responseData = await response.json()
     responseData.forEach((item) => {
       item.toTheDonate = `/Funds/${item.toTheDonate}` // router設定
@@ -115,7 +115,7 @@ export default {
       this.randerFuns.unshift(item)
     })
     // 獲取總金額跟贊助人數
-    const responses = await fetch('./DropbeatBackend/funds_page_total_price.php')
+    const responses = await fetch('./DropbeatBackend/fundsPageTotalPrice.php')
     const responseDatas = await responses.json()
     this.randerFuns.forEach((item) => {
       responseDatas.forEach((items) => {

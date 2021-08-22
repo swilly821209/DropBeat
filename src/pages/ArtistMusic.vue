@@ -337,7 +337,7 @@ export default {
         form.append('musician', Math.floor(Math.random() * 9999)) // musician (DB是INT)
         // form.append('setup_date', messageData.time)
         form.append('content', messageData.content)
-        fetch('./DropbeatBackend/mussage_mus_send.php', {
+        fetch('./DropbeatBackend/mussageMusSend.php', {
           method: 'POST',
           body: form
         })
@@ -356,7 +356,7 @@ export default {
     }
   },
   async created () {
-    const response = await fetch('./DropbeatBackend/mussage_mus_get.php')
+    const response = await fetch('./DropbeatBackend/mussageMusGet.php')
     const responseData = await response.json()
     // 操作
     responseData.forEach((item) => {

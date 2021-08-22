@@ -409,7 +409,7 @@ export default {
           form.append('info', this.fundInfo) // info
           form.append('goal', this.fundMoney) // goal
           form.append('end_date', this.fundEndDate) // end_date
-          fetch('./DropbeatBackend/FileUpload/funds_single_files_send.php', {
+          fetch('./DropbeatBackend/FileUpload/fundsSingleFilesSend.php', {
             method: 'POST',
             body: form
           })
@@ -426,7 +426,7 @@ export default {
             forms.append(`option_price${i}`, this.fundsList[i].money) // 金額
             forms.append(`num${i}`, this.fundsList[i].quantity) // 是否限量(填金額)
           }
-          fetch('./DropbeatBackend/FileUpload/funds_multiple_files_send.php', {
+          fetch('./DropbeatBackend/FileUpload/fundsMultipleFilesSend.php', {
             method: 'POST',
             body: forms
           })
@@ -463,7 +463,7 @@ export default {
       // 獲取該募資的id->再用id去DB找募資方案內容
       const form = new FormData()
       form.append('donate', this.nowFundArray[arrayIndex].donate_id)
-      const response = await fetch('./DropbeatBackend/FileUpload/funds_multiple_files_get.php', {
+      const response = await fetch('./DropbeatBackend/FileUpload/fundsMultipleFilesGet.php', {
         method: 'POST',
         body: form
       })
@@ -505,7 +505,7 @@ export default {
       // 獲取該募資的id->再用id去DB找募資方案內容
       const form = new FormData()
       form.append('donate', this.nowFundArray[this.arrayIndex].donate_id)
-      fetch('./DropbeatBackend/FileUpload/funds_delete.php', {
+      fetch('./DropbeatBackend/FileUpload/fundsDelete.php', {
         method: 'POST',
         body: form
       })
@@ -551,7 +551,7 @@ export default {
       form.append('goal', this.fundMoney)
       form.append('end_date', this.fundEndDate)
       form.append('file', this.fundImg) // 存照片
-      fetch('./DropbeatBackend/FileUpload/funds_single_files_edit.php', {
+      fetch('./DropbeatBackend/FileUpload/fundsSingleFilesEdit.php', {
         method: 'POST',
         body: form
       })
@@ -571,7 +571,7 @@ export default {
         forms.append(`option_price${i}`, this.fundsList[i].money)
         forms.append(`num${i}`, parseInt(this.fundsList[i].quantity))
       }
-      fetch('./DropbeatBackend/FileUpload/funds_multiple_files_edit.php', {
+      fetch('./DropbeatBackend/FileUpload/fundsMultipleFilesEdit.php', {
         method: 'POST',
         body: forms
       })
@@ -585,7 +585,7 @@ export default {
     if (this.$store.getters.memberIdState) {
       const formGet = new FormData()
       formGet.append('initiator', this.$store.getters.memberIdState)
-      const response = await fetch('./DropbeatBackend/FileUpload/funds_single_files_get.php', {
+      const response = await fetch('./DropbeatBackend/FileUpload/fundsSingleFilesGet.php', {
         method: 'POST',
         body: formGet
       })
@@ -597,7 +597,7 @@ export default {
       })
       console.log(this.nowFundArray)
       // 獲取total_price
-      const responses = await fetch('./DropbeatBackend/funds_page_total_price.php')
+      const responses = await fetch('./DropbeatBackend/fundsPageTotalPrice.php')
       const responseDatas = await responses.json()
       this.nowFundArray.forEach((item) => {
         responseDatas.forEach((items) => {
