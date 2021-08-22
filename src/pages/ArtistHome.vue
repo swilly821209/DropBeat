@@ -43,6 +43,7 @@ export default {
     DynimicNews
   },
   async created () {
+    this.musicItems = []
     const form = new FormData()
     form.append('id', this.$route.params.id)
     const musicianMusic = await fetch('http://localhost/DropbeatBackend/GetMusicianMusic.php', {

@@ -54,6 +54,7 @@
     <music-item
       v-for="item in musicItems"
       @share-social="shareSocial(item.img, item.name, item.singer)"
+      :musicId="item.musicId"
       :musicFile="item.musicFileSrc"
       :key="item.num"
       :num="item.num"
@@ -236,6 +237,7 @@ export default {
       const fetchResponse = await fetchMusic.json()
       fetchResponse.forEach((item, index) => {
         this.musicItems.push({
+          musicId: item.music_id,
           musicType: item.type_name,
           num: (++index).toString().padStart(2, '0'),
           musicFileSrc: item.music_data,
